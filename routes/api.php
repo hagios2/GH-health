@@ -28,14 +28,16 @@ Route::group(['prefix' => 'auth'], function ($router) {
 
     Route::get('user', 'AuthController@getAuthUser');
 
+    Route::patch('update/{user}/user', 'UsersRegisterController@update');
+
 });
 
 
 Route::post('register-user', 'UsersRegisterController@register');
 
-Route::patch('update/{user}/user', 'UsersRegisterController@update');
-
 Route::post('register-merchandiser', 'MerchandiserRegisterController@register');
+
+Route::post('campuses', 'ResourceController@register');
 
 
 

@@ -18,7 +18,7 @@ class Merchandiser extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'company_name', 'company_email', 'password', 'company_description', 'campus_id', 'phone', 'avatar'
+        'company_name', 'email', 'password', 'company_description', 'campus_id', 'phone', 'avatar'
     ];
 
     /**
@@ -49,5 +49,10 @@ class Merchandiser extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function campus()
+    {
+        return $this->belongsTo('App\Campus');
     }
 }
