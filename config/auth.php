@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'merchandiser' => [
+            'driver' => 'jwt',
+            'provider' => 'merchandisers',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -69,6 +74,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        'merchandisers' => [
+            'driver' => 'eloquent',
+            'model' => App\Merchandiser::class,
         ],
 
         // 'users' => [

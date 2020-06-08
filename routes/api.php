@@ -18,23 +18,41 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
  */
 
-Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
+Route::group(['prefix' => 'auth'], function ($router) {
 
     Route::post('login', 'AuthController@login');
 
     Route::post('logout', 'AuthController@logout');
 
-    Route::post('refresh', 'AuthController@refresh');
+    Route::post('refresh-token', 'AuthController@refresh');
 
     Route::get('user', 'AuthController@getAuthUser');
 
 });
 
-Route::post('register', 'UsersRegisterController@register');
+
+Route::post('register-user', 'UsersRegisterController@register');
 
 Route::patch('update/{user}/user', 'UsersRegisterController@update');
 
+Route::post('register-merchandiser', 'MerchandiserRegisterController@register');
+
+
+
+Route::group(['prefix' => 'merchandiser'], function () {
+    
+    Route::post('login', 'MerchandiserAuthController@login');
+
+    Route::get('/', 'MerchandiserAuthController@getAuthUser');
+
+    Route::post('logout', 'MerchandiserAuthController@logout');
+
+    Route::post('refresh-token', 'MerchandiserAuthController@refresh');
+
+    Route::patch('/{merchandiser}/update', 'MerchandiserRegisterController@update');
+});
+
 Route::fallback(function(){
 
-    return response()->json(['Not found'], 404);
+    return response()->json(['message' => 'Route not found'], 404);
 });

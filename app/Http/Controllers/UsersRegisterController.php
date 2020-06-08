@@ -26,9 +26,7 @@ class UsersRegisterController extends Controller
 
         $this->storeAvatar($user);
 
-        $user->notify(new UserRegistrationNotification());
-
-        UserRegistrationJob::dispatch($user); 
+/*         $user->notify(new UserRegistrationNotification($user)); */
 
         return response()->json(['status' => 'success'], 200);
     }
