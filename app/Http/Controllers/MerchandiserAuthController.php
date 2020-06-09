@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\MerchandiserResource;
 
 class MerchandiserAuthController extends Controller
 {
@@ -40,7 +41,7 @@ class MerchandiserAuthController extends Controller
      */
     public function getAuthUser()
     {
-        return response()->json(auth()->guard('merchandiser')->user());
+        return new MerchandiserResource(auth()->guard('merchandiser')->user());
     }
 
     /**
