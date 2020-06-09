@@ -37,7 +37,7 @@ Route::post('register-user', 'UsersRegisterController@register');
 
 Route::post('register-merchandiser', 'MerchandiserRegisterController@register');
 
-Route::post('campuses', 'ResourceController@register');
+Route::get('campuses', 'ResourceController@getCampus');
 
 
 
