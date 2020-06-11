@@ -55,4 +55,11 @@ class Merchandiser extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo('App\Campus');
     }
+
+
+    public function product()
+    {
+        return $this->hasMany('App\Product');
+    }
+
 }
