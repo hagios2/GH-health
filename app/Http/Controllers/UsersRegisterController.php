@@ -24,7 +24,11 @@ class UsersRegisterController extends Controller
 
         $user = User::create($attibutes);
 
-        $this->storeAvatar($user);
+        if($request->hasFile('avatar'))
+        {
+            $this->storeAvatar($user);
+        }
+
 
 /*         $user->notify(new UserRegistrationNotification($user)); */
 
