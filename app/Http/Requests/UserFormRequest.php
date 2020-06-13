@@ -31,7 +31,9 @@ class UserFormRequest extends FormRequest
 
             'phone' => 'required|numeric|unique:users,phone',
 
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png'
+            'avatar' => 'nullable|image|mimes:jpeg,jpg,png',
+
+            'password' => 'required|string'
         ];
     }
 }
