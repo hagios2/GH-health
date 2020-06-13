@@ -3,10 +3,51 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
+use App\Http\Resources\DetailedProductResource;
+use App\Http\Resources\ProductResource;
+use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductsController extends Controller
 {
+
+/*     public function __construct()
+    {
+        $this->middleware('auth:api');
+    } */
+
+
+    public function getCategories()
+    {
+
+        return CategoryResource::collection(Category::all('id', 'description'));
+
+    }
+
+
+
+
+    public function getCategorysProduct(Category $category)
+    {
+
+        
+        $product = Product::cursor();
+        
+        return new ProductResource($product->where('category_id', $category->id)->paginate(15));
+
+    }
+
+
+    
+    public function getProductDetails(Product $product)
+    {
+
+    
+        return new DetailedProductResource($product);
+
+    }
+
     /**
      * Display a listing of the resource.
      *
