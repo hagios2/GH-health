@@ -2,9 +2,11 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\ProductImage;
 
-class ProductResource extends JsonResource
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+class ProductResource extends ResourceCollection
 {
     /**
      * Transform the resource into an array.
@@ -18,13 +20,15 @@ class ProductResource extends JsonResource
 
        return [
 
-            'id' => $this->id,
 
-            'product_name' => $this->product_name,
+            $this->collection->map(function($product){
 
-            'price' => $this->price,
+                return ['product' =>$product,
+                
+                'product_image' => ProductImage::where('product_id', $product->id)->latest()->take(1)->get('path')];
+                //$product->image->reverse()->take(1)];
 
-            'product_image' => $this->image->latest()->path
+            }),
 
        ];
     }

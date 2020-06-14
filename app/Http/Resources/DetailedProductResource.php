@@ -15,43 +15,39 @@ class DetailedProductResource extends JsonResource
     public function toArray($request)
     {
 
-        if($this->merchandiser->isNotEmpty)
+        $productOwner = [];
+
+        if($this->merchandiser)
         {
-            $productOwner = [
-
-                'merchandiser_id' => $this->merchandiser->id,
+            $productOwner['merchandiser_id'] = $this->merchandiser->id;
                 
-                'company_name' => $this->merchandiser->company_name,
+            $productOwner['company_name'] = $this->merchandiser->company_name;
 
-                'avatar' => $this->merchandiser->avatar
-            ];
+            $productOwner['avatar'] = $this->merchandiser->avatar;
         
-        }else if($this->user->isNotEmpty){
+        }else if($this->user){
 
-            $productOwner = [
-
-                'user_id' => $this->user->id,
+            $productOwner['user_id'] = $this->user->id;
                 
-                'name' => $this->user->name,
+            $productOwner['name'] = $this->user->name;
 
-                'avatar' => $this->user->avatar
-            ];
+            $productOwner['avatar'] = $this->user->avatar;
         }
 
 
        return [
 
-            'id' => $this->id,
+                'id' => $this->id,
 
-            'product_name' => $this->product_name,
+                'product_name' => $this->product_name,
 
-            'price' => $this->price,
+                'price' => $this->price,
 
-            'in_stock' => $this->in_stock, #subtract from puchased from this
+                'in_stock' => $this->in_stock, #subtract from puchased from this
 
-            $productOwner,
+                $productOwner,
 
-            'product_images' => $this->image->get('id', 'path'), //path
+                'product_images' => ProductImageResource::collection($this->image), //path
 
        ];
     }

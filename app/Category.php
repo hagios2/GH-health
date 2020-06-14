@@ -13,4 +13,11 @@ class Category extends Model
     {
         return $this->hasMany('App\Product');
     }
+
+
+
+    public function addProduct($product)
+    {
+        return $this->product()->create($product)->id;
+    }
 }

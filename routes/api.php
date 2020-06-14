@@ -39,6 +39,12 @@ Route::post('register-merchandiser', 'MerchandiserRegisterController@register');
 
 Route::get('campuses', 'ResourceController@getCampus');
 
+Route::get('categories', 'ProductsController@getCategories');
+
+Route::get('category/{category}/products', 'ProductsController@getCategorysProduct');
+
+Route::get('product/{product}/details', 'ProductsController@getProductDetails');
+
 
 
 Route::group(['prefix' => 'merchandiser'], function () {
@@ -53,6 +59,22 @@ Route::group(['prefix' => 'merchandiser'], function () {
 
     Route::patch('/{merchandiser}/update', 'MerchandiserRegisterController@update');
 });
+
+
+
+Route::group(['prefix' => 'e-trader'], function () {
+    
+    Route::post('/create-category', 'SellersController@createCategory');
+
+   // Route::get('/categories', 'SellersControllerController@getCategories');
+
+    Route::post('/{category}/add-product', 'SellersController@storeProduct');
+
+    Route::post('/{product}/product-images', 'SellersController@saveProductImages');
+
+    Route::patch('/product/{product}/update', 'SellersController@updateProduct');
+});
+
 
 Route::fallback(function(){
 

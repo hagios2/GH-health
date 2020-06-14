@@ -15,6 +15,12 @@ class Product extends Model
     }
 
 
+    public function addProductImage($image)
+    {
+        $this->image()->create($image);
+    } 
+
+
     public function category()
     {
         return $this->belongsTo('App\Category');

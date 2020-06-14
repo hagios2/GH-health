@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('product_name');
             $table->integer('in_stock')->unsiged();
             $table->decimal('price', 5, 2);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
