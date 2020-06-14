@@ -31,6 +31,10 @@ class ProductResource extends ResourceCollection
 
                     'price' => $product->price,
 
+                    'in_stock' => $product->in_stock,
+
+                    'in_cart' => false,
+
                     'product_image' => ProductImage::where('product_id', $product->id)->latest()->take(1)->get('path')
                 
                ];
