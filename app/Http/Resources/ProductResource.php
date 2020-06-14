@@ -23,9 +23,17 @@ class ProductResource extends ResourceCollection
 
             $this->collection->map(function($product){
 
-                return ['product' =>$product,
+                return  [
+
+                    'id' => $product->id,
+                    
+                    'product_name' => $product->product_name,
+
+                    'price' => $product->price,
+
+                    'product_image' => ProductImage::where('product_id', $product->id)->latest()->take(1)->get('path')
                 
-                'product_image' => ProductImage::where('product_id', $product->id)->latest()->take(1)->get('path')];
+               ];
                 //$product->image->reverse()->take(1)];
 
             }),

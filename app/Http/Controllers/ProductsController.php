@@ -30,9 +30,6 @@ class ProductsController extends Controller
 
     public function getCategorysProduct(Category $category)
     {
-
-        
-   /*      $product = all(); */
         
         return new ProductResource(Product::where('category_id', $category->id)->paginate(16));
 

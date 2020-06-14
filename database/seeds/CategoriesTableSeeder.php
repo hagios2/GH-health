@@ -20,7 +20,7 @@ class CategoriesTableSeeder extends Seeder
 
         Category::create(['category' => 'Home and Living']);
 
-        Category::create(['category' => 'Beautry and Perfumes']);
+        Category::create(['category' => 'Beauty and Perfumes']);
 
         Category::create(['category' => 'Food and Snacks']);
 
