@@ -50,19 +50,17 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Category $category)
     {
-        $categories = Category::all();
-
-
+/* 
         $products = $categories->map(function($category){
 
             return $category->product->reverse()->take(4);
 
-        });
+        }); */
 
 
-        return ProductResource::collection($products);
+        return new ProductResource(Product::where('category_id', $category->id)->latest()->take(4)->get());
 
         
     }
