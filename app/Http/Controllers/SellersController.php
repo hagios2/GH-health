@@ -35,7 +35,7 @@ class SellersController extends Controller
     public function storeProduct(Category $category, ProductRequest $request)
     {
         
-        $product = $request->all();
+        $product = $request->validated();
 
         if(auth()->guard('merchandiser')->user())
         {
@@ -66,7 +66,7 @@ class SellersController extends Controller
             return response()->json(['status' => 'Forbidden'], 403);
        }
 
-        $product->update($request->all());
+        $product->update($request->validated());
 
 
         return response()->json(['status' => 'success'], 200);
