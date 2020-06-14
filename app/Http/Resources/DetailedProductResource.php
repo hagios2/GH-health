@@ -45,7 +45,9 @@ class DetailedProductResource extends JsonResource
 
                 'in_stock' => $this->in_stock, #subtract from puchased from this
 
-                $productOwner,
+                'description' =>  $this->description,
+
+                'product_owner' => $productOwner,
 
                 'product_images' => ProductImageResource::collection($this->image), //path
 
