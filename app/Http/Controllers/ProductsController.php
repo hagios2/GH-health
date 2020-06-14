@@ -52,7 +52,17 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
+        $categories = Category::all();
+
+
+        $products = $categories->map(function($category){
+
+            return $category->product->reverse()->take(4);
+
+        });
+
+
+        return ProductResource::collection($products);
 
         
     }

@@ -45,6 +45,8 @@ Route::get('category/{category}/products', 'ProductsController@getCategorysProdu
 
 Route::get('product/{product}/details', 'ProductsController@getProductDetails');
 
+Route::get('/product-index', 'ProductsController@index');
+
 
 
 Route::group(['prefix' => 'merchandiser'], function () {
