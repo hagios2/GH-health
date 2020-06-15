@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('user_id')->unsigned()->nullable();
             $table->string('product_name');
             $table->integer('in_stock')->unsiged();
-            $table->decimal('price', 5, 2);
+            $table->decimal('price', 10, 2);
             $table->text('description')->nullable();
             $table->timestamps();
         });
