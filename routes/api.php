@@ -85,8 +85,9 @@ Route::fallback(function(){
 
 Route::options('{any}', function () {
 
-    return response('OK', 200, \Illuminate\Http\Response::HTTP_NO_CONTENT)
+    return response('OK', 204, \Illuminate\Http\Response::HTTP_NO_CONTENT)
           ->header('Access-Control-Allow-Origin', implode(',', config('cors.allow_origins')))
           ->header('Access-Control-Allow-Methods', implode(',', config('cors.allow_methods')))
-          ->header('Access-Control-Allow-Headers', implode(',', config('cors.allow_headers')));
+          ->header('Access-Control-Allow-Headers', implode(',', config('cors.allow_headers')))
+          ->header('Access-Control-Max-age', implode(',', config('cors.max_age')));
 });
