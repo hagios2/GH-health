@@ -33,7 +33,9 @@ class UserFormRequest extends FormRequest
 
             'avatar' => 'nullable|image|mimes:jpeg,jpg,png',
 
-            'password' => 'required|string'
+            'password' => 'required|string',
+
+            'campus_id' => 'required|integer'
         ];
     }
 }

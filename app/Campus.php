@@ -14,4 +14,10 @@ class Campus extends Model
     {
         return $this->hasMany('App\Merchandiser');
     }
+
+
+    public function users()
+    {
+        return $this->hasMany('App\user');
+    }
 }

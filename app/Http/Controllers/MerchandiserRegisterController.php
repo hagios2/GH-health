@@ -14,7 +14,7 @@ class MerchandiserRegisterController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('api')->only('update');
+        $this->middleware('auth:merchander')->only('update');
     }
 
     public function register(MerchandiserFormRequest $request)
@@ -26,8 +26,8 @@ class MerchandiserRegisterController extends Controller
         $merchandiser = Merchandiser::create($attributes);
 
         $this->storeAvatar($merchandiser);
-/* 
-        $merchandiser->notify(new UserRegistrationNotification()); */
+        
+            /* $merchandiser->notify(new UserRegistrationNotification()); */
 
         return response()->json(['status' => 'success'], 200);
     }

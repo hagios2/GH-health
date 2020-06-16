@@ -18,7 +18,7 @@ class UsersRegisterController extends Controller
 
     public function register(UserFormRequest $request)
     {
-        $attibutes = $request->only(['name', 'email', 'phone']);
+        $attibutes = $request->only(['name', 'email', 'phone', 'campus_id']);
 
         $attibutes['password'] = Hash::make($request->password);
 
