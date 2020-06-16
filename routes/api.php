@@ -89,8 +89,5 @@ Route::options('{any}', function () {
           ->header('Access-Control-Allow-Origin', implode(',', config('cors.allow_origins')))
           ->header('Access-Control-Allow-Methods', implode(',', config('cors.allow_methods')))
           ->header('Access-Control-Allow-Headers', implode(',', config('cors.allow_headers')))
-          ->header('Access-Control-Max-Age', implode(',', ));
-
-
-  
+          ->header('Access-Control-Max-Age', implode(',', config('cors.max_age')));
         });
