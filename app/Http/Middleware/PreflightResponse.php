@@ -21,7 +21,11 @@ class PreflightResponse
         ];
         if ($request->getMethod() == "OPTIONS") {
             // The client-side application can set only headers allowed in Access-Control-Allow-Headers
-            return \Response::make('OK', 200, $headers);
+            return response('', 204, \Illuminate\Http\Response::HTTP_NO_CONTENT)
+            ->header('Access-Control-Allow-Origin', implode(',', config('cors.allow_origins')))
+            ->header('Access-Control-Allow-Methods', implode(',', config('cors.allow_methods')))
+            ->header('Access-Control-Allow-Headers', implode(',', config('cors.allow_headers')))
+            ->header('Access-Control-Max-Age', implode(',', ));
         }
         
         return $next($request);
