@@ -82,12 +82,3 @@ Route::fallback(function(){
 
     return response()->json(['message' => 'Route not found'], 404);
 });
-
-Route::options('{any}', function () {
-
-    return response('', 204, \Illuminate\Http\Response::HTTP_NO_CONTENT)
-          ->header('Access-Control-Allow-Origin', implode(',', config('cors.allow_origins')))
-          ->header('Access-Control-Allow-Methods', implode(',', config('cors.allow_methods')))
-          ->header('Access-Control-Allow-Headers', implode(',', config('cors.allow_headers')))
-          ->header('Access-Control-Max-Age', implode(',', config('cors.max_age')));
-        });

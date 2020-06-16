@@ -12,7 +12,7 @@ class SellersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:api' OR 'auth:merchandiser']);
+        $this->middleware('auth:api,merchandiser');
     }
 
 
