@@ -47,6 +47,10 @@ Route::get('product/{product}/details', 'ProductsController@getProductDetails');
 
 Route::get('/{category}/product-index', 'ProductsController@index');
 
+Route::post('user/{user}/add-cart', 'ProductsController@saveCart');
+
+Route::get('user-cart', 'ProductsController@getCart');
+
 
 
 Route::group(['prefix' => 'merchandiser'], function () {

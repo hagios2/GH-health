@@ -51,7 +51,7 @@ class UsersRegisterController extends Controller
     
     public function update(User $user, UpdateUserRequest $request)
     {
-        $user->update($request->only(['name', 'email', 'phone']));
+        $user->update($request->only(['name', 'email', 'phone', 'campus_id']));
 
         if($request->hasFile('avatar'))
         {

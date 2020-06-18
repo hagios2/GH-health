@@ -61,4 +61,27 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo('App\Campus');
     }
+
+
+    public function cart()
+    {
+        return $this->hasMany('App\Cart');
+    }
+
+
+    public function addToCart($cart)
+    {
+        $existing_cart = $this->cart->where('status', 'in cart')->reverse()->first();
+
+        if($existing_cart)
+        {
+            $existing_cart->update(['cart' => $cart]);
+        
+        }else{
+
+            $this->cart()->create(['cart' => $cart]);
+        }
+
+
+    }
 }

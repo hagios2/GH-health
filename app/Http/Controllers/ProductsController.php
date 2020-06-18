@@ -4,18 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\User;
 use App\Http\Resources\DetailedProductResource;
 use App\Http\Resources\ProductResource;
+use App\Http\Resources\CartResource;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
 
-/*     public function __construct()
+    public function __construct()
     {
-        $this->middleware('auth:api');
-    } */
+        $this->middleware('auth:api')->only(['saveCart']);
+    } 
 
 
     public function getCategories()
@@ -64,6 +66,29 @@ class ProductsController extends Controller
 
         
     }
+
+
+    public function saveCart(User $user, Request $request)
+    {
+
+       $cart = $request->validate([
+       
+            'cart' => 'required',
+        ]);
+
+        $user->addToCart(json_encode($cart['cart']));
+
+        return response()->json(['status' => 'cart saved']);
+    }
+
+
+    public function getCart()
+    {
+        $cart = auth()->user()->cart->where('status', 'in cart')->reverse()->first();
+
+        return new CartResource($cart);
+    } 
+
 
 
 
