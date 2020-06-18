@@ -16,7 +16,7 @@ class ProductsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api')->only(['saveCart']);
+        $this->middleware('auth:api')->only(['saveCart', 'getCart']);
     } 
 
 
