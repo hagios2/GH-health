@@ -19,40 +19,65 @@ class MerchandiserRegisterController extends Controller
 
     public function register(MerchandiserFormRequest $request)
     {
-        $attributes = $request->only(['company_name', 'email', 'phone', 'company_description', 'campus_id']);
+        $attributes = $request->validated();
 
         $attributes['password'] = Hash::make($request->password);
 
-        $merchandiser = Merchandiser::create($attributes);
-
-        $this->storeAvatar($merchandiser);
+        $merchandiser_id = Merchandiser::create($attributes)->id;
         
             /* $merchandiser->notify(new UserRegistrationNotification()); */
 
-        return response()->json(['status' => 'success'], 200);
+        return response()->json(['status' => 'success', 'merchandiser_id' => $merchandiser_id], 200);
     }
 
 
-    public function storeAvatar(Merchandiser $merchandiser)
+    public function storePhotos(Merchandiser $merchandiser, $file_type)
     {
-        $file = request()->file('avatar');
+    
+
+        if(request()->hasFile('avatar'))
+        {
+            $file = request()->file('avatar');
+
+        }else if(request()->hasFile('cover_photo')){
+
+            $file = request()->file('cover_photo');
+
+        }
 
         $fileName = $file->getClientOriginalName();
 
-        $file->storeAs('public/avatar/'.$merchandiser->id, $fileName);
+        $file->storeAs('public/'.$file_type.'/'.$merchandiser->id, $fileName);
 
-        $merchandiser->update(['avatar' => storage_path('app/public/avatar/'.$merchandiser->id.'/'.$fileName)]);
+        $merchandiser->update([$file_type => storage_path('app/public/'.$file_type.'/'.$merchandiser->id.'/'.$fileName)]);
+    }
+
+
+    public function saveAvatar(Merchandiser $merchandiser, Request $request)
+    {
+        $request->validate(['avatar' => 'required|image|mimes:png,jpg,jpeg']);
+
+        $this->storePhotos($merchandiser, 'avatar');
+
+        return response()->json(['status' => 'saved avatar'], 200);
+
+    }
+
+
+    public function saveCoverPhoto(Merchandiser $merchandiser, Request $request)
+    {
+        $request->validate(['cover_photo' => 'required|image|mimes:png,jpg,jpeg']);
+
+        $this->storePhotos($merchandiser, 'cover_photo');
+
+        return response()->json(['status' => 'saved cover_photo'], 200);
+
     }
 
     
     public function update(Merchandiser $merchandiser, UpdateMerchandiserRequest $request)
     {
-        $merchandiser->update($request->only(['company_name', 'email', 'phone', 'company_description']));
-
-        if($request->hasFile('avatar'))
-        {
-            $this->storeAvatar($merchandiser);   
-        }
+        $merchandiser->update($request->validated());
 
         return response()->json(['status' => 'success'], 200);
     }   

@@ -64,6 +64,10 @@ Route::group(['prefix' => 'merchandiser'], function () {
     Route::post('refresh-token', 'MerchandiserAuthController@refresh');
 
     Route::patch('/{merchandiser}/update', 'MerchandiserRegisterController@update');
+
+    Route::post('/{merchandiser}/store-avatar', 'MerchandiserRegisterController@saveAvatar');
+
+    Route::post('/{merchandiser}/store-cover-photo', 'MerchandiserRegisterController@saveCoverPhoto');
 });
 
 

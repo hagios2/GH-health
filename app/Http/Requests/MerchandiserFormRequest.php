@@ -34,8 +34,6 @@ class MerchandiserFormRequest extends FormRequest
             'campus_id' => 'required|integer',
 
             'phone' => 'required|numeric|min:10|unique:merchandisers,phone',
-
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png'
         ];
     }
 }

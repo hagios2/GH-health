@@ -34,8 +34,6 @@ class UpdateMerchandiserRequest extends FormRequest
             'campus_id' => 'required|integer',
 
             'phone' => 'required|numeric|min:10|',
-
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png'
         ];
     }
 }

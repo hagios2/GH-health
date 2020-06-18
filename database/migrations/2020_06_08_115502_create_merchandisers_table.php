@@ -21,6 +21,7 @@ class CreateMerchandisersTable extends Migration
             $table->text('company_description');
             $table->integer('campus_id')->unsigned();
             $table->string('avatar')->nullable();
+            $table->string('cover_photo')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
