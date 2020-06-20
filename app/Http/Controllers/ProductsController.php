@@ -73,7 +73,7 @@ class ProductsController extends Controller
 
        $cart = $request->validate([
        
-            'cart' => 'required',
+            'cart' => 'nullable',
         ]);
 
         $user->addToCart(json_encode($cart['cart']));
