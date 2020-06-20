@@ -33,13 +33,12 @@ class MerchandiserRegisterController extends Controller
 
     public function storePhotos(Merchandiser $merchandiser, $file_type)
     {
-    
 
-        if(request()->hasFile('avatar'))
+        if($file_type == 'avatar')
         {
             $file = request()->file('avatar');
 
-        }else if(request()->hasFile('cover_photo')){
+        }else if($file_type == 'cover_photo'){
 
             $file = request()->file('cover_photo');
 
@@ -53,24 +52,30 @@ class MerchandiserRegisterController extends Controller
     }
 
 
-    public function saveAvatar(Merchandiser $merchandiser, Request $request)
+   /*  public function saveAvatar(Merchandiser $merchandiser, Request $request)
     {
-        $request->validate(['avatar' => 'required|image|mimes:png,jpg,jpeg']);
 
         $this->storePhotos($merchandiser, 'avatar');
 
         return response()->json(['status' => 'saved avatar'], 200);
 
-    }
+    } */
 
 
-    public function saveCoverPhoto(Merchandiser $merchandiser, Request $request)
+    public function saveAvatarAndCover(Merchandiser $merchandiser, Request $request)
     {
-        $request->validate(['cover_photo' => 'required|image|mimes:png,jpg,jpeg']);
+        $request->validate([
+            'cover_photo' => 'nullable|image|mimes:png,jpg,jpeg',
+            
+            'avatar' => 'nullable|image|mimes:png,jpg,jpeg'
+
+        ]);
 
         $this->storePhotos($merchandiser, 'cover_photo');
 
-        return response()->json(['status' => 'saved cover_photo'], 200);
+        $this->storePhotos($merchandiser, 'avatar');
+
+        return response()->json(['status' => 'saved photos'], 200);
 
     }
 

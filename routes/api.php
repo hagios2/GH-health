@@ -65,9 +65,9 @@ Route::group(['prefix' => 'merchandiser'], function () {
 
     Route::patch('/{merchandiser}/update', 'MerchandiserRegisterController@update');
 
-    Route::post('/{merchandiser}/store-avatar', 'MerchandiserRegisterController@saveAvatar');
+    Route::post('/{merchandiser}/store-photos', 'MerchandiserRegisterController@saveAvatarAndCover');
 
-    Route::post('/{merchandiser}/store-cover-photo', 'MerchandiserRegisterController@saveCoverPhoto');
+
 });
 
 
