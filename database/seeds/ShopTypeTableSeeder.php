@@ -15,7 +15,7 @@ class ShopTypeTableSeeder extends Seeder
     {
         ShopType::create([
 
-            'shop_type' => 'mini shop',
+            'shop_type' => 'Mini Shop',
 
             'max_no_of_product' => 50
         ]);
@@ -24,9 +24,16 @@ class ShopTypeTableSeeder extends Seeder
 
         ShopType::create([
 
-            'shop_type' => 'mini shop',
+            'shop_type' => 'Max Shop',
 
-            'max_no_of_product' => 50
+            'max_no_of_product' => 100
+        ]);
+
+
+        ShopType::create([
+
+            'shop_type' => 'None-student shop',
+
         ]);
     }
 }

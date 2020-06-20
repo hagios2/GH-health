@@ -33,6 +33,8 @@ class MerchandiserFormRequest extends FormRequest
 
             'campus_id' => 'required|integer',
 
+            'shop_type_id' => 'required|integer',
+
             'phone' => 'required|numeric|min:10|unique:merchandisers,phone',
         ];
     }

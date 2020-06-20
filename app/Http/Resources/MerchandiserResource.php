@@ -28,6 +28,8 @@ class MerchandiserResource extends JsonResource
 
             'cover_photo' => $this->cover_photo,
 
+            'shop_type' => $this->shopType->shop_type,
+
             'campus' => $this->campus->campus,
 
             'phone' => $this->phone

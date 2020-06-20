@@ -16,7 +16,7 @@ class CreateShopTypesTable extends Migration
         Schema::create('shop_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('shop_type')->unique();
-            $table->integer('max_no_of_product')->unsigned();
+            $table->integer('max_no_of_product')->unsigned()->nullable();
             $table->timestamps();
         });
     }

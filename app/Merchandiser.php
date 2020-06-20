@@ -18,7 +18,7 @@ class Merchandiser extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'company_name', 'email', 'password', 'company_description', 'campus_id', 'phone', 'avatar', 'cover_photo', 'shop_type-id'
+        'company_name', 'email', 'password', 'company_description', 'campus_id', 'phone', 'avatar', 'cover_photo', 'shop_type_id'
     ];
 
     /**
@@ -60,6 +60,12 @@ class Merchandiser extends Authenticatable implements JWTSubject
     public function product()
     {
         return $this->hasMany('App\Product');
+    }
+
+
+    public function shopType()
+    {
+        return $this->hasOne('App\ShopType');
     }
 
 }

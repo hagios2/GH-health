@@ -51,6 +51,8 @@ Route::post('user/{user}/add-cart', 'ProductsController@saveCart');
 
 Route::get('user-cart', 'ProductsController@getCart');
 
+Route::get('shop-types', 'ResourceController@getShopTypes');
+
 
 
 Route::group(['prefix' => 'merchandiser'], function () {
