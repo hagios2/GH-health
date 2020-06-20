@@ -51,17 +51,6 @@ class MerchandiserRegisterController extends Controller
         $merchandiser->update([$file_type => storage_path('app/public/'.$file_type.'/'.$merchandiser->id.'/'.$fileName)]);
     }
 
-
-   /*  public function saveAvatar(Merchandiser $merchandiser, Request $request)
-    {
-
-        $this->storePhotos($merchandiser, 'avatar');
-
-        return response()->json(['status' => 'saved avatar'], 200);
-
-    } */
-
-
     public function saveAvatarAndCover(Merchandiser $merchandiser, Request $request)
     {
         $request->validate([
@@ -71,9 +60,16 @@ class MerchandiserRegisterController extends Controller
 
         ]);
 
-        $this->storePhotos($merchandiser, 'cover_photo');
+        if($request->hasFile('cover_photo'))
+        {
+            $this->storePhotos($merchandiser, 'cover_photo');
+        }
 
-        $this->storePhotos($merchandiser, 'avatar');
+        
+        if($request->hasFile('avatar'))
+        {
+            $this->storePhotos($merchandiser, 'avatar');
+        }
 
         return response()->json(['status' => 'saved photos'], 200);
 
