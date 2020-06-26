@@ -55,7 +55,7 @@ Route::get('shop-types', 'ResourceController@getShopTypes');
 
 Route::get('merchandiser/{shop}/products','ProductsController@fetchShopsProduct');
 
-Route::get('all-shop','ProductsController@fetchShops');
+Route::get('all-shops','ProductsController@fetchShops');
 
 
 
