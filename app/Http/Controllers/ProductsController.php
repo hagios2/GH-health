@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
 use App\User;
+use App\Merchandiser;
+use App\Http\Resources\AllShopsResource;
 use App\Http\Resources\DetailedProductResource;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\CartResource;
@@ -88,6 +90,21 @@ class ProductsController extends Controller
 
         return new CartResource($cart);
     } 
+
+
+    public function fetchShops()
+    {
+
+        return AllShopsResource::collection(Merchandiser::all());
+    }   
+
+
+    public function fetchShopsProduct(Merchandiser $shops)
+    {
+        $products = $shops->product;
+
+        return ProductResource::collection($products);
+    }
 
 
 
