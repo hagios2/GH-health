@@ -103,7 +103,7 @@ class ProductsController extends Controller
     {
         $products = $shops->product;
 
-        return ProductResource::collection($products);
+        return new ProductResource($products);
     }
 
 
