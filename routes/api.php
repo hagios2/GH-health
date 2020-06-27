@@ -53,7 +53,7 @@ Route::get('user-cart', 'ProductsController@getCart');
 
 Route::get('shop-types', 'ResourceController@getShopTypes');
 
-Route::get('merchandiser/{shop}/products','ProductsController@fetchShopsProduct');
+Route::get('merchandiser/{shops}/products','ProductsController@fetchShopsProduct');
 
 Route::get('all-shops','ProductsController@fetchShops');
 

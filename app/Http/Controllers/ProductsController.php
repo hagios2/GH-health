@@ -101,7 +101,7 @@ class ProductsController extends Controller
 
     public function fetchShopsProduct(Merchandiser $shops)
     {
-        $products = $shops->product;
+       return  $products = $shops->product;
 
         return ProductResource::collection($products);
     }
