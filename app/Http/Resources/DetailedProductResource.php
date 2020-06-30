@@ -24,6 +24,8 @@ class DetailedProductResource extends JsonResource
             $productOwner['company_name'] = $this->merchandiser->company_name;
 
             $productOwner['avatar'] = $this->merchandiser->avatar;
+
+            $productOwner['email'] = $this->merchandiser->email;
         
         }else if($this->user){
 
@@ -32,6 +34,8 @@ class DetailedProductResource extends JsonResource
             $productOwner['name'] = $this->user->name;
 
             $productOwner['avatar'] = $this->user->avatar;
+
+            $productOwner['email'] = $this->user->email;
         }
 
 
