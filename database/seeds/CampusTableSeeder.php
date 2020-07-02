@@ -12,7 +12,7 @@ class CampusTableSeeder extends Seeder
      */
     public function run()
     {
-        Campus::create(['campus' => 'Tech']);
+        Campus::create(['campus' => 'KNUST']);
 
         Campus::create(['campus' => 'UCC']);
 
@@ -20,6 +20,8 @@ class CampusTableSeeder extends Seeder
 
         Campus::create(['campus' => 'UMAT']);
 
-        Campus::create(['campus' => 'Legon']);
+        Campus::create(['campus' => 'LEGON']);
+
+        Campus::create(['campus' => 'UPSA']);
     }
 }

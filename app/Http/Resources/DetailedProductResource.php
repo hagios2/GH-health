@@ -26,6 +26,17 @@ class DetailedProductResource extends JsonResource
             $productOwner['avatar'] = $this->merchandiser->avatar;
 
             $productOwner['email'] = $this->merchandiser->email;
+
+            $productOwner['campus'] = [
+
+                'id' => $this->merchandiser->campus->id,
+
+                'campus' => $this->merchandiser->campus->campus,
+
+            ];
+
+            $productOwner['phone'] = $this->merchandiser->phone;
+
         
         }else if($this->user){
 
@@ -36,6 +47,16 @@ class DetailedProductResource extends JsonResource
             $productOwner['avatar'] = $this->user->avatar;
 
             $productOwner['email'] = $this->user->email;
+
+            $productOwner['campus'] = [
+
+                'id' => $this->user->campus->id,
+
+                'campus' => $this->user->campus->campus,
+
+            ];
+
+            $productOwner['phone'] = $this->user->phone;
         }
 
 
