@@ -107,5 +107,25 @@ class SellersController extends Controller
 
         return response()->json(['status' => 'product images is required'], 422);
     }
+
+
+    public function deleteProduct(Product $product)
+    {
+        
+        if($product->user && auth()->guard('api')->id() !== $product->user_id)
+        {
+            return response()->json(['message' => 'Forbidded'], 403);
+
+        }elseif($product->merchandiser && auth()->guard('merchandiser')->id() !== $product->merchandiser_id){
+
+            return response()->json(['message' => 'Forbidded'], 403);
+        }
+
+
+        $product->delete();
+
+        
+        return response()->json(['status' => 'product deleted'], 200);
+    }
     
 }
