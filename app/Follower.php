@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Follower extends Model
 {
     
-    protected $guarded = ['id'];
+    protected $fillable = ['user_id', 'merchandiser_id'];
 
 
     public function user()
@@ -22,7 +22,7 @@ class Follower extends Model
     public function shop()
     {
 
-        return $this->belongsTo('App\Merchandiser');
+        return $this->belongsTo('App\Merchandiser', 'merchandiser_id');
         
     }
 }

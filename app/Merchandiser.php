@@ -68,13 +68,7 @@ class Merchandiser extends Authenticatable implements JWTSubject
         return $this->hasMany('App\Follower');
     }
 
-
-
-    public function addFollower($follower)
-    {
-        $this->followers()->create($follower);
-    }
-
+    
 
     public function shopType()
     {

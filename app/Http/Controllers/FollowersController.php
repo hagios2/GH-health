@@ -17,24 +17,32 @@ class FollowersController extends Controller
     }
 
 
-    public function followShop(Merchandiser $merchandiser)
+    public function followShop(Merchandiser $shop)
     {
 
-        $merchandiser->addFollower(['user_id' => auth()->guard('api')->id()]);
+        $following = auth()->guard('api')->user()->following->where('merchandiser_id', $shop->id)->first();
+
+        if($following)
+        {
+            return response()->json(['status' => 'already following shop']);
+        }
+
+        auth()->guard('api')->user()->addFollowing(['merchandiser_id' => $shop->id]); 
 
 
-        return response()->json(['status' => 'success']);
+
+        return response()->json(['status' => 'success', 'shop_followers' => $shop->followers->count()]);
 
     }
 
 
-    public function unFollowShop(Merchandiser $merchandiser)
+    public function unFollowShop(Merchandiser $shop)
     {
+        
+        auth()->guard('api')->user()->following->where('merchandiser_id', $shop->id)->first()->delete();
 
-        auth()->guard('api')->user()->following->where('merchandiser_id', $merchandiser)->delete();
 
-
-        return response()->json(['status' => 'deleted', 'shop_followers' => $merchandiser->followers->count()]);
+        return response()->json(['status' => 'deleted', 'shop_followers' => $shop->followers->count()]);
 
     }
 
@@ -44,7 +52,7 @@ class FollowersController extends Controller
         $following = auth()->guard('api')->user()->following;
 
 
-       return FollowersResource::collection($following);
+        return FollowersResource::collection($following);
 
     }
 
