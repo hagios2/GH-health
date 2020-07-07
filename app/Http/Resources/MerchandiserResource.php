@@ -32,7 +32,9 @@ class MerchandiserResource extends JsonResource
 
             'campus' => $this->campus->campus,
 
-            'phone' => $this->phone
+            'phone' => $this->phone,
+
+            'no_followers' => $this->followers->count()
         ];
     }
 }

@@ -57,6 +57,11 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+    public function following()
+    {
+        return $this->hasMany('App\Follower');
+    }
+
     public function campus()
     {
         return $this->belongsTo('App\Campus');

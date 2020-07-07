@@ -95,7 +95,7 @@ class ProductsController extends Controller
     public function fetchShops()
     {
 
-        return AllShopsResource::collection(Merchandiser::all());
+        return new AllShopsResource(Merchandiser::paginate(8));
     }   
 
 

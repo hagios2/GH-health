@@ -57,6 +57,12 @@ Route::get('merchandiser/{shops}/products','ProductsController@fetchShopsProduct
 
 Route::get('all-shops','ProductsController@fetchShops');
 
+Route::post('follow/{shop}/shop','FollowersController@followShop');
+
+Route::post('unfollow/{shop}/shop','FollowersController@unFollowShop');
+
+Route::get('following-shops','FollowersController@fetchfollowingShops');
+
 
 
 Route::group(['prefix' => 'merchandiser'], function () {
