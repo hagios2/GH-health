@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class AllShopsResource extends JsonResource
+class AllShopsResource extends ResourceCollection
 {
     /**
      * Transform the resource into an array.
@@ -14,15 +14,18 @@ class AllShopsResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        return $this->collection->map(function($shop){
+        
+            return  [
 
-            'id' => $this->id,
+                'id' => $shop->id,
 
-            'company_name' => $this->company_name,
+                'company_name' => $shop->company_name,
 
-            'company_description' => $this->company_description,
+                'company_description' => $shop->company_description,
 
-            'avatar' => $this->avatar,
-        ];
+                'avatar' => $shop->avatar,
+            ];
+        });
     }
 }
