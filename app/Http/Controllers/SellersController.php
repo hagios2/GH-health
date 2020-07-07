@@ -114,11 +114,11 @@ class SellersController extends Controller
         
         if($product->user && auth()->guard('api')->id() !== $product->user_id)
         {
-            return response()->json(['message' => 'Forbidded'], 403);
+            return response()->json(['message' => 'Forbidden'], 403);
 
         }elseif($product->merchandiser && auth()->guard('merchandiser')->id() !== $product->merchandiser_id){
 
-            return response()->json(['message' => 'Forbidded'], 403);
+            return response()->json(['message' => 'Forbidden'], 403);
         }
 
 
