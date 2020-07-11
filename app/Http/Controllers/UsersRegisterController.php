@@ -13,7 +13,7 @@ class UsersRegisterController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('api')->only('update');
+        $this->middleware('api')->only(['update', 'destroy']);
     }
 
     public function register(UserFormRequest $request)
@@ -30,7 +30,7 @@ class UsersRegisterController extends Controller
         }
 
 
-/*         $user->notify(new UserRegistrationNotification($user)); */
+        /*$user->notify(new UserRegistrationNotification($user)); */
 
         return response()->json(['status' => 'success'], 200);
     }
@@ -60,5 +60,15 @@ class UsersRegisterController extends Controller
 
         return response()->json(['status' => 'success'], 200);
     }   
+
+
+    public function destroy(User $user)
+    {
+        
+        $user->delete();
+
+
+        return response()->json(['status' => 'deleted'], 200);
+    }
 
 }

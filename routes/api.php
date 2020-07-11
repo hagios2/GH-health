@@ -30,6 +30,8 @@ Route::group(['prefix' => 'auth'], function ($router) {
 
     Route::patch('update/{user}/user', 'UsersRegisterController@update');
 
+    Route::delete('{user}/delete', 'UsersRegisterController@destroy');
+
 });
 
 
@@ -78,6 +80,8 @@ Route::group(['prefix' => 'merchandiser'], function () {
     Route::patch('/{merchandiser}/update', 'MerchandiserRegisterController@update');
 
     Route::post('/{merchandiser}/store-photos', 'MerchandiserRegisterController@saveAvatarAndCover');
+
+    Route::delete('{merchandiser}/delete', 'MerchandiserRegisterController@destroy');
 
 
 });

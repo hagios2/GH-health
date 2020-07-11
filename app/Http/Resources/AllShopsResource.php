@@ -25,6 +25,15 @@ class AllShopsResource extends ResourceCollection
                 'company_description' => $shop->company_description,
 
                 'avatar' => $shop->avatar,
+
+                'number_of_followers' => $shop->followers->count(),
+
+                'campus' => [
+
+                    'id' => $shop->campus->id,
+
+                    'campus' => $shop->campus->campus
+                ]
             ];
         });
     }
