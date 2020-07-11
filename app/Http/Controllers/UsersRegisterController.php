@@ -62,10 +62,10 @@ class UsersRegisterController extends Controller
     }   
 
 
-    public function destroy(User $user)
+    public function destroy()
     {
         
-        $user->delete();
+        auth()->guard('api')->user()->delete();
 
 
         return response()->json(['status' => 'deleted'], 200);

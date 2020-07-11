@@ -30,7 +30,7 @@ Route::group(['prefix' => 'auth'], function ($router) {
 
     Route::patch('update/{user}/user', 'UsersRegisterController@update');
 
-    Route::delete('{user}/delete', 'UsersRegisterController@destroy');
+    Route::delete('user/delete', 'UsersRegisterController@destroy');
 
 });
 
@@ -65,6 +65,8 @@ Route::post('unfollow/{shop}/shop','FollowersController@unFollowShop');
 
 Route::get('following-shops','FollowersController@fetchfollowingShops');
 
+Route::post('make-enquiries','EnquiryFormController@handler');
+
 
 
 Route::group(['prefix' => 'merchandiser'], function () {
@@ -81,7 +83,7 @@ Route::group(['prefix' => 'merchandiser'], function () {
 
     Route::post('/{merchandiser}/store-photos', 'MerchandiserRegisterController@saveAvatarAndCover');
 
-    Route::delete('{merchandiser}/delete', 'MerchandiserRegisterController@destroy');
+    Route::delete('/delete', 'MerchandiserRegisterController@destroy');
 
 
 });

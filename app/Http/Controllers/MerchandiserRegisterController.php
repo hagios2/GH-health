@@ -14,7 +14,7 @@ class MerchandiserRegisterController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:merchander')->only(['update', 'destroy']);
+        $this->middleware('auth:merchandiser')->only(['update', 'destroy']);
     }
 
     public function register(MerchandiserFormRequest $request)
@@ -84,10 +84,10 @@ class MerchandiserRegisterController extends Controller
     }  
 
 
-    public function destroy(Merchadiser $merchandiser)
+    public function destroy()
     {
         
-        $merchandiser->delete();
+        auth()->guard('merchandiser')->user()->delete();
 
 
         return response()->json(['status' => 'deleted'], 200);
