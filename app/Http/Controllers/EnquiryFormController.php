@@ -12,10 +12,13 @@ class EnquiryFormController extends Controller
     public function handler(EnquiryFormRequest $request)
     {
 
-        $formInputs = $request->validate();
+        $formInputs = $request->validated();
 
 
         EnquiryFormMailHandlerJob::dispatch($formInputs);
+
+
+        return response()->json(['status' => 'mail sent']);
 
     }
 }

@@ -7,6 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use App\Mail\EnquiryFormMailHandler;
+use Illuminate\Support\Facades\Mail;
 
 class EnquiryFormMailHandlerJob implements ShouldQueue
 {
@@ -31,6 +33,10 @@ class EnquiryFormMailHandlerJob implements ShouldQueue
      */
     public function handle()
     {
-        //
+        Mail::to(env('MAIL_FROM_ADDRESS'))
+        
+            ->queue(new EnquiryFormMailHandler($this->formInputs)
+        );
+
     }
 }

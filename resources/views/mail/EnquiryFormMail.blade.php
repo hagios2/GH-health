@@ -1,12 +1,23 @@
 @component('mail::message')
-# Introduction
+# Hello Martek, <br>
 
-The body of your message.
+<section>
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+    <p>
+
+        {{ $formInputs['message'] }}
+        
+    </p>
+
+</section>
+
+
 
 Thanks,<br>
-{{ config('app.name') }}
+{{ $formInputs['name'] }} <br>
+
+<p>
+    Tel:&emsp; {{ $formInputs['phone'] }}
+</p>
+
 @endcomponent

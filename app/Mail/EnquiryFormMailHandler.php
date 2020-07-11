@@ -11,14 +11,16 @@ class EnquiryFormMailHandler extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $formInputs;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($formInputs)
     {
-        //
+        $this->formInputs = $formInputs;
     }
 
     /**
@@ -28,6 +30,10 @@ class EnquiryFormMailHandler extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail/EnquiryFormMail');
+        return $this->markdown('mail/EnquiryFormMail')
+        
+            ->from($this->formInputs['email'])
+            
+            ->subject('Enquiry from Client');
     }
 }
