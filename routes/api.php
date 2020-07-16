@@ -67,6 +67,8 @@ Route::get('following-shops','FollowersController@fetchfollowingShops');
 
 Route::post('make-enquiries','EnquiryFormController@handler');
 
+Route::get('shop/{shop}/details', 'ProductsController@merchandiserDetails');
+
 
 
 Route::group(['prefix' => 'merchandiser'], function () {

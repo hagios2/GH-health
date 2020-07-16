@@ -8,6 +8,7 @@ use App\User;
 use App\Merchandiser;
 use App\Http\Resources\AllShopsResource;
 use App\Http\Resources\DetailedProductResource;
+use App\Http\Resources\MerchandiserResource;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\CartResource;
 use App\Http\Resources\CategoryResource;
@@ -104,6 +105,12 @@ class ProductsController extends Controller
         $products = $shops->product;
 
         return new ProductResource($products);
+    }
+
+
+    public function merchandiserDetails(Merchandiser $shop)
+    {
+        return new MerchandiserResource($shop);
     }
 
 

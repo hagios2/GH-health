@@ -29,7 +29,7 @@ class EnquiryFormRequest extends FormRequest
 
             'message' => 'required|string',
 
-            'phone' => 'required|numeric',
+           // 'phone' => 'required|numeric',
 
             'name' => 'required|string'
         ];
