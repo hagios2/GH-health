@@ -20,7 +20,7 @@ class FollowersResource extends JsonResource
 
             'shop_name' => $this->shop->company_name,
 
-            'company_description' => $this->company_description,
+            'company_description' => $this->shop->company_description,
 
             'number_of_followers' =>  $this->shop->followers->count(),
 
