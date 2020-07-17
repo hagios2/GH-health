@@ -65,7 +65,19 @@ class UsersRegisterController extends Controller
     public function destroy()
     {
         
-        auth()->guard('api')->user()->delete();
+        $user = auth()->guard('api')->user();
+
+        if($user->product)
+        {
+            $user->product->map(function($shopProduct){
+
+                $shopProduct->delete();
+
+            });
+        }
+
+
+        $user->delete();
 
 
         return response()->json(['status' => 'deleted'], 200);

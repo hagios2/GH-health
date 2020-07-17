@@ -102,7 +102,7 @@ Route::group(['prefix' => 'e-trader'], function () {
 
     Route::post('/{product}/product-images', 'SellersController@saveProductImages');
 
-    Route::patch('/product/{product}/update', 'SellersController@updateProduct');
+    Route::post('/product/{product}/update', 'SellersController@updateProduct');
 
     Route::delete('/product/{product}/delete', 'SellersController@deleteProduct');
 

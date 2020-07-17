@@ -87,8 +87,19 @@ class MerchandiserRegisterController extends Controller
     public function destroy()
     {
         
-        auth()->guard('merchandiser')->user()->delete();
+        $merchandiser = auth()->guard('merchandiser')->user();
 
+        if($merchandiser->product)
+        {
+            $merchandiser->product->map(function($shopProduct){
+
+                $shopProduct->delete();
+
+            });
+        }
+
+
+        $merchandiser->delete();
 
         return response()->json(['status' => 'deleted'], 200);
     }
