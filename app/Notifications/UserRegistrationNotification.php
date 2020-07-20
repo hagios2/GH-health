@@ -46,7 +46,8 @@ class UserRegistrationNotification extends Notification implements ShouldQueue
         return (new MailMessage)
      
             ->subject('Registration Succes')
-            ->markdown('mail.UserRegistrationMail');
+            
+            ->markdown('mail.UserRegistrationMail', compact($this->user));
     }
 
     /**
