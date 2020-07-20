@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use App\Jobs\UserRegistrationJob;
+use App\Notifications\UserRegistrationNotification;
 use App\Http\Requests\UserFormRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Hash;
@@ -29,8 +29,7 @@ class UsersRegisterController extends Controller
             $this->storeAvatar($user);
         }
 
-
-        /*$user->notify(new UserRegistrationNotification($user)); */
+        $user->notify(new UserRegistrationNotification()); 
 
         return response()->json(['status' => 'success'], 200);
     }

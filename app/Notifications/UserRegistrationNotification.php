@@ -6,8 +6,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\User;
 
-class UserRegistrationNotification extends Notification
+class UserRegistrationNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -44,7 +45,7 @@ class UserRegistrationNotification extends Notification
     {
         return (new MailMessage)
      
-           ->subject('Registration Succes')
+            ->subject('Registration Succes')
             ->markdown('mail.UserRegistrationMail');
     }
 

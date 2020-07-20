@@ -23,11 +23,11 @@ class MerchandiserRegisterController extends Controller
 
         $attributes['password'] = Hash::make($request->password);
 
-        $merchandiser_id = Merchandiser::create($attributes)->id;
+        $merchandiser = Merchandiser::create($attributes);
         
-            /* $merchandiser->notify(new UserRegistrationNotification()); */
+        $merchandiser->notify(new UserRegistrationNotification()); 
 
-        return response()->json(['status' => 'success', 'merchandiser_id' => $merchandiser_id], 200);
+        return response()->json(['status' => 'success', 'merchandiser_id' => $merchandiser->id], 200);
     }
 
 
