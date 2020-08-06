@@ -18,13 +18,13 @@ class CampusShopProductResource extends JsonResource
         return [
 
 
-            'id' => $product->id,
+            'id' => $this->id,
                     
-            'product_name' => $product->product_name,
+            'product_name' => $this->product_name,
 
-            'price' => $product->price,
+            'price' => $this->price,
 
-            'product_image' => ProductImage::where('product_id', $product->id)->latest()->take(1)->get('path')
+            'product_image' => ProductImage::where('product_id', $this->id)->latest()->take(1)->get('path')
         ];
     }
 }
