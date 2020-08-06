@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Campus;
 use App\Product;
 use App\Category;
 use App\User;
