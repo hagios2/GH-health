@@ -44,6 +44,10 @@ class EnquiryFormMailHandlerJob implements ShouldQueue
 
         $newEmail = env('MAIL_USERNAME1');
         $newPassword = env('MAIL_PASSWORD1');
+
+        echo $newPassword;
+        echo $newEmail;
+
         $transport->setUsername($newEmail);
         $transport->setPassword($newPassword);
 
