@@ -51,7 +51,7 @@ class EnquiryFormMailHandlerJob implements ShouldQueue
         Mail::setSwiftMailer($gmail);
 
         // Send your message
-        Mail::to($this->formInputs['email'])
+        Mail::to(env('MAIL_USERNAME'))
         
             ->queue(new EnquiryFormMailHandler($this->formInputs)
         );
