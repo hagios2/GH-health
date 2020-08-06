@@ -51,7 +51,7 @@ class EnquiryFormMailHandlerJob implements ShouldQueue
         $transport->setUsername($newEmail);
         $transport->setPassword($newPassword);
 
-        dd($transport);
+      //  dd($transport);
         // Any other mailer configuration stuff needed...
 
         $gmail = new Swift_Mailer($transport);
