@@ -22,14 +22,14 @@ class UsersRegisterController extends Controller
 
         $attibutes['password'] = Hash::make($request->password);
 
-        $user = User::create($attibutes);
+        $user = User::create($attibutes)->sendEmailVerificationNotification();;
 
         if($request->hasFile('avatar'))
         {
             $this->storeAvatar($user);
         }
 
-        $user->notify(new UserRegistrationNotification($user)); 
+    /*     $user->notify(new UserRegistrationNotification($user));  */
 
         return response()->json(['status' => 'success'], 200);
     }
