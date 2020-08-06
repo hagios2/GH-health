@@ -8,7 +8,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use App\Notifications\UserRegistrationNotification;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserRegistrationMail;
 
 class UserRegistrationJob implements ShouldQueue
 {
@@ -32,6 +33,9 @@ class UserRegistrationJob implements ShouldQueue
      */
     public function handle()
     {
-        //
+        Mail::to($this->user)
+        
+            ->queue(new UserRegistrationMail($this->user)
+        );
     }
 }
