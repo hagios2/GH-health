@@ -43,6 +43,8 @@ class EnquiryFormMailHandlerJob implements ShouldQueue
         $transport = (new Swift_SmtpTransport('smtp.gmail.com',587, 'tls')); 
         $transport->setUsername(env('MAIL_USERNAME1'));
         $transport->setPassword(env('MAIL_PASSWORD1'));
+
+        dd($transport);
         // Any other mailer configuration stuff needed...
 
         $gmail = new Swift_Mailer($transport);
