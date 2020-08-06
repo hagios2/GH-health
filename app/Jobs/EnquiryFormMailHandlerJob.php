@@ -40,7 +40,7 @@ class EnquiryFormMailHandlerJob implements ShouldQueue
         $backup = Mail::getSwiftMailer();
 
         // Setup your gmail mailer
-        $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com',587, 'tls');
+        $transport = (new Swift_SmtpTransport('smtp.gmail.com',587, 'tls')); 
         $transport->setUsername(env('MAIL_USERNAME1'));
         $transport->setPassword(env('MAIL_PASSWORD1'));
         // Any other mailer configuration stuff needed...
