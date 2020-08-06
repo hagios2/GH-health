@@ -7,6 +7,7 @@ use App\Category;
 use App\User;
 use App\Merchandiser;
 use App\Http\Resources\AllShopsResource;
+use App\Http\Resources\CampusShopAndProductResource;
 use App\Http\Resources\DetailedProductResource;
 use App\Http\Resources\MerchandiserResource;
 use App\Http\Resources\ProductResource;
@@ -114,6 +115,14 @@ class ProductsController extends Controller
     }
 
 
+
+    public function campusShopAndProduct(Campus $campus)
+    {
+        $shops = $campus->merchandiser;
+
+        return CampusShopAndProductResource::collection($shops);
+
+    }
 
 
 

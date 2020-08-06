@@ -11,14 +11,10 @@
 
 </section>
 
-Thanks,<br>
-{{ $formInputs['name'] }} <br>
-
+Thanks,
 <p>
-    Tel:&emsp; {{ $formInputs['phone'] }}
-</p>
-
-<p>
+    {{ $formInputs['name'] }} <br>
+    Tel:&emsp; {{ $formInputs['phone'] }} <br>
     Email: &emsp; {{ $formInputs['email']}}
 </p>
 @endcomponent
