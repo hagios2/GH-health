@@ -25,7 +25,7 @@ class MerchandiserRegisterController extends Controller
 
         $merchandiser = Merchandiser::create($attributes);
         
-        $merchandiser->notify(new UserRegistrationNotification()); 
+       /*  $merchandiser->notify(new UserRegistrationNotification());  */
 
         return response()->json(['status' => 'success', 'merchandiser_id' => $merchandiser->id], 200);
     }
