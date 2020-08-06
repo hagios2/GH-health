@@ -32,8 +32,6 @@ class EnquiryFormMailHandler extends Mailable
     {
         return $this->markdown('mail/EnquiryFormMail')
         
-            ->from($this->formInputs['email'])
-            
             ->subject('Enquiry from Client');
     }
 }

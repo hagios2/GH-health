@@ -11,8 +11,6 @@
 
 </section>
 
-
-
 Thanks,<br>
 {{ $formInputs['name'] }} <br>
 
@@ -20,4 +18,7 @@ Thanks,<br>
     Tel:&emsp; {{ $formInputs['phone'] }}
 </p>
 
+<p>
+    Email: &emsp; {{ $formInputs['email']}}
+</p>
 @endcomponent

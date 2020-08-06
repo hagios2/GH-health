@@ -11,7 +11,6 @@ use App\Mail\EnquiryFormMailHandler;
 use Illuminate\Support\Facades\Mail;
 use Swift_Mailer;
 use Swift_SmtpTransport;
-//use Swift_Message;
 
 class EnquiryFormMailHandlerJob implements ShouldQueue
 {
