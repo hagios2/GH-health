@@ -148,7 +148,7 @@ class ProductsController extends Controller
                 {
 
                     echo $product_count . "\n";
-                    
+
                     if($product_count <= 4)
                     {
                         if($product->user)
@@ -174,7 +174,11 @@ class ProductsController extends Controller
 
                 }
 
-                $finalProductList->add([$category->category => $productList]);
+                if($productList->count() > 0)
+                {
+                    $finalProductList->add([$category->category => $productList]);    
+                }
+                
             }
         }
 
