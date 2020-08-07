@@ -63,7 +63,9 @@ Route::get('merchandiser/{shops}/products','ProductsController@fetchShopsProduct
 
 Route::get('all-shops','ProductsController@fetchShops');
 
-Route::get('get-campus/{campus}/shop-and-product','ProductsController@campusShopAndProduct');
+Route::get('get-campus/{campus}/shop','ProductsController@campusShop');
+
+Route::get('get-campus/{campus}/product','ProductsController@campusProduct');
 
 Route::post('follow/{shop}/shop','FollowersController@followShop');
 

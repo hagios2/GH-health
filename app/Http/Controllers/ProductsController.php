@@ -118,69 +118,64 @@ class ProductsController extends Controller
 
 
 
-    public function campusShopAndProduct(Campus $campus)
+    public function campusShop(Campus $campus)
     {
         $shops = Merchandiser::where('campus_id', $campus->id)->paginate(8);
 
         return new CampusShopsResource($shops);
 
-
-        return response()->json(['shops' => new CampusShopsResource($shops)]);
-
-        $categories = Category::all();
-
-        $cat_products = $categories->map(function($category) use ($campus) {
-
-            $all_cat_products = $category->product->reverse();
-
-            if($all_cat_products)
-            {
-                $product_count = 1;
-
-                $products = $all_cat_products->map(function($product) use ($campus, $product_count){
-
-
-                    if($product)
-                    {
-                        
-                        if($product_count < 5)
-                        {
-    
-                            if($product->user)
-                            {
-                                if($product->user->campus_id == $campus->id){
-    
-                                    $product_count =+ 1;
-            
-                                    return new CategoryProductResource($product);
-                                }
-                        
-                            }else if($product->merchandiser){
-            
-                                if($product->merchandiser->campus_id == $campus->id){
-    
-                                    $product_count =+ 1;
-            
-                                    return new CategoryProductResource($product);
-                                }
-            
-                            }
-                        }
-    
-                    }
-
-                });
-    
-                return [$category->category => $products]; 
-            }
-
-           
-        });
-
-        return response()->json(['shops' => new CampusShopsResource($shops), 'products' => $cat_products]);
-
     }
 
 
+    public function campusProduct(Campus $campus)
+    {
+       
+        $categories = Category::all();
 
+        $finalProductList = collect();
+
+        foreach ($categories as $category) {
+
+            $cat_products = $category->product->reverse();
+
+            if($cat_products)
+            {
+                $product_count = 1;
+
+                $productList = collect();
+
+                foreach ($cat_products as $product)
+                {
+                    if($product_count < 5)
+                    {
+                        if($product->user)
+                        {
+                            if($product->user->campus_id == $campus->id){                              
+        
+                                $productList->add(new CategoryProductResource($product));
+
+                                $product_count =+ 1;
+                            }
+                    
+                        }else if($product->merchandiser){
+        
+                            if($product->merchandiser->campus_id == $campus->id){
+
+                                $productList->add(new CategoryProductResource($product));
+
+                                $product_count =+ 1;
+                            }
+        
+                        }
+                    }
+
+                }
+            }
+
+            $finalProductList->add([$category->category => $productsList]);
+        }
+
+        return response()->json(['products' => $finalProductList]);
+
+    }
 }
