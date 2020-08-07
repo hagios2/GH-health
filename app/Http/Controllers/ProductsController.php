@@ -134,24 +134,34 @@ class ProductsController extends Controller
 
                 $products = $all_cat_products->map(function($product) use ($campus, $product_count){
 
-                    if($product_count < 5)
-                    {
 
-                        if($product->user)
+                    if($product)
+                    {
+                        
+                        if($product_count < 5)
                         {
-                            if($product->user->campus_id == $campus->id){
-        
-                                return new CategoryProductResource($product);
+    
+                            if($product->user)
+                            {
+                                if($product->user->campus_id == $campus->id){
+    
+                                    $product_count =+ 1;
+            
+                                    return new CategoryProductResource($product);
+                                }
+                        
+                            }else if($product->merchandiser){
+            
+                                if($product->merchandiser->campus_id == $campus->id){
+    
+                                    $product_count =+ 1;
+            
+                                    return new CategoryProductResource($product);
+                                }
+            
                             }
-                    
-                        }else if($product->merchandiser){
-        
-                            if($product->merchandiser->campus_id == $campus->id){
-        
-                                return new CategoryProductResource($product);
-                            }
-        
                         }
+    
                     }
 
                 });
