@@ -170,9 +170,9 @@ class ProductsController extends Controller
                     }
 
                 }
-            }
 
-            $finalProductList->add([$category->category => $productList]);
+                $finalProductList->add([$category->category => $productList]);
+            }
         }
 
         return response()->json(['products' => $finalProductList]);
