@@ -122,6 +122,8 @@ class ProductsController extends Controller
     {
         $shops = Merchandiser::where('campus_id', $campus->id)->paginate(8);
 
+        return new CampusShopsResource($shops);
+
 
         return response()->json(['shops' => new CampusShopsResource($shops)]);
 
