@@ -124,11 +124,11 @@ class ProductsController extends Controller
 
         $categories = Category::all();
 
-        $cat_products = $categories->map(function($category){
+        $cat_products = $categories->map(function($category) use ($campus) {
 
             $all_cat_products = $category->product;
 
-            $products = $all_cat_products->map(function($product){
+            $products = $all_cat_products->map(function($product) use ($campus){
 
                 if($product->user)
                 {
