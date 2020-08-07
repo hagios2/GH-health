@@ -150,7 +150,7 @@ class ProductsController extends Controller
             return [$category->category => $products]; 
         });
 
-        return response()->json(['shops' => CampusShopsResource::collection($shops), $cat_products]);
+        return response()->json(['shops' => CampusShopsResource::collection($shops), 'products' => $cat_products]);
 
     }
 
