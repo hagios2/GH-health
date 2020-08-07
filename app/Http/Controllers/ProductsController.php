@@ -122,6 +122,9 @@ class ProductsController extends Controller
     {
         $shops = Merchandiser::where('campus_id', $campus->id)->paginate(8);
 
+
+        return response()->json(['shops' => new CampusShopsResource($shops)]);
+
         $categories = Category::all();
 
         $cat_products = $categories->map(function($category) use ($campus) {
