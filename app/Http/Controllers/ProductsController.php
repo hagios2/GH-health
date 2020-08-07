@@ -146,9 +146,6 @@ class ProductsController extends Controller
 
                 foreach ($cat_products as $product)
                 {
-
-                    echo $product_count . "\n";
-
                     if($product_count <= 4)
                     {
                         if($product->user)
