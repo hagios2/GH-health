@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class CampusShopsResource extends JsonResource
+class CampusShopsResource extends ResourceCollection
 {
     /**
      * Transform the resource into an array.
@@ -14,13 +14,27 @@ class CampusShopsResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        return $this->collection->map(function($shop){
+        
+            return  [
 
-            'id' => $this->id,
+                'id' => $shop->id,
 
-            'company_name' => $this->company_name,
+                'company_name' => $shop->company_name,
 
-            'company_description' => $this->company_description,
-        ];
+                'company_description' => $shop->company_description,
+
+                'avatar' => $shop->avatar,
+
+              /*   'number_of_followers' => $shop->followers->count(),
+
+                'campus' => [
+
+                    'id' => $shop->campus->id,
+
+                    'campus' => $shop->campus->campus
+                ] */
+            ];
+        });
     }
 }

@@ -120,7 +120,7 @@ class ProductsController extends Controller
 
     public function campusShopAndProduct(Campus $campus)
     {
-        $shops = $campus->merchandiser;
+        $shops = Merchandiser::where('campus_id', $campus->id)->paginate(8);
 
         $categories = Category::all();
 
@@ -128,26 +128,31 @@ class ProductsController extends Controller
 
             $all_cat_products = $category->product;
 
-            $products = $all_cat_products->map(function($product) use ($campus){
+            if($all_cat_products)
+            {
+                $products = $all_cat_products->map(function($product) use ($campus){
 
-                if($product->user)
-                {
-                    if($product->user->campus_id == $campus->id){
-
-                        return new CategoryProductResource($product);
+                    if($product->user)
+                    {
+                        if($product->user->campus_id == $campus->id){
+    
+                            return new CategoryProductResource($product);
+                        }
+                    
+                    }else if($product->merchandiser){
+    
+                        if($product->merchandiser->campus_id == $campus->id){
+    
+                            return new CategoryProductResource($product);
+                        }
+    
                     }
-                
-                }else if($product->merchandiser){
+                });
+    
+                return [$category->category => $products]; 
+            }
 
-                    if($product->merchandiser->campus_id == $campus->id){
-
-                        return new CategoryProductResource($product);
-                    }
-
-                }
-            });
-
-            return [$category->category => $products]; 
+           
         });
 
         return response()->json(['shops' => CampusShopsResource::collection($shops), 'products' => $cat_products]);
