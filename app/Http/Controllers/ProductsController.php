@@ -146,7 +146,7 @@ class ProductsController extends Controller
 
                 foreach ($cat_products as $product)
                 {
-                    if($product_count < 5)
+                    if($product_count <= 4)
                     {
                         if($product->user)
                         {
@@ -154,7 +154,7 @@ class ProductsController extends Controller
         
                                 $productList->add(new CategoryProductResource($product));
 
-                                $product_count =+ 1;
+                                $product_count = $product_count + 1;
                             }
                     
                         }else if($product->merchandiser){
@@ -163,7 +163,7 @@ class ProductsController extends Controller
 
                                 $productList->add(new CategoryProductResource($product));
 
-                                $product_count =+ 1;
+                                $product_count = $product_count + 1;
                             }
         
                         }
