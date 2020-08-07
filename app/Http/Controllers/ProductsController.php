@@ -8,13 +8,14 @@ use App\Category;
 use App\User;
 use App\Merchandiser;
 use App\Http\Resources\AllShopsResource;
-use App\Http\Resources\CampusShopAndProductResource;
+use App\Http\Resources\CampusShopsResource;
 use App\Http\Resources\DetailedProductResource;
 use App\Http\Resources\MerchandiserResource;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\CartResource;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
+use App\Http\Resources\CategoryProductResource;
 
 class ProductsController extends Controller
 {
@@ -121,7 +122,35 @@ class ProductsController extends Controller
     {
         $shops = $campus->merchandiser;
 
-        return CampusShopAndProductResource::collection($shops);
+        $categories = Category::all();
+
+        $cat_products = $categories->map(function($category){
+
+            $all_cat_products = $category->product;
+
+            $products = $all_cat_products->map(function($product){
+
+                if($product->user)
+                {
+                    if($product->user->campus_id == $campus->id){
+
+                        return new CategoryProductResource($product);
+                    }
+                
+                }else if($product->merchandiser){
+
+                    if($product->merchandiser->campus_id == $campus->id){
+
+                        return new CategoryProductResource($product);
+                    }
+
+                }
+            });
+
+            return [$category->category => $products]; 
+        });
+
+        return response()->json(['shops' => CampusShopsResource::collection($shops), $cat_products]);
 
     }
 

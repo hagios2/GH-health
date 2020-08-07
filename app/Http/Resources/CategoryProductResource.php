@@ -2,10 +2,10 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
 use App\ProductImage;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class CampusShopProductResource extends JsonResource
+class CategoryProductResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +17,6 @@ class CampusShopProductResource extends JsonResource
     {
         return [
 
-
             'id' => $this->id,
                     
             'product_name' => $this->product_name,
@@ -25,6 +24,7 @@ class CampusShopProductResource extends JsonResource
             'price' => $this->price,
 
             'product_image' => ProductImage::where('product_id', $this->id)->latest()->take(1)->get('path')
+
         ];
     }
 }
