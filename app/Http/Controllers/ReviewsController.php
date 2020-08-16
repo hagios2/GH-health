@@ -7,6 +7,8 @@ use App\Http\Requests\ProductReviewRequest;
 use App\Http\Requests\ShopReviewRequest;
 use App\Http\Resources\ProductReviewResource;
 use App\Http\Resources\ShopReviewResource;
+use App\Product;
+use App\Merchandiser;
 
 class ReviewsController extends Controller
 {
@@ -17,15 +19,15 @@ class ReviewsController extends Controller
     
     public function fetchShopReviews(Merchandiser $merchandiser)
     {
-        $shop_reviews = $merchandiser->shopReview;
+        $shop_reviews = $merchandiser->review;
 
         return ShopReviewResource::collection($shop_reviews);
     }
 
 
-    public function storeShopReview(Merchandiser $merchandiser, ShopReviewRequest $request)
+    public function storeShopReview(ShopReviewRequest $request)
     {
-        $merchandiser->addProductReview($request->validated());
+        auth()->guard('api')->user()->addShopReview($request->validated());
 
         return response()->json(['status' => 'saved']);
     }
@@ -33,15 +35,15 @@ class ReviewsController extends Controller
 
     public function fetchProductReviews(Product $product)
     {
-        $product_reviews = $product->productReview;
+        $product_reviews = $product->review;
 
         return ProductReviewResource::collection($product_reviews);
     }
 
 
-    public function storeProductReview(Product $product, ProductReviewRequest $request)
+    public function storeProductReview(ProductReviewRequest $request)
     {
-        $product->addProductReview($request->validated());
+        auth()->guard('api')->user()->addProductReview($request->validated());
 
         return response()->json(['status' => 'saved']);
     }

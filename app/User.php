@@ -98,4 +98,29 @@ class User extends Authenticatable implements JWTSubject
 
 
     }
+
+
+    public function shopReview()
+    {
+        return $this->hasOne('App\ShopReview');
+    }
+
+
+    public function addShopReview($review)
+    {
+        $this->shopReview()->create($review);
+    }
+
+
+    public function productReview()
+    {
+        return $this->hasOne('App\ProductReview');
+    }
+
+
+    public function addProductReview($review)
+    {
+        $this->productReview()->create($review);
+    }
+
 }

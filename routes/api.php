@@ -77,6 +77,13 @@ Route::post('make-enquiries','EnquiryFormController@handler');
 
 Route::get('shop/{shop}/details', 'ProductsController@merchandiserDetails');
 
+Route::get('shop/{merchandiser}/reviews', 'ReviewsController@fetchShopReviews');
+
+Route::post('add-shop/reviews', 'ReviewsController@storeShopReview');
+
+Route::get('product/{product}/reviews', 'ReviewsController@fetchProductReviews');
+
+Route::post('add-product/reviews', 'ReviewsController@storeProductReview');
 
 
 Route::group(['prefix' => 'merchandiser'], function () {

@@ -40,15 +40,9 @@ class Product extends Model
     }
 
 
-    public function productReview()
+    public function review()
     {
         return $this->hasMany('App\ProductReview');
-    }
-
-
-    public function addProductReview($review)
-    {
-        $this->productReview()->create($review);
     }
 
 }

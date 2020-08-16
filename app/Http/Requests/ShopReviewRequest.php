@@ -13,7 +13,7 @@ class ShopReviewRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class ShopReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            
+            'rating' => 'bail|required|integer',
+
+            'review' => 'nullable|string',
+
+            'merchandiser_id' => 'bail|required|integer'
         ];
     }
 }

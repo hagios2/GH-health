@@ -8,10 +8,14 @@ class ProductReview extends Model
 {
     protected $guarded = ['id'];
 
-
-    public function shopReview()
+    public function product()
     {
-        return $this->hasMany('App\ShopReview');
+        return $this->belongsTo('App\Product');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 
 }

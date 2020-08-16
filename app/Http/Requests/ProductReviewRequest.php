@@ -13,7 +13,7 @@ class ProductReviewRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class ProductReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            
+            'rating' => 'bail|required|integer',
+
+            'review' => 'nullable|string',
+
+            'product_id' => 'bail|required|integer'
+        
         ];
     }
 }
