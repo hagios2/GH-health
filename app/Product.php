@@ -39,4 +39,16 @@ class Product extends Model
         return $this->belongsTo('App\Merchandiser');
     }
 
+
+    public function productReview()
+    {
+        return $this->hasMany('App\ProductReview');
+    }
+
+
+    public function addProductReview($review)
+    {
+        $this->productReview()->create($review);
+    }
+
 }

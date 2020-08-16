@@ -75,4 +75,15 @@ class Merchandiser extends Authenticatable implements JWTSubject
         return $this->belongsTo('App\ShopType');
     }
 
+
+    public function shopReview()
+    {
+        return $this->hasMany('App\ShopReview');
+    }
+
+
+    public function addShopReview($review)
+    {
+        $this->shopReview()->create($review);
+    }
 }
