@@ -51,6 +51,12 @@ return [
             'provider' => 'merchandisers',
             'hash' => false,
         ],
+
+        'admin' => [
+            'driver' => 'jwt',
+            'provider' => 'admins',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -78,6 +84,10 @@ return [
         'merchandisers' => [
             'driver' => 'eloquent',
             'model' => App\Merchandiser::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
         ],
 
         // 'users' => [

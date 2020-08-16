@@ -124,6 +124,19 @@ Route::group(['prefix' => 'e-trader'], function () {
 });
 
 
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+
+    Route::post('auth/login', 'AuthController@login');
+
+    Route::post('auth/logout', 'AuthController@logout');
+
+    Route::post('auth/refresh-token', 'AuthController@refresh');
+
+    Route::get('/', 'AuthController@getAuthUser');
+
+});
+
+
 Route::fallback(function(){
 
     return response()->json(['message' => 'Route not found'], 404);

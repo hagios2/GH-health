@@ -29,7 +29,13 @@ class ReviewsController extends Controller
     {
         auth()->guard('api')->user()->addShopReview($request->validated());
 
-        return response()->json(['status' => 'saved']);
+        return response()->json([
+            
+            'status' => 'saved',
+            
+            'name' => auth()->guard('api')->user()->name
+
+        ]);
     }
 
 
@@ -45,6 +51,13 @@ class ReviewsController extends Controller
     {
         auth()->guard('api')->user()->addProductReview($request->validated());
 
-        return response()->json(['status' => 'saved']);
+        
+        return response()->json([
+            
+            'status' => 'saved',
+            
+            'name' => auth()->guard('api')->user()->name
+
+        ]);
     }
 }
