@@ -21,7 +21,13 @@ class AdminTableSeeder extends Seeder
 
             'password' => Hash::make('123456'),
 
-            'phone' => '0203665258'
+            'role' => 'super_admin',
+
+            'phone' => '0203665258',
+
+            'must_change_password' => true,
+
+            'isActive' => true
         ]);
     }
 }

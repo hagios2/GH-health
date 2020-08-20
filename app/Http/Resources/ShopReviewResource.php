@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use \Carbon\Carbon;
 
 class ShopReviewResource extends JsonResource
 {
@@ -30,7 +31,11 @@ class ShopReviewResource extends JsonResource
 
                 'avatar' => $this->user->avatar
 
-            ]
+            ],
+
+            'date' => Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('Y-m-d'),
+
+            'time' =>  Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('H:i'),
         ];
     }
 }

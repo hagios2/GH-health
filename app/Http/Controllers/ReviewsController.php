@@ -21,7 +21,14 @@ class ReviewsController extends Controller
     {
         $shop_reviews = $merchandiser->review;
 
-        return ShopReviewResource::collection($shop_reviews);
+        return response()->json([
+            
+            'average_rating' => $shop_reviews->rating->average(),
+
+            'product_reviews' => ShopReviewResource::collection($shop_reviews)
+        
+        ]);
+
     }
 
 
@@ -43,7 +50,14 @@ class ReviewsController extends Controller
     {
         $product_reviews = $product->review;
 
-        return ProductReviewResource::collection($product_reviews);
+        return response()->json([
+            
+            'average_rating' => $product_reviews->rating->average(),
+
+            'product_reviews' => ProductReviewResource::collection($product_reviews)
+        
+        ]);
+
     }
 
 

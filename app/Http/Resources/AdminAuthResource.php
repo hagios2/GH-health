@@ -24,6 +24,14 @@ class AdminAuthResource extends JsonResource
 
             'phone' => $this->phone,
 
+            'role' => $this->role,
+
+            'must_change_password' => $this->must_change_password,
+
+            'last_login' => $this->last_login,
+
+            'isActive' => $this->isActive
+
         ];
     }
 }

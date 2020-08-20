@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\AdminAuthResource;
+use Admin;
+
 class AuthController extends Controller
 {
         /**
@@ -27,10 +29,15 @@ class AuthController extends Controller
         
         $credentials = request(['email', 'password']);
 
+        $credentials['isActive'] = true;
+
         if (! $token = auth()->guard('admin')->attempt($credentials)) {
 
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+
+     /*    Admin::where('email', request()->email) */
+        auth()->guard('admin')->user()->update(['last_login', now()]);
 
         return $this->respondWithToken($token);
     }

@@ -134,6 +134,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('/', 'AuthController@getAuthUser');
 
+    Route::post('add-new-admin', 'NewAdminsController@newAdmin');
+
+    Route::post('change-password', 'NewAdminsController@changePassword');
+
+    Route::post('{admin}/block', 'NewAdminsController@blockAdmin');    
+
+    Route::post('{admin}/unblock', 'NewAdminsController@unBlockAdmin');   
+
+    Route::get('fetch-users', 'AdminsController@getUsers'); 
+
+    Route::get('fetch-shops', 'AdminsController@getShops'); 
+
 });
 
 
