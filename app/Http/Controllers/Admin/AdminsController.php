@@ -15,6 +15,7 @@ use App\ShopReview;
 use App\ProductReview;
 use App\Product;
 use App\Http\Resources\ProductReviewResource;
+use App\Http\Resources\AdminViewShopReviewsResource;
 
 
 class AdminsController extends Controller
@@ -131,7 +132,7 @@ class AdminsController extends Controller
     public function getShopReviews(Merchandiser $shop)
     {
 
-        return new ShopReviewResource(ShopReview::where('merchandiser_id', $shop->id)->paginate(20));
+        return new AdminViewShopReviewsResource(ShopReview::where('merchandiser_id', $shop->id)->paginate(20));
 
     }
 
