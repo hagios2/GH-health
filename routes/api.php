@@ -157,6 +157,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('get-shop/{shop}/reviews', 'AdminsController@getShopReviews'); 
 
     Route::get('get-product/{product}/reviews', 'AdminsController@getProductReviews'); 
+
+    Route::delete('user/{user}/delete-account', 'AdminsController@deleteUser'); 
 });
 
 
