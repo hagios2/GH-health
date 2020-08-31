@@ -162,4 +162,25 @@ class AdminsController extends Controller
     }
 
 
+    public function deleteUser(User $user)
+    {
+        if($user->product)
+        {
+            $user->product->map(function($product){
+
+                $this->deleteProductReviews($product);
+
+                $this->deleteProductImages($product);
+        
+                $product->delete();
+
+            });
+        }
+
+        $user->delete();
+
+        return response()->json(['status' => 'user deleted']);
+    }
+
+
 }

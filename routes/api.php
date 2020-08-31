@@ -150,9 +150,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::delete('shop/{shop}/delete', 'AdminsController@deleteShop'); 
 
-    Route::delete('product/{review}/delete', 'AdminsController@deleteProductReview'); 
+    Route::delete('product-review/{review}/delete', 'AdminsController@deleteProductReview'); 
 
-    Route::delete('shop/{review}/delete', 'AdminsController@deleteShopReview'); 
+    Route::delete('shop-review/{review}/delete', 'AdminsController@deleteShopReview'); 
 
     Route::get('get-shop/{shop}/reviews', 'AdminsController@getShopReviews'); 
 
