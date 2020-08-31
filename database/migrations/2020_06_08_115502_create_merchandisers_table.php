@@ -24,6 +24,7 @@ class CreateMerchandisersTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('cover_photo')->nullable();
             $table->string('password');
+            $table->boolean('isActive')->default(true);
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();

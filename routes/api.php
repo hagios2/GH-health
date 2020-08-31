@@ -12,11 +12,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-/* 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
- */
+
 
 Route::group(['prefix' => 'auth'], function ($router) {
 
@@ -146,6 +142,21 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('fetch-shops', 'AdminsController@getShops'); 
 
+    Route::post('block/{user}/user', 'NewAdminsController@blockUser');    
+
+    Route::post('unblock/{user}/user', 'NewAdminsController@unblockUser');  
+
+    Route::get('get-shop/{shop}/details', 'AdminsController@shopDetails'); 
+
+    Route::delete('shop/{shop}/delete', 'AdminsController@deleteShop'); 
+
+    Route::delete('product/{review}/delete', 'AdminsController@deleteProductReview'); 
+
+    Route::delete('shop/{review}/delete', 'AdminsController@deleteShopReview'); 
+
+    Route::get('get-shop/{shop}/reviews', 'AdminsController@getShopReviews'); 
+
+    Route::get('get-product/{product}/reviews', 'AdminsController@getProductReviews'); 
 });
 
 
