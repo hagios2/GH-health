@@ -16,7 +16,7 @@ use App\ProductReview;
 use App\Product;
 use App\Http\Resources\ProductReviewResource;
 use App\Http\Resources\AdminViewShopReviewsResource;
-
+use App\Http\Resources\AdminViewProductReviewsResource;
 
 class AdminsController extends Controller
 {
@@ -139,7 +139,7 @@ class AdminsController extends Controller
     public function getProductReviews(Product $product)
     {
 
-        return new ProductReviewResource(ProductReview::where('product_id', $product->id)->paginate(20));
+        return new AdminViewProductReviewsResource(ProductReview::where('product_id', $product->id)->paginate(20));
 
     }
 
