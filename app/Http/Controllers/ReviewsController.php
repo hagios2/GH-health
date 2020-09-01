@@ -19,11 +19,18 @@ class ReviewsController extends Controller
     
     public function fetchShopReviews(Merchandiser $merchandiser)
     {
-      return $shop_reviews = $merchandiser->review;
+        $shop_reviews = $merchandiser->review;
+
+        $rating_collection = collect();
+
+        $shop_reviews->map(function($review) use ($rating_collection){
+
+            $rating_collection->push($review->rating);
+        });
 
         return response()->json([
             
-            'average_rating' => $shop_reviews->rating->average(),
+            'average_rating' => $rating_collection->average(),
 
             'product_reviews' => ShopReviewResource::collection($shop_reviews)
         
@@ -50,9 +57,16 @@ class ReviewsController extends Controller
     {
         $product_reviews = $product->review;
 
+        $rating_collection = collect();
+
+        $product_reviews->map(function($review) use ($rating_collection){
+
+            $rating_collection->push($review->rating);
+        });
+
         return response()->json([
             
-            'average_rating' => $product_reviews->rating->average(),
+            'average_rating' => $rating_collection->average(),
 
             'product_reviews' => ProductReviewResource::collection($product_reviews)
         
