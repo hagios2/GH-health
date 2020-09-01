@@ -14,31 +14,30 @@ class AdminViewShopReviewsResource extends ResourceCollection
      * @return array
      */
     public function toArray($request)
-    {
-        return $this->collection->map(function($review){
+    {    
 
-            return [
+        return [
 
-                'id' => $review->id,
+            'id' => $review->id,
 
-                'rating' => $review->rating,
-    
-                'review' => $review->review,
-            
-                'user' => [
-                    
-                    'id' => $review->user->id,
-    
-                    'name' => $review->user->name,
-    
-                    'avatar' => $review->user->avatar
-    
-                ],
-    
-                'date' => Carbon::createFromFormat('Y-m-d H:i:s', $review->created_at)->format('Y-m-d'),
-    
-                'time' =>  Carbon::createFromFormat('Y-m-d H:i:s', $review->created_at)->format('H:i'),
+            'rating' => $review->rating,
+
+            'review' => $review->review,
+        
+            'user' => [
+                
+                'id' => $review->user->id,
+
+                'name' => $review->user->name,
+
+                'avatar' => $review->user->avatar
+
+            ],
+
+            'date' => Carbon::createFromFormat('Y-m-d H:i:s', $review->created_at)->format('Y-m-d'),
+
+            'time' =>  Carbon::createFromFormat('Y-m-d H:i:s', $review->created_at)->format('H:i'),
             ];
-        });
+      
     }
 }

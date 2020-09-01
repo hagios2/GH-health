@@ -19,7 +19,7 @@ class ReviewsController extends Controller
     
     public function fetchShopReviews(Merchandiser $merchandiser)
     {
-        $shop_reviews = $merchandiser->review;
+      return $shop_reviews = $merchandiser->review;
 
         return response()->json([
             
