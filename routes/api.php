@@ -34,7 +34,6 @@ Route::group(['prefix' => 'auth'], function ($router) {
 
 });
 
-
 Route::post('register-user', 'UsersRegisterController@register');
 
 Route::post('register-merchandiser', 'MerchandiserRegisterController@register');
@@ -80,6 +79,10 @@ Route::post('add-shop/reviews', 'ReviewsController@storeShopReview');
 Route::get('product/{product}/reviews', 'ReviewsController@fetchProductReviews');
 
 Route::post('add-product/reviews', 'ReviewsController@storeProductReview');
+
+Route::post('add-product/{user}/report', 'ReportsController@saveProductReport'); 
+
+Route::post('add-shop/{user}/report', 'ReportsController@saveShopReport'); 
 
 
 Route::group(['prefix' => 'merchandiser'], function () {
@@ -166,10 +169,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('get-product/{product}/reviews', 'AdminsController@getProductReviews'); 
 
     Route::delete('user/{user}/delete-account', 'AdminsController@deleteUser'); 
-
-    Route::post('add-product/{user}/report', 'ReportsController@saveProductReport'); 
-
-    Route::post('add-shop/{user}/report', 'ReportsController@saveShopReport'); 
 
 });
 
