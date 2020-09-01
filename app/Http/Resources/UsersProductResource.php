@@ -29,7 +29,7 @@ class UsersProductResource extends JsonResource
 
             'in_cart' => false,
 
-            'product_image' => ProductImage::where('product_id', $product->id)->latest()->take(1)->get('path')
+            'product_image' => ProductImage::where('product_id', $this->id)->latest()->take(1)->get('path')
         ];
     }
 }
