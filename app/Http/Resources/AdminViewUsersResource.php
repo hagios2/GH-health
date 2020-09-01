@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class AdminViewUsersResource extends ResourceCollection
+class AdminViewUsersResource extends JsonResourceJsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,22 +14,20 @@ class AdminViewUsersResource extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->collection->map(function($user){
-        
-            return  [
+    
+        return  [
 
-                
-            'id' => $user->id,
+            'id' => $this->id,
 
-            'name' => $user->name,
+            'name' => $this->name,
 
-            'email' => $user->email,
+            'email' => $this->email,
 
-            'phone' => $user->phone,
+            'phone' => $this->phone,
 
-            'campus' => $user->campus
+            'campus' => $this->campus
             
-            ];
-        });
+        ];
+        
     }
 }

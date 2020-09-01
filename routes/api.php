@@ -150,6 +150,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::delete('shop/{shop}/delete', 'AdminsController@deleteShop'); 
 
+    Route::delete('product/{product}/delete', 'AdminsController@deleteProduct'); 
+
     Route::delete('product-review/{review}/delete', 'AdminsController@deleteProductReview'); 
 
     Route::delete('shop-review/{review}/delete', 'AdminsController@deleteShopReview'); 

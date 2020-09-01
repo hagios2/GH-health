@@ -28,7 +28,7 @@ class AdminsController extends Controller
 
     public function getUsers()
     {
-        return new AdminViewUsersResource(User::paginate(20));
+        return AdminViewUsersResource::collection(User::all());
     }
 
     public function blockUser(User $user)
@@ -54,7 +54,7 @@ class AdminsController extends Controller
     public function getShops()
     {
 
-        return new AdminViewShopResource(Merchandiser::paginate(20));
+        return AdminViewShopResource::collection(Merchandiser::all());
 
     }
 
