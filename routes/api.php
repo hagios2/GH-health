@@ -117,6 +117,7 @@ Route::group(['prefix' => 'e-trader'], function () {
 
     Route::delete('/product/{product}/delete', 'SellersController@deleteProduct');
 
+    Route::get('get-user-products', 'SellersController@getUserProduct');
 });
 
 

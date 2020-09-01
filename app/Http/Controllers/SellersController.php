@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\UsersProductResource;
 use App\Category;
 use App\Product;
 
@@ -121,11 +122,51 @@ class SellersController extends Controller
             return response()->json(['message' => 'Forbidden'], 403);
         }
 
+        $this->deleteProductReviews($product);
+
+        $this->deleteProductImages($product); 
 
         $product->delete();
-
         
         return response()->json(['status' => 'product deleted'], 200);
+    }
+
+
+    public function deleteProductReviews(Product $product)
+    {
+
+        if($product->review)
+        {
+            $product->review->map(function($review){
+
+                $review->delete();
+            });
+        }
+    }
+
+    public function deleteProductImages(Product $product)
+    {
+        if($product->image)
+        {
+            $product->image->map(function($image){
+
+                #delete file
+
+                $image->delete();
+            });
+        }
+    }
+
+    public function getUserProduct()
+    {
+        $user = auth()->guard('api')->user();
+
+        if($user->product)
+        {
+            return UsersProductResource::collection($user->product);
+        }
+
+        return response()->json(['message' => 'user has no data']);
     }
     
 }
