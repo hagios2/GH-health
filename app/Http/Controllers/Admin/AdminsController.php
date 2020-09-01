@@ -51,6 +51,26 @@ class AdminsController extends Controller
     }
 
 
+    public function blockShop(Merchandiser $shop)
+    {
+
+       $shop->update(['isActive' => false]);
+
+       return response()->json(['status' => 'blocked']);
+
+    }
+
+
+    public function unBlockShop(Merchandiser $shop)
+    {
+
+       $shop->update(['isActive' => true]);
+
+       return response()->json(['status' => 'unblocked']);
+
+    }
+
+
     public function getShops()
     {
 

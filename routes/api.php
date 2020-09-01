@@ -145,7 +145,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::post('block/{user}/user', 'NewAdminsController@blockUser');    
 
-    Route::post('unblock/{user}/user', 'NewAdminsController@unblockUser');  
+    Route::post('unblock/{user}/user', 'NewAdminsController@unblockShop'); 
+    
+    Route::post('block/{shop}/merchandiser', 'NewAdminsController@blockUser');    
+    
+    Route::post('unblock/{shop}/merchandiser', 'NewAdminsController@unBlockShop');  
 
     Route::get('get-shop/{shop}/details', 'AdminsController@shopDetails'); 
 

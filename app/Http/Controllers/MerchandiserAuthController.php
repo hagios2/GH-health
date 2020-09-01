@@ -26,6 +26,8 @@ class MerchandiserAuthController extends Controller
     {
         $credentials = request(['email', 'password']);
 
+        $credentials['isActive'] = true;
+
         if (! $token = auth()->guard('merchandiser')->attempt($credentials)) {
 
             return response()->json(['error' => 'Unauthorized'], 401);
