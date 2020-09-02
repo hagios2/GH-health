@@ -28,7 +28,9 @@ class AdminViewShopResource extends JsonResource
 
                 'number_of_followers' => $this->followers->count(), */
 
-                'campus' => $this->campus
+                'campus' => $this->campus,
+
+                'isActive' => $this->isActive
             ];
        
     }

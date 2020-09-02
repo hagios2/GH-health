@@ -25,7 +25,9 @@ class AdminViewUsersResource extends JsonResource
 
             'phone' => $this->phone,
 
-            'campus' => $this->campus
+            'campus' => $this->campus,
+
+            'isActive' => $this->isActive
             
         ];
         
