@@ -76,16 +76,16 @@ class SellersController extends Controller
 
     public function saveProductImages(Product $product, Request $request)
     {
-       /*  if(auth()->guard('api')->id() !== $product->user_id && $product->merchandiser_id == null)
-        {
-             return response()->json(['status' => 'Forbidden'], 403);
- 
-        }else if(auth()->guard('merchandiser')->id() !== $product->merchandiser_id && $product->user_id == null){
- 
-             return response()->json(['status' => 'Forbidden'], 403);
-        }
- */
-      
+        /*  if(auth()->guard('api')->id() !== $product->user_id && $product->merchandiser_id == null)
+            {
+                return response()->json(['status' => 'Forbidden'], 403);
+    
+            }else if(auth()->guard('merchandiser')->id() !== $product->merchandiser_id && $product->user_id == null){
+    
+                return response()->json(['status' => 'Forbidden'], 403);    
+            }
+            */
+                
         if($request->hasFile('product_images'))
         {
 

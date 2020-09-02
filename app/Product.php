@@ -45,4 +45,11 @@ class Product extends Model
         return $this->hasMany('App\ProductReview');
     }
 
+    
+    public function productReport()
+    {
+        return $this->hasMany('App\ProductReport');
+    }
+
+
 }
