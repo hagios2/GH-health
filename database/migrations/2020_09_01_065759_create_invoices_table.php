@@ -15,6 +15,8 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('generated_invoice_id')->unique();
+            $table->integer('cart_id');
             $table->timestamps();
         });
     }

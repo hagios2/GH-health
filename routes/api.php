@@ -80,9 +80,9 @@ Route::get('product/{product}/reviews', 'ReviewsController@fetchProductReviews')
 
 Route::post('add-product/reviews', 'ReviewsController@storeProductReview');
 
-Route::post('add-product/{user}/report', 'ReportsController@saveProductReport'); 
+Route::post('add-product/report', 'ReportsController@saveProductReport'); 
 
-Route::post('add-shop/{user}/report', 'ReportsController@saveShopReport'); 
+Route::post('add-shop/report', 'ReportsController@saveShopReport'); 
 
 
 Route::group(['prefix' => 'merchandiser'], function () {
@@ -172,6 +172,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 });
 
+
+#------------------------ Payment Integration --------------------------------------
+# -------------------------------------------------------------------------------
+
+Route::post('/make-card-payment', 'RaveController@payviacard')->name('card.pay');
+
+Route::post('/make-momo-payment', 'RaveController@payviamobilemoneygh')->name('momo.pay');
+
+Route::post('/rave-payment/callback', 'RaveController@callback')->name('callback');
+
+#------------------------ End of Payment Integration --------------------------------------
 
 Route::fallback(function(){
 
