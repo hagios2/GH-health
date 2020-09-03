@@ -13,17 +13,17 @@ class ReportsController extends Controller
     }
 
 
-    public function saveShopReport(User $user, ReportsRequest $request)
+    public function saveShopReport(ReportsRequest $request)
     {
-        $user->addReport($request->validated());
+        auth()->guard('api')->user()->addShopReport($request->validated());
 
         return response()->json(['status' => 'saved']);
     }
 
 
-    public function saveProductReport(User $user, ReportsRequest $request)
+    public function saveProductReport(ReportsRequest $request)
     {
-        $user->addReport($request->validated());
+        auth()->guard('api')->user()->addProductReport($request->validated());
 
         return response()->json(['status' => 'saved']);
     }
