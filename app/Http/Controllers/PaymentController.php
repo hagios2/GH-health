@@ -11,7 +11,7 @@ class PaymentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:client');
+        $this->middleware('auth:api');
     }
 
     public function callback()
@@ -44,24 +44,16 @@ class PaymentController extends Controller
 
 
 
-    public function payviacard(PaymentRequest $request){ // set up a function to test card payment.
+    public function payviacard(PaymentRequest $request)
+    { // set up a function to test card payment.
 
-      $cart = Cart::find($request->cart_id);
+        $cart = Cart::find($request->cart_id);
 
-      $payment_amount = $this->calculatePayment($cart);
-      $user = auth()->guard('client')->user();
-
-      if($user->company)
-      {
-        $email = $user->company->company_email;
-        $client['client_company_id'] = $user->company->id;
-      
-      }else{
+        $payment_amount = $this->calculatePayment($cart);
+        $user = auth()->guard('api')->user();
 
         $email = $user->email; 
-        $client['client_id'] = $user->id;
-      }
-
+   
         error_reporting(E_ALL);
         ini_set('display_errors',1);
         
@@ -112,7 +104,7 @@ class PaymentController extends Controller
 
                 Transaction::create([
                   'invoice_id' => $cart->invoice->invoice_id,
-                  key($client) => $client[key($client)],
+                  'user_id' => $user->id,
                   'transaction_status' => $request['data']['status'],
                   'grand_total_amount' => $payment_amount['grand_total'],
                   'total_amount_without_charges' => $payment_amount[  'total_rollover_cost_amount'],
@@ -141,7 +133,6 @@ class PaymentController extends Controller
         
 
     }
-
 
     public function encryptKeys($data)
     {

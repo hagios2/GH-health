@@ -33,7 +33,7 @@ class AdminViewShopReport extends JsonResource
                 
                'id' => $this->merchandiser_id,
 
-               'shop_name' => $this->shop->name
+               'shop_name' => $this->shop->company_name
             ]
 
         ];
