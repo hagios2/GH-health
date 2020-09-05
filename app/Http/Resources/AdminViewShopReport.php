@@ -24,10 +24,18 @@ class AdminViewShopReport extends JsonResource
 
                 'id' => $this->user_id,
 
-                'name' => $this->user->name
+                'name' => $this->user->name,
+
+                'email' => $this->user->email
             ],
 
-            'shop' => $this->merchandiser_id
+            'shop' => [
+                
+               'id' => $this->merchandiser_id,
+
+               'shop_name' => $this->shop->name
+            ]
+
         ];
     }
 }

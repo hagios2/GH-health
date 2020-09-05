@@ -27,7 +27,13 @@ class AdminViewProductReport extends JsonResource
                 'name' => $this->user->name
             ],
 
-            'product' => $this->product_id
+            'product' => [
+
+                'id' => $this->product_id,
+
+                'product_name' => $this->product->product_name
+            ]
+
         ];
     }
 }
