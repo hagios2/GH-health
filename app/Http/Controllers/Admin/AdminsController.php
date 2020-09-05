@@ -13,10 +13,14 @@ use App\Http\Resources\DetailedProductResource;
 use App\Http\Resources\MerchandiserResource;
 use App\ShopReview;
 use App\ProductReview;
+use App\ShopReport;
+use App\ProductReport;
 use App\Product;
 use App\Http\Resources\ProductReviewResource;
 use App\Http\Resources\AdminViewShopReviewsResource;
 use App\Http\Resources\AdminViewProductReviewsResource;
+use App\Http\Resources\AdminViewShopReport;
+use App\Http\Resources\AdminViewProductReport;
 
 class AdminsController extends Controller
 {
@@ -203,5 +207,22 @@ class AdminsController extends Controller
         return response()->json(['status' => 'user deleted']);
     }
 
+    public function getShopReport()
+    {
+        $report = ShopReport::all();
+
+
+        return AdminViewShopReport::collection($report);
+    }
+
+
+
+    public function getProductReport()
+    {
+        $report = ProductReport::all();
+
+
+        return AdminViewProductReport::collection($report);
+    }
 
 }
