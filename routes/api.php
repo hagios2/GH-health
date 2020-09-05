@@ -144,7 +144,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('fetch-users', 'AdminsController@getUsers'); 
 
-    Route::get('fetch-admdins', 'AdminsController@fetchAdmins'); 
+    Route::get('fetch-admins', 'AdminsController@fetchAdmins'); 
 
     Route::get('fetch-shops', 'AdminsController@getShops'); 
 
