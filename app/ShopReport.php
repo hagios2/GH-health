@@ -10,7 +10,7 @@ class ShopReport extends Model
 
     public function shop()
     {
-        return $this->belongsTo('App\Merchandiser');
+        return $this->belongsTo('App\Merchandiser', 'merchandiser_id');
     }
     
     public function user()

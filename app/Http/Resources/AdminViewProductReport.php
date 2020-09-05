@@ -24,7 +24,9 @@ class AdminViewProductReport extends JsonResource
 
                 'id' => $this->user_id,
 
-                'name' => $this->user->name
+                'name' => $this->user->name,
+
+                'email' => $this->user->email
             ],
 
             'product' => [
