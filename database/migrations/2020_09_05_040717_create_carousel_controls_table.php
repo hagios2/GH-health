@@ -15,6 +15,8 @@ class CreateCarouselControlsTable extends Migration
     {
         Schema::create('carousel_controls', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('campus_id')->unsigned();
+            
             $table->timestamps();
         });
     }

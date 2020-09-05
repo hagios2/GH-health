@@ -11,6 +11,7 @@ use App\Http\Resources\AdminViewUsersResource;
 use App\Http\Resources\ShopReviewResource;
 use App\Http\Resources\DetailedProductResource;
 use App\Http\Resources\MerchandiserResource;
+use App\Http\Resources\ViewAdminsResource;
 use App\ShopReview;
 use App\ProductReview;
 use App\ShopReport;
@@ -223,6 +224,15 @@ class AdminsController extends Controller
 
 
         return AdminViewProductReport::collection($report);
+    }
+
+
+    public function fetchAdmins()
+    {
+       $admins = Admin::where('role', '!=', 'super_admin')->get();
+
+       return ViewAdminsResource::collection($admins);
+
     }
 
 }
