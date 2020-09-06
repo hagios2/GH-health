@@ -17,6 +17,7 @@ use App\ProductReview;
 use App\ShopReport;
 use App\ProductReport;
 use App\Product;
+use App\Admin;
 use App\Http\Resources\ProductReviewResource;
 use App\Http\Resources\AdminViewShopReviewsResource;
 use App\Http\Resources\AdminViewProductReviewsResource;
