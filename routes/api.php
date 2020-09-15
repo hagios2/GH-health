@@ -182,11 +182,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 #------------------------ Payment Integration --------------------------------------
 # -------------------------------------------------------------------------------
 
-Route::post('/make-card-payment', 'RaveController@payviacard')->name('card.pay');
+// Route::post('/make-card-payment', 'RaveController@payviacard')->name('card.pay');
 
-Route::post('/make-momo-payment', 'RaveController@payviamobilemoneygh')->name('momo.pay');
+// Route::post('/make-momo-payment', 'RaveController@payviamobilemoneygh')->name('momo.pay');
 
-Route::post('/rave-payment/callback', 'RaveController@callback')->name('callback');
+// Route::post('/rave-payment/callback', 'RaveController@callback')->name('callback');
 
 #------------------------ End of Payment Integration --------------------------------------
 

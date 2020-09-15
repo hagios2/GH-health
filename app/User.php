@@ -69,6 +69,8 @@ class User extends Authenticatable implements JWTSubject
         $this->following()->create($following);
     }
 
+
+
     
 
     public function campus()
@@ -97,6 +99,17 @@ class User extends Authenticatable implements JWTSubject
         }
 
 
+    }
+
+
+    public function emailVerified()
+    {
+        return $this->hasOne('App\VerifyEmail');
+    }
+
+    public function addEmailToken($token)
+    {
+        return $this->emailVerified()->create($token);
     }
 
 

@@ -11,14 +11,20 @@ class UserRegistrationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $user;
+
+    public $token;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user, VerifyEmail $token)
     {
-        //
+        $this->user = $user;
+
+        $this->token = $token;
     }
 
     /**
@@ -32,6 +38,6 @@ class UserRegistrationMail extends Mailable
         
             ->from($this->formInputs['email'])
             
-            ->subject('Enquiry from Client');
+            ->subject('New User Registration ');
     }
 }

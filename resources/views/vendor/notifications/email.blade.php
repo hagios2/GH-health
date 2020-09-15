@@ -28,7 +28,7 @@
             $color = 'primary';
     }
 ?>
-@component('mail::button', ['url' => $actionUrl, 'color' => $color])
+@component('mail::button', ['url' => env('FRONT_EMD_URL'), 'color' => $color])
 {{ $actionText }}
 @endcomponent
 @endisset
@@ -55,7 +55,7 @@
     'into your web browser: [:actionURL](:actionURL)',
     [
         'actionText' => $actionText,
-        'actionURL' => $actionUrl,
+        'actionURL' => env('FRONT_EMD_URL'),
     ]
 )
 @endslot

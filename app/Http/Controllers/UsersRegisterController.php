@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\VerifyEmail;
 use Illuminate\Http\Request;
 use App\Notifications\UserRegistrationNotification;
 use App\Http\Requests\UserFormRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use App\Jobs\UserRegistrationJob;
 
 class UsersRegisterController extends Controller
 {
@@ -22,14 +25,16 @@ class UsersRegisterController extends Controller
 
         $attibutes['password'] = Hash::make($request->password);
 
-        $user = User::create($attibutes)->sendEmailVerificationNotification();;
+        $user = User::create($attibutes);//->sendEmailVerificationNotification();;
+
+        $token = $user->addEmailToken(['token' => Str::random(20)]);
 
         if($request->hasFile('avatar'))
         {
             $this->storeAvatar($user);
         }
 
-    /*     $user->notify(new UserRegistrationNotification($user));  */
+        UserRegistrationJob::dispatch($user, $token);
 
         return response()->json(['status' => 'success'], 200);
     }

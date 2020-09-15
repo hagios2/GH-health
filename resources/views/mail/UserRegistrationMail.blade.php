@@ -1,10 +1,10 @@
 @component('mail::message')
-# Hello Emmanuel <br>
+# Welcome {{ $user->name }} <br>
 
-The body of your message.
+You have successfully registered with Martek-Gh. Kindly click on the button to verify your email
 
-@component('mail::button', ['url' => ''])
-Button Text
+@component('mail::button', ['url' => env('FRONT_EMD_URL')."?token={$token->token}"])
+Verify Email
 @endcomponent
 
 Thanks,<br>

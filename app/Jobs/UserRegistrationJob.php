@@ -16,14 +16,18 @@ class UserRegistrationJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $user;
+
+    public $token;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(User $user, VerifyEmail $token)
     {
         $this->user = $user;
+
+        $this->token = $token;
     }
 
     /**
@@ -35,7 +39,7 @@ class UserRegistrationJob implements ShouldQueue
     {
         Mail::to($this->user)
         
-            ->queue(new UserRegistrationMail($this->user)
+            ->queue(new UserRegistrationMail($this->user, $this->token)
         );
     }
 }
