@@ -17,7 +17,7 @@ class CreateVerifyEmailsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
             $table->string('token');
-            $table->tim('expires_at')->nullable();
+            $table->time('expires_at')->nullable();
             $table->timestamps();
         });
     }
