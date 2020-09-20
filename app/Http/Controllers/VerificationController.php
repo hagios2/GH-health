@@ -12,7 +12,7 @@ class VerificationController extends Controller
 {
     public function verify(Request $request)
     {    
-       return $user = auth()->user();
+       return $user = auth()->guard('api')->user();
 
         if(!$user->email_verified_at)
         {
