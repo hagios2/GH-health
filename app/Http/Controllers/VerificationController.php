@@ -15,12 +15,12 @@ class VerificationController extends Controller
     public function verify(Request $request)
     {    
 
-       $verify_token =  VerifyEmail::where('token', $request->token)->first();
+       $verified_token =  VerifyEmail::where('token', $request->token)->first();
 
 
        if($verified_token)
        {
-            $user = User::where('email', $verify_token->email)->first();
+            $user = User::where('email', $verified_token->email)->first();
 
             if(!$user->email_verified_at)
             {
