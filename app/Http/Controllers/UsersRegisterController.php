@@ -27,7 +27,7 @@ class UsersRegisterController extends Controller
 
         $user = User::create($attibutes);//->sendEmailVerificationNotification();;
 
-        $token = $user->addEmailToken(['token' => Str::random(20)]);
+        $token = $user->addEmailToken(['token' => Str::random(35)]);
 
         if($request->hasFile('avatar'))
         {

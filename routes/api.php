@@ -28,9 +28,9 @@ Route::group(['prefix' => 'auth'], function ($router) {
 
     Route::delete('user/delete', 'UsersRegisterController@destroy');
 
-    Route::get('email/verify/{id}', 'VerificationController@verify')->name('verification.verify'); // Make sure to keep this as your route name
+    Route::post('email/verify', 'VerificationController@verify')->name('verification.verify'); // Make sure to keep this as your route name
 
-    Route::get('email/resend', 'VerificationController@resend')->name('verification.resend');
+    Route::post('email/resend', 'VerificationController@resend')->name('verification.resend');
 
 });
 

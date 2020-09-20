@@ -5,24 +5,33 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Jobs\UserRegistrationJob;
 
 class VerificationController extends Controller
 {
-    public function verify($user_id, Request $request)
-    {
-        if (!$request->hasValidSignature()) 
+    public function verify(Request $request)
+    {    
+        $user = auth()->user();
+
+        if(!$user->email_verified_at)
         {
-            return response()->json(['message' => 'Invalid or Expired URL provided'], 401);
+            $verified_token = $user->emailVerified->where('token', $request->token)->first();
+
+            if($verified_token)
+            {
+                $user->update(['email_verified_at' => now()]);
+
+                return response()->json(['message' => 'verified'], 200);
+
+            }else{
+
+                return response()->json(['message' => 'Token not found'], 401);
+            }
+
         }
     
-        $user = User::findOrFail($user_id);
-    
-        if (!$user->hasVerifiedEmail())
-        {
-            $user->markEmailAsVerified();
-        }
-    
-        return response()->json(['message' => 'verified'], 200);
+        return response()->json(['message' => 'already verified'], 400);
     
     }
     
@@ -34,8 +43,12 @@ class VerificationController extends Controller
             return response()->json(["message" => "Email already verified."], 400);
         
         }
-    
-        auth()->user()->sendEmailVerificationNotification();
+
+        $user = auth()->user();
+
+        $token = $user->emailVerified->update(['token' => Str::random(35)]);
+
+        UserRegistrationJob::dispatch($user, $token);
     
         return response()->json(["message" => 'mail sent']);
     }
