@@ -39,4 +39,13 @@ class VerificationController extends Controller
     
         return response()->json(["message" => 'mail sent']);
     }
+
+
+    public function send(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+
+        
+        // $token  = str_shuffle() // Str::random(20)
+    }
 }

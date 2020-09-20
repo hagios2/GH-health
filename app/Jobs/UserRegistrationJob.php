@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserRegistrationMail;
+use App\VerifyEmail;
 
 class UserRegistrationJob implements ShouldQueue
 {

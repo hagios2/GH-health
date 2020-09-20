@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\VerifyEmail;
 
 class UserRegistrationMail extends Mailable
 {
@@ -35,9 +36,7 @@ class UserRegistrationMail extends Mailable
     public function build()
     {
         return $this->markdown('mail/UserRegistrationMail')
-        
-            ->from($this->formInputs['email'])
             
-            ->subject('New User Registration ');
+            ->subject('Confirm Email');
     }
 }
