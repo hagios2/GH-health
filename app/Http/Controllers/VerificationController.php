@@ -7,31 +7,39 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Jobs\UserRegistrationJob;
+use App\VerifyEmail;
+
 
 class VerificationController extends Controller
 {
     public function verify(Request $request)
     {    
-       return $user = auth()->guard('api')->user();
 
-        if(!$user->email_verified_at)
-        {
-            $verified_token = $user->emailVerified->where('token', $request->token)->first();
+       $verify_token =  VerifyEmail::where('token', $request->token)->first();
 
-            if($verified_token)
+
+       if($verified_token)
+       {
+            $user = User::where('email', $verify_token->email)->first();
+
+            if(!$user->email_verified_at)
             {
+
                 $user->update(['email_verified_at' => now()]);
+
+                $verified_token->delete();
 
                 return response()->json(['message' => 'verified'], 200);
 
             }else{
 
-                return response()->json(['message' => 'Token not found'], 401);
+                return response()->json(['message' => 'already verified'], 400);
+
             }
 
         }
-    
-        return response()->json(['message' => 'already verified'], 400);
+
+        return response()->json(['message' => 'Token not found'], 401);
     
     }
     
