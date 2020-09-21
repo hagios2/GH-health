@@ -53,10 +53,9 @@ class VerificationController extends Controller
 
             $verified_token =  VerifyEmail::where('user_id', $user->id)->first();
 
-   
-            $token = $user->emailVerified->update(['token' => Str::random(35)]);
+            $verified_token->update(['token' => Str::random(35)]);
     
-            UserRegistrationJob::dispatch($user, $token);
+            UserRegistrationJob::dispatch($user, $verified_token);
         
             return response()->json(["message" => 'mail sent']);
         }
