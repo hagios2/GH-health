@@ -43,7 +43,7 @@ class VerificationController extends Controller
     
     }
     
-    public function resend()
+    public function resend(Request $request)
     {
         
         $user = User::where('email', $request->email)->first();
