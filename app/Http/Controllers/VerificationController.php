@@ -45,20 +45,24 @@ class VerificationController extends Controller
     
     public function resend()
     {
-        if (auth()->user()->hasVerifiedEmail())
+        
+        $user = User::where('email', $request->email)->first();
+
+        if(!$user->email_verified_at)
         {
+
+            $verified_token =  VerifyEmail::where('user_id', $user->id)->first();
+
+   
+            $token = $user->emailVerified->update(['token' => Str::random(35)]);
+    
+            UserRegistrationJob::dispatch($user, $token);
         
-            return response()->json(["message" => "Email already verified."], 400);
-        
+            return response()->json(["message" => 'mail sent']);
         }
 
-        $user = auth()->user();
-
-        $token = $user->emailVerified->update(['token' => Str::random(35)]);
-
-        UserRegistrationJob::dispatch($user, $token);
+        return response()->json(["message" => 'email already verified']);
     
-        return response()->json(["message" => 'mail sent']);
     }
 
 
