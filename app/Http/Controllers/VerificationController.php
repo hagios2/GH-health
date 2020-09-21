@@ -27,7 +27,7 @@ class VerificationController extends Controller
 
                 $user->update(['email_verified_at' => now()]);
 
-                $verified_token->delete();
+                // $verified_token->delete();
 
                 return response()->json(['message' => 'verified'], 200);
 
