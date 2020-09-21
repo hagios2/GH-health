@@ -15,7 +15,7 @@ class VerificationController extends Controller
     public function verify(Request $request)
     {    
 
-       $verified_token =  VerifyEmail::where('token', $request->token)->first();
+      return  $verified_token =  VerifyEmail::where('token', $request->token)->first();
 
 
        if($verified_token)
