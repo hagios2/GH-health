@@ -20,7 +20,7 @@ class VerificationController extends Controller
 
        if($verified_token)
        {
-            $user = User::where('user_id', $verified_token->user_id)->first();
+            $user = User::where('id', $verified_token->user_id)->first();
 
             if(!$user->email_verified_at)
             {
