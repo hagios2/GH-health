@@ -101,6 +101,10 @@ Route::group(['prefix' => 'merchandiser'], function () {
 
     Route::delete('/delete', 'MerchandiserRegisterController@destroy');
 
+    Route::post('email/verify', 'VerificationController@verifyShop')->name('merchandiser.verification.verify'); // Make sure to keep this as your route name
+
+    Route::post('email/resend', 'VerificationController@resend')->name('merchandiser.verification.resend');
+
 
 });
 

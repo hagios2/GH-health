@@ -7,7 +7,9 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Jobs\UserRegistrationJob;
+use App\Jobs\ShopEmailResendJob;
 use App\VerifyEmail;
+use App\Merchandiser;
 
 
 class VerificationController extends Controller
@@ -70,17 +72,17 @@ class VerificationController extends Controller
     public function verifyShop(Request $request)
     {    
 
-       $verified_token =  VerifyEmail::where('token', $request->token)->first();
-
+       $verified_token =  VerifyEmail::where([['token', $request->token], ['isAshopToken', true]])->first();
 
        if($verified_token)
        {
-            $user = User::where('id', $verified_token->user_id)->first();
+            $merchandiser = Merchandiser::where('id', $verified_token->merchandiser_id)->first();
 
-            if(!$user->email_verified_at)
+
+            if(!$merchandiser->email_verified_at)
             {
 
-                $user->update(['email_verified_at' => now()]);
+                $merchandiser->update(['email_verified_at' => now()]);
 
                 // $verified_token->delete();
 
@@ -98,19 +100,18 @@ class VerificationController extends Controller
     
     }
     
-    public function resend(Request $request)
+    public function resendMerchantToken(Request $request)
     {
         
-        $user = User::where('email', $request->email)->first();
+        $merchandiser = Merchandiser::where('email', $request->email)->first();
 
-        if(!$user->email_verified_at)
+        if(!$merchandiser->email_verified_at)
         {
-
-            $verified_token =  VerifyEmail::where('user_id', $user->id)->first();
+            $verified_token =  VerifyEmail::where([['merchandiser_id', $merchandiser->id], ['isAshopToken', true]])->first();
 
             $verified_token->update(['token' => Str::random(35)]);
     
-            UserRegistrationJob::dispatch($user, $verified_token);
+            ShopEmailResendJob::dispatch($merchandiser, $verified_token);
         
             return response()->json(["message" => 'mail sent']);
         }
