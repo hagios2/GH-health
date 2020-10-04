@@ -15,8 +15,10 @@ class CreateVerifyEmailsTable extends Migration
     {
         Schema::create('verify_emails', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->unsigned(); 
+            $table->integer('user_id')->unsigned()->nullabe();
+            $table->integer('merchandiser_id')->unsigned()->nullable(); 
             $table->string('token');
+            $table->boolean('isAShopToken')->default(false);
             $table->time('expires_at')->nullable();
             $table->timestamps();
         });

@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\MerchandiserFormRequest;
 use App\Http\Requests\UpdateMerchandiserRequest;
 use Illuminate\Support\Facades\Hash;
-
+use App\VerifyEmail;
+use Illuminate\Support\Str;
+use App\Jobs\ShopRegistrationJob;
 
 class MerchandiserRegisterController extends Controller
 {
@@ -24,6 +26,18 @@ class MerchandiserRegisterController extends Controller
         $attributes['password'] = Hash::make($request->password);
 
         $merchandiser = Merchandiser::create($attributes);
+
+        $new_token = Str::random(60);
+
+        
+        VerifyEmail::create([
+            'token' => $new_token,
+            'merchandiser_id' => $merchandiser->id,
+            'isAShopToken' => true
+        ]);
+
+
+        ShopRegistrationJob::dispatch($merchandiser, $token);
         
        /*  $merchandiser->notify(new UserRegistrationNotification());  */
 
