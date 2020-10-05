@@ -14,4 +14,11 @@ class VerifyEmail extends Model
         return $this->belongsTo('App\User', 'email');
     }
 
+
+    public function merchandiser()
+    {
+        return $this->belongsTo('App\Merchandier', 'email');
+    }
+
+
 }
