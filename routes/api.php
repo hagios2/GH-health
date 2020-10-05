@@ -175,11 +175,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('get-product/{product}/reviews', 'AdminsController@getProductReviews'); 
 
     Route::delete('user/{user}/delete-account', 'AdminsController@deleteUser'); 
-    
+
 
     Route::get('shop-reports', 'AdminsController@getShopReport');
 
     Route::get('product-reports', 'AdminsController@getProductReport');
+
+    Route::get('campus/{campus}/carousel-images', 'CarouselController@addCarousel');
+
+
+    Route::post('campus/{campus}/carousel-images', 'CarouselController@addCarousel');
 
 });
 

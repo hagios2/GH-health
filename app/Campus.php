@@ -20,4 +20,16 @@ class Campus extends Model
     {
         return $this->hasMany('App\user');
     }
+
+
+    public function addCarouselImage($image)
+    {
+        $this->carousel()->create($image);   
+    }
+
+
+    public function carousel()
+    {
+        return $this->hasMany('App\Carousel');
+    }
 }

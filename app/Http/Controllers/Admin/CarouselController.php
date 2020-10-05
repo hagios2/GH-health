@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\CarouselControl;
 
 class CarouselController extends Controller
 {
@@ -12,25 +13,33 @@ class CarouselController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function addCarouselImage(Request $request)
+    public function addCarouselImage(Campus $campus, Request $request)
     {
-        $files = $request->file('product_images');
+        $request->validate(['campus_image' => 'required|image']);
+
+        $files = $request->file('campus_image');
 
         foreach($files as $file)
         {
 
             $fileName = now().'_'.$file->getClientOriginalName();
     
-            $file->storeAs('public/carousel images/'.$product->id, $fileName);
+            $file->storeAs('public/carousel images/'.$campus->id, $fileName);
     
-            $product->addProductImage([
-                'path' => storage_path('app/public/product images/'.$product->id.'/'.$fileName)]);
+            $campus->addProductImage([
+                'path' => storage_path('app/public/product images/'.$campus->id.'/'.$fileName)]);
     
         }
 
         return response()->json(['status' => 'files saved'], 200);
     }
 
-    // public function dd
+    public function getCourosleIamges(Campus $capus)
+    {
+       $carousel = CarouselConttrol::where('campus_id', $campus->id)->latest()->token_name(5)->get();
+
+
+       return response()->json(['images', $carousel]);
+    }
 
 }
