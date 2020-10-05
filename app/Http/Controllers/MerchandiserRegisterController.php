@@ -30,7 +30,7 @@ class MerchandiserRegisterController extends Controller
         $new_token = Str::random(60);
 
         
-        VerifyEmail::create([
+        $token = VerifyEmail::create([
             'token' => $new_token,
             'merchandiser_id' => $merchandiser->id,
             'isAShopToken' => true
