@@ -35,7 +35,7 @@ class CarouselController extends Controller
         return response()->json(['status' => 'files saved'], 200);
     }
 
-    public function getCourosleIamges(Campus $capus)
+    public function getCourosleIamges(Campus $campus)
     {
        $carousel = CarouselControl::where('campus_id', $campus->id)->latest()->token_name(5)->get();
 
@@ -46,7 +46,7 @@ class CarouselController extends Controller
 
     public function deleteCarouselImage(CarouselControl $carouselImage)
     {
-        
+
     }
 
 
