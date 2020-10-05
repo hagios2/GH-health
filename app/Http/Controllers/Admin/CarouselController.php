@@ -41,5 +41,6 @@ class CarouselController extends Controller
 
        return response()->json(['images', $carousel]);
     }
+    
 
 }
