@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Campus;
 use App\CarouselControl;
 
 class CarouselController extends Controller
@@ -26,8 +27,8 @@ class CarouselController extends Controller
     
             $file->storeAs('public/carousel images/'.$campus->id, $fileName);
     
-            $campus->addProductImage([
-                'image_path' => storage_path('app/public/product images/'.$campus->id.'/'.$fileName)]);
+            $campus->addCarouselImage([
+                'image_path' => storage_path('app/public/campus images/'.$campus->id.'/'.$fileName)]);
     
         }
 
