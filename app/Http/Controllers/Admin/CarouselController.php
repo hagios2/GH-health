@@ -37,10 +37,16 @@ class CarouselController extends Controller
 
     public function getCourosleIamges(Campus $capus)
     {
-       $carousel = CarouselConttrol::where('campus_id', $campus->id)->latest()->token_name(5)->get();
+       $carousel = CarouselControl::where('campus_id', $campus->id)->latest()->token_name(5)->get();
 
 
        return response()->json(['images', $carousel]);
+    }
+
+
+    public function deleteCarouselImage(CarouselControl $carouselImage)
+    {
+        
     }
 
 
