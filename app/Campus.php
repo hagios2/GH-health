@@ -30,6 +30,6 @@ class Campus extends Model
 
     public function carousel()
     {
-        return $this->hasMany('App\Carousel');
+        return $this->hasMany('App\CarouselControl');
     }
 }

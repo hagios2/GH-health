@@ -39,8 +39,10 @@ class CarouselController extends Controller
     {
        $carousel = CarouselControl::where('campus_id', $campus->id)->latest()->take(5)->get();
 
+       return $carousel;
 
-       return response()->json(['images', $carousel]);
+
+       //return response()->json(['images', $carousel]);
     }
 
 
