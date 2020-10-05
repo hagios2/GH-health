@@ -18,10 +18,10 @@ class CarouselController extends Controller
     {
         $request->validate(['image_path' => 'required|image']);
 
-        $files = $request->file('image_path');
+        $file = $request->file('image_path');
 
-        foreach($files as $file)
-        {
+        // foreach($files as $file)
+        // {
 
             $fileName = now().'_'.$file->getClientOriginalName();
     
@@ -30,7 +30,7 @@ class CarouselController extends Controller
             $campus->addCarouselImage([
                 'image_path' => storage_path('app/public/campus images/'.$campus->id.'/'.$fileName)]);
     
-        }
+        // }
 
         return response()->json(['status' => 'files saved'], 200);
     }

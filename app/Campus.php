@@ -30,6 +30,6 @@ class Campus extends Model
 
     public function carousel()
     {
-        return $this->hasMany('App\CarouselControl');
+        return $this->hasMany('App\CarouselControl', 'campus_id');
     }
 }
