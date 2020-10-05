@@ -15,9 +15,9 @@ class CarouselController extends Controller
 
     public function addCarouselImage(Campus $campus, Request $request)
     {
-        $request->validate(['campus_image' => 'required|image']);
+        $request->validate(['image_path' => 'required|image']);
 
-        $files = $request->file('campus_image');
+        $files = $request->file('image_path');
 
         foreach($files as $file)
         {
@@ -27,7 +27,7 @@ class CarouselController extends Controller
             $file->storeAs('public/carousel images/'.$campus->id, $fileName);
     
             $campus->addProductImage([
-                'path' => storage_path('app/public/product images/'.$campus->id.'/'.$fileName)]);
+                'image_path' => storage_path('app/public/product images/'.$campus->id.'/'.$fileName)]);
     
         }
 
@@ -41,6 +41,6 @@ class CarouselController extends Controller
 
        return response()->json(['images', $carousel]);
     }
-    
+
 
 }
