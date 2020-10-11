@@ -51,15 +51,15 @@ class NewAdminsController extends Controller
 
         $request->validate([
 
-            'password' => 'required|string',
+            'old_password' => 'required|string',
 
             'new_password' => 'required|string'
         
         ]);
 
-        if(Hash::check($request->password, $admin->password))
+        if(Hash::check($request->old_password, $admin->password))
         {
-            if($request->password == $request->new_password)
+            if($request->old_password == $request->new_password)
             {
 
                 return response()->json(['status' => 'Password is already in use']);
