@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApiPasswordReset extends Model
 {
-    protected $guaeded = ['id'];
+    protected $guarded = ['id'];
 }

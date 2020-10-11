@@ -55,6 +55,10 @@ class MerchandiserRegisterController extends Controller
 
             $file = request()->file('cover_photo');
 
+        }else if($file_type == 'cover_photo'){
+
+            $file = request()->file('cover_photo');
+
         }
 
         $fileName = $file->getClientOriginalName();
@@ -69,7 +73,9 @@ class MerchandiserRegisterController extends Controller
         $request->validate([
             'cover_photo' => 'nullable|image|mimes:png,jpg,jpeg',
             
-            'avatar' => 'nullable|image|mimes:png,jpg,jpeg'
+            'avatar' => 'nullable|image|mimes:png,jpg,jpeg',
+
+            '' => 'nullable|image|mimes:png,jpg,jpeg'
 
         ]);
 
