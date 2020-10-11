@@ -14,7 +14,9 @@ class PasswordResetController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin');
+      
+        $this->middleware('auth:api,merchandiser', ['only' => ['changeUserPassword', 'changeUserPassword']]);
+        
     }
 
     public function changeUserPassword(ChangePasswordRequest $request)
