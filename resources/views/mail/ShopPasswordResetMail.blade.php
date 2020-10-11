@@ -12,7 +12,7 @@
 <p>
     or you may copy and paste the link below in your browser to reset your password <br>
 
-        {{env('PASSWORD_RESET_URL')."?token={$token->token}"}}
+        {{env('PASSWORD_SHOP_RESET_URL')."?token={$token->token}"}}
 </p>
 
 <p>
