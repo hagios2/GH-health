@@ -47,20 +47,37 @@ class NewAdminsController extends Controller
 
     public function changePassword(Request $request)
     {
-        
-        $password = $request->validate([
+        $admin = auth()->guard('admin')->user();
 
-            'password' => 'required|string'
-        
-        ]);
-        
-        auth()->guard('admin')->user()->update([
+        $request->validate([
 
-            'password' => Hash::make($password['password'])
+            'password' => 'required|string',
+
+            'new_password' => 'required|string'
         
         ]);
 
-        return response()->json(['status' => 'password changed']);
+        if(Hash::check($request->password, $admin->password))
+        {
+            if($request->password == $request->new_password)
+            {
+
+                return response()->json(['status' => 'Password is already in use']);
+
+            }else{
+
+                $admin->update(['password' => Hash::make($request->new_password)]);
+
+                return response()->json(['status' => 'password changed']);
+            }
+
+        }
+
+        return response()->json(['status' => 'invalid Password']);
+
+    
+
+        // return response()->json(['status' => 'password changed']);
     }
 
 
