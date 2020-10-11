@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Campus;
 use App\CarouselControl;
+use Illuminate\Support\Facades\Storage;
 
 class CarouselController extends Controller
 {
@@ -48,7 +49,11 @@ class CarouselController extends Controller
 
     public function deleteCarouselImage(CarouselControl $carouselImage)
     {
+        Storage::delete($carouselImage->image_path);
 
+        $carouselImage->delete();
+
+        return response()->json(['status' => 'file deleted'], 200);
     }
 
 

@@ -90,5 +90,36 @@ class AuthController extends Controller
             'statusCode' => 200
         ]);
     }
+
+
+    public function sendShopResetMail(Request $request)
+    {
+
+        $request->validate(['email' => 'required|email']);
+
+        $shop = Merchandiser::where('email', $request->email)->first();
+
+        if($shop)
+        {
+            $gen_token = Str::random(70);
+
+            $token = ApiPasswordReset::create([
+
+                'email' => $shop->email,
+
+                'token' => $gen_token,
+
+                'isAdminEmail' => true
+            ]);
+
+            //Mail::to($client)->send(new ClientPasswordResetMail($client, $token));
+            ShopPasswordResetJob::dispatch($shop, $token);
+
+            return response()->json(['status' => 'Email sent']);
+        }
+
+        return response()->json(['status' => 'Email not found'], 404);
+    }
+
     
 }

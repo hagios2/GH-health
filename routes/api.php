@@ -32,6 +32,12 @@ Route::group(['prefix' => 'auth'], function ($router) {
 
     Route::post('email/resend', 'VerificationController@resend')->name('verification.resend');
 
+    Route::post('request/password/reset', 'PasswordResetController@sendResetMail');
+
+    Route::post('reset/password/', 'PasswordResetController@reset');
+
+    Route::post('change/password', 'PasswordResetController@changeUserPassword');
+
 });
 
 Route::post('register-user', 'UsersRegisterController@register');
@@ -105,7 +111,11 @@ Route::group(['prefix' => 'merchandiser'], function () {
 
     Route::post('email/resend', 'VerificationController@resend')->name('merchandiser.verification.resend');
 
+    Route::post('request/password/reset', 'PasswordResetController@sendShopResetMail');
 
+    Route::post('reset/password/', 'PasswordResetController@shopReset');
+
+    Route::post('change/password', 'PasswordResetController@sendShopResetMail');
 });
 
 
@@ -183,8 +193,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('campus/{campus}/carousel-images', 'CarouselController@getCourosleIamges');
 
-
     Route::post('campus/{campus}/carousel-images', 'CarouselController@addCarouselImage');
+
+    Route::delete('campus-carousel/{carouselImage}/delete', 'CarouselController@deleteCarouselImage');
 
 });
 
