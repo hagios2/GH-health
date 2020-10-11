@@ -14,7 +14,7 @@ class AddTokenApiPasswordReset extends Migration
     public function up()
     {
         Schema::table('api_password_resets', function (Blueprint $table) {
-            //
+            $table->string('token')->unique();
         });
     }
 
