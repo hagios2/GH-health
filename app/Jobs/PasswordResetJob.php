@@ -40,8 +40,8 @@ class PasswordResetJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->shop)
+        Mail::to($this->user)
         
-        ->queue(new PasswordResetMail($this->shop, $this->token));
+        ->queue(new PasswordResetMail($this->user, $this->token));
     }
 }
