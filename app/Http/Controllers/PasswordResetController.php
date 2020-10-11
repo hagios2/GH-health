@@ -9,6 +9,7 @@ use App\ApiPasswordReset;
 use App\Jobs\PasswordResetJob;
 use App\Jobs\ShopPasswordResetJob;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ChangePasswordRequest;
 
 class PasswordResetController extends Controller
