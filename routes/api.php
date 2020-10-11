@@ -115,7 +115,7 @@ Route::group(['prefix' => 'merchandiser'], function () {
 
     Route::post('reset/password/', 'PasswordResetController@shopReset');
 
-    Route::post('change/password', 'PasswordResetController@sendShopResetMail');
+    Route::post('change/password', 'PasswordResetController@changeShopPassword');
 });
 
 
