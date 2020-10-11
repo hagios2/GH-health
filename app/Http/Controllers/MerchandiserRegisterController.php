@@ -55,9 +55,9 @@ class MerchandiserRegisterController extends Controller
 
             $file = request()->file('cover_photo');
 
-        }else if($file_type == 'cover_photo'){
+        }else if($file_type == 'valid_id'){
 
-            $file = request()->file('cover_photo');
+            $file = request()->file('valid_id');
 
         }
 
@@ -75,7 +75,7 @@ class MerchandiserRegisterController extends Controller
             
             'avatar' => 'nullable|image|mimes:png,jpg,jpeg',
 
-            '' => 'nullable|image|mimes:png,jpg,jpeg'
+            'valid_id' => 'nullable|image|mimes:png,jpg,jpeg'
 
         ]);
 
@@ -89,6 +89,13 @@ class MerchandiserRegisterController extends Controller
         {
             $this->storePhotos($merchandiser, 'avatar');
         }
+
+                
+        if($request->hasFile('valid_id'))
+        {
+            $this->storePhotos($merchandiser, 'valid_id');
+        }
+
 
         return response()->json(['status' => 'saved photos'], 200);
 
