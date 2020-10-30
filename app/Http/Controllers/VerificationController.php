@@ -72,7 +72,7 @@ class VerificationController extends Controller
     public function verifyShop(Request $request)
     {    
 
-       $verified_token =  VerifyEmail::where([['token', $request->token], ['isAshopToken', true]])->first();
+       $verified_token =  VerifyEmail::where([['token', $request->token], ['isAShopToken', true]])->first();
 
        if($verified_token)
        {
