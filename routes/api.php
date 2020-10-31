@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,8 @@ Route::post('register-user', 'UsersRegisterController@register');
 Route::post('register-merchandiser', 'MerchandiserRegisterController@register');
 
 Route::get('campuses', 'ResourceController@getCampus');
+
+Route::get('get/campus/{campus}/carousel', 'ResourceController@getCourosleIamges');
 
 Route::get('categories', 'ProductsController@getCategories');
 

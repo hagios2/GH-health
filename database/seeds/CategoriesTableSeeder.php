@@ -14,7 +14,7 @@ class CategoriesTableSeeder extends Seeder
     {
         Category::create(['category' => 'Electronics']);
 
-        Category::create(['category' => 'Phones and Accessories']);
+        Category::create(['category' => 'Phones']);
 
         Category::create(['category' => 'Fashion']);
 
