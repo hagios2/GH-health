@@ -29,7 +29,9 @@ class UserResource extends JsonResource
                 'id' => $this->campus->id,
 
                 'campus' => $this->campus->campus
-            ]
+            ],
+
+            'valid_id' => $this->valid_id
 
         ];
     }

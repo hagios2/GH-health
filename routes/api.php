@@ -38,6 +38,8 @@ Route::group(['prefix' => 'auth'], function ($router) {
 
     Route::post('change/password', 'PasswordResetController@changeUserPassword');
 
+    Route::post('upload/valid-id', 'AuthController@saveValidId');
+
 });
 
 Route::post('register-user', 'UsersRegisterController@register');

@@ -88,5 +88,25 @@ class AuthController extends Controller
             'statusCode' => 200
         ]);
     }
+
+
+    public function saveValidId(Request $request)
+    {
+        $request->validate(['valid_id' => 'nullable|image|mimes:png,jpg,jpeg']);
+
+        $file = $request->file('valid_id');
+
+        $user = auth()->guard('api')->user();
+
+        $fileName = $file->getClientOriginalName();
+
+        $path = "public/valid ids/$user->id/";
+
+        $file->storeAs($path, $fileName);
+
+        $user->update(['valid_id' => $path.$fileName]);
+
+        return response()->json(['status' => 'File saved']);
+    }
     
 }

@@ -45,6 +45,13 @@ class SellersController extends Controller
 
         }else{
 
+            $user = auth()->guard('api')->user();
+
+            if(!$user->valid_id)
+            {
+                return response()->json(['status' => 'Valid ID required'],200);
+            }
+
             $product['user_id'] = auth()->guard('api')->id();
 
         }
