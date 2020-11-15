@@ -163,7 +163,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::post('{admin}/unblock', 'NewAdminsController@unBlockAdmin');
 
-    Route::post('update/admin', 'AdminsController@ updateAdmin');
+    Route::patch('update/admin', 'AdminsController@updateAdmin');
 
     Route::get('fetch-users', 'AdminsController@getUsers');
 
