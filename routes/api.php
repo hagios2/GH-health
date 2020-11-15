@@ -91,13 +91,15 @@ Route::get('product/{product}/reviews', 'ReviewsController@fetchProductReviews')
 
 Route::post('add-product/reviews', 'ReviewsController@storeProductReview');
 
-Route::post('add-product/report', 'ReportsController@saveProductReport'); 
+Route::post('add-product/reviews', 'ReviewsController@storeProductReview');
 
-Route::post('add-shop/report', 'ReportsController@saveShopReport'); 
+Route::post('add-product/report', 'ReportsController@saveProductReport');
+
+Route::post('add-shop/report', 'ReportsController@saveShopReport');
 
 
 Route::group(['prefix' => 'merchandiser'], function () {
-    
+
     Route::post('login', 'MerchandiserAuthController@login');
 
     Route::get('/', 'MerchandiserAuthController@getAuthUser');
@@ -126,7 +128,7 @@ Route::group(['prefix' => 'merchandiser'], function () {
 
 
 Route::group(['prefix' => 'e-trader'], function () {
-    
+
     Route::post('/create-category', 'SellersController@createCategory');
 
    // Route::get('/categories', 'SellersControllerController@getCategories');
@@ -157,39 +159,41 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::post('change-password', 'NewAdminsController@changePassword');
 
-    Route::post('{admin}/block', 'NewAdminsController@blockAdmin');    
+    Route::post('{admin}/block', 'NewAdminsController@blockAdmin');
 
-    Route::post('{admin}/unblock', 'NewAdminsController@unBlockAdmin');   
+    Route::post('{admin}/unblock', 'NewAdminsController@unBlockAdmin');
 
-    Route::get('fetch-users', 'AdminsController@getUsers'); 
+    Route::post('update/admin', 'AdminsController@ updateAdmin');
 
-    Route::get('fetch-admins', 'AdminsController@fetchAdmins'); 
+    Route::get('fetch-users', 'AdminsController@getUsers');
 
-    Route::get('fetch-shops', 'AdminsController@getShops'); 
+    Route::get('fetch-admins', 'AdminsController@fetchAdmins');
 
-    Route::post('block/{user}/user', 'AdminsController@blockUser');    
+    Route::get('fetch-shops', 'AdminsController@getShops');
 
-    Route::post('unblock/{user}/user', 'AdminsController@unblockUser'); 
-    
-    Route::post('block/{shop}/merchandiser', 'AdminsController@blockShop');    
-    
-    Route::post('unblock/{shop}/merchandiser', 'AdminsController@unBlockShop');  
+    Route::post('block/{user}/user', 'AdminsController@blockUser');
 
-    Route::get('get-shop/{shop}/details', 'AdminsController@shopDetails'); 
+    Route::post('unblock/{user}/user', 'AdminsController@unblockUser');
 
-    Route::delete('shop/{shop}/delete', 'AdminsController@deleteShop'); 
+    Route::post('block/{shop}/merchandiser', 'AdminsController@blockShop');
 
-    Route::delete('product/{product}/delete', 'AdminsController@deleteProduct'); 
+    Route::post('unblock/{shop}/merchandiser', 'AdminsController@unBlockShop');
 
-    Route::delete('product-review/{review}/delete', 'AdminsController@deleteProductReview'); 
+    Route::get('get-shop/{shop}/details', 'AdminsController@shopDetails');
 
-    Route::delete('shop-review/{review}/delete', 'AdminsController@deleteShopReview'); 
+    Route::delete('shop/{shop}/delete', 'AdminsController@deleteShop');
 
-    Route::get('get-shop/{shop}/reviews', 'AdminsController@getShopReviews'); 
+    Route::delete('product/{product}/delete', 'AdminsController@deleteProduct');
 
-    Route::get('get-product/{product}/reviews', 'AdminsController@getProductReviews'); 
+    Route::delete('product-review/{review}/delete', 'AdminsController@deleteProductReview');
 
-    Route::delete('user/{user}/delete-account', 'AdminsController@deleteUser'); 
+    Route::delete('shop-review/{review}/delete', 'AdminsController@deleteShopReview');
+
+    Route::get('get-shop/{shop}/reviews', 'AdminsController@getShopReviews');
+
+    Route::get('get-product/{product}/reviews', 'AdminsController@getProductReviews');
+
+    Route::delete('user/{user}/delete-account', 'AdminsController@deleteUser');
 
 
     Route::get('shop-reports', 'AdminsController@getShopReport');

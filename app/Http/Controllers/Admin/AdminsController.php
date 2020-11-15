@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NewAdminRequest;
 use Illuminate\Http\Request;
 use App\Merchandiser;
 use App\User;
@@ -92,8 +93,8 @@ class AdminsController extends Controller
 
     public function productDetails(Product $product)
     {
-       
-        return new DetailedProductResource($product); 
+
+        return new DetailedProductResource($product);
     }
 
 
@@ -198,7 +199,7 @@ class AdminsController extends Controller
                 $this->deleteProductReviews($product);
 
                 $this->deleteProductImages($product);
-        
+
                 $product->delete();
 
             });
@@ -234,6 +235,13 @@ class AdminsController extends Controller
 
        return ViewAdminsResource::collection($admins);
 
+    }
+
+    public function updateAdmin(NewAdminRequest $request)
+    {
+        auth()->guard('admin')->user()->update($request->validated());
+
+        return response()->json(['message' => 'saved']);
     }
 
 }
