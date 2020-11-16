@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Product;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class DetailedProductResource extends JsonResource
@@ -20,7 +21,7 @@ class DetailedProductResource extends JsonResource
         if($this->merchandiser)
         {
             $productOwner['merchandiser_id'] = $this->merchandiser->id;
-                
+
             $productOwner['company_name'] = $this->merchandiser->company_name;
 
             $productOwner['avatar'] = $this->merchandiser->avatar;
@@ -37,11 +38,11 @@ class DetailedProductResource extends JsonResource
 
             $productOwner['phone'] = $this->merchandiser->phone;
 
-        
+
         }else if($this->user){
 
             $productOwner['user_id'] = $this->user->id;
-                
+
             $productOwner['name'] = $this->user->name;
 
             $productOwner['avatar'] = $this->user->avatar;
@@ -76,6 +77,13 @@ class DetailedProductResource extends JsonResource
 
                 'product_images' => ProductImageResource::collection($this->image), //path
 
+                'related_product' => RelatedProductResource::collection($this->relatedItems($this->id))
+
        ];
+    }
+
+    public function relatedItems(Product $product)
+    {
+        $product = Product::where([['id', '!=', $product->id],['category_id', $product->id]])->take(5)->get();
     }
 }
