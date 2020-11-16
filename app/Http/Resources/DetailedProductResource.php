@@ -84,6 +84,8 @@ class DetailedProductResource extends JsonResource
 
     public function relatedItems(Product $product)
     {
-        $product = Product::where([['id', '!=', $product->id],['category_id', $product->category_id]])->latest()->take(5)->get();
+        $products = Product::where([['id', '!=', $product->id],['category_id', $product->category_id]])->latest()->take(5)->get();
+
+        return $products;
     }
 }
