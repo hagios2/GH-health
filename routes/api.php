@@ -97,6 +97,7 @@ Route::post('add-product/report', 'ReportsController@saveProductReport');
 
 Route::post('add-shop/report', 'ReportsController@saveShopReport');
 
+Route::get('fetch/new-this-week', 'ResourceController@newThisWeek');
 
 Route::group(['prefix' => 'merchandiser'], function () {
 
