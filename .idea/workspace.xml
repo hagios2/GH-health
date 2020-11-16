@@ -21,8 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/Http/Resources/DetailedProductResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/DetailedProductResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/ProductResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/ProductResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/RelatedProductResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/RelatedProductResource.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +154,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605469273574</updated>
       <workItem from="1605469274723" duration="2666000" />
-      <workItem from="1605500064968" duration="1524000" />
+      <workItem from="1605500064968" duration="2136000" />
     </task>
     <servers />
   </component>
