@@ -60,6 +60,7 @@ class DetailedProductResource extends JsonResource
             $productOwner['phone'] = $this->user->phone;
         }
 
+        $product = Product::find($this->id);
 
        return [
 
@@ -77,7 +78,7 @@ class DetailedProductResource extends JsonResource
 
                 'product_images' => ProductImageResource::collection($this->image), //path
 
-                'related_product' => RelatedProductResource::collection($this->relatedItems($this))
+                'related_product' => RelatedProductResource::collection($this->relatedItems($product))
 
        ];
     }
