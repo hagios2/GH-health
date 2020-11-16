@@ -241,7 +241,7 @@ class AdminsController extends Controller
     {
         auth()->guard('admin')->user()->update($request->validated());
 
-        return response()->json(['message' => 'saved']);
+        return response()->json(['message' => 'updated']);
     }
 
 }
