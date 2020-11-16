@@ -99,7 +99,7 @@ Route::post('add-shop/report', 'ReportsController@saveShopReport');
 
 Route::get('fetch/new-this-week', 'ResourceController@newThisWeek');
 
-Route::get('campus/{campus}/new-this-week', 'ResourceController@campusnewThisWeek');
+Route::get('get/campus/{campus}/new-this-week', 'ResourceController@campusnewThisWeek');
 
 Route::group(['prefix' => 'merchandiser'], function () {
 
