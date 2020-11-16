@@ -77,7 +77,7 @@ class DetailedProductResource extends JsonResource
 
                 'product_images' => ProductImageResource::collection($this->image), //path
 
-                'related_product' => RelatedProductResource::collection($this->relatedItems($this->id))
+                'related_product' => RelatedProductResource::collection($this->relatedItems($this))
 
        ];
     }
