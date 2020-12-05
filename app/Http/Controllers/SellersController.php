@@ -27,7 +27,7 @@ class SellersController extends Controller
 
     public function getCategories(Request $request)
     {
-       
+
         return CategoryResource::collection(Category::all());
 
     }
@@ -35,7 +35,7 @@ class SellersController extends Controller
 
     public function storeProduct(Category $category, ProductRequest $request)
     {
-        
+
         $product = $request->validated();
 
         if(auth()->guard('merchandiser')->user())
@@ -78,7 +78,7 @@ class SellersController extends Controller
 
 
         return response()->json(['status' => 'success'], 200);
-    } 
+    }
 
 
     public function saveProductImages(Product $product, Request $request)
@@ -86,13 +86,13 @@ class SellersController extends Controller
         /*  if(auth()->guard('api')->id() !== $product->user_id && $product->merchandiser_id == null)
             {
                 return response()->json(['status' => 'Forbidden'], 403);
-    
+
             }else if(auth()->guard('merchandiser')->id() !== $product->merchandiser_id && $product->user_id == null){
-    
-                return response()->json(['status' => 'Forbidden'], 403);    
+
+                return response()->json(['status' => 'Forbidden'], 403);
             }
             */
-                
+
         if($request->hasFile('product_images'))
         {
 
@@ -100,16 +100,15 @@ class SellersController extends Controller
 
             foreach($files as $file)
             {
-    
+
                 $fileName = now().'_'.$file->getClientOriginalName();
-        
+
                 $file->storeAs('public/product images/'.$product->id, $fileName);
-        
-                $product->addProductImage([
-                    'path' => storage_path('app/public/product images/'.$product->id.'/'.$fileName)]);
-        
+
+                $product->addProductImage(['path' => 'storage/product images/'.$product->id.'/'.$fileName]);
+
             }
-    
+
             return response()->json(['status' => 'files saved'], 200);
         }
 
@@ -119,7 +118,7 @@ class SellersController extends Controller
 
     public function deleteProduct(Product $product)
     {
-        
+
         if($product->user && auth()->guard('api')->id() !== $product->user_id)
         {
             return response()->json(['message' => 'Forbidden'], 403);
@@ -131,10 +130,10 @@ class SellersController extends Controller
 
         $this->deleteProductReviews($product);
 
-        $this->deleteProductImages($product); 
+        $this->deleteProductImages($product);
 
         $product->delete();
-        
+
         return response()->json(['status' => 'product deleted'], 200);
     }
 
@@ -175,5 +174,5 @@ class SellersController extends Controller
 
         return response()->json(['message' => 'user has no data']);
     }
-    
+
 }
