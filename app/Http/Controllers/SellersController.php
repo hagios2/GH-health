@@ -96,10 +96,10 @@ class SellersController extends Controller
 
         $request->validate(['product_images' => 'required']);
 
-        $files = $request->product_images;
+        $file = $request->file('product_images');
 
-        foreach($files as $file)
-        {
+//        foreach($files as $file)
+//        {
 
 //            if($request->hasFile('product_images'))
 //            {
@@ -112,7 +112,7 @@ class SellersController extends Controller
 
 //            }
 
-        }
+//        }
 
         return response()->json(['status' => 'files saved'], 200);
     }
