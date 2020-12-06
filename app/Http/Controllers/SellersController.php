@@ -92,6 +92,7 @@ class SellersController extends Controller
                 return response()->json(['status' => 'Forbidden'], 403);
             }
             */
+        return $request->all();
 
         $request->validate(['product_images' => 'required']);
 
