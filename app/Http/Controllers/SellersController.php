@@ -93,26 +93,22 @@ class SellersController extends Controller
             }
             */
 
-        if($request->hasFile('product_images'))
+        $request->validate(['product_images' => 'required|array']);
+
+        $files = $request->file('product_images');
+
+        foreach($files as $file)
         {
 
-            $files = $request->file('product_images');
+            $fileName = now().'_'.$file->getClientOriginalName();
 
-            foreach($files as $file)
-            {
+            $file->storeAs('public/product images/'.$product->id, $fileName);
 
-                $fileName = now().'_'.$file->getClientOriginalName();
+            $product->addProductImage(['path' => 'storage/product images/'.$product->id.'/'.$fileName]);
 
-                $file->storeAs('public/product images/'.$product->id, $fileName);
-
-                $product->addProductImage(['path' => 'storage/product images/'.$product->id.'/'.$fileName]);
-
-            }
-
-            return response()->json(['status' => 'files saved'], 200);
         }
 
-        return response()->json(['status' => 'product images is required'], 422);
+        return response()->json(['status' => 'files saved'], 200);
     }
 
 
