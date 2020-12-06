@@ -28,7 +28,7 @@ class MerchandiserRegisterController extends Controller
         $merchandiser = Merchandiser::create($attributes);
 
         $new_token = Str::random(60);
-        
+
         $token = VerifyEmail::create([
             'token' => $new_token,
             'merchandiser_id' => $merchandiser->id,
@@ -37,7 +37,7 @@ class MerchandiserRegisterController extends Controller
 
 
         ShopRegistrationJob::dispatch($merchandiser, $token);
-        
+
        /*  $merchandiser->notify(new UserRegistrationNotification());  */
 
         return response()->json(['status' => 'success', 'merchandiser_id' => $merchandiser->id], 200);
@@ -65,14 +65,14 @@ class MerchandiserRegisterController extends Controller
 
         $file->storeAs('public/'.$file_type.'/'.$merchandiser->id, $fileName);
 
-        $merchandiser->update([$file_type => storage_path('app/public/'.$file_type.'/'.$merchandiser->id.'/'.$fileName)]);
+        $merchandiser->update([$file_type => 'storage/'.$file_type.'/'.$merchandiser->id.'/'.$fileName]);
     }
 
     public function saveAvatarAndCover(Merchandiser $merchandiser, Request $request)
     {
         $request->validate([
             'cover_photo' => 'nullable|image|mimes:png,jpg,jpeg',
-            
+
             'avatar' => 'nullable|image|mimes:png,jpg,jpeg',
 
             'valid_id' => 'nullable|image|mimes:png,jpg,jpeg'
@@ -84,13 +84,13 @@ class MerchandiserRegisterController extends Controller
             $this->storePhotos($merchandiser, 'cover_photo');
         }
 
-        
+
         if($request->hasFile('avatar'))
         {
             $this->storePhotos($merchandiser, 'avatar');
         }
 
-                
+
         if($request->hasFile('valid_id'))
         {
             $this->storePhotos($merchandiser, 'valid_id');
@@ -101,18 +101,18 @@ class MerchandiserRegisterController extends Controller
 
     }
 
-    
+
     public function update(Merchandiser $merchandiser, UpdateMerchandiserRequest $request)
     {
         $merchandiser->update($request->validated());
 
         return response()->json(['status' => 'success'], 200);
-    }  
+    }
 
 
     public function destroy()
     {
-        
+
         $merchandiser = auth()->guard('merchandiser')->user();
 
         if($merchandiser->product)
