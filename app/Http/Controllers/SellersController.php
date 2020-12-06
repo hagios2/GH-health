@@ -95,16 +95,21 @@ class SellersController extends Controller
 
         $request->validate(['product_images' => 'required|array']);
 
-        $files = $request->product_images;
+        $files = $request->file('product_images');
 
         foreach($files as $file)
         {
 
-            $fileName = now().'_'.$file->getClientOriginalName();
+//            if($request->hasFile('product_images'))
+//            {
 
-            $file->storeAs('public/product images/'.$product->id, $fileName);
+                $fileName = now().'_'.$file->getClientOriginalName();
 
-            $product->addProductImage(['path' => 'storage/product images/'.$product->id.'/'.$fileName]);
+                $file->storeAs('public/product images/'.$product->id, $fileName);
+
+                $product->addProductImage(['path' => 'storage/product images/'.$product->id.'/'.$fileName]);
+
+//            }
 
         }
 
