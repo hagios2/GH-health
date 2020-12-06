@@ -96,7 +96,7 @@ class SellersController extends Controller
 
         $request->validate(['product_images' => 'required']);
 
-        return $files = json_decode($request->product_images);
+        $files = $request->file('product_images');
 
         foreach($files as $file)
         {
