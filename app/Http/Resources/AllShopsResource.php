@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\ShopReview;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class AllShopsResource extends ResourceCollection
@@ -15,6 +16,8 @@ class AllShopsResource extends ResourceCollection
     public function toArray($request)
     {
         return $this->collection->map(function($shop){
+
+            $avg_rating = ShopReview::where('merchandiser_id', $shop->id)->avg('rating');
 
             return  [
 
@@ -31,6 +34,8 @@ class AllShopsResource extends ResourceCollection
                 'valid_id' => $shop->valid_id,
 
                 'cover_photo' => $shop->cover_photo,
+
+                'avg_rating' => $avg_rating,
 
                 'campus' => [
 
