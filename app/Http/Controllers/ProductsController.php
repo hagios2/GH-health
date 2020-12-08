@@ -23,13 +23,13 @@ class ProductsController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api')->only(['saveCart', 'getCart']);
-    } 
+    }
 
 
     public function getCategories()
     {
 
-        return CategoryResource::collection(Category::all('id', 'category'));
+        return CategoryResource::collection(Category::orderBy('id', 'asc')->get('id', 'category'));
 
     }
 
@@ -38,17 +38,17 @@ class ProductsController extends Controller
 
     public function getCategorysProduct(Category $category)
     {
-        
+
         return new ProductResource(Product::where('category_id', $category->id)->paginate(16));
 
     }
 
 
-    
+
     public function getProductDetails(Product $product)
     {
 
-    
+
         return new DetailedProductResource($product);
 
     }
@@ -60,7 +60,7 @@ class ProductsController extends Controller
      */
     public function index(Category $category)
     {
-/* 
+/*
         $products = $categories->map(function($category){
 
             return $category->product->reverse()->take(4);
@@ -70,7 +70,7 @@ class ProductsController extends Controller
 
         return new ProductResource(Product::where('category_id', $category->id)->latest()->take(4)->get());
 
-        
+
     }
 
 
@@ -78,7 +78,7 @@ class ProductsController extends Controller
     {
 
        $cart = $request->validate([
-       
+
             'cart' => 'nullable',
         ]);
 
@@ -93,14 +93,14 @@ class ProductsController extends Controller
         $cart = auth()->user()->cart->where('status', 'in cart')->reverse()->first();
 
         return new CartResource($cart);
-    } 
+    }
 
 
     public function fetchShops()
     {
 
         return new AllShopsResource(Merchandiser::paginate(8));
-    }   
+    }
 
 
     public function fetchShopsProduct(Merchandiser $shops)
@@ -129,7 +129,7 @@ class ProductsController extends Controller
 
     public function campusProduct(Campus $campus)
     {
-       
+
         $categories = Category::all();
 
         $finalProductList = collect();
@@ -150,22 +150,22 @@ class ProductsController extends Controller
                     {
                         if($product->user)
                         {
-                            if($product->user->campus_id == $campus->id){                              
-        
+                            if($product->user->campus_id == $campus->id){
+
                                 $productList->add(new CategoryProductResource($product));
 
                                 $product_count = $product_count + 1;
                             }
-                    
+
                         }else if($product->merchandiser){
-        
+
                             if($product->merchandiser->campus_id == $campus->id){
 
                                 $productList->add(new CategoryProductResource($product));
 
                                 $product_count = $product_count + 1;
                             }
-        
+
                         }
                     }
 
@@ -173,9 +173,9 @@ class ProductsController extends Controller
 
                 if($productList->count() > 0)
                 {
-                    $finalProductList->add([$category->category => $productList]);    
+                    $finalProductList->add([$category->category => $productList]);
                 }
-                
+
             }
         }
 
