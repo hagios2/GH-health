@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\ShopType; 
+use App\ShopType;
 
 class ShopTypeTableSeeder extends Seeder
 {
@@ -32,7 +32,7 @@ class ShopTypeTableSeeder extends Seeder
 
         ShopType::create([
 
-            'shop_type' => 'None-student shop',
+            'shop_type' => 'Non-student shop',
 
         ]);
     }
