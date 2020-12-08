@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\ShopReview;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class MerchandiserResource extends JsonResource
@@ -14,6 +15,8 @@ class MerchandiserResource extends JsonResource
      */
     public function toArray($request)
     {
+        $avg_rating = ShopReview::where('merchandiser_id', $this->id)->avg('rating');
+
         return [
 
             'id' => $this->id,
@@ -33,6 +36,10 @@ class MerchandiserResource extends JsonResource
             'campus' => $this->campus->campus,
 
             'phone' => $this->phone,
+
+            'valid_id' => $this->valid_id,
+
+            'avg_rating' => $avg_rating,
 
             'no_followers' => $this->followers->count()
         ];
