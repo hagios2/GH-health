@@ -15,7 +15,7 @@ class AllShopsResource extends ResourceCollection
     public function toArray($request)
     {
         return $this->collection->map(function($shop){
-        
+
             return  [
 
                 'id' => $shop->id,
@@ -27,6 +27,10 @@ class AllShopsResource extends ResourceCollection
                 'avatar' => $shop->avatar,
 
                 'number_of_followers' => $shop->followers->count(),
+
+                'valid_id' => $shop->valid_id,
+
+                'cover_phone' => $shop->cover_photo,
 
                 'campus' => [
 
