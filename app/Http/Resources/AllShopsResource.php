@@ -30,7 +30,7 @@ class AllShopsResource extends ResourceCollection
 
                 'valid_id' => $shop->valid_id,
 
-                'cover_phone' => $shop->cover_photo,
+                'cover_photo' => $shop->cover_photo,
 
                 'campus' => [
 
