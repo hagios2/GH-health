@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Campus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NewAdminRequest;
 use Illuminate\Http\Request;
@@ -242,6 +243,14 @@ class AdminsController extends Controller
         auth()->guard('admin')->user()->update($request->validated());
 
         return response()->json(['message' => 'updated']);
+    }
+
+
+    public function createCampus(Request $request)
+    {
+        Campus::create($request->validate(['campus' => 'required|string']));
+
+        return response()->json(['message' => '']);
     }
 
 }

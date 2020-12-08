@@ -158,6 +158,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('/', 'AuthController@getAuthUser');
 
+    Route::post('create/campus', 'AdminsController@createCampus');
+
     Route::post('add-new-admin', 'NewAdminsController@newAdmin');
 
     Route::post('change-password', 'NewAdminsController@changePassword');
