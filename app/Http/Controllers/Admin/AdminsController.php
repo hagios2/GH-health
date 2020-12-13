@@ -10,7 +10,6 @@ use App\Merchandiser;
 use App\User;
 use App\Http\Resources\AdminViewShopResource;
 use App\Http\Resources\AdminViewUsersResource;
-use App\Http\Resources\ShopReviewResource;
 use App\Http\Resources\DetailedProductResource;
 use App\Http\Resources\MerchandiserResource;
 use App\Http\Resources\ViewAdminsResource;
@@ -20,7 +19,6 @@ use App\ShopReport;
 use App\ProductReport;
 use App\Product;
 use App\Admin;
-use App\Http\Resources\ProductReviewResource;
 use App\Http\Resources\AdminViewShopReviewsResource;
 use App\Http\Resources\AdminViewProductReviewsResource;
 use App\Http\Resources\AdminViewShopReport;
@@ -91,6 +89,7 @@ class AdminsController extends Controller
     {
         return new MerchandiserResource($shop);
     }
+
 
     public function productDetails(Product $product)
     {
@@ -218,8 +217,6 @@ class AdminsController extends Controller
 
         return AdminViewShopReport::collection($report);
     }
-
-
 
     public function getProductReport()
     {

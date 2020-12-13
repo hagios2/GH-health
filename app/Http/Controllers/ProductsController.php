@@ -29,7 +29,7 @@ class ProductsController extends Controller
     public function getCategories()
     {
 
-        return CategoryResource::collection(Category::orderBy('id', 'asc')->get('id', 'category'));
+        return CategoryResource::collection(Category::orderBy('id', 'asc')->get(['id', 'category']));
 
     }
 
