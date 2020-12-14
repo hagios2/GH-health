@@ -44,14 +44,14 @@ class SellersController extends Controller
 
             $shopType = $shop->shopType;
 
-            if($shopType->shop_type === 'Mini Shop' && (int) $shopType->max_no_of_product === 50)
+            if($shop->product->count() === $shopType->max_no_of_product)
             {
                 return response()->json(['message' => 'max product reached']);
             }
-            else if($shopType->shop_type === 'Max Shop' && (int) $shopType->max_no_of_product === 100)
-            {
-                return response()->json(['message' => 'max product reached']);
-            }
+//            else if($shopType->shop_type === 'Max Shop' && (int) $shopType->max_no_of_product === 100)
+//            {
+//                return response()->json(['message' => 'max product reached']);
+//            }
 
             $product['merchandiser_id'] = $shop->id;
 
