@@ -55,7 +55,7 @@ Route::get('categories', 'ProductsController@getCategories');
 
 Route::get('category/{category}/products', 'ProductsController@getCategorysProduct');
 
-Route::get('product/{product}/details', 'ProductsController@getProductDetails');
+Route::get('product/{product}/details', 'ProductsController@getProductDetails')->name('product.details');
 
 Route::get('/{category}/product-index', 'ProductsController@index');
 
@@ -184,7 +184,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::post('unblock/{shop}/merchandiser', 'AdminsController@unBlockShop');
 
-    Route::get('get-shop/{shop}/details', 'AdminsController@shopDetails');
+    Route::get('get-shop/{shop}/details', 'AdminsController@shopDetails')->name('shop.details');
 
     Route::delete('shop/{shop}/delete', 'AdminsController@deleteShop');
 
@@ -212,6 +212,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::delete('campus-carousel/{carouselImage}/delete', 'CarouselController@deleteCarouselImage');
 
 });
+
+Route::get('search/item', 'SearchController@search');
 
 
 #------------------------ Payment Integration --------------------------------------
