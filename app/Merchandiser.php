@@ -95,4 +95,15 @@ class Merchandiser extends Authenticatable implements JWTSubject, Searchable
         return $this->hasMany('App\ShopReview');
     }
 
+
+    public function sellersBillingDetail()
+    {
+        return $this->hasOne(BillingDetail::class);
+    }
+
+    public function addSellersBillingDetail($billing_detail)
+    {
+        return $this->sellersBillingDetail()->create($billing_detail);
+    }
+
 }

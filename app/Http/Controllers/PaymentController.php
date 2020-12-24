@@ -6,18 +6,19 @@ use Illuminate\Http\Request;
 use App\Transaction;
 use App\Cart;
 use App\Http\Requests\PaymentRequest;
+use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:api')->except('callback');
     }
 
-    public function callback()
+    public function callback(Request $request)
     {
      
-          
+        Log::info($request->all());
     }
 
 
@@ -38,8 +39,8 @@ class PaymentController extends Controller
 
     public function encrypt3Des($data, $key)
     {
-      $encData = openssl_encrypt($data, 'DES-EDE3', $key, OPENSSL_RAW_DATA);
-            return base64_encode($encData);
+        $encData = openssl_encrypt($data, 'DES-EDE3', $key, OPENSSL_RAW_DATA);
+        return base64_encode($encData);
     }
 
 
@@ -48,6 +49,19 @@ class PaymentController extends Controller
     { // set up a function to test card payment.
 
         $cart = Cart::find($request->cart_id);
+
+        if(auth()->guard('api')->check())
+        {
+            $user = auth()->guard('api')->user();
+
+            if($user->billingDetail)
+            {
+
+            }
+
+        }else if (auth()->guard('merchandiser')->check()){
+
+        }
 
         $payment_amount = $this->calculatePayment($cart);
         $user = auth()->guard('api')->user();
@@ -71,12 +85,13 @@ class PaymentController extends Controller
         'phonenumber' => $request->phonenumber,
         'IP' => $_SERVER['REMOTE_ADDR'],
         'txRef' => 'MC-' .now(),
+        "redirect_url" => route('callback'),
       );
         
         $request = $this->initiateCard($data);
         
-        if ($request) {
-
+        if ($request) 
+        {
             $result = json_decode($request, true);
 
             if($result['status'] == 'success')
@@ -298,65 +313,16 @@ class PaymentController extends Controller
     }
 
 
-    public function calculatePayment(ScheduledAd $scheduledAd)
-    {
-
-        $subscriptions = $scheduledAd->subscription;
-     
-        $subscription_payable_amount_list = collect();
-        
-        $subscriptions->map(function($subscription) use
-        ($subscription_payable_amount_list) {
-
-          if($subscription->isAPrintSubscription)
-          {
-              
-              $total_amount_without_rollover = $subscription->ratecard->cost;
-
-              $total_amount_with_rollover = ($total_amount_without_rollover * (1 + $subscription->no_of_weeks));
-
-          }else{
-
-            $amountList = collect();
-
-            $subscription->subscriptionDetail->map(function($subscription_detail) use ($amountList) {
-
-                $amount = $subscription_detail->selected_spots*$subscription_detail->duration->rate;
-
-                $amountList->push($amount);
-
-            });
-
-            $total_amount_without_rollover = $amountList->sum();
-
-            $total_amount_with_rollover = ($total_amount_without_rollover * (1 + $subscription->no_of_weeks));
-
-          }
-
-          $subscription_payable_amount_list->push($total_amount_with_rollover
-          );
-
-        });
-
-        return $total_rollover_cost_amount = $subscription_payable_amount_list->sum();
-
-        // $payable_amount_with_tax = (1.125 * $total_rollover_cost_amount);
-
-        // $grand_total = (1.05 * $payable_amount_with_tax); #payable_amount_with_tax_5percent
-
-
-        // return [
-
-        //   'grand_total' => $grand_total,
-
-        //   'total_rollover_cost_amount' => $total_rollover_cost_amount #this is the amount
-        // ];
-
-    }
 
 
     public function storePaymentDetails()
     {
 
     }
+
+    public function createBillingDetail($model, $billing_detail, $user = true)
+    {
+        return $model->addbillingDetail($billing_detail);
+    }
 }
+
