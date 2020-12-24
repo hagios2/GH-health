@@ -20,8 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/martek.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/martek.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SellersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SellersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +130,7 @@
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-searchable" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kL9zcwuHYBfthWUusyB8sUQqWU" />
@@ -168,7 +173,9 @@
       <workItem from="1607315251512" duration="308000" />
       <workItem from="1607404689724" duration="5318000" />
       <workItem from="1607433643476" duration="245000" />
-      <workItem from="1607856339707" duration="3198000" />
+      <workItem from="1607856339707" duration="4197000" />
+      <workItem from="1607942659471" duration="943000" />
+      <workItem from="1608565019232" duration="728000" />
     </task>
     <servers />
   </component>
