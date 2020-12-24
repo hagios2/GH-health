@@ -12,8 +12,8 @@ class Product extends Model implements Searchable
 
     public function getSearchResult(): SearchResult
     {
-       $url = route('product.details', $this->slug);
-    
+       $url = route('product.details', $this->id);
+
         return new SearchResult(
            $this,
            $this->product_name,
@@ -31,7 +31,7 @@ class Product extends Model implements Searchable
     public function addProductImage($image)
     {
         $this->image()->create($image);
-    } 
+    }
 
 
     public function category()
@@ -58,7 +58,7 @@ class Product extends Model implements Searchable
         return $this->hasMany('App\ProductReview');
     }
 
-    
+
     public function productReport()
     {
         return $this->hasMany('App\ProductReport');

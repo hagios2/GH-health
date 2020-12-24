@@ -68,7 +68,7 @@ class ProductsController extends Controller
         }); */
 
 
-        return new ProductResource(Product::where('category_id', $category->id)->latest()->take(4)->get());
+        return new ProductResource(Product::where('category_id', $category->id)->latest()->take(6)->get());
 
 
     }
