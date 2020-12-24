@@ -3,10 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Product extends Model
+class Product extends Model implements Searchable
 {
     protected $guarded = ['id'];
+
+    public function getSearchResult(): SearchResult
+    {
+       $url = route('product.details', $this->slug);
+    
+        return new SearchResult(
+           $this,
+           $this->product_name,
+           $url
+        );
+    }
 
 
     public function image()

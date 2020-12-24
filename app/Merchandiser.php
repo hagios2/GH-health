@@ -6,9 +6,11 @@ namespace App;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Merchandiser extends Authenticatable implements JWTSubject
+class Merchandiser extends Authenticatable implements JWTSubject, Searchable
 {
     use Notifiable;
 
@@ -38,6 +40,18 @@ class Merchandiser extends Authenticatable implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getSearchResult(): SearchResult
+    {
+       $url = route('shop.details
+       ', $this->slug);
+    
+        return new SearchResult(
+           $this,
+           $this->product_name,
+           $url
+        );
+    }
 
 
     public function getJWTIdentifier()
