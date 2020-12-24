@@ -223,7 +223,7 @@ Route::get('search/item', 'SearchController@search');
 
 // Route::post('/make-momo-payment', 'RaveController@payviamobilemoneygh')->name('momo.pay');
 
-// Route::post('/rave-payment/callback', 'RaveController@callback')->name('callback');
+Route::post('/rave-payment/callback', 'PaymentController@callback')->name('callback');
 
 #------------------------ End of Payment Integration --------------------------------------
 
