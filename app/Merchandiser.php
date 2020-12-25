@@ -43,12 +43,11 @@ class Merchandiser extends Authenticatable implements JWTSubject, Searchable
 
     public function getSearchResult(): SearchResult
     {
-       $url = route('shop.details
-       ', $this->slug);
-    
+       $url = route('shop.details', $this->id);
+
         return new SearchResult(
            $this,
-           $this->product_name,
+           $this->company_name,
            $url
         );
     }

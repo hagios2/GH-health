@@ -17,7 +17,7 @@ class PaymentController extends Controller
 
     public function callback(Request $request)
     {
-     
+
         Log::info($request->all());
     }
 
@@ -56,21 +56,35 @@ class PaymentController extends Controller
 
             if($user->billingDetail)
             {
+                $billing_address = $user->billingAddress;
 
+            }else{
+
+                $billing_address = $this->createBillingDetail($user);
             }
 
         }else if (auth()->guard('merchandiser')->check()){
 
+            $merchandiser = auth()->guard('merchandiser')->user();
+
+            if($merchandiser->billingDetail)
+            {
+                $billing_address = $merchandiser->billingAddress;
+
+            }else{
+
+                $billing_address = $this->createBillingDetail($merchandiser);
+            }
         }
 
         $payment_amount = $this->calculatePayment($cart);
         $user = auth()->guard('api')->user();
 
-        $email = $user->email; 
-   
+        $email = $user->email;
+
         error_reporting(E_ALL);
         ini_set('display_errors',1);
-        
+
         $data = array('PBFPubKey' => env('RAVE_PUBLIC_KEY'),
         'cardno' => $request->cardno,
         'currency' => $request->currency,
@@ -87,10 +101,10 @@ class PaymentController extends Controller
         'txRef' => 'MC-' .now(),
         "redirect_url" => route('callback'),
       );
-        
+
         $request = $this->initiateCard($data);
-        
-        if ($request) 
+
+        if ($request)
         {
             $result = json_decode($request, true);
 
@@ -98,7 +112,7 @@ class PaymentController extends Controller
             {
                 if(array_key_exists('suggested_auth', $result['data']))
                 {
-                  
+
                     if($result['data']['suggested_auth'] == 'NOAUTH_INTERNATIONAL' || $result['data']['suggested_auth'] == 'AVS_VBVSECURECODE')
                     {
 
@@ -130,33 +144,33 @@ class PaymentController extends Controller
                 $cart->update(['payment_status' => 'paid']);
 
                 return response()->json(['
-                
-                    status' => 'success', 
-                    
+
+                    status' => 'success',
+
                     'authurl' => $result['data']['authurl'],
-                    
+
                     'chargeResponseMessage' => $result['data']['chargeResponseMessage'],
-                  
+
                     'redirect_url' => route('callback')
                 ]);
             }
-            
+
         }else{
 
            return response()->json(['status' => 'Payment failed']);
         }
-        
+
 
     }
 
     public function encryptKeys($data)
     {
         $SecKey = env('RAVE_SECRET_KEY');
-          
-        $key = $this->getKey($SecKey); 
-        
+
+        $key = $this->getKey($SecKey);
+
         $dataReq = json_encode($data);
-        
+
         $post_enc = $this->encrypt3Des( $dataReq, $key );
 
         $postdata = array(
@@ -165,7 +179,7 @@ class PaymentController extends Controller
           'alg' => '3DES-24');
 
         return $postdata;
-      
+
     }
 
     public function initiateCard($data)
@@ -173,22 +187,22 @@ class PaymentController extends Controller
         $postdata = $this->encryptKeys($data);
 
         $ch = curl_init();
-          
+
         curl_setopt($ch, CURLOPT_URL, "https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/charge");
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postdata)); //Post Fields
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 200);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 200); 
+        curl_setopt($ch, CURLOPT_TIMEOUT, 200);
 
         $headers = array('Content-Type: application/json');
-          
+
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        
+
         $request = curl_exec($ch);
 
         curl_close($ch);
-        
+
         return $request;
     }
 
@@ -203,16 +217,16 @@ class PaymentController extends Controller
       {
         $email = $user->company->company_email;
         $client['client_company_id'] = $user->company->id;
-      
+
       }else{
 
-        $email = $user->email; 
+        $email = $user->email;
         $client['client_id'] = $user->id;
       }
-        
+
         error_reporting(E_ALL);
         ini_set('display_errors',1);
-        
+
         $data = array('PBFPubKey' => env('RAVE_PUBLIC_KEY'),
         'currency' => 'GHS',
         'country' => 'GH',
@@ -227,7 +241,7 @@ class PaymentController extends Controller
         'txRef' => 'MC-' .now(),
         'orderRef' => 'MXX-'.now(),
         'is_mobile_money_gh' => 1,
-        
+
       );
 
         $request = $this->initiateCard($data);
@@ -249,16 +263,16 @@ class PaymentController extends Controller
         $cart->update(['payment_status' => 'paid']);
 
         return response()->json([
-          
-            'status' => 'success', 
-            
+
+            'status' => 'success',
+
             'authurl' => $result['data']['link'],
-            
+
             'payment_status' => $result['data']['status'],
-          /* 
+          /*
             'redirect_url' => route('callback') */
         ]);
-  
+
 
     }
 
@@ -268,7 +282,7 @@ class PaymentController extends Controller
 
         $result = array();
 
-        $postdata =  array( 
+        $postdata =  array(
           'txref' => $txref,
           'SECKEY' =>  env('RAVE_SECRET_KEY')
           );

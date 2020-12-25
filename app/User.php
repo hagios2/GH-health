@@ -71,7 +71,7 @@ class User extends Authenticatable implements JWTSubject
 
 
 
-    
+
 
     public function campus()
     {
@@ -92,7 +92,7 @@ class User extends Authenticatable implements JWTSubject
         if($existing_cart)
         {
             $existing_cart->update(['cart' => $cart]);
-        
+
         }else{
 
             $this->cart()->create(['cart' => $cart]);
@@ -158,6 +158,17 @@ class User extends Authenticatable implements JWTSubject
     public function addProductReport($report)
     {
         $this->productReport()->create($report);
+    }
+
+
+    public function sellersBillingDetail()
+    {
+        return $this->hasOne(BillingDetail::class);
+    }
+
+    public function addSellersBillingDetail($billing_detail)
+    {
+        return $this->sellersBillingDetail()->create($billing_detail);
     }
 
 }
