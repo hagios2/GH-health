@@ -17,10 +17,10 @@ class UserSellerPaymentController extends Controller
     {
         $product = Product::find($request->product_id);
 
-        if($product->)
-        {
-
-        }
+//        if($product->)
+//        {
+//
+//        }
 
     }
 }

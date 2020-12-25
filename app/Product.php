@@ -17,7 +17,9 @@ class Product extends Model implements Searchable
         return new SearchResult(
            $this,
            $this->product_name,
-           json_encode(['product_image' => ProductImage::query()->where('product_id', $this->id)->latest()->get()]),
+           json_encode(['
+                product_images' => ProductImage::query()->where('product_id', $this->id)->latest()->get()
+           ]),
            $url
         );
     }
