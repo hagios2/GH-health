@@ -14,21 +14,18 @@ class ShopTypeTableSeeder extends Seeder
     public function run()
     {
         ShopType::create([
-
             'shop_type' => 'Mini Shop',
             'max_no_of_product' => 50,
             'amount' => 20.00
         ]);
 
         ShopType::create([
-
             'shop_type' => 'Max Shop',
             'max_no_of_product' => 100,
             'amount' => 20.00
         ]);
 
         ShopType::create([
-
             'shop_type' => 'Non-student shop',
             'amount' => 20.00
         ]);

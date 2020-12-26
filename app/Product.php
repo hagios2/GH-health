@@ -69,5 +69,16 @@ class Product extends Model implements Searchable
         return $this->hasMany('App\ProductReport');
     }
 
+    public function paidProduct()
+    {
+        return $this->hasOne(PaidProduct::class);
+    }
+
+
+    public function addPaidProduct($paid_product)
+    {
+        $this->paidProduct()->create($paid_product);
+    }
+
 
 }
