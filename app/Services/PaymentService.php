@@ -63,6 +63,8 @@ class PaymentService
         {
             $result = json_decode($request, true);
 
+            return $result;
+
             if($result['status'] == 'success')
             {
                 if(array_key_exists('suggested_auth', $result['data']))
