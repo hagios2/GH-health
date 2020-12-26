@@ -20,17 +20,16 @@ class Merchandiser extends Authenticatable implements JWTSubject, Searchable
 
         $avg_rating = ShopReview::where('merchandiser_id', $this->id)->avg('rating');
         $data = [
+            $this,
             'avg_rating' =>$avg_rating,
             'campus' => $this->campus,
             'no_of_followers' => $this->followers->count()
         ];
 
         return new SearchResult(
-            $this,
+            $data,
             $this->company_name,
-            $url,
-            json_encode($data)
-
+            $url
         );
     }
 
