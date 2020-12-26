@@ -14,6 +14,30 @@ class Merchandiser extends Authenticatable implements JWTSubject, Searchable
 {
     use Notifiable;
 
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('shop.details', $this->id);
+
+        $avg_rating = ShopReview::where('merchandiser_id', $this->id)->avg('rating');
+
+        return new SearchResult(
+            $this,
+            $this->company_name,
+            $url,
+            json_encode([
+                'campus' => $this->campus,
+            ]),
+            json_encode([
+                'avg_rating' =>$avg_rating,
+            ]),
+            json_encode([
+                'no_of_followers' => $this->followers->count(),
+            ]),
+
+        );
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *
@@ -40,25 +64,6 @@ class Merchandiser extends Authenticatable implements JWTSubject, Searchable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function getSearchResult(): SearchResult
-    {
-       $url = route('shop.details', $this->id);
-
-        $avg_rating = ShopReview::where('merchandiser_id', $this->id)->avg('rating');
-
-        return new SearchResult(
-           $this,
-           $this->company_name,
-            $url,
-           json_encode([
-               'campus' => $this->campus,
-               'avg_rating' =>$avg_rating,
-               'no_of_followers' => $this->followers->count(),
-           ])
-        );
-    }
-
 
     public function getJWTIdentifier()
     {
