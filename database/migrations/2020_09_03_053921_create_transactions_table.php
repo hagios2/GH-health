@@ -20,8 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->string('currency')->default('GHC');
             $table->decimal('grand_total', 10, 2);
             $table->integer('paid_product_id');
-            $table->string('tx');
-            $table->string('currency');
+            $table->string('txRef');
             $table->timestamps();
         });
     }
