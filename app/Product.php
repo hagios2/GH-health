@@ -19,7 +19,6 @@ class Product extends Model implements Searchable
             'avg_rating' => $this->review->avg('rating')
         ];
 
-
         return new SearchResult(
             $this,
             json_encode($data),
