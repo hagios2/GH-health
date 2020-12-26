@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserSellerRequest;
 use App\PaidProduct;
 use App\Product;
 use App\Services\PaymentService;
@@ -15,7 +16,7 @@ class UserSellerPaymentController extends Controller
         $this->middleware('auth:api')->except('callback');
     }
 
-    public function payment(Request $request)
+    public function payment(UserSellerRequest $request)
     {
         $user = auth()->guard('api')->user();
 
