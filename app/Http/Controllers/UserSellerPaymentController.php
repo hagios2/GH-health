@@ -33,7 +33,6 @@ class UserSellerPaymentController extends Controller
                     'billingcity' => $request->billingcity,
                     'billingaddress' => $request->billingaddress,
                     'billingstate' => $request->billingstate,
-                    'billingcountry' => $request->billingcountry ?? 'Ghana'
                 ]);
             } else {
                     $user->sellersBillingDetail->update([
@@ -45,7 +44,6 @@ class UserSellerPaymentController extends Controller
                     'billingcity' => $request->billingcity,
                     'billingaddress' => $request->billingaddress,
                     'billingstate' => $request->billingstate,
-                    'billingcountry' => $request->billingcountry ?? 'Ghana'
                 ]);
 
                 $billing_details = $user->sellersBillingDetail;
