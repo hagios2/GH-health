@@ -67,7 +67,6 @@ class PaymentService
             {
                 if(array_key_exists('suggested_auth', $result['data']))
                 {
-
                     if($result['data']['suggested_auth'] == 'NOAUTH_INTERNATIONAL' || $result['data']['suggested_auth'] == 'AVS_VBVSECURECODE') {
 
                         $data['suggested_auth'] = "NOAUTH_INTERNATIONAL";
