@@ -26,7 +26,7 @@ class UserSellerRequest extends FormRequest
         if(request()->payment_method == 'card_payment')
         {
             return [
-                'cardno' => 'reqiured|numeric|min:16',
+                'cardno' => 'required|numeric|min:16',
                 'expirymonth' => 'required|numeric',
                 'expiryyear' => 'required|numeric',
                 'cvv' => 'required|numeric',
@@ -35,12 +35,17 @@ class UserSellerRequest extends FormRequest
                 'billingaddress' => 'required|string',
                 'billingstate' => 'required|string',
                 'billingcountry' => 'required|string',
+                'firstname' => 'required|string',
+                'lastname' => 'required|string',
+                'phonenumber' => 'required|string',
+                'payment_method' => 'required|string',
+                'email' => 'required|string',
             ];
 
         }elseif (request()->payment_method == 'momo'){
 
             return [
-                'cardno' => 'reqiured|numeric|min:16',
+                'cardno' => 'required|numeric|min:16',
                 'expirymonth' => 'required|numeric',
                 'expiryyear' => 'required|numeric',
                 'cvv' => 'required|numeric',
@@ -49,6 +54,11 @@ class UserSellerRequest extends FormRequest
                 'billingaddress' => 'required|string',
                 'billingstate' => 'required|string',
                 'billingcountry' => 'required|string',
+                'firstname' => 'required|string',
+                'lastname' => 'required|string',
+                'phonenumber' => 'required|string',
+                'payment_method' => 'required|string',
+                'email' => 'required|string',
             ];
         }else{
 
