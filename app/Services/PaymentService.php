@@ -54,7 +54,7 @@ class PaymentService
             'phonenumber' => $billing_details['phonenumber'],
             'IP' => $_SERVER['REMOTE_ADDR'],
             'txRef' => $txref,
-            "redirect_url" => route('callback'),
+            "redirect_url" => $billing_details['callback']
         );
 
         $request = $this->initiateCard($data);

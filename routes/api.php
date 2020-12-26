@@ -220,9 +220,11 @@ Route::get('search/item', 'SearchController@search');
 
 Route::post('/user/product/payment', 'UserSellerPaymentController@payment')->name('user.seller.pay');
 
+Route::get('/user/product/payment/callback', 'UserSellerPaymentController@callback')->name('user.seller.callback');
+
 Route::post('/shop/payment', 'PaymentController@payviamobilemoneygh')->name('merchandiser.pay');
 
-Route::post('/rave-payment/callback', 'PaymentController@callback')->name('callback');
+Route::get('/shop/payment/callback', 'PaymentController@callback')->name('shop.payment.callback');
 
 #------------------------ End of Payment Integration --------------------------------------
 

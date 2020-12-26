@@ -55,6 +55,7 @@ class UserSellerPaymentController extends Controller
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'phonenumber' => $request->phonenumber,
+                'callback' => route('user.seller.callback'),
             ]);
 
             $payment_response = (new PaymentService)->payviacard($payment_details);
