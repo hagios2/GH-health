@@ -66,7 +66,7 @@ class UserSellerPaymentController extends Controller
 
                 $user->addPayment([
                     'billing_detail_id' => $billing_details->id,
-                    'amount' => $user->shopType->amount,
+                    'amount' => $paid_product->amount,
                     'email' => $request->email ?? $user->email,
                     'firstname' => $request->firstname,
                     'lastname' => $request->lastname,
