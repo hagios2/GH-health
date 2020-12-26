@@ -14,14 +14,16 @@ class Product extends Model implements Searchable
     {
        $url = route('product.details', $this->id);
 
+        $data = [
+            'product_images' => $this->image,
+            'avg_rating' => $this->review->avg('rating')
+        ];
+
+
         return new SearchResult(
-           $this,
-           $this->product_name,
-            $url,
-           json_encode([
-               'product_images' => $this->image,
-               'avg_rating' => $this->review->avg('rating')
-           ])
+            $this,
+            json_encode($data),
+            $url
         );
     }
 
