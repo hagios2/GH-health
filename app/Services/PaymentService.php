@@ -88,7 +88,7 @@ class PaymentService
                     'status' => 'success',
                     'authurl' => $result['data']['authurl'],
                     'chargeResponseMessage' => $result['data']['chargeResponseMessage'],
-                    'redirect_url' => route('callback'),
+                    'redirect_url' => $billing_details['callback'],
                     'txref' => $txref
                 ];
             }
