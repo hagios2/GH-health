@@ -20,15 +20,12 @@ class ShopTypeTableSeeder extends Seeder
             'amount' => 20.00
         ]);
 
-
-
         ShopType::create([
 
             'shop_type' => 'Max Shop',
             'max_no_of_product' => 100,
             'amount' => 20.00
         ]);
-
 
         ShopType::create([
 
