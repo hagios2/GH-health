@@ -19,7 +19,7 @@ class CreateMerchandiserPaymentsTable extends Migration
             $table->integer('billing_detail_id')->nullable();
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('lastname');
+            $table->string('email');
             $table->string('phonenumber');
             $table->string('vendor')->nullable();
             $table->string('momo_payment')->default(false);
