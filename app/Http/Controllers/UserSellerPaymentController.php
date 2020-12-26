@@ -51,7 +51,7 @@ class UserSellerPaymentController extends Controller
                 $billing_details = $user->sellersBillingDetail;
             }
 
-            return $billing_details = (array)$billing_details;
+            $billing_details = (array)$billing_details;
 
             $payment_details = array_merge($billing_details, [
                 'amount' => $paid_product->amount,
