@@ -15,7 +15,7 @@ class CreateSellersPayments extends Migration
     {
         Schema::create('sellers_payments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('merchandiser_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('billing_detail_id')->nullable();
             $table->string('firstname');
             $table->string('lastname');
