@@ -25,6 +25,7 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserSellerPaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserSellerPaymentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Merchandiser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Merchandiser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_08_115502_create_merchandisers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_08_115502_create_merchandisers_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_11_122623_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_11_122623_create_products_table.php" afterDir="false" />
@@ -194,7 +195,7 @@
       <workItem from="1608873947536" duration="6665000" />
       <workItem from="1608911921266" duration="226000" />
       <workItem from="1608929645351" duration="6317000" />
-      <workItem from="1608954916145" duration="9810000" />
+      <workItem from="1608954916145" duration="11155000" />
     </task>
     <servers />
   </component>
