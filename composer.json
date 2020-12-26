@@ -16,7 +16,8 @@
         "spatie/laravel-searchable": "^1.9",
         "tymon/jwt-auth": "^1.0",
         "ext-json": "*",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "ext-openssl": "*"
 
     },
     "require-dev": {
