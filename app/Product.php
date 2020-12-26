@@ -17,10 +17,10 @@ class Product extends Model implements Searchable
         return new SearchResult(
            $this,
            $this->product_name,
+            $url,
            json_encode(['
                 product_images' => $this->image,
-           ]),
-           $url
+           ])
         );
     }
 

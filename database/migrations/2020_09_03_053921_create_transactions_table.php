@@ -17,8 +17,11 @@ class CreateTransactionsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('invoice_id');
             $table->string('transaction_status');
-            $table->string('currency');
+            $table->string('currency')->default('GHC');
             $table->decimal('grand_total', 10, 2);
+            $table->integer('paid_product_id');
+            $table->string('tx');
+            $table->string('currency');
             $table->timestamps();
         });
     }

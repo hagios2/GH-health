@@ -21,7 +21,7 @@ class CreateBillingDetailsTable extends Migration
             $table->string('expirymonth');
             $table->string('expiryyear');
             $table->string('country')->default('GH');
-            $table->string('currency');
+            $table->string('currency')->default('GHC');
             $table->string('cvv');
             $table->string('billingzip')->nullable();
             $table->string('billingcity')->nullable();

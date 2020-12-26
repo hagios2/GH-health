@@ -18,6 +18,7 @@ class CreatePaidProductsTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->string('status')->default('pending');
             $table->integer('product_payment_id')->unsigned()->nullable();
+            $table->decimal('amount', 10, 2);
             $table->timestamps();
         });
     }

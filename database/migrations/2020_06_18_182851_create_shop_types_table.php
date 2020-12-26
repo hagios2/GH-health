@@ -17,6 +17,7 @@ class CreateShopTypesTable extends Migration
             $table->bigIncrements('id');
             $table->string('shop_type')->unique();
             $table->integer('max_no_of_product')->unsigned()->nullable();
+            $table->decimal('amount', 10, 2);
             $table->timestamps();
         });
     }

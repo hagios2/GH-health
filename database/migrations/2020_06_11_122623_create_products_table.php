@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('in_stock')->unsiged();
             $table->decimal('price', 10, 2);
             $table->text('description')->nullable();
+            $table->string('payment_status')->nullable();
             $table->timestamps();
         });
     }
