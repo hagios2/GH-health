@@ -53,7 +53,6 @@ class UserSellerRequest extends FormRequest
                 'billingcity' => 'required|string',
                 'billingaddress' => 'required|string',
                 'billingstate' => 'required|string',
-                'billingcountry' => 'required|string',
                 'firstname' => 'required|string',
                 'lastname' => 'required|string',
                 'phonenumber' => 'required|string',
