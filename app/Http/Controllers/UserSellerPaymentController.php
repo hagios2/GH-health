@@ -66,6 +66,18 @@ class UserSellerPaymentController extends Controller
 
             } else {
 
+                $user->addPayment([
+                    'billing_detail_id' => $billing_details->id,
+                    'amount' => $user->shopType->amount,
+                    'email' => $request->email ?? $user->email,
+                    'firstname' => $request->firstname,
+                    'lastname' => $request->lastname,
+                    'phonenumber' => $request->phonenumber,
+                    'txRef' => $payment_response['txref'],
+                    'device_ip' => $_SERVER['REMOTE_ADDR'],
+                ]);
+
+
                 return response()->json($payment_response);
             }
 

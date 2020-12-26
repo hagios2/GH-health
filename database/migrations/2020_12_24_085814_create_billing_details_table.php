@@ -27,7 +27,7 @@ class CreateBillingDetailsTable extends Migration
             $table->string('billingcity')->nullable();
             $table->string('billingaddress')->nullable();
             $table->string('billingstate')->nullable();
-            $table->string('billingcountry')->nullable();
+            $table->string('billingcountry')->default('GH');
             $table->timestamps();
         });
     }

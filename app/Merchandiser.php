@@ -112,4 +112,17 @@ class Merchandiser extends Authenticatable implements JWTSubject, Searchable
         return $this->sellersBillingDetail()->create($billing_detail);
     }
 
+    public function payment()
+    {
+        return $this->belongsTo(Merchandiser::class);
+    }
+
+
+    public function addPayment($payment)
+    {
+        $this->payment()->create($payment);
+    }
+
+
+
 }
