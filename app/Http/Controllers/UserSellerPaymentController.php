@@ -59,6 +59,8 @@ class UserSellerPaymentController extends Controller
                 'phonenumber' => $request->phonenumber,
             ]);
 
+            return $payment_details;
+
             $payment_response = (new PaymentService)->payviacard($payment_details);
 
             if (gettype($payment_response) == 'string') {
