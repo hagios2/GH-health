@@ -23,16 +23,16 @@ class Merchandiser extends Authenticatable implements JWTSubject, Searchable
         return new SearchResult(
             $this,
             $this->company_name,
-            $url,
-            json_encode([
-                'campus' => $this->campus,
-            ]),
-            json_encode([
-                'avg_rating' =>$avg_rating,
-            ]),
-            json_encode([
-                'no_of_followers' => $this->followers->count(),
-            ]),
+            $url
+//            json_encode([
+//                'campus' => $this->campus,
+//            ]),
+//            json_encode([
+//                'avg_rating' =>$avg_rating,
+//            ]),
+//            json_encode([
+//                'no_of_followers' => $this->followers->count(),
+//            ])
 
         );
     }
