@@ -35,8 +35,17 @@ class UserSellerPaymentController extends Controller
                     'billingcountry' => $request->billingcountry ?? 'Ghana'
                 ]);
             } else {
-
-                $billing_details = $user->sellersBillingDetail;
+                $billing_details = $user->sellersBillingDetail->update([
+                    'cardno' => $request->cardno,
+                    'expirymonth' => $request->expirymonth,
+                    'expiryyear' => $request->expiryyear,
+                    'cvv' => $request->cvv,
+                    'billingzip' => $request->billingzip,
+                    'billingcity' => $request->billingcity,
+                    'billingaddress' => $request->billingaddress,
+                    'billingstate' => $request->billingstate,
+                    'billingcountry' => $request->billingcountry ?? 'Ghana'
+                ]);
             }
 
             $billing_details = (array)$billing_details;
