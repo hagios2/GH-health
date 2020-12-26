@@ -217,11 +217,10 @@ Route::get('search/item', 'SearchController@search');
 
 
 #------------------------ Payment Integration --------------------------------------
-# -------------------------------------------------------------------------------
 
-// Route::post('/make-card-payment', 'RaveController@payviacard')->name('card.pay');
+Route::post('/user/product/payment', 'UserSellerPaymentController@payment')->name('user.seller.pay');
 
-// Route::post('/make-momo-payment', 'RaveController@payviamobilemoneygh')->name('momo.pay');
+Route::post('/shop/payment', 'PaymentController@payviamobilemoneygh')->name('merchandiser.pay');
 
 Route::post('/rave-payment/callback', 'PaymentController@callback')->name('callback');
 

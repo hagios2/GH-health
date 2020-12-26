@@ -15,42 +15,6 @@ class UserSellerPaymentController extends Controller
         $this->middleware('auth:api')->except('callback');
     }
 
-
-    public function payingProduct(Request $request)
-    {
-        $product = Product::find($request->product_id);
-
-        $price = (double) $product->price;
-
-        if($price >= 0.10 && $price <= 20.00)
-        {
-            $product->update(['payment_status' => 'free']);
-
-            return response()->json(['message' => 'free product']);
-
-        }elseif($price >= 20.10 && $price <= 1000.00) {
-
-            $product->update(['payment_status' => 'requires payment']);
-
-            $product->addPaidProduct(['amount' => 0.01 * $price]);
-
-        }elseif($price >= 1000.01 && $price <= 3000.00) {
-
-            $product->update(['payment_status' => 'requires payment']);
-
-            $product->addPaidProduct(['amount' => 12.00]);
-
-        }elseif($price >= 3000.01){
-
-            $product->update(['payment_status' => 'requires payment']);
-
-            $product->addPaidProduct(['amount' => 15.00]);
-        }
-
-        return response()->json(['message' => 'free product']);
-    }
-
-
     public function payment(Request $request)
     {
         $user = auth()->guard('api')->user();

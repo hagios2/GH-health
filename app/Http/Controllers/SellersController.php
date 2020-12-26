@@ -61,11 +61,14 @@ class SellersController extends Controller
             }
 
             $product['user_id'] = auth()->guard('api')->id();
-
         }
 
-
         $product_id = $category->addProduct($product);
+
+        if(auth()->guard('api')->user())
+        {
+            $this->payingProduct($product_id);
+        }
 
         return response()->json(['status' => 'success', 'product_id' => $product_id], 200);
     }
@@ -184,4 +187,37 @@ class SellersController extends Controller
         return response()->json(['message' => 'user has no data']);
     }
 
+
+    public function payingProduct($product_id)
+    {
+        $product = Product::find($product_id);
+
+        $price = (double) $product->price;
+
+        if($price >= 0.10 && $price <= 20.00)
+        {
+            $product->update(['payment_status' => 'free']);
+
+            return response()->json(['message' => 'free product']);
+
+        }elseif($price >= 20.10 && $price <= 1000.00) {
+
+            $product->update(['payment_status' => 'requires payment']);
+
+            $product->addPaidProduct(['amount' => 0.01 * $price]);
+
+        }elseif($price >= 1000.01 && $price <= 3000.00) {
+
+            $product->update(['payment_status' => 'requires payment']);
+
+            $product->addPaidProduct(['amount' => 12.00]);
+
+        }elseif($price >= 3000.01){
+
+            $product->update(['payment_status' => 'requires payment']);
+
+            $product->addPaidProduct(['amount' => 15.00]);
+        }
+
+    }
 }
