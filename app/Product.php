@@ -18,8 +18,9 @@ class Product extends Model implements Searchable
            $this,
            $this->product_name,
             $url,
-           json_encode(['
-                product_images' => $this->image,
+           json_encode([
+               'product_images' => $this->image,
+               'avg_rating' => $this->review->avg('rating')
            ])
         );
     }
