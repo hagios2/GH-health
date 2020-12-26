@@ -36,7 +36,7 @@ class UserSellerPaymentController extends Controller
                     'billingcountry' => $request->billingcountry ?? 'Ghana'
                 ]);
             } else {
-                $billing_details = $user->sellersBillingDetail->update([
+                    $user->sellersBillingDetail->update([
                     'cardno' => $request->cardno,
                     'expirymonth' => $request->expirymonth,
                     'expiryyear' => $request->expiryyear,
@@ -47,6 +47,8 @@ class UserSellerPaymentController extends Controller
                     'billingstate' => $request->billingstate,
                     'billingcountry' => $request->billingcountry ?? 'Ghana'
                 ]);
+
+                $billing_details = $user->sellersBillingDetail;
             }
 
             return $billing_details = (array)$billing_details;
