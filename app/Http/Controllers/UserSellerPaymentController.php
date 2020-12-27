@@ -92,6 +92,11 @@ class UserSellerPaymentController extends Controller
                 'vendor' => $request->vendor
             ];
 
+            if($request->vendor === 'vodafone')
+            {
+                $payment_details['voucher'] = $request->voucher;
+            }
+
             $payment_response = (new PaymentService)->payviamobilemoneygh($payment_details);
 
             return $payment_response;
@@ -105,7 +110,11 @@ class UserSellerPaymentController extends Controller
 
         $verified_payment = PaymentService::verifyPayment($request->txref);
 
+        Log::info('logging Verified Payemnt | '. $verified_payment);
+
         $payment = SellersPayment::where('txRef', $request->txref)->first();
+
+        Log::info('logging User Payment data | '. $payment);
 
         if('successful' == $verified_payment){
 

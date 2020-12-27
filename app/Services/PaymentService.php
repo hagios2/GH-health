@@ -155,7 +155,7 @@ class PaymentService
             'currency' => 'GHS',
             'country' => 'GH',
             'payment_type' => 'mobilemoneygh',
-            'amount' => $payment_details['grand_total'],
+            'amount' => $payment_details['amount'],
             'phonenumber' => $payment_details['phonenumber'],
             'firstname' => $payment_details['firstname'],
             'lastname' => $payment_details['lastname'],
