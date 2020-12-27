@@ -228,7 +228,7 @@ class PaymentService
 
         curl_close ($ch);
 
-        $result = json_decode($request, true);
+        $result = json_decode($request, false);
 
         if('error' == $result->status){
             // there was an error from the API
