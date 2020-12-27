@@ -144,12 +144,12 @@ class PaymentService
         return $request;
     }
 
-    public function payviamobilemoneygh($payment_details){ // set up a function to test card payment.
-
-        $user = auth()->guard('client')->user();
+    public function payviamobilemoneygh($payment_details){
 
         error_reporting(E_ALL);
         ini_set('display_errors',1);
+
+        $txref =  'Martek Payment-' .now();
 
         $data = array('PBFPubKey' => env('RAVE_PUBLIC_KEY'),
             'currency' => 'GHS',
@@ -159,46 +159,32 @@ class PaymentService
             'phonenumber' => $payment_details['phonenumber'],
             'firstname' => $payment_details['firstname'],
             'lastname' => $payment_details['lastname'],
-            'network' => $payment_details['vendor'] ?? 'mtn',
+            'network' => $payment_details['vendor'],
             'email' => $payment_details['email'],
             'IP' => $_SERVER['REMOTE_ADDR'],
             'txRef' => 'MC-' .now(),
-            'orderRef' => 'User_Momo_payment-'.now(),
+            'orderRef' => $txref,
             'is_mobile_money_gh' => 1,
         );
 
-        if($data['network'] === 'vodafone')
+        if($data['network'] === 'VODAFONE')
         {
             $data['voucher'] = $payment_details['voucher'];
         }
 
-
         $request = $this->initiateCard($data);
 
-        $result = json_decode($request, true);
+        if($request)
+        {
+            $result = json_decode($request, true);
 
-//        Transaction::create([
-//            'invoice_id' => $cart->invoice->invoice_id,
-//            key($client) => $client[key($client)],
-//            'transaction_status' => $request['data']['status'],
-//            'grand_total_amount' => $payment_amount['grand_total'],
-//            'total_amount_without_charges' => $payment_amount[  'total_rollover_cost_amount'],
-//            'currency' => $data['currency'],
-//            'txRef' => $data['txRef'],
-//            'orderRef' => $data['orderRef'],
-//            'isMomoPayment' => true
-//        ]);
+            $result['txRef'] = $txref;
 
+            return $result;
+        }else{
 
-        return response()->json([
-            'status' => 'success',
-            'authurl' => $result['data']['link'],
-            'payment_status' => $result['data']['status'],
-            /*
-              'redirect_url' => route('callback') */
-        ]);
-
-
+            return $request;
+        }
     }
 
 

@@ -57,6 +57,7 @@ class UserSellerPaymentController extends Controller
                 'lastname' => $request->lastname,
                 'phonenumber' => $request->phonenumber,
                 'callback' => route('user.seller.callback'),
+                'product_id' => $request->product_id
             ]);
 
             $payment_response = (new PaymentService)->payviacard($payment_details);
@@ -76,6 +77,7 @@ class UserSellerPaymentController extends Controller
                     'phonenumber' => $payment_details['phonenumber'],
                     'txRef' => $payment_response['txref'],
                     'device_ip' => $_SERVER['REMOTE_ADDR'],
+                    'product_id' => $payment_details['product_id'],
                 ]);
 
                 return response()->json($payment_response);
@@ -89,15 +91,29 @@ class UserSellerPaymentController extends Controller
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'phonenumber' => $request->phonenumber,
-                'vendor' => $request->vendor
+                'vendor' => $request->vendor,
+                'product_id' => $request->product_id,
             ];
 
-            if($request->vendor === 'vodafone')
+            if($request->vendor === 'VODAFONE')
             {
                 $payment_details['voucher'] = $request->voucher;
             }
 
             $payment_response = (new PaymentService)->payviamobilemoneygh($payment_details);
+
+            SellersPayment::create([
+                'user_id' => $user->id,
+                'amount' => $paid_product->amount,
+                'email' => $payment_details['email'] ,
+                'firstname' => $payment_details['firstname'],
+                'lastname' => $payment_details['lastname'],
+                'phonenumber' => '233'. substr($payment_details['phonenumber'], -9),
+                'txRef' => $payment_response['txref'],
+                'device_ip' => $_SERVER['REMOTE_ADDR'],
+                'product_id' => $payment_details['product_id'],
+                'momo_payment' => true
+            ]);
 
             return $payment_response;
         }
@@ -123,6 +139,10 @@ class UserSellerPaymentController extends Controller
         if('successful' == $verified_payment){
 
             $payment->update(['status' => 'success']);
+
+            $product = Product::find($payment->id);
+
+            $product->update(['payment_status' => 'paid']);
 
         }else{
             $payment->update(['status' => 'failed']);

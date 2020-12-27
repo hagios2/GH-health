@@ -39,6 +39,7 @@ class UserSellerRequest extends FormRequest
                 'phonenumber' => 'required|string',
                 'payment_method' => 'required|string',
                 'email' => 'required|string',
+                'product_id' => 'required|integer'
             ];
 
         }elseif (request()->payment_method == 'momo'){
@@ -50,6 +51,7 @@ class UserSellerRequest extends FormRequest
                 'phonenumber' => 'required|string',
                 'payment_method' => 'required|string',
                 'email' => 'required|string',
+                'product_id' => 'required|integer'
             ];
         }else{
 

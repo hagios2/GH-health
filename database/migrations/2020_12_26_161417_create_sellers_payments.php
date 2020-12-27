@@ -21,6 +21,7 @@ class CreateSellersPayments extends Migration
             $table->string('lastname');
             $table->string('email');
             $table->string('phonenumber');
+            $table->integer('product_id')->unsigned();
             $table->string('vendor')->nullable();
             $table->string('momo_payment')->default(false);
             $table->string('txRef')->unique();
