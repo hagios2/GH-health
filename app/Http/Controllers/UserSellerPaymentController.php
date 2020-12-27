@@ -68,14 +68,13 @@ class UserSellerPaymentController extends Controller
                 auth()->guard('api')->user()->addPayment([
                     'billing_detail_id' => $billing_details->id,
                     'amount' => $paid_product->amount,
-                    'email' => $request->email ?? $user->email,
-                    'firstname' => $request->firstname,
-                    'lastname' => $request->lastname,
-                    'phonenumber' => $request->phonenumber,
+                    'email' => $payment_details['email'] ,
+                    'firstname' => $payment_details['firstname'],
+                    'lastname' => $payment_details['lastname'],
+                    'phonenumber' => $payment_details['phonenumber'],
                     'txRef' => $payment_response['txref'],
                     'device_ip' => $_SERVER['REMOTE_ADDR'],
                 ]);
-
 
                 return response()->json($payment_response);
             }
