@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserSellerRequest;
 use App\PaidProduct;
 use App\Product;
+use App\SellersPayment;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -65,7 +66,8 @@ class UserSellerPaymentController extends Controller
 
             } else {
 
-                auth()->guard('api')->user()->addPayment([
+               SellersPayment::create([
+                    'user_id' => $user->id,
                     'billing_detail_id' => $billing_details->id,
                     'amount' => $paid_product->amount,
                     'email' => $payment_details['email'] ,
