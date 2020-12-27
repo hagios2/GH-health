@@ -108,11 +108,13 @@ class UserSellerPaymentController extends Controller
     {
         Log::info($request->all());
 
-        $verified_payment = PaymentService::verifyPayment($request->txref);
+        $txref = $request->response['txRef'];
+
+        $verified_payment = PaymentService::verifyPayment($txref);
 
         Log::info('logging Verified Payemnt | '. $verified_payment);
 
-        $payment = SellersPayment::where('txRef', $request->txref)->first();
+        $payment = SellersPayment::where('txRef',  $txref)->first();
 
         Log::info('logging User Payment data | '. $payment);
 
