@@ -167,6 +167,12 @@ class PaymentService
             'is_mobile_money_gh' => 1,
         );
 
+        if($data['network'] === 'vodafone')
+        {
+            $data['voucher'] = $payment_details['voucher'];
+        }
+
+
         $request = $this->initiateCard($data);
 
         $result = json_decode($request, true);
