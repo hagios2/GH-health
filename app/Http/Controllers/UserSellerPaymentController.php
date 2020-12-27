@@ -118,7 +118,7 @@ class UserSellerPaymentController extends Controller
                     'firstname' => $payment_details['firstname'],
                     'lastname' => $payment_details['lastname'],
                     'phonenumber' => '233' . substr($payment_details['phonenumber'], -9),
-                    'txRef' => $payment_response['txref'],
+                    'txRef' => $payment_response['txRef'],
                     'device_ip' => $_SERVER['REMOTE_ADDR'],
                     'product_id' => $payment_details['product_id'],
                     'momo_payment' => true

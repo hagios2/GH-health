@@ -162,8 +162,8 @@ class PaymentService
             'network' => $payment_details['vendor'],
             'email' => $payment_details['email'],
             'IP' => $_SERVER['REMOTE_ADDR'],
-            'txRef' => 'MC-' .now(),
-            'orderRef' => $txref,
+            'txRef' => $txref,
+            'orderRef' => 'Martek Payment-' .now(),
             'is_mobile_money_gh' => 1,
         );
 
