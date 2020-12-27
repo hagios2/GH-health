@@ -173,7 +173,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function sellersPayment()
     {
-        return $this->belongsTo(SellersPayment::class);
+        return $this->belongsTo(SellersPayment::class, 'user_id');
     }
 
     public function addPayment($payment)

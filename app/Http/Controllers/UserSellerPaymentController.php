@@ -65,7 +65,7 @@ class UserSellerPaymentController extends Controller
 
             } else {
 
-                $user->addPayment([
+                auth()->guard('api')->user()->addPayment([
                     'billing_detail_id' => $billing_details->id,
                     'amount' => $paid_product->amount,
                     'email' => $request->email ?? $user->email,
