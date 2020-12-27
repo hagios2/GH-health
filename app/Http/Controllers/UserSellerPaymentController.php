@@ -104,6 +104,16 @@ class UserSellerPaymentController extends Controller
         Log::info($request->all());
 
         $verified_payment = PaymentService::verifyPayment($request->txref);
+
+        $payment = SellersPayment::where('txRef', $request->txref)->first();
+
+        if('successful' == $verified_payment){
+
+            $payment->update(['status' => 'success']);
+
+        }else{
+            $payment->update(['status' => 'failed']);
+        }
     }
 
 }
