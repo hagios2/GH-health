@@ -62,8 +62,10 @@ class UserSellerPaymentController extends Controller
 
             $payment_response = (new PaymentService)->payviacard($payment_details);
 
+            Log::info($payment_response);
+
             if (gettype($payment_response) == 'string') {
-                return response()->json(['message' => $payment_response]);
+                return response()->json(['message' => 'payment process failed']);
 
             } else {
 
@@ -102,20 +104,29 @@ class UserSellerPaymentController extends Controller
 
             $payment_response = (new PaymentService)->payviamobilemoneygh($payment_details);
 
-            SellersPayment::create([
-                'user_id' => $user->id,
-                'amount' => $paid_product->amount,
-                'email' => $payment_details['email'] ,
-                'firstname' => $payment_details['firstname'],
-                'lastname' => $payment_details['lastname'],
-                'phonenumber' => '233'. substr($payment_details['phonenumber'], -9),
-                'txRef' => $payment_response['txref'],
-                'device_ip' => $_SERVER['REMOTE_ADDR'],
-                'product_id' => $payment_details['product_id'],
-                'momo_payment' => true
-            ]);
+            Log::info($payment_response);
 
-            return $payment_response;
+            if (gettype($payment_response) == 'string') {
+                return response()->json(['message' => 'payment process failed']);
+
+            } else {
+
+                SellersPayment::create([
+                    'user_id' => $user->id,
+                    'amount' => $paid_product->amount,
+                    'email' => $payment_details['email'],
+                    'firstname' => $payment_details['firstname'],
+                    'lastname' => $payment_details['lastname'],
+                    'phonenumber' => '233' . substr($payment_details['phonenumber'], -9),
+                    'txRef' => $payment_response['txref'],
+                    'device_ip' => $_SERVER['REMOTE_ADDR'],
+                    'product_id' => $payment_details['product_id'],
+                    'momo_payment' => true
+                ]);
+
+                return response()->json($payment_response);
+            }
+
         }
     }
 
