@@ -108,7 +108,9 @@ class UserSellerPaymentController extends Controller
     {
         Log::info($request->all());
 
-        $txref = $request->response['txRef'];
+        $response= json_decode($request->response, true);
+
+        $txref = $response['txRef'];
 
         $verified_payment = PaymentService::verifyPayment($txref);
 
