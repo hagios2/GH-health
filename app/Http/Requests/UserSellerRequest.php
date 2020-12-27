@@ -44,14 +44,7 @@ class UserSellerRequest extends FormRequest
         }elseif (request()->payment_method == 'momo'){
 
             return [
-                'cardno' => 'required|numeric|min:16',
-                'expirymonth' => 'required|numeric',
-                'expiryyear' => 'required|numeric',
-                'cvv' => 'required|numeric',
-                'billingzip' => 'required|string',
-                'billingcity' => 'required|string',
-                'billingaddress' => 'required|string',
-                'billingstate' => 'required|string',
+                'voucher' => 'nullable|numeric',
                 'firstname' => 'required|string',
                 'lastname' => 'required|string',
                 'phonenumber' => 'required|string',
