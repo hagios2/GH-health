@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MerchandiserPaymentRequest;
 use App\MerchandiserPayment;
-use App\Product;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
 use App\Http\Requests\PaymentRequest;
@@ -85,7 +84,7 @@ class PaymentController extends Controller
 
                 Log::info($payment_response);
 
-                $shop->addPayment([
+                MerchandiserPayment::create([
                     'billing_detail_id' => $billing_details->id,
                     'amount' => $shop->shopType->amount,
                     'email' => $request->email ?? $shop->email,
