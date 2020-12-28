@@ -220,7 +220,7 @@ Route::get('search/item', 'SearchController@search');
 
 Route::post('/user/product/payment', 'UserSellerPaymentController@payment')->name('user.seller.pay');
 
-Route::get('/user/product/payment/callback', 'UserSellerPaymentController@callback')->name('user.seller.callback');
+Route::post('/user/product/payment/callback', 'UserSellerPaymentController@callback')->name('user.seller.callback');
 
 Route::post('/shop/payment', 'PaymentController@payment')->name('merchandiser.pay');
 
@@ -228,7 +228,7 @@ Route::get('shop/payment/transactions', 'PaymentController@paymentTransactions')
 
 Route::get('user/product/payment/transactions', 'UserSellerPaymentController@paymentTransactions');
 
-Route::get('/shop/payment/callback', 'PaymentController@callback')->name('shop.payment.callback');
+Route::post('/shop/payment/callback', 'PaymentController@callback')->name('shop.payment.callback');
 
 #------------------------ End of Payment Integration --------------------------------------
 
