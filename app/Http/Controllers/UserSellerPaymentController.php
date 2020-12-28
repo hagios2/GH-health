@@ -59,7 +59,7 @@ class UserSellerPaymentController extends Controller
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'phonenumber' => $request->phonenumber,
-                'callback' => env('SHOP_PAYMENT_REDIRECT_URL'),route('user.seller.callback'),
+                'callback' => env('USER_PAYMENT_REDIRECT_URL'),
                 'product_id' => $request->product_id
             ]);
 
