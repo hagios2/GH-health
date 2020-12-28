@@ -14,6 +14,17 @@ class MerchandiserPaymentTransactionResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'firstname' => $this->firstname,
+            'lastname' => $this->lastname,
+            'email' => $this->email,
+            'phonenumber' => $this->phonenumber,
+            'vendor' => $this->vendor,
+            'momo_payment' => $this->momo_payment,
+            'txRef' => $this->txRef,
+            'device_ip' => $this->amount,
+            'status' => $this->status,
+        ];
     }
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserSellerRequest;
+use App\Http\Resources\MerchandiserPaymentTransactionResource;
+use App\Http\Resources\UserSellerPaymentTransactionResource;
+use App\MerchandiserPayment;
 use App\PaidProduct;
 use App\Product;
 use App\SellersPayment;
@@ -163,6 +166,13 @@ class UserSellerPaymentController extends Controller
         }else{
             $payment->update(['status' => 'failed']);
         }
+    }
+
+    public function paymentTransactions()
+    {
+        $transactions = SellersPayment::where('user_id', auth()->guard('api')->id())->get();
+
+        return UserSellerPaymentTransactionResource::collection($transactions);
     }
 
 }

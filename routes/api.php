@@ -224,6 +224,10 @@ Route::get('/user/product/payment/callback', 'UserSellerPaymentController@callba
 
 Route::post('/shop/payment', 'PaymentController@payment')->name('merchandiser.pay');
 
+Route::get('shop/payment/transactions', 'PaymentController@paymentTransactions');
+
+Route::get('user/product/payment/transactions', 'UserSellerPaymentController@paymentTransactions');
+
 Route::get('/shop/payment/callback', 'PaymentController@callback')->name('shop.payment.callback');
 
 #------------------------ End of Payment Integration --------------------------------------

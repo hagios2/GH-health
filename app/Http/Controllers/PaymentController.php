@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MerchandiserPaymentRequest;
+use App\Http\Resources\MerchandiserPaymentTransactionResource;
 use App\Merchandiser;
 use App\MerchandiserPayment;
 use App\Services\PaymentService;
@@ -117,6 +118,14 @@ class PaymentController extends Controller
 
             $payment_response = (new PaymentService)->payviamobilemoneygh($payment_details);
         }
+    }
+
+
+    public function paymentTransactions()
+    {
+        $transactions = MerchandiserPayment::where('merchandiser_id', auth()->guard('merchandiser')->id())->get();
+
+        return MerchandiserPaymentTransactionResource::collection($transactions);
     }
 
 }

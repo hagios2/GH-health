@@ -23,6 +23,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserSellerPaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserSellerPaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/MerchandiserPaymentTransactionResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/MerchandiserPaymentTransactionResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/UserSellerPaymentTransactionResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/UserSellerPaymentTransactionResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +188,7 @@
       <workItem from="1608929645351" duration="6317000" />
       <workItem from="1608954916145" duration="30244000" />
       <workItem from="1609010855498" duration="2353000" />
-      <workItem from="1609079149643" duration="21705000" />
+      <workItem from="1609079149643" duration="25340000" />
     </task>
     <servers />
   </component>
