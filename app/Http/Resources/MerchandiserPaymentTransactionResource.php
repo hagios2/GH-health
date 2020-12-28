@@ -23,7 +23,7 @@ class MerchandiserPaymentTransactionResource extends JsonResource
             'vendor' => $this->vendor,
             'momo_payment' => $this->momo_payment,
             'txRef' => $this->txRef,
-            'device_ip' => $this->amount,
+            'device_ip' => $this->device_ip,
             'status' => $this->status,
         ];
     }
