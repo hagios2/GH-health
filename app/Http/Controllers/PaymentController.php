@@ -72,7 +72,7 @@ class PaymentController extends Controller
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'phonenumber' => $request->phonenumber,
-                'callback' => route('shop.payment.callback'),
+                'callback' => env('SHOP_PAYMENT_REDIRECT_URL')
             ]);
 
             $payment_response = (new PaymentService)->payviacard($payment_details);
@@ -98,6 +98,8 @@ class PaymentController extends Controller
                     'txRef' => $payment_response['txref'],
                     'device_ip' => $_SERVER['REMOTE_ADDR'],
                 ]);
+
+                $payment_response['callback_url'] = route('shop.payment.callback');
 
                 return response()->json($payment_response);
             }

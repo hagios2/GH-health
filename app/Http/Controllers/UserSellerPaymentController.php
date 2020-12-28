@@ -56,7 +56,7 @@ class UserSellerPaymentController extends Controller
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'phonenumber' => $request->phonenumber,
-                'callback' => route('user.seller.callback'),
+                'callback' => env('SHOP_PAYMENT_REDIRECT_URL'),route('user.seller.callback'),
                 'product_id' => $request->product_id
             ]);
 
@@ -83,6 +83,8 @@ class UserSellerPaymentController extends Controller
                     'device_ip' => $_SERVER['REMOTE_ADDR'],
                     'product_id' => $payment_details['product_id'],
                 ]);
+
+                $payment_response['callback_url'] = route('user.payment.callback');
 
                 return response()->json($payment_response);
             }
