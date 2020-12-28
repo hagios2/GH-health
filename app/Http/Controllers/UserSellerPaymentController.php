@@ -87,7 +87,7 @@ class UserSellerPaymentController extends Controller
                     'product_id' => $payment_details['product_id'],
                 ]);
 
-                $payment_response['callback_url'] = route('user.payment.callback');
+                $payment_response['callback_url'] = route('user.seller.callback');
 
                 return response()->json($payment_response);
             }
