@@ -41,6 +41,8 @@ class MerchandiserResource extends JsonResource
 
             'avg_rating' => $avg_rating,
 
+            'payment_status' => $this->payment_status,
+
             'no_followers' => $this->followers->count()
         ];
     }
