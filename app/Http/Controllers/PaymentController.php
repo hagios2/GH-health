@@ -41,6 +41,8 @@ class PaymentController extends Controller
 
             $shop->update(['payment_status' => 'paid']);
 
+            Log::info('logging Merchandiser Payment after update | '.  $shop);
+
         }else{
             $payment->update(['status' => 'failed']);
         }
