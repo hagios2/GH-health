@@ -85,6 +85,7 @@ class PaymentController extends Controller
                 Log::info($payment_response);
 
                 MerchandiserPayment::create([
+                    'merchandiser_id' => $shop->id,
                     'billing_detail_id' => $billing_details->id,
                     'amount' => $shop->shopType->amount,
                     'email' => $request->email ?? $shop->email,
