@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MerchandiserPaymentRequest;
+use App\Merchandiser;
 use App\MerchandiserPayment;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class PaymentController extends Controller
 
             $payment->update(['status' => 'success']);
 
-            $shop = $payment->shop;
+            $shop = Merchandiser::find($payment->merchandiser_id);
 
             $shop->update(['payment_status' => 'paid']);
 
