@@ -39,7 +39,7 @@ class Merchandiser extends Authenticatable implements JWTSubject, Searchable
      * @var array
      */
     protected $fillable = [
-        'company_name', 'email', 'password', 'company_description', 'campus_id', 'phone', 'avatar', 'cover_photo', 'valid_id', 'shop_type_id', 'isActive'
+        'company_name', 'email', 'password', 'company_description', 'campus_id', 'phone', 'avatar', 'cover_photo', 'valid_id', 'shop_type_id', 'isActive', 'payment_status'
     ];
 
     /**
