@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\PaidProduct;
+use App\Http\Requests\MerchandiserPaymentRequest;
+use App\MerchandiserPayment;
+use App\Product;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
-use App\Transaction;
-use App\Cart;
 use App\Http\Requests\PaymentRequest;
 use Illuminate\Support\Facades\Log;
 
@@ -21,52 +21,77 @@ class PaymentController extends Controller
     {
         Log::info($request->all());
 
-        $verified_payment = PaymentService::verifyPayment($request->txref);
+        $response= json_decode($request->response, true);
+
+        $txref = $response['txRef'];
+
+        $verified_payment = PaymentService::verifyPayment($txref);
+
+        Log::info('logging Verified Merchandiser Payemnt | '. $verified_payment);
+
+        $payment = MerchandiserPayment::where('txRef',  $txref)->first();
+
+        Log::info('logging Merchandiser Payment response | '. $payment);
+
+        if('successful' == $verified_payment){
+
+            $payment->update(['status' => 'success']);
+
+            $shop = $payment->shop;
+
+            $shop->update(['payment_status' => 'paid']);
+
+        }else{
+            $payment->update(['status' => 'failed']);
+        }
     }
 
-    public function payment(Request $request)
+    public function payment(MerchandiserPaymentRequest $request)
     {
-        $user = auth()->guard('merchandiser')->user();
+        $shop = auth()->guard('merchandiser')->user();
 
         if ($request->payment_method === 'card_payment') {
-            if (!$user->sellersBillingDetail) {
-                $billing_details = $user->addSellersBillingDetail([
-                    'cardno' => $request->cardno,
-                    'expirymonth' => $request->expirymonth,
-                    'expiryyear' => $request->expiryyear,
-                    'cvv' => $request->cvv,
-                    'billingzip' => $request->billingzip,
-                    'billingcity' => $request->billingcity,
-                    'billingaddress' => $request->billingaddress,
-                    'billingstate' => $request->billingstate,
-                    'billingcountry' => $request->billingcountry ?? 'Ghana'
-                ]);
-            } else {
-                $billing_details = $user->sellersBillingDetail;
-            }
 
-            $payment_details = array_merge((array)$billing_details, [
-                'amount' => $user->shopType->amount,
-                'email' => $request->email ?? $user->email,
+            $billing_details = $shop->addSellersBillingDetail([
+                'cardno' => $request->cardno,
+                'expirymonth' => $request->expirymonth,
+                'expiryyear' => $request->expiryyear,
+                'cvv' => $request->cvv,
+                'billingzip' => $request->billingzip,
+                'billingcity' => $request->billingcity,
+                'billingaddress' => $request->billingaddress,
+                'billingstate' => $request->billingstate,
+                'billingcountry' => $request->billingcountry ?? 'GH'
+            ]);
+
+            $payment_details = array_merge($billing_details->toArray(), [
+                'amount' => $shop->shopType->amount,
+                'email' => $request->email ?? $shop->email,
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'phonenumber' => $request->phonenumber,
+                'callback' => route('shop.payment.callback'),
             ]);
 
             $payment_response = (new PaymentService)->payviacard($payment_details);
 
             if (gettype($payment_response) == 'string') {
-                return response()->json(['message' => $payment_response]);
+
+                Log::error($payment_response);
+
+                return response()->json(['message' => 'Payment process failed']);
 
             } else {
 
-                $user->addPayment([
+                Log::info($payment_response);
+
+                $shop->addPayment([
                     'billing_detail_id' => $billing_details->id,
-                    'amount' => $user->shopType->amount,
-                    'email' => $request->email ?? $user->email,
+                    'amount' => $shop->shopType->amount,
+                    'email' => $request->email ?? $shop->email,
                     'firstname' => $request->firstname,
                     'lastname' => $request->lastname,
-                    'phonenumber' => $request->phonenumber,
+                    'phonenumber' => '233'. substr($request->phonenumber, -9),
                     'txRef' => $payment_response['txref'],
                     'device_ip' => $_SERVER['REMOTE_ADDR'],
                 ]);
@@ -77,8 +102,8 @@ class PaymentController extends Controller
         } else { #momo
 
             $payment_details = [
-                'amount' => $user->shopType->amount,
-                'email' => $request->email ?? $user->email,
+                'amount' => $shop->shopType->amount,
+                'email' => $request->email ?? $shop->email,
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'phonenumber' => $request->phonenumber,

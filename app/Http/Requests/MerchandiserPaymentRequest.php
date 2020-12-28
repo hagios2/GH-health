@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserSellerRequest extends FormRequest
+class MerchandiserPaymentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -39,7 +39,6 @@ class UserSellerRequest extends FormRequest
                 'phonenumber' => 'required|string',
                 'payment_method' => 'required|string',
                 'email' => 'required|string',
-                'product_id' => 'required|integer'
             ];
 
         }elseif (request()->payment_method == 'momo'){
@@ -51,12 +50,11 @@ class UserSellerRequest extends FormRequest
                 'phonenumber' => 'required|string',
                 'payment_method' => 'required|string',
                 'email' => 'required|string',
-                'product_id' => 'required|integer',
                 'vendor' => 'required|string'
             ];
-        }else{
 
-           return ['payment_method' => 'required|string'];
+        }else{
+            return ['payment_method' => 'required|string'];
         }
     }
 }

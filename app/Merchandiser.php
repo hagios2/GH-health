@@ -109,7 +109,7 @@ class Merchandiser extends Authenticatable implements JWTSubject, Searchable
 
     public function addSellersBillingDetail($billing_detail)
     {
-        return $this->sellersBillingDetail()->create($billing_detail);
+        return $this->sellersBillingDetail()->updateOrCreate($billing_detail);
     }
 
     public function payment()

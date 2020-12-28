@@ -222,7 +222,7 @@ Route::post('/user/product/payment', 'UserSellerPaymentController@payment')->nam
 
 Route::get('/user/product/payment/callback', 'UserSellerPaymentController@callback')->name('user.seller.callback');
 
-Route::post('/shop/payment', 'PaymentController@payviamobilemoneygh')->name('merchandiser.pay');
+Route::post('/shop/payment', 'PaymentController@paymnt')->name('merchandiser.pay');
 
 Route::get('/shop/payment/callback', 'PaymentController@callback')->name('shop.payment.callback');
 

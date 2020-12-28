@@ -62,14 +62,16 @@ class UserSellerPaymentController extends Controller
 
             $payment_response = (new PaymentService)->payviacard($payment_details);
 
-            Log::info($payment_response);
-
             if (gettype($payment_response) == 'string') {
+
+                Log::error($payment_response);
+
                 return response()->json(['message' => 'payment process failed']);
 
             } else {
+                Log::info($payment_response);
 
-               SellersPayment::create([
+                SellersPayment::create([
                     'user_id' => $user->id,
                     'billing_detail_id' => $billing_details->id,
                     'amount' => $paid_product->amount,
@@ -121,7 +123,8 @@ class UserSellerPaymentController extends Controller
                     'txRef' => $payment_response['txRef'],
                     'device_ip' => $_SERVER['REMOTE_ADDR'],
                     'product_id' => $payment_details['product_id'],
-                    'momo_payment' => true
+                    'momo_payment' => true,
+                    'vendor' => $payment_details['vendor']
                 ]);
 
                 return response()->json($payment_response);
