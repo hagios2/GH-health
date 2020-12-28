@@ -25,6 +25,7 @@ class UserSellerPaymentTransactionResource extends JsonResource
             'txRef' => $this->txRef,
             'device_ip' => $this->device_ip,
             'status' => $this->status,
+            'amount' => $this->amount,
         ];
     }
 }
