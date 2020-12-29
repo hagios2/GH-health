@@ -167,7 +167,7 @@ class UserSellerPaymentController extends Controller
 
             $payment->update(['status' => 'success']);
 
-            $product = Product::find($payment->id);
+            $product = Product::find($payment->product_id);
 
             $product->update(['payment_status' => 'paid']);
 
