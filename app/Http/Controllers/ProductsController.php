@@ -25,32 +25,19 @@ class ProductsController extends Controller
         $this->middleware('auth:api')->only(['saveCart', 'getCart']);
     }
 
-
     public function getCategories()
     {
-
         return CategoryResource::collection(Category::orderBy('id', 'asc')->get(['id', 'category']));
-
     }
-
-
-
 
     public function getCategorysProduct(Category $category)
     {
-
         return new ProductResource(Product::where('category_id', $category->id)->paginate(16));
-
     }
-
-
 
     public function getProductDetails(Product $product)
     {
-
-
         return new DetailedProductResource($product);
-
     }
 
     /**

@@ -165,6 +165,7 @@ class PaymentService
             'txRef' => $txref,
             'orderRef' => 'Martek Payment-' .now(),
             'is_mobile_money_gh' => 1,
+            "redirect_url" =>  $payment_details['callback']
         );
 
         if($data['network'] === 'VODAFONE')

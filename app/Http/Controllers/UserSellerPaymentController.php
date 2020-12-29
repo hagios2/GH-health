@@ -102,6 +102,7 @@ class UserSellerPaymentController extends Controller
                 'phonenumber' => $request->phonenumber,
                 'vendor' => $request->vendor,
                 'product_id' => $request->product_id,
+                'callback' => env('USER_PAYMENT_REDIRECT_URL'),
             ];
 
             if($request->vendor === 'VODAFONE')

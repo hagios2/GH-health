@@ -115,7 +115,8 @@ class PaymentController extends Controller
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'phonenumber' => $request->phonenumber,
-                'vendor' => $request->vendor
+                'vendor' => $request->vendor,
+                'callback' => env('SHOP_PAYMENT_REDIRECT_URL')
             ];
 
             if ($request->vendor === 'VODAFONE') {
