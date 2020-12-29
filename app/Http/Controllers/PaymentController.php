@@ -47,6 +47,8 @@ class PaymentController extends Controller
         }else{
             $payment->update(['status' => 'failed']);
         }
+
+        return response()->json(['message' => 'callback received']);
     }
 
     public function payment(MerchandiserPaymentRequest $request)

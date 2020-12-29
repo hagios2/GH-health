@@ -166,6 +166,8 @@ class UserSellerPaymentController extends Controller
         }else{
             $payment->update(['status' => 'failed']);
         }
+
+        return response()->json(['message' => 'callback received']);
     }
 
     public function paymentTransactions()
