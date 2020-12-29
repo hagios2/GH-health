@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Merchandiser;
+use App\MerchandiserPayment;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class ExpireShop extends Command
@@ -11,14 +14,14 @@ class ExpireShop extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'merchandiser:expire';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Expire Shop Payment Status';
 
     /**
      * Create a new command instance.
@@ -37,6 +40,21 @@ class ExpireShop extends Command
      */
     public function handle()
     {
-        //
+        $paid_shops = Merchandiser::where('payment_status', 'paid')->latest();
+
+        if($paid_shops->count() > 0)
+        {
+            $paid_shops->map(function($paid_shop){
+
+               $payment_transaction = MerchandiserPayment::where([['merchandiser_id', $paid_shop->id], ['status' => 'success']])->latest()->first();
+
+               if(Carbon::parse($payment_transaction->created_at)->diffInMonths(Carbon::today()) >= 1)
+               {
+                   $paid_shop->update(['payment_status' => 'expired']);
+               }
+
+            });
+        }
+
     }
 }
