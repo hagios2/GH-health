@@ -47,33 +47,19 @@ class ProductsController extends Controller
      */
     public function index(Category $category)
     {
-/*
-        $products = $categories->map(function($category){
-
-            return $category->product->reverse()->take(4);
-
-        }); */
-
-
         return new ProductResource(Product::where('category_id', $category->id)->latest()->take(6)->get());
-
-
     }
 
 
     public function saveCart(User $user, Request $request)
     {
 
-       $cart = $request->validate([
-
-            'cart' => 'nullable',
-        ]);
+       $cart = $request->validate(['cart' => 'nullable',]);
 
         $user->addToCart(json_encode($cart['cart']));
 
         return response()->json(['status' => 'cart saved']);
     }
-
 
     public function getCart()
     {
@@ -85,10 +71,8 @@ class ProductsController extends Controller
 
     public function fetchShops()
     {
-
-        return new AllShopsResource(Merchandiser::paginate(8));
+        return new AllShopsResource(Merchandiser::where('payment_status', 'paid')->paginate(8));
     }
-
 
     public function fetchShopsProduct(Merchandiser $shops)
     {
@@ -107,7 +91,7 @@ class ProductsController extends Controller
 
     public function campusShop(Campus $campus)
     {
-        $shops = Merchandiser::where('campus_id', $campus->id)->paginate(8);
+        $shops = Merchandiser::where([['campus_id', $campus->id], ['payment_status' => 'paid']])->paginate(8);
 
         return new CampusShopsResource($shops);
 

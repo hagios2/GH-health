@@ -24,7 +24,7 @@ class PaymentController extends Controller
 
         $response= json_decode($request->response, true);
 
-        $txref = $response['txRef'];
+        $txref = $response['txRef'] ?? $response['data']['txRef'];
 
         $verified_payment = PaymentService::verifyPayment($txref);
 
