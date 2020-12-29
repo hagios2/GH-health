@@ -118,7 +118,37 @@ class PaymentController extends Controller
                 'vendor' => $request->vendor
             ];
 
+            if($request->vendor === 'VODAFONE')
+            {
+                $payment_details['voucher'] = $request->voucher;
+            }
+
             $payment_response = (new PaymentService)->payviamobilemoneygh($payment_details);
+
+            if (gettype($payment_response) == 'string') {
+
+                Log::error($payment_response);
+
+                return response()->json(['message' => 'Payment process failed']);
+
+            } else {
+
+                Log::info($payment_response);
+
+                MerchandiserPayment::create([
+                    'merchandiser_id' => $shop->id,
+                    'amount' => $shop->shopType->amount,
+                    'email' => $request->email ?? $shop->email,
+                    'firstname' => $request->firstname,
+                    'lastname' => $request->lastname,
+                    'phonenumber' => '233'. substr($request->phonenumber, -9),
+                    'txRef' => $payment_response['txref'],
+                    'device_ip' => $_SERVER['REMOTE_ADDR'],
+                    'momo_payment' => true,
+                    'vendor' => $payment_details['vendor']
+                ]);
+
+            $payment_response['callback_url'] = route('shop.payment.callback');
         }
     }
 
