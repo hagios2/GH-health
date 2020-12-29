@@ -22,12 +22,12 @@ class ShopTypeTableSeeder extends Seeder
         ShopType::create([
             'shop_type' => 'Max Shop',
             'max_no_of_product' => 100,
-            'amount' => 20.00
+            'amount' => 40.00
         ]);
 
         ShopType::create([
             'shop_type' => 'Non-student shop',
-            'amount' => 20.00
+            'amount' => 80.00
         ]);
     }
 }
