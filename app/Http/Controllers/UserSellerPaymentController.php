@@ -111,12 +111,15 @@ class UserSellerPaymentController extends Controller
 
             $payment_response = (new PaymentService)->payviamobilemoneygh($payment_details);
 
-            Log::info($payment_response);
-
             if (gettype($payment_response) == 'string') {
+
+                Log::error($payment_response);
+
                 return response()->json(['message' => 'payment process failed']);
 
             } else {
+
+                Log::info($payment_response);
 
                 SellersPayment::create([
                     'user_id' => $user->id,

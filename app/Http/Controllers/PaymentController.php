@@ -97,7 +97,7 @@ class PaymentController extends Controller
                     'email' => $request->email ?? $shop->email,
                     'firstname' => $request->firstname,
                     'lastname' => $request->lastname,
-                    'phonenumber' => '233'. substr($request->phonenumber, -9),
+                    'phonenumber' => '233' . substr($request->phonenumber, -9),
                     'txRef' => $payment_response['txref'],
                     'device_ip' => $_SERVER['REMOTE_ADDR'],
                 ]);
@@ -118,8 +118,7 @@ class PaymentController extends Controller
                 'vendor' => $request->vendor
             ];
 
-            if($request->vendor === 'VODAFONE')
-            {
+            if ($request->vendor === 'VODAFONE') {
                 $payment_details['voucher'] = $request->voucher;
             }
 
@@ -138,17 +137,20 @@ class PaymentController extends Controller
                 MerchandiserPayment::create([
                     'merchandiser_id' => $shop->id,
                     'amount' => $shop->shopType->amount,
-                    'email' => $request->email ?? $shop->email,
-                    'firstname' => $request->firstname,
-                    'lastname' => $request->lastname,
-                    'phonenumber' => '233'. substr($request->phonenumber, -9),
+                    'email' => $payment_details['email'],
+                    'firstname' => $payment_details['firstname'],
+                    'lastname' => $payment_details['lastname'],
+                    'phonenumber' => '233' . substr($payment_details['phonenumber'], -9),
                     'txRef' => $payment_response['txref'],
                     'device_ip' => $_SERVER['REMOTE_ADDR'],
                     'momo_payment' => true,
                     'vendor' => $payment_details['vendor']
                 ]);
 
-            $payment_response['callback_url'] = route('shop.payment.callback');
+                $payment_response['callback_url'] = route('shop.payment.callback');
+
+                return response()->json($payment_response);
+            }
         }
     }
 
