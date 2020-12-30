@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 
 /*
@@ -91,7 +92,7 @@ Route::get('product/{product}/reviews', 'ReviewsController@fetchProductReviews')
 
 Route::post('add-product/reviews', 'ReviewsController@storeProductReview');
 
-Route::post('add-product/reviews', 'ReviewsController@storeProductReview');
+//Route::post('add-product/reviews', 'ReviewsController@storeProductReview');
 
 Route::post('add-product/report', 'ReportsController@saveProductReport');
 

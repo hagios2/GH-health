@@ -8,6 +8,7 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\UsersProductResource;
 use App\Category;
 use App\Product;
+use Illuminate\Support\Facades\Log;
 
 class SellersController extends Controller
 {
@@ -109,20 +110,25 @@ class SellersController extends Controller
 
        $files = $request->file(['product_images']);
 
-        foreach($files as $file)
-        {
+       try{
+           foreach($files as $file)
+           {
 
 //            if($request->hasFile('product_images'))
 //            {
 
-                $fileName = now().'_'.$file->getClientOriginalName();
+               $fileName = now().'_'.$file->getClientOriginalName();
 
-                $file->storeAs('public/product images/'.$product->id, $fileName);
+               $file->storeAs('public/product images/'.$product->id, $fileName);
 
-                $product->addProductImage(['path' => 'storage/product images/'.$product->id.'/'.$fileName]);
+               $product->addProductImage(['path' => 'storage/product images/'.$product->id.'/'.$fileName]);
 
 //            }
-        }
+           }
+
+       }catch (\Exception $exception){
+           Log::error($exception->getMessage());
+       }
 
         return response()->json(['status' => 'files saved'], 200);
     }
