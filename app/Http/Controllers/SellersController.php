@@ -39,7 +39,7 @@ class SellersController extends Controller
 
         $product = $request->validated();
 
-        if(auth()->guard('merchandiser')->user())
+        if(auth()->guard('merchandiser')->user()) #check if shop payment status is paid
         {
             $shop = auth()->guard('merchandiser')->user();
 
@@ -48,6 +48,19 @@ class SellersController extends Controller
             if($shop->product->count() === $shopType->max_no_of_product)
             {
                 return response()->json(['message' => 'max product reached']);
+            }
+
+            if($shop->payment_status === 'Payment required' && $shop->qualified_for_free_trial)
+            {
+                $product['payment_status'] = 'free';
+
+            }else if($shop->payment_status === 'paid'){
+
+                $product['payment_status'] = 'paid';
+            }
+            else if($shop->payment_status === 'Payment required' && !$shop->qualified_for_free_trial){
+
+                return response()->json(['message' => 'payment required']);
             }
 
             $product['merchandiser_id'] = $shop->id;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Campus;
+use App\Helpers\CollectionHelper;
 use App\Product;
 use App\Category;
 use App\User;
@@ -32,7 +33,10 @@ class ProductsController extends Controller
 
     public function getCategorysProduct(Category $category)
     {
-        return new ProductResource(Product::where('category_id', $category->id)->paginate(16));
+        $products = Product::where([['category_id', $category->id], ['payment_status', 'paid']])
+            ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->paginate(15);
+
+        return new ProductResource($products);
     }
 
     public function getProductDetails(Product $product)
@@ -47,7 +51,12 @@ class ProductsController extends Controller
      */
     public function index(Category $category)
     {
-        return new ProductResource(Product::where('category_id', $category->id)->latest()->take(6)->get());
+        $products = Product::where([['category_id', $category->id], ['payment_status', 'paid']])
+            ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->take(6)->get();
+
+//        return new ProductResource(Product::where('category_id', $category->id)->latest()->take(6)->get());
+
+        return new ProductResource($products);
     }
 
 
