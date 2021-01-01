@@ -3,6 +3,8 @@
 namespace App\Console;
 
 use App\Console\Commands\ExpireShop;
+use App\Console\Commands\TerminateShopFreeTrialMode;
+use App\Console\Commands\TerminateUserFreeTrialMode;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -26,7 +28,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
          $schedule->command(ExpireShop::class)
-                  ->dailyAt('00:00');
+                ->dailyAt('00:00');
+        $schedule->command(TerminateShopFreeTrialMode::class)
+                ->dailyAt('00:00');
+        $schedule->command(TerminateUserFreeTrialMode::class)
+                ->dailyAt('00:00');
     }
 
     /**
