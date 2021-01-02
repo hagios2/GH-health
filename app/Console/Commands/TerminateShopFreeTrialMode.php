@@ -39,15 +39,15 @@ class TerminateShopFreeTrialMode extends Command
      */
     public function handle()
     {
-        $shops = Merchandiser::where([['payment_status', 'payment required'], ['qualified_for_free_trial', true]])->latest()->get();
+        $shops = Merchandiser::where('payment_status', 'free')->latest()->get();
 
         if($shops->count() > 0)
         {
             $shops->map(function($shop){
 
-                if(Carbon::parse($shop->created_at)->diffInMonths(Carbon::today()) >= 3)
+                if(Carbon::parse($shop->qualified_for_free_trial)->diffInMonths(Carbon::today()) >= 3)
                 {
-                    $shop->update(['qualified_for_free_trial' => false]);
+                    $shop->update(['payment_status' => 'payment required']);
                 }
 
             });

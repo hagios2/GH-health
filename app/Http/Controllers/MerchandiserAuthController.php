@@ -84,5 +84,13 @@ class MerchandiserAuthController extends Controller
             'statusCode' => 200
         ]);
     }
-    
+
+
+    public function toggleToFreeTrial()
+    {
+        auth()->guard('merchandiser')->user()->update(['payment_status' => 'free', 'qualified_for_free_trial' => now()]);
+
+        return response()->json(['message' => 'free trial activated']);
+    }
+
 }
