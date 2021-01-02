@@ -50,7 +50,7 @@ class SellersController extends Controller
                 return response()->json(['message' => 'max product reached']);
             }
 
-            if($shop->payment_status === 'Payment required' && $shop->qualified_for_free_trial)
+            if($shop->payment_status === 'free')
             {
                 $product['payment_status'] = 'free';
 
@@ -58,7 +58,7 @@ class SellersController extends Controller
 
                 $product['payment_status'] = 'paid';
             }
-            else if($shop->payment_status === 'Payment required' && !$shop->qualified_for_free_trial){
+            else if($shop->payment_status === 'payment required' && !$shop->qualified_for_free_trial){
 
                 return response()->json(['message' => 'payment required']);
             }
