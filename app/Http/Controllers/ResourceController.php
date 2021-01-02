@@ -37,7 +37,8 @@ class ResourceController extends Controller
 
     public function newThisWeek()
     {
-        $products = Product::query()->latest()->take(10)->get();
+        $products = Product::where('payment_status', 'paid')
+            ->orWhere('payment_status', 'free')->latest()->take(10)->get();
 
         return RelatedProductResource::collection($products);
     }
