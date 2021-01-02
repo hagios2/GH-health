@@ -108,7 +108,7 @@ Route::group(['prefix' => 'merchandiser'], function () {
 
     Route::get('/', 'MerchandiserAuthController@getAuthUser');
 
-    Route::post('activate/free/trial', 'MerchandiserAuthController@getAuthUser');
+    Route::post('activate/free/trial', 'MerchandiserAuthController@toggleToFreeTrial');
 
     Route::post('logout', 'MerchandiserAuthController@logout');
 
