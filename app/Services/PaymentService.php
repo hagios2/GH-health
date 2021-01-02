@@ -42,7 +42,7 @@ class PaymentService
 
         $data = array('PBFPubKey' => env('RAVE_PUBLIC_KEY'),
             'cardno' => $billing_details['cardno'],
-            'currency' => $billing_details['currency'],
+            'currency' => 'GHS',
             'country' => $billing_details['country'],
             'amount' => $billing_details['amount'],
             "cvv"=> $billing_details['cvv'],
