@@ -75,6 +75,8 @@ class SellersController extends Controller
             }
 
             $product['user_id'] = auth()->guard('api')->id();
+
+            $product['payment_status'] = 'payment required';
         }
 
         $product_id = $category->addProduct($product);
@@ -85,6 +87,13 @@ class SellersController extends Controller
         }
 
         return response()->json(['status' => 'success', 'product_id' => $product_id], 200);
+    }
+
+    public function toggleProductToFreeTrial(Product $product)
+    {
+        $product->update(['payment_status' => 'free']);
+
+        return response()->json(['message' => 'free trial activated']);
     }
 
 

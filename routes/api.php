@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['prefix' => 'auth'], function ($router) {
+Route::group(['prefix' => 'auth'], function () {
 
     Route::post('login', 'AuthController@login');
 
@@ -150,6 +150,7 @@ Route::group(['prefix' => 'e-trader'], function () {
     Route::get('get-user-products', 'SellersController@getUserProduct');
 });
 
+Route::post('user/toggle/{product}/to-free-trial', 'SellersController@toggleProductToFreeTrial');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 

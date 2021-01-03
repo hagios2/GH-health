@@ -31,7 +31,9 @@ class UserResource extends JsonResource
                 'campus' => $this->campus->campus
             ],
 
-            'valid_id' => $this->valid_id
+            'valid_id' => $this->valid_id,
+
+            'qualified_for_free_trial' => $this->qualified_for_free_trial
 
         ];
     }

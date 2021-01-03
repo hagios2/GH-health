@@ -18,7 +18,7 @@ class UsersProductResource extends JsonResource
         return [
 
             'id' => $this->id,
-                    
+
             'product_name' => $this->product_name,
 
             'price' => $this->price,
@@ -28,6 +28,8 @@ class UsersProductResource extends JsonResource
             'product_description' => $this->description,
 
             'in_cart' => false,
+
+            'payment_status' => $this->payment_status,
 
             'product_image' => ProductImage::where('product_id', $this->id)->latest()->take(1)->get('path')
         ];

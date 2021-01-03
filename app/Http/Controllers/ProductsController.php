@@ -54,7 +54,7 @@ class ProductsController extends Controller
         $products = Product::where([['category_id', $category->id], ['payment_status', 'paid']])
             ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->take(6)->get();
 
-//        return new ProductResource(Product::where('category_id', $category->id)->latest()->take(6)->get());
+        //        return new ProductResource(Product::where('category_id', $category->id)->latest()->take(6)->get());
 
         return new ProductResource($products);
     }
