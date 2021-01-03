@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SellersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SellersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/UsersProductResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/UsersProductResource.php" afterDir="false" />
-    </list>
+    <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -197,7 +192,7 @@
       <workItem from="1609333982128" duration="1077000" />
       <workItem from="1609350933933" duration="1002000" />
       <workItem from="1609414750983" duration="2349000" />
-      <workItem from="1609437369956" duration="19113000" />
+      <workItem from="1609437369956" duration="20035000" />
     </task>
     <servers />
   </component>
@@ -223,6 +218,15 @@
           <url>file://$PROJECT_DIR$/app/User.php</url>
           <line>175</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/SellersController.php</url>
+          <line>99</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\SellersController" />
+            <option name="methodName" value="updateProduct" />
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

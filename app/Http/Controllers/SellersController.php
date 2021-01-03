@@ -89,11 +89,25 @@ class SellersController extends Controller
         return response()->json(['status' => 'success', 'product_id' => $product_id], 200);
     }
 
-    public function toggleProductToFreeTrial(Product $product)
+    public function toggleProductToFreeTrial(Product $product) #this is for only users
     {
-        $product->update(['payment_status' => 'free']);
+        if(auth()->guard('api')->check())
+        {
+            if($product->payment_status === 'free')
+            {
+                return response()->json(['message' => 'free trial already activated']);
+            }else{
 
-        return response()->json(['message' => 'free trial activated']);
+                $product->update(['payment_status' => 'free']);
+
+                return response()->json(['message' => 'free trial activated']);
+            }
+
+        }else{
+
+            return response()->json(['message' => 'Access Denied!']);
+        }
+
     }
 
 
