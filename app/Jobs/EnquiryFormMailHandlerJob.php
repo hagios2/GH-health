@@ -36,29 +36,29 @@ class EnquiryFormMailHandlerJob implements ShouldQueue
     public function handle()
     {
         // Backup your default mailer
-        $backup = Mail::getSwiftMailer();
+       // $backup = Mail::getSwiftMailer();
 
         // Setup your gmail mailer
-        $transport = (new Swift_SmtpTransport('smtp.gmail.com',587, 'tls')); 
+       // $transport = (new Swift_SmtpTransport('smtp.gmail.com',587, 'tls'));
 
-        $transport->setUsername(env('MAIL_USERNAME1'));
-        $transport->setPassword(env('MAIL_PASSWORD1'));
+      //  $transport->setUsername(env('MAIL_USERNAME1'));
+       // $transport->setPassword(env('MAIL_PASSWORD1'));
 
-        $gmail = new Swift_Mailer($transport);
+      //  $gmail = new Swift_Mailer($transport);
 
         // Set the mailer as gmail
-        Mail::setSwiftMailer($gmail);
+      //  Mail::setSwiftMailer($gmail);
 
         // Send your message
         Mail::to(env('MAIL_USERNAME'))
-        
+
             ->queue(new EnquiryFormMailHandler($this->formInputs)
         );
 
         // Restore your original mailer
-        Mail::setSwiftMailer($backup);
+       // Mail::setSwiftMailer($backup);
 
-      
+
 
     }
 }

@@ -8,7 +8,6 @@ use App\Merchandiser;
 use App\MerchandiserPayment;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
-use App\Http\Requests\PaymentRequest;
 use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
