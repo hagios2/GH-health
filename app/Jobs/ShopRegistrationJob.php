@@ -39,9 +39,6 @@ class ShopRegistrationJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->merchandiser)
-        
-        ->queue(new ShopRegistrationMail($this->merchandiser, $this->token)
-    );
+        Mail::to($this->merchandiser)->send(new ShopRegistrationMail($this->merchandiser, $this->token));
     }
 }

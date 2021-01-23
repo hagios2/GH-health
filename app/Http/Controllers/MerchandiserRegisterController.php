@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 
+use App\Mail\ShopRegistrationMail;
 use App\Merchandiser;
 use Illuminate\Http\Request;
 use App\Http\Requests\MerchandiserFormRequest;
 use App\Http\Requests\UpdateMerchandiserRequest;
 use Illuminate\Support\Facades\Hash;
 use App\VerifyEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Jobs\ShopRegistrationJob;
 
@@ -25,6 +27,14 @@ class MerchandiserRegisterController extends Controller
 
         $attributes['password'] = Hash::make($request->password);
 
+        if($request->has('free_trial') && (int) $request->free_trial == 1)
+        {
+            $attributes['payment_status'] = 'free';
+
+        }else{
+            $attributes['payment_status'] = 'free';
+        }
+
         $merchandiser = Merchandiser::create($attributes);
 
         $new_token = Str::random(60);
@@ -36,7 +46,8 @@ class MerchandiserRegisterController extends Controller
         ]);
 
 
-        ShopRegistrationJob::dispatch($merchandiser, $token);
+        Mail::to($merchandiser)->send(new ShopRegistrationMail($merchandiser, $token));
+        //ShopRegistrationJob::dispatch($merchandiser, $token);
 
        /*  $merchandiser->notify(new UserRegistrationNotification());  */
 
