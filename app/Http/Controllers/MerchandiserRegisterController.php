@@ -46,8 +46,8 @@ class MerchandiserRegisterController extends Controller
         ]);
 
 
-        Mail::to($merchandiser)->send(new ShopRegistrationMail($merchandiser, $token));
-        //ShopRegistrationJob::dispatch($merchandiser, $token);
+        //Mail::to($merchandiser)->send(new ShopRegistrationMail($merchandiser, $token));
+        ShopRegistrationJob::dispatch($merchandiser, $token);
 
        /*  $merchandiser->notify(new UserRegistrationNotification());  */
 
