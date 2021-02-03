@@ -73,6 +73,14 @@ return [
 
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
+    'stream' => [
+        'ssl'=> [
+            'verify_peer'=>false,
+            'verify_peer_name'=>false,
+            'allow_self_signed'=>true,
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Username
