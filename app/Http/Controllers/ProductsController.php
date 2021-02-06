@@ -47,8 +47,8 @@ class ProductsController extends Controller
                 })
                 ->select('products.*')
 //                ->where('campuses.id', $request->campus_id)
-                ->where([['category_id', $category->id], ['payment_status', 'paid']])
-                ->orWhere([['category_id', $category->id], ['payment_status', 'free']])
+                ->where([['category_id', $category->id], ['products.payment_status', 'paid']])
+                ->orWhere([['category_id', $category->id], ['products.payment_status', 'free']])
                 ->latest()->paginate(15);
         }else{
 
