@@ -17,6 +17,7 @@ use App\Http\Resources\CartResource;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 use App\Http\Resources\CategoryProductResource;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -31,8 +32,20 @@ class ProductsController extends Controller
         return CategoryResource::collection(Category::orderBy('id', 'asc')->get(['id', 'category']));
     }
 
-    public function getCategorysProduct(Category $category)
+    public function getCategorysProduct(Category $category, Request $request)
     {
+        if($request->has('campus_id'))
+        {
+            DB::table('products')
+                ->join('users', 'users.id', '=', 'products.user_id')
+                ->join('merchandisers', 'merchandisers.id', '=', 'products.merchandiser_id')
+                ->join('campuses', 'campuses.id', '=', 'user.campus_id')
+                ->join('campuses', 'campuses.id', '=', 'merchandiser.campus_id')
+                ->select('products.*')
+                ->where('campuses.id', $request->campus_id)
+                ->where([['products.category_id', $category->id], ['payment_status', 'paid']])
+                ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->paginate(15);
+        }
         $products = Product::where([['category_id', $category->id], ['payment_status', 'paid']])
             ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->paginate(15);
 
@@ -49,11 +62,26 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Category $category)
+    public function index(Category $category, Request $request)
     {
-        $products = Product::where([['category_id', $category->id], ['payment_status', 'paid']])
-            ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->take(6)->get();
+        if($request->has('campus_id'))
+        {
+            $campus = Campus::find($request->campus_id);
 
+            $users_campus_product = $campus->shopCampusProduct()->where([['category_id', $category->id], ['payment_status', 'paid']])
+                ->orWhere([['category_id', $category->id], ['payment_status', 'free']]);
+
+            $shops_campus_product = $campus->userCampusProduct->where([['category_id', $category->id], ['payment_status', 'paid']])
+                ->orWhere([['category_id', $category->id], ['payment_status', 'free']]);
+
+            $products = $users_campus_product->merge($shops_campus_product)->take(6);
+
+        }else {
+
+            $products = Product::where([['category_id', $category->id], ['payment_status', 'paid']])
+                ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->take(6)->get();
+
+        }
         //        return new ProductResource(Product::where('category_id', $category->id)->latest()->take(6)->get());
 
         return new ProductResource($products);
@@ -78,9 +106,15 @@ class ProductsController extends Controller
     }
 
 
-    public function fetchShops()
+    public function fetchShops(Request $request)
     {
-        return new AllShopsResource(Merchandiser::where('payment_status', 'paid')->paginate(8));
+        if($request->has('campus_id'))
+        {
+            return new AllShopsResource(Merchandiser::where([['payment_status', 'paid'], ['campus_id', $request->campus_id]])->paginate(8));
+        }else{
+            return new AllShopsResource(Merchandiser::where('payment_status', 'paid')->paginate(8));
+        }
+
     }
 
     public function fetchShopsProduct(Merchandiser $shops)
