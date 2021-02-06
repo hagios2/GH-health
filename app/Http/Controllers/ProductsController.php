@@ -36,7 +36,7 @@ class ProductsController extends Controller
     {
         if($request->has('campus_id'))
         {
-            DB::table('products')
+            $products = DB::table('products')
                 ->join('users', function ($join) use ($request) {
                     $join->on('users.id', '=', 'products.user_id')
                         ->where('users.campus_id', '=', $request->campus_id);
@@ -47,12 +47,14 @@ class ProductsController extends Controller
                 })
                 ->select('products.*')
 //                ->where('campuses.id', $request->campus_id)
-//                ->where([['products.category_id', $category->id], ['payment_status', 'paid']])
-//                ->orWhere([['category_id', $category->id], ['payment_status', 'free']])
+                ->where([['category_id', $category->id], ['payment_status', 'paid']])
+                ->orWhere([['category_id', $category->id], ['payment_status', 'free']])
                 ->latest()->paginate(15);
+        }else{
+
+            $products = Product::where([['category_id', $category->id], ['payment_status', 'paid']])
+                ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->paginate(15);
         }
-        $products = Product::where([['category_id', $category->id], ['payment_status', 'paid']])
-            ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->paginate(15);
 
         return new ProductResource($products);
     }
