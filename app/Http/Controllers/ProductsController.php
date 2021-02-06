@@ -74,7 +74,7 @@ class ProductsController extends Controller
             $shops_campus_product = $campus->userCampusProduct->where([['category_id', $category->id], ['payment_status', 'paid']])
                 ->orWhere([['category_id', $category->id], ['payment_status', 'free']]);
 
-            $products = $users_campus_product->merge($shops_campus_product)->take(6);
+            $products = $users_campus_product->merge($shops_campus_product);
 
         }else {
 
