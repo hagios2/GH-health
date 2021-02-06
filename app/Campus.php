@@ -24,12 +24,22 @@ class Campus extends Model
 
     public function addCarouselImage($image)
     {
-        $this->carousel()->create($image);   
+        $this->carousel()->create($image);
     }
 
 
     public function carousel()
     {
         return $this->hasMany('App\CarouselControl', 'campus_id');
+    }
+
+    public function userCampusProduct()
+    {
+        return $this->hasManyThrough(Product::class, User::class);
+    }
+
+    public function shopCampusProduct()
+    {
+        return $this->hasManyThrough(Product::class, Merchandiser::class);
     }
 }

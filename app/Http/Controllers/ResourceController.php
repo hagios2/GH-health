@@ -35,10 +35,24 @@ class ResourceController extends Controller
        //return response()->json(['images', $carousel]);
     }
 
-    public function newThisWeek()
+    public function newThisWeek(Request $request)
     {
-        $products = Product::where('payment_status', 'paid')
-            ->orWhere('payment_status', 'free')->latest()->take(10)->get();
+        if($request->has('campus_id'))
+        {
+            $campus = Campus::find($request->campus_id);
+
+            $users_campus_product = $campus->shopCampusProduct;
+
+            $shops_campus_product = $campus->userCampusProduct;
+
+            $products = $users_campus_product->merge($shops_campus_product);
+
+        }else{
+
+            $products = Product::where('payment_status', 'paid')
+                ->orWhere('payment_status', 'free')->latest()->take(10)->get();
+        }
+
 
         return RelatedProductResource::collection($products);
     }
