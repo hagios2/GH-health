@@ -99,9 +99,10 @@ class ProductsController extends Controller
     {
         if($request->has('campus_id'))
         {
-            return new AllShopsResource(Merchandiser::where([['payment_status', 'paid'], ['campus_id', $request->campus_id]])->paginate(8));
+            return new AllShopsResource(Merchandiser::where([['payment_status', 'paid'], ['campus_id', $request->campus_id]])->
+            orWhere([['payment_status', 'free'], ['campus_id', $request->campus_id]])->paginate(8));
         }else{
-            return new AllShopsResource(Merchandiser::where('payment_status', 'paid')->paginate(8));
+            return new AllShopsResource(Merchandiser::where('payment_status', 'paid')->orWhere('payment_status', 'free')->paginate(8));
         }
 
     }
