@@ -65,6 +65,8 @@ class SellersController extends Controller
 
             $product['merchandiser_id'] = $shop->id;
 
+            $product['campus_id'] = $shop->campus_id;
+
         }else{
 
             $user = auth()->guard('api')->user();
@@ -74,7 +76,11 @@ class SellersController extends Controller
                 return response()->json(['status' => 'Valid ID required'],200);
             }
 
-            $product['user_id'] = auth()->guard('api')->id();
+            $user = auth()->guard('api')->user();
+
+            $product['user_id'] = $user->id;
+
+            $product['campus_id'] = $user->campus_id;
 
             $product['payment_status'] = 'payment required';
         }

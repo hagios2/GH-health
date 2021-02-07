@@ -36,21 +36,9 @@ class ProductsController extends Controller
     {
         if($request->has('campus_id'))
         {
-            $products = DB::table('products')
-                ->join('users', function ($join) use ($request) {
-                    $join->on('users.id', '=', 'products.user_id');
-//                        ->where('users.campus_id', '=', $request->campus_id);
-                })
-                ->join('merchandisers', function($join) use ($request){
-                    $join->on('merchandisers.id', '=', 'products.merchandiser_id');
-                       // ->where('merchandisers.campus_id', '=', $request->campus_id);
-                })
-                ->select('products.*')
-                ->where([['category_id', $category->id], ['products.payment_status', 'paid'], ['users.campus_id', '=', $request->campus_id]])
-                ->orWhere([['category_id', $category->id], ['products.payment_status', 'paid'], ['merchandisers.campus_id', '=', $request->campus_id]])
-                ->orWhere([['category_id', $category->id], ['products.payment_status', 'free'], ['users.campus_id', '=', $request->campus_id]])
-                ->orWhere([['category_id', $category->id], ['products.payment_status', 'free'], ['merchandisers.campus_id', '=', $request->campus_id]])
-                ->latest()->paginate(15);
+            $products = Product::where([['category_id', $category->id], ['payment_status', 'paid'], ['campus_id', $request->campus_id]])
+                ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->paginate(15);
+
         }else{
 
             $products = Product::where([['category_id', $category->id], ['payment_status', 'paid']])
@@ -74,32 +62,9 @@ class ProductsController extends Controller
     {
         if($request->has('campus_id'))
         {
-//            $campus = Campus::find($request->campus_id);
-//
-//            $users_campus_product = $campus->shopCampusProduct()->where([['category_id', $category->id], ['payment_status', 'paid']])
-//                ->orWhere([['category_id', $category->id], ['payment_status', 'free']]);
-//
-//            $shops_campus_product = $campus->userCampusProduct->where([['category_id', $category->id], ['payment_status', 'paid']])
-//                ->orWhere([['category_id', $category->id], ['payment_status', 'free']]);
-//
-//            $products = $users_campus_product->merge($shops_campus_product);
 
-            $products = DB::table('products')
-                ->join('users', function ($join) use ($request) {
-                    $join->on('users.id', '=', 'products.user_id');
-//                        ->where('users.campus_id', '=', $request->campus_id);
-                })
-                ->join('merchandisers', function($join) use ($request){
-                    $join->on('merchandisers.id', '=', 'products.merchandiser_id');
-//                        ->where('merchandisers.campus_id', '=', $request->campus_id);
-                })
-                ->select('products.*')
-//                ->where('campuses.id', $request->campus_id)
-                ->where([['category_id', $category->id], ['products.payment_status', 'paid'], ['users.campus_id', '=', $request->campus_id]])
-                ->orWhere([['category_id', $category->id], ['products.payment_status', 'paid'], ['merchandisers.campus_id', '=', $request->campus_id]])
-                ->orWhere([['category_id', $category->id], ['products.payment_status', 'free'], ['users.campus_id', '=', $request->campus_id]])
-                ->orWhere([['category_id', $category->id], ['products.payment_status', 'free'], ['merchandisers.campus_id', '=', $request->campus_id]])
-                ->latest()->take(6)->get();
+            $products = Product::where([['category_id', $category->id], ['payment_status', 'paid'], ['campus_id', $request->campus_id]])
+                ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->take(6)->get()
 
         }else {
 
@@ -107,7 +72,6 @@ class ProductsController extends Controller
                 ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->take(6)->get();
 
         }
-        //        return new ProductResource(Product::where('category_id', $category->id)->latest()->take(6)->get());
 
         return new ProductResource($products);
     }

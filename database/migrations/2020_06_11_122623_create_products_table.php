@@ -17,7 +17,8 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('category_id')->unsigned();
             $table->integer('merchandiser_id')->unsigned()->nullable();
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('merchandiser_id')->unsigned()->nullable();
+            $table->integer('campus_id')->unsigned()->nullable();
             $table->string('product_name');
             $table->integer('in_stock')->unsiged();
             $table->decimal('price', 10, 2);
