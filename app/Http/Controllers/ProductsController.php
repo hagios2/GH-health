@@ -60,7 +60,6 @@ class ProductsController extends Controller
      */
     public function index(Category $category, Request $request)
     {
-        return $request->all();
         if($request->has('campus_id'))
         {
 
@@ -70,7 +69,7 @@ class ProductsController extends Controller
         }else {
 
             $products = Product::where([['category_id', $category->id], ['payment_status', 'paid']])
-                ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->take(6)->get();
+                ->orWhere([['category_id', $category->id], ['payment_status', 'free'], ['campus_id', $request->campus_id]])->with('image')->latest()->take(6)->get();
 
         }
 
