@@ -37,7 +37,7 @@ class ProductsController extends Controller
         if($request->has('campus_id'))
         {
             $products = Product::where([['category_id', $category->id], ['payment_status', 'paid'], ['campus_id', $request->campus_id]])
-                ->orWhere([['category_id', $category->id], ['payment_status', 'free']])->with('image')->latest()->paginate(15);
+                ->orWhere([['category_id', $category->id], ['payment_status', 'free'], ['campus_id', $request->campus_id]])->with('image')->latest()->paginate(15);
 
         }else{
 
