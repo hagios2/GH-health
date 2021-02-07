@@ -60,6 +60,7 @@ class ProductsController extends Controller
      */
     public function index(Category $category, Request $request)
     {
+        return $request->all();
         if($request->has('campus_id'))
         {
 
