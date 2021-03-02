@@ -21,16 +21,12 @@ class CarouselController extends Controller
 
         $file = $request->file('image_path');
 
-        // foreach($files as $file)
-        // {
-
             $fileName = now().'_'.$file->getClientOriginalName();
-    
-            $file->storeAs('public/carousel images/'.$campus->id, $fileName);
-    
-            $campus->addCarouselImage([
-                'image_path' => storage_path('app/public/campus images/'.$campus->id.'/'.$fileName)]);
-    
+
+            $file->move(storage_path("app/public/campus images/{$campus->id}"), $fileName);
+
+            $campus->addCarouselImage(['image_path' => "storage/campus images/{$campus->id}/$fileName"]);
+
         // }
 
         return response()->json(['status' => 'files saved'], 200);
@@ -42,8 +38,6 @@ class CarouselController extends Controller
 
        return $carousel;
 
-
-       //return response()->json(['images', $carousel]);
     }
 
 

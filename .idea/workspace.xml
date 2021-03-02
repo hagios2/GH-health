@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CarouselController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CarouselController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +218,9 @@
       <workItem from="1612606593084" duration="7678000" />
       <workItem from="1612725151156" duration="1049000" />
       <workItem from="1612739584032" duration="32000" />
-      <workItem from="1614377196700" duration="2203000" />
+      <workItem from="1614377196700" duration="3446000" />
+      <workItem from="1614641753167" duration="1170000" />
+      <workItem from="1614646919066" duration="664000" />
     </task>
     <servers />
   </component>
