@@ -12,7 +12,7 @@ class CarouselController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth:admin')->except('getCourosleIamges');
     }
 
     public function addCarouselImage(Campus $campus, Request $request)
