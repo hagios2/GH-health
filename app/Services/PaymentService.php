@@ -82,10 +82,11 @@ class PaymentService
                     }else if($result['data']['suggested_autth'] == 'PIN') {
 
                         return  'payment requires PIN';
-                    }else{
-
-                        return ['error' => 'whoops something went wrong'];
                     }
+//                    else{
+//
+//                        return ['error' => 'whoops something went wrong'];
+//                    }
                 }
 
                 return [

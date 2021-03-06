@@ -38,7 +38,8 @@ class UserSellerPaymentController extends Controller
                     'billingaddress' => $request->billingaddress,
                     'billingstate' => $request->billingstate,
                 ]);
-            } else {
+            }
+            else {
                     $user->sellersBillingDetail->update([
                     'cardno' => $request->cardno,
                     'expirymonth' => $request->expirymonth,
@@ -63,7 +64,9 @@ class UserSellerPaymentController extends Controller
                 'product_id' => $request->product_id
             ]);
 
-            json_encode($payment_details);
+            Log::info('logging payment details');
+
+            Log::info($payment_details);
 
             $payment_response = (new PaymentService)->payviacard($payment_details);
 
