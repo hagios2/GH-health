@@ -26,7 +26,7 @@ class ShopObserverJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(Merchandiser $merchandiser, Product $product, User $user)
+    public function __construct(Merchandiser $merchandiser, Product $product)
     {
         $this->merchandiser = $merchandiser;
 
