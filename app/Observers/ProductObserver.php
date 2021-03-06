@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Jobs\ShopObserverJob;
 use App\Product;
+use Illuminate\Support\Facades\Log;
 
 class ProductObserver
 {
@@ -15,6 +16,8 @@ class ProductObserver
      */
     public function created(Product $product)
     {
+        Log::info(json_encode($product));
+
         if($product->merchandiser && $product->merchandiser->followers->count() > 0)
         {
             ShopObserverJob::dispatch($product->merchandiser, $product);
