@@ -44,7 +44,7 @@
                     <p style="font-size: 14px;color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
                         <span style="font-weight: 700;font-size: 18px;">Hello {{$user->name}}!</span><br/><br/>
                         Thank you for shoping on martekgh.com.<br/>
-                        <b>{{$merchandiser->company_name}}</b> has uploaded a new products in stock just for you.
+                        <b>{{$merchandiser->company_name}}</b> has uploaded a new product {{$product->product_name}} in stock just for you.
                         <br/>
                         <br/>
                         Click on the button below to view shop.
@@ -55,7 +55,7 @@
             <tr>
                 <td style="padding: 30px;text-align: center;">
                     <a 	style="background-color: white;border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
-                          href="martekgh.com/user/product-details/{{$product->id}}/{{$product->product_name}}" target="_blank">
+                          href="https://martekgh.com/user/product-details/{{$product->id}}/{{$product->product_name}}" target="_blank">
                         View Product
                     </a>
                 </td>

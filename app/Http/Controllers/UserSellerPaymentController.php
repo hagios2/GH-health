@@ -72,7 +72,8 @@ class UserSellerPaymentController extends Controller
                 return response()->json(['message' => 'payment process failed']);
 
             } else {
-                Log::info($payment_response);
+
+                Log::info(json_encode($payment_response));
 
                 SellersPayment::create([
                     'user_id' => $user->id,

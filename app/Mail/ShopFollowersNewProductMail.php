@@ -9,7 +9,6 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
 
 class ShopFollowersNewProductMail extends Mailable implements ShouldQueue
 {
@@ -42,8 +41,6 @@ class ShopFollowersNewProductMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        Log::info('am inside mailable');
-
         return $this->view('mail.product_notification_alert')
             ->subject("{$this->merchandiser->company_name}'s shop New Product Alert" );
     }
