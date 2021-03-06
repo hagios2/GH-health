@@ -54,9 +54,13 @@
 
             <tr>
                 <td style="padding: 30px;text-align: center;">
-                    <a 	style="background-color: white;border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
-                          href="https://martekgh.com/user/product-details/{{$product->id}}/{{$product->product_name}}" target="_blank">
-                        View Product
+                    <a style="cursor:pointer;"
+                       href="martekgh.com/user/product-details/{{$product->id}}/{{$product->product_name}}" target="_blank">
+                        <button
+                            style="background-color: white;cursor:pointer;border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+                        >
+                            View Product
+                        </button>
                     </a>
                 </td>
             </tr>
