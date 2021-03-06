@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PaymentService
 {
@@ -57,7 +58,15 @@ class PaymentService
             "redirect_url" => $billing_details['callback']
         );
 
+        Log::info('logging data in payment services');
+
+        Log::info(json_encode($data));
+
         $request = $this->initiateCard($data);
+
+        Log::info('logging payment request');
+
+        Log::info(json_encode($request));
 
         if ($request)
         {
