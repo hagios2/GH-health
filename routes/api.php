@@ -211,6 +211,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('campus/{campus}/carousel-images', 'CarouselController@getCourosleIamges');
 
+    Route::get('fetch/all/carousel-images', 'CarouselController@fetchAllCarouselImages');
+
     Route::post('campus/{campus}/carousel-images', 'CarouselController@addCarouselImage');
 
     Route::delete('campus-carousel/{carouselImage}/delete', 'CarouselController@deleteCarouselImage');

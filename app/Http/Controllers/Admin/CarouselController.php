@@ -40,6 +40,12 @@ class CarouselController extends Controller
 
     }
 
+    public function fetchAllCarouselImages()
+    {
+        $carousel = CarouselControl::query()->latest()->get(['id', 'image_path']);
+
+        return $carousel;
+    }
 
     public function deleteCarouselImage(CarouselControl $carouselImage)
     {

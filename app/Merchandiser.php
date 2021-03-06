@@ -85,7 +85,7 @@ class Merchandiser extends Authenticatable implements JWTSubject, Searchable
 
     public function followers()
     {
-        return $this->hasMany('App\Follower');
+        return $this->belongsToMany(User::class, 'followers', 'merchandiser_id', 'user_id');
     }
 
 
