@@ -63,6 +63,8 @@ class UserSellerPaymentController extends Controller
                 'product_id' => $request->product_id
             ]);
 
+            json_encode($payment_details);
+
             $payment_response = (new PaymentService)->payviacard($payment_details);
 
             if (gettype($payment_response) == 'string') {

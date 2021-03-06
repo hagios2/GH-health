@@ -22,11 +22,7 @@
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserSellerPaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserSellerPaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/ShopObserverJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/ShopObserverJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/ShopFollowersNewProductMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/ShopFollowersNewProductMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/PaidProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PaidProduct.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/SellersPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/SellersPayment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mail/product_notification_alert.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/product_notification_alert.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/PaymentService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PaymentService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +223,7 @@
       <workItem from="1614641753167" duration="1170000" />
       <workItem from="1614646919066" duration="1236000" />
       <workItem from="1614706156046" duration="2823000" />
-      <workItem from="1615010709278" duration="9626000" />
+      <workItem from="1615010709278" duration="10690000" />
     </task>
     <servers />
   </component>
