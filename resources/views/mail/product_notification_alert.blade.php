@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Verification Email</title>
+    <title>New Product Alert</title>
     <style type="text/css">
         body {
             Margin: 0;
@@ -31,14 +31,13 @@
 <center style="width: 100%;table-layout: fixed;background-color: #f6f9fc;">
     <div style="max-width: 600px;background-color: #FFFFFF;">
         <table style="Margin:0 auto;width: 100%;max-width:600px;font-family: sans-serif;color: #4a4a4a;" align="center">
-            <tr>
-                <td style="background-color: #6EC7E0;padding:20px 10px;">
-                    <h2
-                        style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;float:left;color:black;padding:6px 6px 6px 30px; margin-left:-10px;margin-top:5%;font-size: 15px;text-transform: uppercase;"
-                    >New Product</h2>
-                    <a href="https://martekgh.com" style="float: right;"><img src="https://1.bp.blogspot.com/-FN5gJQyz8Ns/YDifO6x-HhI/AAAAAAAAEzc/Q8D3s0dnU1MR1ZRgyWtDFCUuUhO4h1BMQCLcBGAsYHQ/s320/martlogo.png" alt="wapatron-logo" title="waPatron" style="height: 75px;width: auto;"></a>
-                </td>
-            </tr>
+
+            <td style="background-color: #6EC7E0;padding:20px 10px;text-align: center;">
+                <!-- <h2
+                style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;float:left;color:black;padding:6px 6px 6px 30px; margin-left:-10px;margin-top:5%;font-size: 15px;text-transform: uppercase;"
+                >Email Confirmation</h2> -->
+                <a href="https://martekgh.com"><img src="https://1.bp.blogspot.com/-FN5gJQyz8Ns/YDifO6x-HhI/AAAAAAAAEzc/Q8D3s0dnU1MR1ZRgyWtDFCUuUhO4h1BMQCLcBGAsYHQ/s320/martlogo.png" alt="wapatron-logo" title="waPatron" style="height: 50px;width: auto;"></a>
+            </td>
 
             <tr>
                 <td style="padding:0px 20px;">
@@ -48,7 +47,7 @@
                         <b>{{$merchandiser->company_name}}</b> has uploaded a new products in stock just for you.
                         <br/>
                         <br/>
-                        Click on the below to view shop.
+                        Click on the button below to view shop.
                     </p>
                 </td>
             </tr>
@@ -57,7 +56,7 @@
                 <td style="padding: 30px;text-align: center;">
                     <a 	style="background-color: white;border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
                           href="martekgh.com/user/product-details/{{$product->id}}/{{$product->product_name}}" target="_blank">
-                        View Shop
+                        View Product
                     </a>
                 </td>
             </tr>
