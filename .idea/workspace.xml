@@ -21,6 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/PasswordResetMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/PasswordResetMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/ShopEmailResendMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/ShopEmailResendMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/ShopPasswordResetMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/ShopPasswordResetMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mail/PasswordResetMail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/PasswordResetMail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mail/ShopPasswordResetMail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/ShopPasswordResetMail.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +227,8 @@
       <workItem from="1614646919066" duration="1236000" />
       <workItem from="1614706156046" duration="2823000" />
       <workItem from="1615010709278" duration="14721000" />
-      <workItem from="1615669757064" duration="420000" />
+      <workItem from="1615669757064" duration="786000" />
+      <workItem from="1615754114623" duration="2023000" />
     </task>
     <servers />
   </component>
