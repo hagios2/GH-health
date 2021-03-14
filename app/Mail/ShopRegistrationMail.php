@@ -36,8 +36,8 @@ class ShopRegistrationMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail/ShopRegistrationMail')
-            
+        return $this->view('mail/ShopRegistrationMail')
+
         ->subject('Confirm Email');
     }
 }

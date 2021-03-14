@@ -36,8 +36,8 @@ class UserRegistrationMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail/UserRegistrationMail')
-            
+        return $this->view('mail/UserRegistrationMail')
+
             ->subject('Confirm Email');
     }
 }
