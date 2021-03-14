@@ -64,7 +64,7 @@
             <tr>
                 <td style="padding: 0px 30px;">
                     <p style="font-size: 14px; color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-                        Or verify using this link: <a href="{{env('FRONT_END_URL')."/api/auth/email/verify?token={$token->token}"}}">link to verify</a>
+                        Or verify using this link: <a href="{{env('FRONT_END_URL')."/api/auth/email/verify?token={$token->token}"}}">{{env('FRONT_END_URL')."/api/auth/email/verify?token={$token->token}"}}</a>
                     </p>
                 </td>
             </tr>
