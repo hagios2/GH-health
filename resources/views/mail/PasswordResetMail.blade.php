@@ -72,7 +72,7 @@
 
             <tr >
                 <td style="padding:0px 20px;">
-                    <a href="{{env('PASSWORD_RESET_URL')."?token={$token->token}"}}" target="_blank" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">the password reset url here</a></td>
+                    <a href="{{env('PASSWORD_RESET_URL')."?token={$token->token}"}}" target="_blank" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">{{env('PASSWORD_RESET_URL')."?token={$token->token}"}}</a></td>
             </tr>
             <tr>
                 <td style="padding:0px 20px;">
