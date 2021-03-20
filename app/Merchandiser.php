@@ -10,6 +10,9 @@ use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @method static where(array $array)
+ */
 class Merchandiser extends Authenticatable implements JWTSubject, Searchable
 {
     use Notifiable;
@@ -123,6 +126,12 @@ class Merchandiser extends Authenticatable implements JWTSubject, Searchable
         $this->payment()->create($payment);
     }
 
+    public function scopeFetchWithNoneStudentShop($query)
+    {
+        $shop_type = ShopType::query()->where('shop_type', 'Non-student shop')->first();
+
+        return $query->orWhere('shop_type_id', $shop_type->id);
+    }
 
 
 }
