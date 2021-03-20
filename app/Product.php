@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 
+/**
+ * @method static where(string $string, string $string1)
+ */
 class Product extends Model implements Searchable
 {
     protected $guarded = ['id'];

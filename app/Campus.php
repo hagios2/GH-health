@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static find(mixed $campus_id)
+ */
 class Campus extends Model
 {
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Campus;
 use App\Category;
+use App\Helpers\CollectionHelper;
 use App\Http\Resources\CategoryProductResource;
 use App\Http\Resources\RelatedProductResource;
 use App\Product;
@@ -53,6 +54,20 @@ class ResourceController extends Controller
                 ->orWhere('payment_status', 'free')->latest()->take(10)->get();
         }
 
+        if($products->count() > 0 )
+        {
+            $products_list = collect();
+
+            $products->map(function ($product) use ($products_list){
+
+                if($product->image->count() > 0)
+                {
+                    $products_list->push($product);
+                }
+            });
+
+            return RelatedProductResource::collection($products_list);
+        }
 
         return RelatedProductResource::collection($products);
     }
