@@ -32,7 +32,7 @@ class MerchandiserRegisterController extends Controller
             $attributes['payment_status'] = 'free';
 
         }else{
-            $attributes['payment_status'] = 'free';
+            $attributes['payment_status'] = 'payment required';
         }
 
         $merchandiser = Merchandiser::create($attributes);
