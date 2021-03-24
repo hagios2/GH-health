@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @method static where(array $array)
+ * @method static create(array $attributes)
  */
 class Merchandiser extends Authenticatable implements JWTSubject, Searchable
 {

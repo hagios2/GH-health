@@ -20,7 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_11_16_20__4_14_AM.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/martek.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Merchandiser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Merchandiser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ShopReview.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ShopReview.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/VerifyEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/VerifyEmail.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +239,8 @@
       <workItem from="1615759774791" duration="571000" />
       <workItem from="1615761439211" duration="1876000" />
       <workItem from="1615764356342" duration="1627000" />
-      <workItem from="1616258712538" duration="7081000" />
+      <workItem from="1616258712538" duration="8243000" />
+      <workItem from="1616557148498" duration="330000" />
     </task>
     <servers />
   </component>

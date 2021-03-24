@@ -24,7 +24,7 @@ class MerchandiserFormRequest extends FormRequest
     public function rules()
     {
         return [
-            
+
             'company_name' => 'required|string',
 
             'email' => 'required|email|unique:merchandisers,email',
@@ -38,6 +38,8 @@ class MerchandiserFormRequest extends FormRequest
             'password' => 'required|string',
 
             'phone' => 'required|numeric|min:10|unique:merchandisers,phone',
+
+            'free_trial' => 'required|integer'
         ];
     }
 }
