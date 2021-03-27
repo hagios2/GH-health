@@ -98,20 +98,34 @@ class PaymentService
 //                    }
                 }
 
-                Log::info("logging payment results in the else");
+                if($result['status'] == 'success') {
 
-                Log::info($result);
+                    Log::info("logging payment results in the else");
 
-                return[
-                    'status' => 'success',
-                    'authurl' => $result['data']['authurl'],
-                    'chargeResponseMessage' => $result['data']['chargeResponseMessage'],
-                    'redirect_url' => $billing_details['callback'],
-                    'txref' => $txref
-                ];
+                    Log::info($result);
+
+
+                    return [
+                        'status' => 'success',
+                        'authurl' => $result['data']['authurl'],
+                        'chargeResponseMessage' => $result['data']['chargeResponseMessage'],
+                        'redirect_url' => $billing_details['callback'],
+                        'txref' => $txref
+                    ];
+
+                }else{
+
+                    return $result;
+                }
+
+            }else{
+
+                return $request;
             }
 
-        }else{
+        }
+
+        else{
 
             return 'Payment failed';
         }

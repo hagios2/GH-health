@@ -85,7 +85,11 @@ class PaymentController extends Controller
 
                 return response()->json(['message' => 'Payment process failed']);
 
-            } else {
+            }elseif ($payment_response['status'] == 'error')
+            {
+                return $payment_response;
+            }
+            else {
 
                 Log::info($payment_response);
 
