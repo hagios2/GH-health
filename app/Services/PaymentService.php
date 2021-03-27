@@ -98,7 +98,11 @@ class PaymentService
 //                    }
                 }
 
-                return [
+                Log::info("logging payment results in the else");
+
+                Log::info($result);
+
+                return[
                     'status' => 'success',
                     'authurl' => $result['data']['authurl'],
                     'chargeResponseMessage' => $result['data']['chargeResponseMessage'],
