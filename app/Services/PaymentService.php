@@ -92,10 +92,6 @@ class PaymentService
 
                         return  'payment requires PIN';
                     }
-//                    else{
-//
-//                        return ['error' => 'whoops something went wrong'];
-//                    }
                 }
 
                 if($result['status'] == 'success') {
