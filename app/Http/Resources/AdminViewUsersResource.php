@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AdminViewUsersResource extends JsonResource
@@ -14,7 +15,7 @@ class AdminViewUsersResource extends JsonResource
      */
     public function toArray($request)
     {
-    
+
         return  [
 
             'id' => $this->id,
@@ -27,9 +28,11 @@ class AdminViewUsersResource extends JsonResource
 
             'campus' => $this->campus,
 
-            'isActive' => $this->isActive
-            
+            'isActive' => $this->isActive,
+
+            'created_at' => Carbon::parse($this->created_at)->format('D, d F Y')
+
         ];
-        
+
     }
 }
