@@ -4,8 +4,9 @@ namespace App\Http\Resources;
 
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class AdminViewUsersResource extends JsonResource
+class AdminViewUsersResource extends ResourceCollection
 {
     /**
      * Transform the resource into an array.
@@ -15,24 +16,27 @@ class AdminViewUsersResource extends JsonResource
      */
     public function toArray($request)
     {
+        return $this->collection->map(function ($user){
+            return  [
 
-        return  [
+                'id' => $user->id,
 
-            'id' => $this->id,
+                'name' => $user->name,
 
-            'name' => $this->name,
+                'email' => $user->email,
 
-            'email' => $this->email,
+                'phone' => $user->phone,
 
-            'phone' => $this->phone,
+                'campus' => $user->campus,
 
-            'campus' => $this->campus,
+                'isActive' => $user->isActive,
 
-            'isActive' => $this->isActive,
+                'created_at' => Carbon::parse($user->created_at)->format('D, d F Y')
 
-            'created_at' => Carbon::parse($this->created_at)->format('D, d F Y')
+            ];
+        });
 
-        ];
+
 
     }
 }

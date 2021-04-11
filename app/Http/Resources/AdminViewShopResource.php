@@ -4,8 +4,9 @@ namespace App\Http\Resources;
 
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class AdminViewShopResource extends JsonResource
+class AdminViewShopResource extends ResourceCollection
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +17,13 @@ class AdminViewShopResource extends JsonResource
     public function toArray($request)
     {
 
+        return $this->collection->map(function($shop){
 
             return  [
 
-                'id' => $this->id,
+                'id' => $shop->id,
 
-                'company_name' => $this->company_name,
+                'company_name' => $shop->company_name,
 
                 /* 'company_description' => $this->company_description,
 
@@ -29,12 +31,13 @@ class AdminViewShopResource extends JsonResource
 
                 'number_of_followers' => $this->followers->count(), */
 
-                'campus' => $this->campus,
+                'campus' => $shop->campus,
 
-                'isActive' => $this->isActive,
+                'isActive' => $shop->isActive,
 
-                'created_at' => Carbon::parse($this->created_at)->format('D, d F Y')
+                'created_at' => Carbon::parse($shop->created_at)->format('D, d F Y')
             ];
 
+        });
     }
 }
