@@ -18,17 +18,17 @@ class FollowersResource extends JsonResource
 
             'shop_id' => $this->merchandiser_id,
 
-            'shop_name' => $this->shop->company_name,
+            'shop_name' => $this->shop ? $this->shop->company_name : 'not found',
 
-            'company_description' => $this->shop->company_description,
+            'company_description' => $this->shop ? $this->shop->company_description : 'not found',
 
-            'number_of_followers' =>  $this->shop->followers->count(),
+            'number_of_followers' => $this->shop ? $this->shop->followers->count() : 'not found',
 
             'campus' => [
 
-                'id' => $this->shop->campus->id,
+                'id' => $this->shop ? $this->shop->campus->id : 'not found',
 
-                'campus' => $this->shop->campus->campus
+                'campus' => $this->shop ? $this->shop->campus->campus : 'not found',
             ]
         ];
     }
