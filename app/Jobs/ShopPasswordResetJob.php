@@ -38,9 +38,9 @@ class ShopPasswordResetJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->shop)
-        
+        Mail::to($this->shop->email)
+
         ->queue(new ShopPasswordResetMail($this->shop, $this->token));
-        
+
     }
 }

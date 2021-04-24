@@ -32,7 +32,7 @@ class Product extends Model implements Searchable
 
     public function image()
     {
-        return $this->hasMany('App\ProductImage');
+        return $this->hasMany(ProductImage::class);
     }
 
 

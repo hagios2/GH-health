@@ -20,8 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/DatabaseSetup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/AdminViewUsersResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/AdminViewUsersResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PasswordResetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PasswordResetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SellersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SellersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/ShopObserverJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/ShopObserverJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/ShopPasswordResetJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/ShopPasswordResetJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/ShopPasswordResetMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/ShopPasswordResetMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +244,10 @@
       <workItem from="1617368912000" duration="1578000" />
       <workItem from="1617465576517" duration="148000" />
       <workItem from="1617596507624" duration="1886000" />
-      <workItem from="1618158831131" duration="3487000" />
+      <workItem from="1618158831131" duration="4817000" />
+      <workItem from="1618456569147" duration="314000" />
+      <workItem from="1618932603116" duration="406000" />
+      <workItem from="1619286761512" duration="4556000" />
     </task>
     <servers />
   </component>

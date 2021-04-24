@@ -153,6 +153,7 @@ class SellersController extends Controller
        $files = $request->file(['product_images']);
 
        try{
+
            foreach($files as $file)
            {
 

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ShopPasswordResetMail;
 use Illuminate\Http\Request;
 use App\User;
 use App\Merchandiser;
 use App\ApiPasswordReset;
 use App\Jobs\PasswordResetJob;
 use App\Jobs\ShopPasswordResetJob;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ChangePasswordRequest;
@@ -16,9 +18,9 @@ class PasswordResetController extends Controller
 {
     public function __construct()
     {
-      
+
         $this->middleware('auth:api,merchandiser', ['only' => ['changeUserPassword', 'changeMediaPassword']]);
-        
+
     }
 
     public function changeUserPassword(ChangePasswordRequest $request)
@@ -65,8 +67,8 @@ class PasswordResetController extends Controller
 
         return response()->json(['status' => 'invalid Password']);
     }
-    
-    
+
+
     public function sendResetMail(Request $request)
     {
 
@@ -116,8 +118,10 @@ class PasswordResetController extends Controller
                 'isMediaEmail' => true
             ]);
 
-            //Mail::to($client)->send(new ClientPasswordResetMail($client, $token));
-            ShopPasswordResetJob::dispatch($shop, $token);
+//            ShopPasswordResetJob::dispatch($shop, $token);
+            Mail::to($shop->email)
+
+                ->queue(new ShopPasswordResetMail($shop, $token));
 
             return response()->json(['status' => 'Email sent']);
         }
@@ -144,7 +148,7 @@ class PasswordResetController extends Controller
 
                 return response()->json(['status' => 'new password saved']);
             }
-           
+
             return response()->json(['status' => 'Operation Aborted! Token has Expired'], 403);
         }
 
@@ -170,7 +174,7 @@ class PasswordResetController extends Controller
 
                 return response()->json(['status' => 'new password saved']);
             }
-           
+
             return response()->json(['status' => 'Operation Aborted! Token has Expired'], 403);
         }
 

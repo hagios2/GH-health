@@ -45,7 +45,9 @@ class ShopObserverJob implements ShouldQueue
 
         foreach ($followers as $follower)
         {
-            Mail::to($follower->email)->cc($this->merchandiser->email)->queue(new ShopFollowersNewProductMail($this->merchandiser, $this->product, $follower));
+            Mail::to($follower->email)->queue(new ShopFollowersNewProductMail($this->merchandiser, $this->product, $follower));
+
+            //Mail::to($follower->email)->cc($this->merchandiser->email)->queue(new ShopFollowersNewProductMail($this->merchandiser, $this->product, $follower));
         }
     }
 }

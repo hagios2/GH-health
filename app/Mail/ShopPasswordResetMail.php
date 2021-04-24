@@ -9,7 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use App\Merchandiser;
 use App\ApiPasswordReset;
 
-class ShopPasswordResetMail extends Mailable
+class ShopPasswordResetMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -31,7 +31,7 @@ class ShopPasswordResetMail extends Mailable
     /**
      * Build the message.
      *
-     * @return $this
+     *
      */
     public function build()
     {
