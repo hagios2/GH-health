@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MerchandiserPasswordResetMail;
 use App\Mail\ShopPasswordResetMail;
 use Illuminate\Http\Request;
 use App\User;
@@ -104,7 +105,7 @@ class PasswordResetController extends Controller
 
         $request->validate(['email' => 'required|email']);
 
-        $shop = Merchandiser::query()->where('email', $request->email)->first();
+        $shop = Merchandiser::where('email', $request->email)->first();
 
 //        Log::info($shop);
 
@@ -124,7 +125,7 @@ class PasswordResetController extends Controller
             ]);
 
 //            ShopPasswordResetJob::dispatch($shop, $token);
-            Mail::to($shop->email)->queue(new ShopPasswordResetMail($merchandiser, $token));
+            Mail::to($shop->email)->queue(new MerchandiserPasswordResetMail($merchandiser, $token));
 
             return response()->json(['status' => 'Email sent']);
         }

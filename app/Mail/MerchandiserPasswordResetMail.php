@@ -8,23 +8,23 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
 
-class ShopPasswordResetMail extends Mailable implements ShouldQueue
+class MerchandiserPasswordResetMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $shop;
+    public $merchandiser;
 
     public $token;
+
     /**
-     * Create a new message.
+     * Create a new message instance.
      *
      * @return void
      */
-    public function construct(Merchandiser $merchandiser, ApiPasswordReset $token)
+    public function __construct(Merchandiser $merchandiser, ApiPasswordReset $token)
     {
-        $this->shop = $merchandiser ?? Merchandiser::query()->where('email', $token->email)->first();
+        $this->merchandiser = $merchandiser;
 
         $this->token = $token;
     }
@@ -32,13 +32,10 @@ class ShopPasswordResetMail extends Mailable implements ShouldQueue
     /**
      * Build the message.
      *
-     *
+     * @return $this
      */
     public function build()
     {
-
-        Log::info($this->shop);
-
         return $this->view('mail.ShopPasswordResetMail')
             ->subject('Password Reset');
     }
