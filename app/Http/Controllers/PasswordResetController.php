@@ -104,12 +104,14 @@ class PasswordResetController extends Controller
 
         $request->validate(['email' => 'required|email']);
 
-        $shop = Merchandiser::where('email', $request->email)->first();
+        $shop = Merchandiser::query()->where('email', $request->email)->first();
 
 //        Log::info($shop);
 
         if($shop)
         {
+            $merchandiser = $shop;
+
             $gen_token = Str::random(70);
 
             $token = ApiPasswordReset::create([
@@ -122,9 +124,7 @@ class PasswordResetController extends Controller
             ]);
 
 //            ShopPasswordResetJob::dispatch($shop, $token);
-            Mail::to($shop->email)
-
-                ->queue(new ShopPasswordResetMail($shop, $token));
+            Mail::to($shop->email)->queue(new ShopPasswordResetMail($merchandiser, $token));
 
             return response()->json(['status' => 'Email sent']);
         }

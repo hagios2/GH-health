@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PasswordResetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PasswordResetController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mail/ShopPasswordResetMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/ShopPasswordResetMail.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -238,7 +239,7 @@
       <workItem from="1618158831131" duration="4817000" />
       <workItem from="1618456569147" duration="314000" />
       <workItem from="1618932603116" duration="406000" />
-      <workItem from="1619286761512" duration="10581000" />
+      <workItem from="1619286761512" duration="11046000" />
     </task>
     <servers />
   </component>

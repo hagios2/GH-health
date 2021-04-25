@@ -24,7 +24,7 @@ class ShopPasswordResetMail extends Mailable implements ShouldQueue
      */
     public function construct(Merchandiser $merchandiser, ApiPasswordReset $token)
     {
-        $this->shop = $shop ?? Merchandiser::query()->where('email', $token->email)->first();
+        $this->shop = $merchandiser ?? Merchandiser::query()->where('email', $token->email)->first();
 
         $this->token = $token;
     }
