@@ -36,7 +36,7 @@
                     <!-- <h2
                     style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;float:left;color:black;padding:6px 6px 6px 30px; margin-left:-10px;margin-top:5%;font-size: 15px;text-transform: uppercase;"
                     >Email Confirmation</h2> -->
-                    <a href="https://martekgh.com"><img src="https://1.bp.blogspot.com/-FN5gJQyz8Ns/YDifO6x-HhI/AAAAAAAAEzc/Q8D3s0dnU1MR1ZRgyWtDFCUuUhO4h1BMQCLcBGAsYHQ/s320/martlogo.png" alt="wapatron-logo" title="waPatron" style="height: 50px;width: auto;"></a>
+                    <a href="https://martekgh.com"><img src="https://1.bp.blogspot.com/-FN5gJQyz8Ns/YDifO6x-HhI/AAAAAAAAEzc/Q8D3s0dnU1MR1ZRgyWtDFCUuUhO4h1BMQCLcBGAsYHQ/s320/martlogo.png" alt="martek-logo" title="martek" style="height: 50px;width: auto;"></a>
                 </td>
             </tr>
 
@@ -51,13 +51,10 @@
 
             <tr>
                 <td style="padding: 30px;text-align: center;">
-                    <a style="cursor:pointer;"
-                       href="{{env('PASSWORD_SHOP_RESET_URL')."?token={$token->token}"}}" target="_blank">
-                        <button
-                            style="background-color: white;cursor:pointer;border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
-                        >
-                            Reset Password
-                        </button>
+                    <a style="cursor:pointer; background-color: white; border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+
+                       href="{{env('PASSWORD_SHOP_RESET_URL')."?token={$token->token}"}}" target="_blank">Reset Password
+
                     </a>
                 </td>
             </tr>

@@ -51,13 +51,10 @@
 
             <tr>
                 <td style="padding: 30px;text-align: center;">
-                    <a style="cursor:pointer;"
-                       href="{{env('PASSWORD_RESET_URL')."?token={$token->token}"}}" target="_blank">
-                        <button
-                            style="background-color: white;cursor:pointer;border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
-                        >
-                            Reset Password
-                        </button>
+                    <a style="cursor:pointer; background-color: white; border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+
+                    href="{{env('PASSWORD_RESET_URL')."?token={$token->token}"}}" target="_blank">Reset Password
+
                     </a>
                 </td>
             </tr>

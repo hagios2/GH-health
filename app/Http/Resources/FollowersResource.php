@@ -20,6 +20,8 @@ class FollowersResource extends JsonResource
 
             'shop_name' => $this->shop ? $this->shop->company_name : 'not found',
 
+            'shop_avatar' => $this->shop ? $this->shop->avatar : 'not found',
+
             'company_description' => $this->shop ? $this->shop->company_description : 'not found',
 
             'number_of_followers' => $this->shop ? $this->shop->followers->count() : 'not found',
