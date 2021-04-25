@@ -43,7 +43,7 @@
             <tr>
                 <td style="padding:0px 20px;">
                     <p style="font-size: 14px; color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-                        <span style="font-weight: 700;font-size: 18px;">Hello {{$shop->company_name }},<br/> <br/> </span>
+                        <span style="font-weight: 700;font-size: 18px;">Hello {{$merchandiser->company_name }},<br/> <br/> </span>
                         You have requested to reset your password, kindly click on the button below to reset your password.
                     </p>
                 </td>

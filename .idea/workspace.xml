@@ -236,7 +236,7 @@
       <workItem from="1618158831131" duration="4817000" />
       <workItem from="1618456569147" duration="314000" />
       <workItem from="1618932603116" duration="406000" />
-      <workItem from="1619286761512" duration="11434000" />
+      <workItem from="1619286761512" duration="11847000" />
     </task>
     <servers />
   </component>
@@ -274,7 +274,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/PasswordResetController.php</url>
-          <line>49</line>
+          <line>50</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\PasswordResetController" />
             <option name="methodName" value="changeShopPassword" />
