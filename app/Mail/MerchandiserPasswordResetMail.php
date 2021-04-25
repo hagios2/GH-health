@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 
-class MerchandiserPasswordResetMail extends Mailable
+class MerchandiserPasswordResetMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
