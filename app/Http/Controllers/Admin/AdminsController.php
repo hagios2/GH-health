@@ -212,18 +212,18 @@ class AdminsController extends Controller
 
     public function getShopReport()
     {
-        $report = ShopReport::all();
+        $report = ShopReport::query()->latest()->paginate(10);
 
 
-        return AdminViewShopReport::collection($report);
+        return new AdminViewShopReport($report);
     }
 
     public function getProductReport()
     {
-        $report = ProductReport::all();
+        $report = ProductReport::query()->latest()->paginate(10);
 
 
-        return AdminViewProductReport::collection($report);
+        return new AdminViewProductReport($report);
     }
 
 
@@ -247,7 +247,7 @@ class AdminsController extends Controller
     {
         Campus::create($request->validate(['campus' => 'required|string']));
 
-        return response()->json(['message' => '']);
+        return response()->json(['message' => 'campus created']);
     }
 
 }

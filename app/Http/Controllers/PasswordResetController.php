@@ -9,6 +9,7 @@ use App\Merchandiser;
 use App\ApiPasswordReset;
 use App\Jobs\PasswordResetJob;
 use App\Jobs\ShopPasswordResetJob;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -104,6 +105,8 @@ class PasswordResetController extends Controller
         $request->validate(['email' => 'required|email']);
 
         $shop = Merchandiser::where('email', $request->email)->first();
+
+        Log::info($shop);
 
         if($shop)
         {
