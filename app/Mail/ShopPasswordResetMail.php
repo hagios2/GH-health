@@ -2,12 +2,12 @@
 
 namespace App\Mail;
 
+use App\ApiPasswordReset;
+use App\Merchandiser;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Merchandiser;
-use App\ApiPasswordReset;
 use Illuminate\Support\Facades\Log;
 
 class ShopPasswordResetMail extends Mailable implements ShouldQueue
@@ -22,9 +22,9 @@ class ShopPasswordResetMail extends Mailable implements ShouldQueue
      *
      * @return void
      */
-    public function construct(Merchandiser $shop, ApiPasswordReset $token)
+    public function construct(Merchandiser $merchandiser, ApiPasswordReset $token)
     {
-        $this->shop = $shop;
+        $this->shop = $shop ?? Merchandiser::query()->where('email', $token->email)->first();
 
         $this->token = $token;
     }
