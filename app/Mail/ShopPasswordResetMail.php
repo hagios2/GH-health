@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Merchandiser;
 use App\ApiPasswordReset;
+use Illuminate\Support\Facades\Log;
 
 class ShopPasswordResetMail extends Mailable implements ShouldQueue
 {
@@ -35,6 +36,9 @@ class ShopPasswordResetMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
+
+        Log::info($this->shop);
+
         return $this->view('mail.ShopPasswordResetMail')
             ->subject('Password Reset');
     }
