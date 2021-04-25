@@ -3,39 +3,43 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class AdminViewShopReport extends JsonResource
+class AdminViewShopReport extends ResourceCollection
 {
     /**
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @return \Illuminate\Support\Collection
      */
     public function toArray($request)
     {
-        return [
+        return $this->collection->map(function ($report) {
 
-            'id' => $this->id,
+            return [
 
-            'report' => $this->report,
+                'id' => $report->id,
 
-            'user' => [
+                'report' => $report->report,
 
-                'id' => $this->user_id,
+                'user' => [
 
-                'name' => $this->user->name,
+                    'id' => $report->user_id,
 
-                'email' => $this->user->email
-            ],
+                    'name' => $report->user->name,
 
-            'shop' => [
-                
-               'id' => $this->merchandiser_id,
+                    'email' => $report->user->email
+                ],
 
-               'shop_name' => $this->shop->company_name
-            ]
+                'shop' => [
 
-        ];
+                    'id' => $report->merchandiser_id,
+
+                    'shop_name' => $report->shop->company_name
+                ]
+
+            ];
+        });
     }
 }
