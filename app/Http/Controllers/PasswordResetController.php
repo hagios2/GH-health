@@ -106,7 +106,7 @@ class PasswordResetController extends Controller
 
         $shop = Merchandiser::where('email', $request->email)->first();
 
-        Log::info($shop);
+//        Log::info($shop);
 
         if($shop)
         {
