@@ -118,6 +118,8 @@ Route::group(['prefix' => 'merchandiser'], function () {
 
     Route::post('/{merchandiser}/store-photos', 'MerchandiserRegisterController@saveAvatarAndCover');
 
+    Route::post('/{merchandiser}/store-ad', 'MerchandiserRegisterController@saveAvatarAndCover');
+
     Route::delete('/delete', 'MerchandiserRegisterController@destroy');
 
     Route::post('email/verify', 'VerificationController@verifyShop')->name('merchandiser.verification.verify'); // Make sure to keep this as your route name
@@ -129,6 +131,11 @@ Route::group(['prefix' => 'merchandiser'], function () {
     Route::post('reset/password/', 'PasswordResetController@shopReset');
 
     Route::post('change/password', 'PasswordResetController@changeShopPassword');
+
+    Route::get('shop/ad', 'MerchandiserRegisterController@fetchShopAd');
+
+    Route::delete('shop/{shopAd}/ad', 'MerchandiserRegisterController@deleteAd');
+
 });
 
 

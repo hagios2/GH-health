@@ -134,5 +134,14 @@ class Merchandiser extends Authenticatable implements JWTSubject, Searchable
         return $query->orWhere('shop_type_id', $shop_type->id);
     }
 
+    public function ad()
+    {
+        return $this->hasOne(ShopAd::class);
+    }
+
+    public function storeAd($ad)
+    {
+        $this->ad()->create($ad);
+    }
 
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ShopRegistrationMail;
 use App\Merchandiser;
+use App\ShopAd;
 use Illuminate\Http\Request;
 use App\Http\Requests\MerchandiserFormRequest;
 use App\Http\Requests\UpdateMerchandiserRequest;
@@ -139,5 +140,51 @@ class MerchandiserRegisterController extends Controller
         $merchandiser->delete();
 
         return response()->json(['status' => 'deleted'], 200);
+    }
+
+    public function saveAd(Merchandiser $merchandiser, Request $request)
+    {
+        if($merchandiser->shopType->shop_type == 'Max Shop' || $merchandiser->shopType->shop_type == 'Non-student shop')
+        {
+            if ($request->hasFile('ad')) {
+                $file = $request->ad;
+
+                $fileName = $file->getClientOriginalName();
+
+                $path = 'public/ad/' . $merchandiser->id;
+
+                $file->storeAs($path, $fileName);
+
+                if ($merchandiser->ad)
+                {
+                    $merchandiser->ad->update(['ad_path' => $path]);
+                } else {
+                    $merchandiser->storeAd(['ad_path' => $path]);
+                }
+
+                return response()->json(['message' => 'ad saved']);
+            }
+
+            return response()->json(['message' => 'ad is required']);
+
+        }else{
+            return response()->json(['message' => 'Access Denied! Upgrade your shop type to have access to this service']);
+        }
+
+    }
+
+    public function fetchShopAd()
+    {
+        $shop_ad = ShopAd::query()->where('merchandiser_id', auth()->guard('merchandiser')->id())->first();
+
+        return response()->json(['shop_ad' => $shop_ad]);
+    }
+
+
+    public function deleteAd(ShopAd $shopAd)
+    {
+        $shopAd->delete();
+
+        return response()->json(['message' => 'ad deleted']);
     }
 }
