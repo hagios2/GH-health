@@ -8,6 +8,7 @@ use App\Helpers\CollectionHelper;
 use App\Http\Resources\CategoryProductResource;
 use App\Http\Resources\RelatedProductResource;
 use App\Product;
+use App\ShopAd;
 use App\ShopType;
 use App\CarouselControl;
 use Illuminate\Http\Request;
@@ -117,5 +118,12 @@ class ResourceController extends Controller
 
         return $productList;
 
+    }
+
+    public function fetchAllAds()
+    {
+        $shop_ad = ShopAd::query()->latest()->get();
+
+        return response()->json(['shop_ad' => $shop_ad]);
     }
 }

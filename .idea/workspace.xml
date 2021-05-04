@@ -21,8 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MerchandiserRegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MerchandiserRegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Merchandiser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Merchandiser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResourceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResourceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -244,7 +243,7 @@
       <workItem from="1619286761512" duration="14931000" />
       <workItem from="1619891011207" duration="4288000" />
       <workItem from="1620046824169" duration="3300000" />
-      <workItem from="1620060725131" duration="2102000" />
+      <workItem from="1620060725131" duration="4995000" />
     </task>
     <servers />
   </component>

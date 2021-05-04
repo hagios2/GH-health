@@ -50,6 +50,8 @@ Route::post('register-merchandiser', 'MerchandiserRegisterController@register');
 
 Route::get('campuses', 'ResourceController@getCampus');
 
+Route::get('fetch/all/ads', 'ResourceController@fetchAllAds');
+
 Route::get('get/campus/{campus}/carousel', 'ResourceController@getCourosleIamges');
 
 Route::get('categories', 'ProductsController@getCategories');
