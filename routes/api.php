@@ -120,7 +120,7 @@ Route::group(['prefix' => 'merchandiser'], function () {
 
     Route::post('/{merchandiser}/store-photos', 'MerchandiserRegisterController@saveAvatarAndCover');
 
-    Route::post('/{merchandiser}/store-ad', 'MerchandiserRegisterController@saveAvatarAndCover');
+    Route::post('/{merchandiser}/store-ad', 'MerchandiserRegisterController@saveAd');
 
     Route::delete('/delete', 'MerchandiserRegisterController@destroy');
 
