@@ -147,7 +147,8 @@ class MerchandiserRegisterController extends Controller
         if($merchandiser->shopType->shop_type == 'Max Shop' || $merchandiser->shopType->shop_type == 'Non-student shop')
         {
             if ($request->hasFile('ad')) {
-                $file = $request->ad;
+
+                $file = $request->file('ad');
 
                 $fileName = $file->getClientOriginalName();
 
