@@ -157,9 +157,9 @@ class MerchandiserRegisterController extends Controller
 
                 if ($merchandiser->ad)
                 {
-                    $merchandiser->ad->update(['ad_path' => $path]);
+                    $merchandiser->ad->update(['ad_path' => $path.$fileName]);
                 } else {
-                    $merchandiser->storeAd(['ad_path' => $path]);
+                    $merchandiser->storeAd(['ad_path' => $path.$fileName]);
                 }
 
                 return response()->json(['message' => 'ad saved']);
