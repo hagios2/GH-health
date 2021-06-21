@@ -56,7 +56,7 @@ class ProductsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return ProductResource
      */
     public function index(Category $category, Request $request)
     {

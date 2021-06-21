@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 
-use App\Mail\ShopRegistrationMail;
 use App\Merchandiser;
 use App\ShopAd;
 use Illuminate\Http\Request;
@@ -11,9 +10,9 @@ use App\Http\Requests\MerchandiserFormRequest;
 use App\Http\Requests\UpdateMerchandiserRequest;
 use Illuminate\Support\Facades\Hash;
 use App\VerifyEmail;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Jobs\ShopRegistrationJob;
+use Intervention\Image\Facades\Image;
 
 class MerchandiserRegisterController extends Controller
 {
@@ -75,7 +74,11 @@ class MerchandiserRegisterController extends Controller
 
         $fileName = $file->getClientOriginalName();
 
-        $file->storeAs('public/'.$file_type.'/'.$merchandiser->id, $fileName);
+        $path = storage_path("app/public/$file_type/$merchandiser->id/$fileName");
+
+        Image::make($file)->save($path);
+
+        //        $file->storeAs('public/'.$file_type.'/'.$merchandiser->id, $fileName);
 
         $merchandiser->update([$file_type => 'storage/'.$file_type.'/'.$merchandiser->id.'/'.$fileName]);
     }
@@ -95,7 +98,6 @@ class MerchandiserRegisterController extends Controller
         {
             $this->storePhotos($merchandiser, 'cover_photo');
         }
-
 
         if($request->hasFile('avatar'))
         {
@@ -117,6 +119,8 @@ class MerchandiserRegisterController extends Controller
     public function update(Merchandiser $merchandiser, UpdateMerchandiserRequest $request)
     {
         $merchandiser->update($request->validated());
+
+        $this->saveAvatarAndCover($merchandiser, $request);
 
         return response()->json(['status' => 'success'], 200);
     }

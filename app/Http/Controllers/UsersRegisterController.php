@@ -46,29 +46,30 @@ class UsersRegisterController extends Controller
 
         $fileName = $file->getClientOriginalName();
 
+
         $file->storeAs('public/avatar/'.$user->id, $fileName);
 
         $user->update(['avatar' => storage_path('app/public/avatar/'.$user->id.'/'.$fileName)]);
     }
 
 
-    
+
     public function update(User $user, UpdateUserRequest $request)
     {
         $user->update($request->only(['name', 'email', 'phone', 'campus_id']));
 
         if($request->hasFile('avatar'))
         {
-            $this->storeAvatar($user);   
+            $this->storeAvatar($user);
         }
 
         return response()->json(['status' => 'success'], 200);
-    }   
+    }
 
 
     public function destroy()
     {
-        
+
         $user = auth()->guard('api')->user();
 
         if($user->product)

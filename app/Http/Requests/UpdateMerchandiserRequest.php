@@ -24,7 +24,7 @@ class UpdateMerchandiserRequest extends FormRequest
     public function rules()
     {
         return [
-            
+
             'company_name' => 'required|string',
 
             'email' => 'required|email',
@@ -34,6 +34,11 @@ class UpdateMerchandiserRequest extends FormRequest
             'campus_id' => 'required|integer',
 
             'phone' => 'required|numeric|min:10|',
+
+            'cover_photo' => 'nullable',
+
+            'avatar' => 'nullable'
+
         ];
     }
 }

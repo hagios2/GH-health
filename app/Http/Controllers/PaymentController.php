@@ -19,7 +19,7 @@ class PaymentController extends Controller
 
     public function callback(Request $request)
     {
-        Log::info($request->all());
+        Log::info(json_encode($request->all()));
 
         $response= json_decode($request->response, true);
 
