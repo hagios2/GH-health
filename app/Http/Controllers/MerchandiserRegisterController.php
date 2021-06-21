@@ -120,7 +120,7 @@ class MerchandiserRegisterController extends Controller
     {
         $merchandiser->update($request->validated());
 
-        $this->saveAvatarAndCover($merchandiser, $request);
+//        $this->saveAvatarAndCover($merchandiser, $request);
 
         return response()->json(['status' => 'success'], 200);
     }
