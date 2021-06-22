@@ -21,13 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EnquiryFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EnquiryFormController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/AdminPasswordResetMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/AdminPasswordResetMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/EnquiryFormMailHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/EnquiryFormMailHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mail/AdminPasswordResetMail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/AdminPasswordResetMail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mail/EnquiryFormMail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/EnquiryFormMail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mail/NewAdminRegistration.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/NewAdminRegistration.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mail/PasswordResetMail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/PasswordResetMail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/PaymentService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PaymentService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +249,7 @@
       <workItem from="1620060725131" duration="6277000" />
       <workItem from="1620275771677" duration="2075000" />
       <workItem from="1624053102675" duration="10026000" />
-      <workItem from="1624314914255" duration="6916000" />
+      <workItem from="1624314914255" duration="7571000" />
     </task>
     <servers />
   </component>
