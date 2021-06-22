@@ -86,34 +86,6 @@
                     </p>
                 </td>
             </tr>
-            <!-- <tr>
-                <td style="padding: 10px;"></td>
-            </tr>
-
-            <tr>
-                <td style="background-color:#6EC7E0;text-align: center;">
-                    <h5><a style="color: black !important;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" href="https://wa-patron.com/support/">FAQS</a> | <a style="color: black !important;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" href="http://form.123formbuilder.com/5595600/form">FEEDBACK</a></h5>
-                    <h5><a style="color: black !important; text-decoration: none !important;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" href="tel:0558460557">[+233] 558460557 / 503201722</a></h5>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color:#6EC7E0;padding:0px 10px;">
-                    <div style="float:left">
-                        <h2
-                        style="color:black;padding: 4px;font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
-                        >Keep in touch</h2>
-                        <h5>
-                            <a style="color: white !important; text-decoration: none !important;" href="https://www.facebook.com/WaCommunicate-110523817249320" target="_black"><img src="https://1.bp.blogspot.com/-OPqfwt4b_Ic/YDO_YYUKhXI/AAAAAAAAAlc/BQj0nsT6n9gL0LmH2A-5bAPo1YRQZ2hogCLcBGAsYHQ/s320/facebook%2B%25281%2529.png" style="width: auto; height: 25px; margin-right: 5px;" alt="facebook"/></a>
-                            <a style="color: white !important; text-decoration: none !important;" href="https://twitter.com/home"><img src="https://1.bp.blogspot.com/-W8MfFjEQAiY/YDO_ZIOsF4I/AAAAAAAAAlk/jRaxB1YInloXDAQAFsjy1iBpdoNPYyG0QCLcBGAsYHQ/s320/twitter-social-logotype.png" alt="twitter" style="width: auto; height: 25px; margin-right: 5px;"/></a>
-                            <a style="color: white !important; text-decoration: none !important;" href="https://www.linkedin.com/company/11023236/admin/" target="_blank"><img src="https://1.bp.blogspot.com/-cA7YAoM264s/YDO_YdhS5XI/AAAAAAAAAlU/JBwK100K2Jwke2ILY7UpYRqPSnif5WG8QCLcBGAsYHQ/s320/instagram.png" style="width: auto; height: 25px; margin-right: 5px;" alt="instagram" /></a>
-                        </h5>
-                    </div>
-                    <a href="https://walulel.com" target="_blank" style="float: right;">
-                        <img src="https://1.bp.blogspot.com/-YAe7dNJfc6U/YDifN5l_DHI/AAAAAAAAEzM/PbQC3pzNdIECp1JG3D9dTFer8YUenElugCLcBGAsYHQ/s320/martek.png" style="width: auto; height: 100px; margin-right: 5px;"/>
-                    </a>
-                </td>
-            </tr> -->
-
         </table>
     </div>
 </center>

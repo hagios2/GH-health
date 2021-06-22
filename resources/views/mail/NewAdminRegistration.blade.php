@@ -1,17 +1,17 @@
-@component('mail::message')
-# Congrats {{ $admin->name }}
+{{--@component('mail::message')--}}
+{{--# Congrats {{ $admin->name }}--}}
 
-<p>
-    You have been registered as a Martek Gh admin. Kindly use <b> {{ $password }} </b>  to login
-</p>
+{{--<p>--}}
+{{--    You have been registered as a Martek Gh admin. Kindly use <b> {{ $password }} </b>  to login--}}
+{{--</p>--}}
 
-@component('mail::button', ['url' => 'martek-admin.herokuapp.com'])
-login
-@endcomponent
+{{--@component('mail::button', ['url' => 'martek-admin.herokuapp.com'])--}}
+{{--login--}}
+{{--@endcomponent--}}
 
-Thanks,<br>
-{{ config('app.name') }}
-@endcomponent
+{{--Thanks,<br>--}}
+{{--{{ config('app.name') }}--}}
+{{--@endcomponent--}}
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

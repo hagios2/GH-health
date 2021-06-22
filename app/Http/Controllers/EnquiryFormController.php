@@ -14,11 +14,7 @@ class EnquiryFormController extends Controller
 
         $formInputs = $request->validated();
 
-
-        //EnquiryFormMailHandlerJob::dispatch($formInputs);
-
-        Mail::to('hagioswilson@gmail.com')->queue(new EnquiryFormMailHandler($formInputs));
-
+        Mail::to('support@martekgh.com')->queue(new EnquiryFormMailHandler($formInputs));
 
         return response()->json(['status' => 'mail sent']);
 

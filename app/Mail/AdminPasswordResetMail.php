@@ -28,6 +28,7 @@ class AdminPasswordResetMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('Mail.AdminPasswordResetMail');
+        return $this->view('Mail.AdminPasswordResetMail')
+            ->subject('Password Reset Mail');
     }
 }

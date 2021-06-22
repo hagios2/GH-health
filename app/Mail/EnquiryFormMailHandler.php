@@ -30,8 +30,8 @@ class EnquiryFormMailHandler extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail/EnquiryFormMail')
-        
+        return $this->view('mail/EnquiryFormMail')
+
             ->subject('Enquiry from Client');
     }
 }
