@@ -15,6 +15,10 @@ class CreateFacilitiesTable extends Migration
     {
         Schema::create('facilities', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('lat')->nullable();
+            $table->string('long')->nullable();
+            $table->integer('district_id');
             $table->timestamps();
         });
     }

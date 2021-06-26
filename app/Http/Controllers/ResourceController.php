@@ -2,23 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Campus;
-use App\Category;
-use App\District;
-use App\Helpers\CollectionHelper;
 use App\Http\Requests\DistrictRequest;
+use App\Http\Requests\FacilityRequest;
 use App\Http\Requests\RegionsRequest;
-use App\Http\Resources\CategoryProductResource;
+use App\Http\Resources\DistrictResource;
+use App\Http\Resources\FacilityResources;
 use App\Http\Resources\RegionsResources;
-use App\Http\Resources\RelatedProductResource;
-use App\Product;
-use App\Region;
-use App\ShopAd;
-use App\ShopType;
-use App\CarouselControl;
-use Illuminate\Http\Request;
-use App\Http\Resources\CampusResource;
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\District;
+use App\Models\Facility;
+use App\Models\Region;
 
 class ResourceController extends Controller
 {
@@ -45,13 +37,15 @@ class ResourceController extends Controller
 
     public function deleteRegion(Region $region)
     {
-        return new RegionsResources($region);
+        $region->delete();
+
+        return response()->json(['message' => 'deleted']);
     }
 
 
     public function districtIndex()
     {
-        return RegionsResources::collection(District::all());
+        return DistrictResource::collection(District::all());
     }
 
 
@@ -71,7 +65,34 @@ class ResourceController extends Controller
 
     public function deleteDistrict(District $district)
     {
-        return new RegionsResources($district);
+        $district->delete();
+
+        return response()->json(['message' => 'deleted']);
     }
 
+    public function facilityIndex()
+    {
+        return new FacilityResources(Facility::query()->paginate(15));
+    }
+
+    public function storeFacility(FacilityRequest $request)
+    {
+        Facility::create($request->validated());
+
+        return response()->json(['message' => 'success']);
+    }
+
+    public function updateFacility(Facility $facility, FacilityRequest $request)
+    {
+        $facility->update($request->validated());
+
+        return response()->json(['message' => 'success']);
+    }
+
+    public function deleteFacility(Facility $facility)
+    {
+        $facility->delete();
+
+        return response()->json(['message' => 'deleted']);
+    }
 }
