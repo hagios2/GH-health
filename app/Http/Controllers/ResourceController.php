@@ -14,12 +14,15 @@ use App\Models\Region;
 
 class ResourceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
 
     public function regionIndex()
     {
         return RegionsResources::collection(Region::all());
     }
-
 
     public function storeRegion(RegionsRequest $request)
     {
