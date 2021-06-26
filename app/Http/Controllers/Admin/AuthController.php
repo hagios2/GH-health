@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\AdminAuthResource;
-use Admin;
+use App\Models\Admin;
 
 class AuthController extends Controller
 {
@@ -26,7 +26,7 @@ class AuthController extends Controller
      */
     public function login()
     {
-        
+
         $credentials = request(['email', 'password']);
 
         $credentials['isActive'] = true;
@@ -121,5 +121,5 @@ class AuthController extends Controller
         return response()->json(['status' => 'Email not found'], 404);
     }
 
-    
+
 }
