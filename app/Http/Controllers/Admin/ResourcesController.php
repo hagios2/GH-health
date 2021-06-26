@@ -13,7 +13,7 @@ use App\Models\District;
 use App\Models\Facility;
 use App\Models\Region;
 
-class ResourceController extends Controller
+class ResourcesController extends Controller
 {
     public function __construct()
     {
