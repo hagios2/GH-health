@@ -15,9 +15,9 @@ class AdminTableSeeder extends Seeder
     {
         Admin::create([
 
-            'name' => 'Chris ',
+            'name' => 'Chris',
 
-            'email' => 'hagiosewilson@gmail..com',
+            'email' => 'hagiosewilson@gmail.com',
 
             'password' => Hash::make('123456'),
 
