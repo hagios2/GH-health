@@ -20,7 +20,7 @@ class ResourcesController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function regionIndex()
+    public function regionsIndex()
     {
         return RegionsResources::collection(Region::all());
     }
