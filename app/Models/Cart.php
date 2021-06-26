@@ -1,22 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ShopReport extends Model
+class Cart extends Model
 {
     protected $guarded = ['id'];
 
-    public function shop()
-    {
-        return $this->belongsTo('App\Merchandiser', 'merchandiser_id');
-    }
-    
+
     public function user()
     {
         return $this->belongsTo('App\User');
     }
-    
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
@@ -11,7 +11,7 @@ class Admin extends Authenticatable implements JWTSubject
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'last_login', 'role', 'isActive', 
+        'name', 'email', 'password', 'phone', 'last_login', 'role', 'isActive',
     ];
 
     protected $hidden = [

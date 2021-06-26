@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Admin;
 use Illuminate\Database\Seeder;
-use App\Admin;
 use Illuminate\Support\Facades\Hash;
 
 class AdminTableSeeder extends Seeder
@@ -15,9 +15,9 @@ class AdminTableSeeder extends Seeder
     {
         Admin::create([
 
-            'name' => 'Martek Admin',
+            'name' => 'Chris ',
 
-            'email' => 'admin@martek.com',
+            'email' => 'hagiosewilson@gmail..com',
 
             'password' => Hash::make('123456'),
 

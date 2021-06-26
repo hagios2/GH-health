@@ -20,8 +20,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/PaymentService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PaymentService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ApiPasswordReset.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ApiPasswordReset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/BillingDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BillingDetail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Campus.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/CarouselControl.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Follower.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResourceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResourceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/MerchandiserFormRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/MerchandiserPaymentRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/CampusResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/RegionsResources.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/CategoryResource.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/MerchandiserPaymentTransactionResource.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/MerchandiserResource.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/ProductImageResource.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/ShopReviewResource.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/UserSellerPaymentTransactionResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/UserSellerPaymentTransactionResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/ViewAdminsResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/ViewAdminsResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Invoice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Merchandiser.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MerchandiserPayment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/PaidProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PaidProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ProductImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductImage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ProductReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ProductReview.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductReview.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Sale.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Sale.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/SellersPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SellersPayment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ShopAd.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ShopReport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ShopReview.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ShopType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Transaction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/VerifyEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/VerifyEmail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_08_115502_create_merchandisers_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_08_164210_create_campuses_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_15_070217_create_carts_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_18_182851_create_shop_types_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_06_192304_create_followers_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_16_031027_create_shop_reviews_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_05_040717_create_carousel_controls_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_11_201519_add_valid_id_merchandiser.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_30_223010_add_valid_id_to_users.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_25_052909_create_paid_products_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_03_140627_create_shop_ads_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/AdminTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/AdminTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,6 +221,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Models" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -249,7 +303,8 @@
       <workItem from="1620060725131" duration="6277000" />
       <workItem from="1620275771677" duration="2075000" />
       <workItem from="1624053102675" duration="10026000" />
-      <workItem from="1624314914255" duration="7571000" />
+      <workItem from="1624314914255" duration="9547000" />
+      <workItem from="1624661977528" duration="5885000" />
     </task>
     <servers />
   </component>
@@ -272,7 +327,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/User.php</url>
+          <url>file://$PROJECT_DIR$/app/Models/User.php</url>
           <line>175</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>

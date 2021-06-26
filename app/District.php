@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ShopAd extends Model
+class District extends Model
 {
-    protected $guarded = ['id'];
+    //
 }

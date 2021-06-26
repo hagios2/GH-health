@@ -2,10 +2,6 @@
 
 namespace App\Providers;
 
-use App\Observers\ProductImageObserver;
-use App\Observers\ProductObserver;
-use App\Product;
-use App\ProductImage;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -33,6 +29,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        ProductImage::observe(ProductImageObserver::class);
+//        ProductImage::observe(ProductImageObserver::class);
     }
 }

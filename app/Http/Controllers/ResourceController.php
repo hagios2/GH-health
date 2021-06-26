@@ -4,126 +4,74 @@ namespace App\Http\Controllers;
 
 use App\Campus;
 use App\Category;
+use App\District;
 use App\Helpers\CollectionHelper;
+use App\Http\Requests\DistrictRequest;
+use App\Http\Requests\RegionsRequest;
 use App\Http\Resources\CategoryProductResource;
+use App\Http\Resources\RegionsResources;
 use App\Http\Resources\RelatedProductResource;
 use App\Product;
+use App\Region;
 use App\ShopAd;
 use App\ShopType;
 use App\CarouselControl;
 use Illuminate\Http\Request;
 use App\Http\Resources\CampusResource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class ResourceController extends Controller
 {
 
-    public function getCampus()
+    public function regionIndex()
     {
-        return CampusResource::collection(Campus::all('id', 'campus'));
+        return RegionsResources::collection(Region::all());
     }
 
 
-    public function getShopTypes()
+    public function storeRegion(RegionsRequest $request)
     {
-        return CampusResource::collection(ShopType::all('id', 'shop_type'));
+        Region::create($request->validated());
+
+        return response()->json(['message' => 'success']);
     }
 
-    public function getCourosleIamges(Campus $campus)
+    public function updateRegion(Region $region, RegionsRequest $request)
     {
-       $carousel = CarouselControl::where('campus_id', $campus->id)->latest()->get();
+        $region->update($request->validated());
 
-       return $carousel;
-
-       //return response()->json(['images', $carousel]);
+        return response()->json(['message' => 'success']);
     }
 
-    public function newThisWeek(Request $request)
+    public function deleteRegion(Region $region)
     {
-        if($request->has('campus_id'))
-        {
-            $campus = Campus::find($request->campus_id);
-
-            $users_campus_product = $campus->shopCampusProduct;
-
-            $shops_campus_product = $campus->userCampusProduct;
-
-            $products = $users_campus_product->merge($shops_campus_product);
-
-        }else{
-
-            $products = Product::where('payment_status', 'paid')
-                ->orWhere('payment_status', 'free')->latest()->take(10)->get();
-        }
-
-        if($products->count() > 0 )
-        {
-            $products_list = collect();
-
-            $products->map(function ($product) use ($products_list){
-
-                if($product->image->count() > 0)
-                {
-                    $products_list->push($product);
-                }
-            });
-
-            return RelatedProductResource::collection($products_list);
-        }
-
-        return RelatedProductResource::collection($products);
+        return new RegionsResources($region);
     }
 
-    public function campusnewThisWeek(Campus $campus)
+
+    public function districtIndex()
     {
-        $categories = Category::all();
-
-        $productList = collect();
-
-        foreach ($categories as $category) {
-
-            $cat_products = $category->product->reverse();
-
-            if($cat_products)
-            {
-                $product_count = 0;
-
-                foreach ($cat_products as $product)
-                {
-                    if($product_count <= 10)
-                    {
-                        if($product->user)
-                        {
-                            if($product->user->campus_id == $campus->id){
-
-                                $productList->add(new CategoryProductResource($product));
-
-                                $product_count = $product_count + 1;
-                            }
-
-                        }else if($product->merchandiser){
-
-                            if($product->merchandiser->campus_id == $campus->id){
-
-                                $productList->add(new CategoryProductResource($product));
-
-                                $product_count = $product_count + 1;
-                            }
-
-                        }
-                    }
-
-                }
-            }
-        }
-
-        return $productList;
-
+        return RegionsResources::collection(District::all());
     }
 
-    public function fetchAllAds()
-    {
-        $shop_ad = ShopAd::query()->latest()->get();
 
-        return response()->json(['shop_ad' => $shop_ad]);
+    public function storeDistrict(DistrictRequest $request)
+    {
+        District::create($request->validated());
+
+        return response()->json(['message' => 'success']);
     }
+
+    public function updateDistrict(District $district, DistrictRequest $request)
+    {
+        $district->update($request->validated());
+
+        return response()->json(['message' => 'success']);
+    }
+
+    public function deleteDistrict(District $district)
+    {
+        return new RegionsResources($district);
+    }
+
 }
