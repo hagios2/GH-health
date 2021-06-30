@@ -39,6 +39,11 @@ class ResourcesController extends Controller
         return response()->json(['message' => 'success']);
     }
 
+    public function showRegion(Region $region)
+    {
+        return new RegionsResources($region);
+    }
+
     public function deleteRegion(Region $region)
     {
         $region->delete();

@@ -48,6 +48,8 @@ Route::group(['namespace' => 'Admin'], function () {
 
    Route::post('update/{region}/regions', 'ResourcesController@updateRegion');
 
+   Route::post('fetch/{region}/region', 'ResourcesController@showRegion');
+
    Route::delete('delete/{region}/regions', 'ResourcesController@deleteRegion');
 
    #--------------------------- End Region -----------------------------------------------------

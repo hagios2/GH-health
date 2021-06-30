@@ -17,6 +17,7 @@ class AdminViewUsersResource extends ResourceCollection
     public function toArray($request)
     {
         return $this->collection->map(function ($user){
+
             return  [
 
                 'id' => $user->id,
@@ -27,7 +28,7 @@ class AdminViewUsersResource extends ResourceCollection
 
                 'phone' => $user->phone,
 
-                'campus' => $user->campus,
+                'facility' => $user->facility,
 
                 'isActive' => $user->isActive,
 

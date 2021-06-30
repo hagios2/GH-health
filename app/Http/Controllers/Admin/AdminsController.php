@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Campus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NewAdminRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Merchandiser;
-use App\User;
 use App\Http\Resources\AdminViewShopResource;
 use App\Http\Resources\AdminViewUsersResource;
 use App\Http\Resources\DetailedProductResource;
-use App\Http\Resources\MerchandiserResource;
-use App\Http\Resources\ViewAdminsResource;
-use App\ShopReview;
 use App\ProductReview;
-use App\ShopReport;
 use App\ProductReport;
 use App\Product;
-use App\Admin;
 use App\Http\Resources\AdminViewShopReviewsResource;
 use App\Http\Resources\AdminViewProductReviewsResource;
 use App\Http\Resources\AdminViewShopReport;

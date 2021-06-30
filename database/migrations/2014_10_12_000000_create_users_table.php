@@ -20,9 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->string('avatar')->nullable();
             $table->boolean('isActive')->default(true);
-            $table->integer('campus_id')->unsigned();
+            $table->integer('facility_id')->unsigned();
             $table->timestamp('email_verified_at')->nullable();
-            $table->boolean('qualified_for_free_trial')->default(true);
+            $table->boolean('must_change_password')->default(true);
+            $table->timestamp('last_login')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
