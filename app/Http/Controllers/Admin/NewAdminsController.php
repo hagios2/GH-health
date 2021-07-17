@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Jobs\NewAdminJob;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\NewAdminRequest;
-use App\Admin;
 use Illuminate\Support\Str;
 
 class NewAdminsController extends Controller
@@ -24,7 +24,7 @@ class NewAdminsController extends Controller
 
         if(auth()->guard('admin')->user()->role == 'super_admin')
         {
-        
+
             $attibutes = $request->validated();
 
             $password = Str::random(8);
@@ -38,7 +38,7 @@ class NewAdminsController extends Controller
             NewAdminJob::dispatch($admin, $password);
 
             return response()->json(['status' => 'new admin added']);
-        }   
+        }
 
         return response()->json(['message' => 'Forbidden'], 403);
 
@@ -54,7 +54,7 @@ class NewAdminsController extends Controller
             'old_password' => 'required|string',
 
             'new_password' => 'required|string'
-        
+
         ]);
 
         if(Hash::check($request->old_password, $admin->password))
@@ -75,7 +75,7 @@ class NewAdminsController extends Controller
 
         return response()->json(['status' => 'invalid Password']);
 
-    
+
 
         // return response()->json(['status' => 'password changed']);
     }
@@ -86,7 +86,7 @@ class NewAdminsController extends Controller
 
         $admin->update(['isActive' => false]);
 
-       
+
         return response()->json(['message' => 'blocked']);
     }
 
@@ -95,7 +95,7 @@ class NewAdminsController extends Controller
     {
 
         $admin->update(['isActive' => true]);
-       
+
         return response()->json(['message' => 'unblocked']);
 
     }

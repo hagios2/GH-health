@@ -2,31 +2,31 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\VerifyEmail;
-use App\User;
 
-class UserRegistrationMail extends Mailable
+
+class UserRegistrationMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
     public $user;
 
-    public $token;
+    public $password;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user, VerifyEmail $token)
+    public function __construct(User $user, $password)
     {
         $this->user = $user;
 
-        $this->token = $token;
+        $this->password = $password;
     }
 
     /**
@@ -37,7 +37,6 @@ class UserRegistrationMail extends Mailable
     public function build()
     {
         return $this->view('mail/UserRegistrationMail')
-
-            ->subject('Confirm Email');
+            ->subject('New Facilitator Created');
     }
 }

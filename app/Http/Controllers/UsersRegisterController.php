@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\VerifyEmail;
+
 use Illuminate\Http\Request;
 use App\Notifications\UserRegistrationNotification;
 use App\Http\Requests\UserFormRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use App\Jobs\UserRegistrationJob;
+
 
 class UsersRegisterController extends Controller
 {
@@ -34,24 +33,8 @@ class UsersRegisterController extends Controller
             $this->storeAvatar($user);
         }
 
-        UserRegistrationJob::dispatch($user, $token);
-
         return response()->json(['status' => 'success'], 200);
     }
-
-
-    public function storeAvatar(User $user)
-    {
-        $file = request()->file('avatar');
-
-        $fileName = $file->getClientOriginalName();
-
-
-        $file->storeAs('public/avatar/'.$user->id, $fileName);
-
-        $user->update(['avatar' => storage_path('app/public/avatar/'.$user->id.'/'.$fileName)]);
-    }
-
 
 
     public function update(User $user, UpdateUserRequest $request)

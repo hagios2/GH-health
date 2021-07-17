@@ -23,19 +23,25 @@ class UserFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            
-            'name' => 'required|string',
+        $form_requests = [
 
-            'email' => 'required|email|unique:users,email',
+            'name' => 'required|string',
 
             'phone' => 'required|numeric|unique:users,phone',
 
             'avatar' => 'nullable|image|mimes:jpeg,jpg,png',
 
-            'password' => 'required|string',
-
-            'campus_id' => 'required|integer'
+            'facility_id' => 'required|integer'
         ];
+
+        if(request()->method() === 'POST')
+        {
+            $form_requests['email'] = 'required|email|unique:users,email';
+
+        }else{
+            $form_requests['email'] = 'required|email';
+        }
+
+        return $form_requests;
     }
 }

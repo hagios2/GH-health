@@ -80,6 +80,16 @@ Route::group(['namespace' => 'Admin'], function () {
 
     #--------------------------- End Facility -----------------------------------------------------
 
+    #--------------------------- Facilitator -------------------------------------
+
+    Route::post('create/facilitator', 'AdminsController@createFacilitator');
+
+    Route::put('update/{user}/facilitator', 'AdminsController@updateFacilitator');
+
+    Route::delete('delete/{user}/facilitator', 'AdminsController@deleteFacilitator');
+
+    #--------------------------- End Facilitator -----------------------------------------------------
+
 });
 
 Route::fallback(function(){

@@ -7,6 +7,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @method static create(array $user_data)
+ */
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
@@ -17,7 +20,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'avatar', 'facility_id', 'email_verified_at', 'isActive', 'last_login'
+        'name', 'email', 'password', 'phone', 'avatar', 'facility_id', 'email_verified_at', 'isActive', 'last_login', 'must_change_password'
     ];
 
     /**
