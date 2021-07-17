@@ -42,13 +42,18 @@ Route::group(['prefix' => 'auth'], function () {
 
 });
 
-Route::get('categories', 'ProductsController@getCategories');
+#----------------------- Product Routes ----------------------------------------------
 
-Route::get('category/{category}/products', 'ProductsController@getCategorysProduct');
+Route::get('fetch/products', 'ProductsController@fetchProducts');
 
-Route::get('product/{product}/details', 'ProductsController@getProductDetails')->name('product.details');
+Route::get('get/{product}/details', 'ProductsController@getProductDetails');
 
-Route::get('/{category}/product-index', 'ProductsController@index');
+Route::post('product/{product}/issue/out', 'ProductsController@issueOutProduct');
+
+Route::get('view/issued/{product}/product', 'ProductsController@viewIssuedOutProduct');
+
+
+#--------------------- End Routes ------------------------------------------------
 
 Route::post('user/{user}/add-cart', 'ProductsController@saveCart');
 
