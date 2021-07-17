@@ -21,28 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/NewAdminsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/NewAdminsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersRegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersRegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UserFormRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UserFormRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/UserRegistrationJob.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/UserRegistrationMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/UserRegistrationMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ApiPasswordReset.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ApiPasswordReset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BillingDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BillingDetail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PaidProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PaidProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/AdminViewProductReviewsResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/AdminViewProductReviewsResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/DetailedProductResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/DetailedProductResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/ProductResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/ProductResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/ProductImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductImage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ProductReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductReport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ProductReview.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductReview.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Sale.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Sale.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SellersPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SellersPayment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Transaction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/VerifyEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/VerifyEmail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mail/UserRegistrationMail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/UserRegistrationMail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_11_122623_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_11_122623_create_products_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,8 +178,8 @@
       <recent name="$PROJECT_DIR$/app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin" />
       <recent name="$PROJECT_DIR$/app/Models" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -279,7 +265,7 @@
       <workItem from="1624734308096" duration="2460000" />
       <workItem from="1624950349962" duration="1101000" />
       <workItem from="1625000027383" duration="661000" />
-      <workItem from="1626507122741" duration="5170000" />
+      <workItem from="1626507122741" duration="13871000" />
     </task>
     <servers />
   </component>

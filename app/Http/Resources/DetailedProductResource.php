@@ -2,7 +2,8 @@
 
 namespace App\Http\Resources;
 
-use App\Product;
+use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class DetailedProductResource extends JsonResource
@@ -15,80 +16,24 @@ class DetailedProductResource extends JsonResource
      */
     public function toArray($request)
     {
-
-        $productOwner = [];
-
-        if($this->merchandiser)
-        {
-            $productOwner['merchandiser_id'] = $this->merchandiser->id;
-
-            $productOwner['company_name'] = $this->merchandiser->company_name;
-
-            $productOwner['avatar'] = $this->merchandiser->avatar;
-
-            $productOwner['email'] = $this->merchandiser->email;
-
-            $productOwner['campus'] = [
-
-                'id' => $this->merchandiser->campus->id,
-
-                'campus' => $this->merchandiser->campus->campus,
-
-            ];
-
-            $productOwner['phone'] = $this->merchandiser->phone;
-
-
-        }else if($this->user){
-
-            $productOwner['user_id'] = $this->user->id;
-
-            $productOwner['name'] = $this->user->name;
-
-            $productOwner['avatar'] = $this->user->avatar;
-
-            $productOwner['email'] = $this->user->email;
-
-            $productOwner['campus'] = [
-
-                'id' => $this->user->campus->id,
-
-                'campus' => $this->user->campus->campus,
-
-            ];
-
-            $productOwner['phone'] = $this->user->phone;
-        }
-
-        $product = Product::find($this->id);
-
        return [
+        'id' => $this->id,
 
-                'id' => $this->id,
+        'name' => $this->name,
 
-                'product_name' => $this->product_name,
+        'quantity' => $this->quantity, #subtract from puchased from this
 
-                'price' => $this->price,
+        'description' =>  $this->description,
 
-                'in_stock' => $this->in_stock, #subtract from puchased from this
+        'source' => $this->source,
 
-                'description' =>  $this->description,
+        'brand' => $this->brand,
 
-                'product_owner' => $productOwner,
+        'expiry_date' => Carbon::parse($this->expiry_date)->format('D, d F Y'),
 
-                'product_images' => ProductImageResource::collection($this->image), //path
+        'received_by' => $this->receivedBy ? $this->receivedBy->name : 'Not found' ,
 
-                'related_product' => RelatedProductResource::collection($this->relatedItems($product))
-
+        'product_images' => ProductImageResource::collection($this->image),
        ];
-    }
-
-    public function relatedItems(Product $product)
-    {
-        $products = Product::with('image')->where([['id', '!=', $product->id],['category_id', $product->category_id], ['payment_status', 'free']])
-            ->where([['id', '!=', $product->id],['category_id', $product->category_id], ['payment_status', 'paid']])
-            ->latest()->take(5)->get();
-
-        return $products;
     }
 }

@@ -36,23 +36,11 @@ Route::group(['prefix' => 'auth'], function () {
 
     Route::post('request/password/reset', 'PasswordResetController@sendResetMail');
 
-    Route::post('reset/password/', 'PasswordResetController@reset');
+    Route::post('reset/password', 'PasswordResetController@reset');
 
     Route::post('change/password', 'PasswordResetController@changeUserPassword');
 
-    Route::post('upload/valid-id', 'AuthController@saveValidId');
-
 });
-
-Route::post('register-user', 'UsersRegisterController@register');
-
-Route::post('register-merchandiser', 'MerchandiserRegisterController@register');
-
-Route::get('campuses', 'ResourceController@getCampus');
-
-Route::get('fetch/all/ads', 'ResourceController@fetchAllAds');
-
-Route::get('get/campus/{campus}/carousel', 'ResourceController@getCourosleIamges');
 
 Route::get('categories', 'ProductsController@getCategories');
 
@@ -67,8 +55,6 @@ Route::post('user/{user}/add-cart', 'ProductsController@saveCart');
 Route::get('user-cart', 'ProductsController@getCart');
 
 Route::get('shop-types', 'ResourceController@getShopTypes');
-
-Route::get('merchandiser/{shops}/products','ProductsController@fetchShopsProduct');
 
 Route::get('all-shops','ProductsController@fetchShops');
 

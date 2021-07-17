@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\ProductImage;
+use App\Models\ProductImage;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
@@ -16,30 +16,20 @@ class ProductResource extends ResourceCollection
      */
     public function toArray($request)
     {
-       // return parent::toArray($request);
-
        return [
-
-
             $this->collection->map(function($product){
-
                 return  [
 
                     'id' => $product->id,
 
-                    'product_name' => $product->product_name,
+                    'name' => $product->name,
 
-                    'price' => $product->price,
+                    'quantity' => $product->quanity,
 
-                    'in_stock' => $product->in_stock,
-
-                    'product_description' => $product->description,
+                    'description' => $product->description,
 
                     'product_image' => ProductImage::where('product_id', $product->id)->latest()->take(1)->get('path')
-
                ];
-                //$product->image->reverse()->take(1)];
-
             }),
 
        ];

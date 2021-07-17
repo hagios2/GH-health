@@ -41,31 +41,15 @@ class Product extends Model implements Searchable
         $this->image()->create($image);
     }
 
-
-    public function category()
-    {
-        return $this->belongsTo('App\Category');
-    }
-
-
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
-
-
-
-    public function merchandiser()
-    {
-        return $this->belongsTo('App\Merchandiser');
-    }
-
-
     public function review()
     {
         return $this->hasMany('App\ProductReview');
     }
 
+    public function facility()
+    {
+        return $this->belongsTo(Facility::class);
+    }
 
     public function productReport()
     {
@@ -83,5 +67,28 @@ class Product extends Model implements Searchable
         $this->paidProduct()->create($paid_product);
     }
 
+
+    public function scopeFacilityProduct($query)
+    {
+        $query->where('facility_if', auth()->guard('api')->user()->facility_id);
+    }
+
+    public function receivedBy()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function issuedProduct()
+    {
+        return $this->hasMany(IssuedProduct::class);
+    }
+
+
+    public function issueOutProduct($issued_product)
+    {
+        $issued_product['quantity_before_issued_out'] = $this->quantity;
+
+        return $this->issuedProduct()->create($issued_product);
+    }
 
 }

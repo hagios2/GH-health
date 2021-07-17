@@ -15,15 +15,15 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('category_id')->unsigned();
-            $table->integer('merchandiser_id')->unsigned()->nullable();
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->integer('campus_id')->unsigned();
-            $table->string('product_name');
-            $table->integer('in_stock')->unsiged();
-            $table->decimal('price', 10, 2);
+            $table->string('name');
+            $table->string('source');
+            $table->string('brand');
+            $table->integer('facility_id')->unsigned();
+            $table->integer('user_id')->unsigned(); //received by
+            $table->date('expiry_date');
+            $table->integer('quantity')->unsigned();
+//            $table->decimal('price', 10, 2);
             $table->text('description')->nullable();
-            $table->string('payment_status')->nullable();
             $table->timestamps();
         });
     }
