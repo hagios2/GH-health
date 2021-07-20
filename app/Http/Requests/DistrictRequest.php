@@ -24,7 +24,7 @@ class DistrictRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|integer',
+            'name' => 'required|string',
             'region_id' => 'required|integer',
             'lat' => 'nullable|string',
             'long' => 'nullable|string',
