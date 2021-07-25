@@ -72,10 +72,6 @@ class User extends Authenticatable implements JWTSubject
         $this->following()->create($following);
     }
 
-
-
-
-
     public function facility()
     {
         return $this->belongsTo(Facility::class);

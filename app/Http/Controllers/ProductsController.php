@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\IssueProductOutRequest;
+use App\Http\Requests\ProductRequest;
 use App\Http\Resources\IssuedOutProductResource;
 use App\Models\IssuedProduct;
 use App\Models\Product;
@@ -18,9 +19,17 @@ class ProductsController extends Controller
         $this->middleware('auth:api');
     }
 
+    public function createProduct(ProductRequest $request)
+    {
+        auth()->user()->facility->addProduct($request->validated());
+
+        return response()->json(['message' => 'product created'], 201);
+
+    }
+
     public function fetchProducts()
     {
-        $products = Product::query()->facilityProduct()->lateest()->paginate(10);
+        $products = Product::query()->facilityProduct()->latest()->paginate(10);
 
         return new ProductResource($products);
     }

@@ -44,6 +44,8 @@ Route::group(['prefix' => 'auth'], function () {
 
 #----------------------- Product Routes ----------------------------------------------
 
+Route::post('product/create', 'ProductsController@createProduct');
+
 Route::get('fetch/products', 'ProductsController@fetchProducts');
 
 Route::get('get/{product}/details', 'ProductsController@getProductDetails');
@@ -94,43 +96,6 @@ Route::post('add-shop/report', 'ReportsController@saveShopReport');
 Route::get('fetch/new-this-week', 'ResourceController@newThisWeek');
 
 Route::get('get/campus/{campus}/new-this-week', 'ResourceController@campusnewThisWeek');
-
-Route::group(['prefix' => 'merchandiser'], function () {
-
-    Route::post('login', 'MerchandiserAuthController@login');
-
-    Route::get('/', 'MerchandiserAuthController@getAuthUser');
-
-    Route::post('activate/free/trial', 'MerchandiserAuthController@toggleToFreeTrial');
-
-    Route::post('logout', 'MerchandiserAuthController@logout');
-
-    Route::post('refresh-token', 'MerchandiserAuthController@refresh');
-
-    Route::patch('/{merchandiser}/update', 'MerchandiserRegisterController@update');
-
-    Route::post('/{merchandiser}/store-photos', 'MerchandiserRegisterController@saveAvatarAndCover');
-
-    Route::post('/{merchandiser}/store-ad', 'MerchandiserRegisterController@saveAd');
-
-    Route::delete('/delete', 'MerchandiserRegisterController@destroy');
-
-    Route::post('email/verify', 'VerificationController@verifyShop')->name('merchandiser.verification.verify'); // Make sure to keep this as your route name
-
-    Route::post('email/resend', 'VerificationController@resend')->name('merchandiser.verification.resend');
-
-    Route::post('request/password/reset', 'PasswordResetController@sendShopResetMail');
-
-    Route::post('reset/password/', 'PasswordResetController@shopReset');
-
-    Route::post('change/password', 'PasswordResetController@changeShopPassword');
-
-    Route::get('shop/ad', 'MerchandiserRegisterController@fetchShopAd');
-
-    Route::delete('shop/{shopAd}/ad', 'MerchandiserRegisterController@deleteAd');
-
-});
-
 
 
 Route::group(['prefix' => 'e-trader'], function () {
