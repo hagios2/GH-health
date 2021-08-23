@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Notifications\UserRegistrationNotification;
 use App\Http\Requests\UserFormRequest;

@@ -24,13 +24,13 @@ class IssueProductOutRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_of_patient' => 'required|string',
+            'victim_id' => 'required|integer',
             'town' => 'required|string',
             'district_id' => 'required|integer',
-            'age_of_patient' => 'required|integer',
+            'product_id' => 'required|integer',
             'quantity' => 'required|integer',
             'date_issued' => 'required|date',
-            'gender' => 'required|string'
+            'issued_by' => 'required|string'
         ];
     }
 }

@@ -40,7 +40,7 @@ class AuthController extends Controller
     /**
      * Get the authenticated User.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return UserResource
      */
     public function getAuthUser()
     {
@@ -108,5 +108,5 @@ class AuthController extends Controller
 
         return response()->json(['status' => 'File saved']);
     }
-    
+
 }

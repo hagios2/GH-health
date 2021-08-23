@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDistrictsTable extends Migration
+class CreateVictimsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateDistrictsTable extends Migration
      */
     public function up()
     {
-        Schema::create('districts', function (Blueprint $table) {
+        Schema::create('victims', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('region_id')->unsigned();
             $table->string('name');
-            $table->string('address_of_district_health_directorate')->nullable();
+            $table->integer('age')->unsigned();
+            $table->string('gender');
+            $table->integer('district_id')->nullable();
+            $table->string('town')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateDistrictsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('districts');
+        Schema::dropIfExists('victims');
     }
 }
