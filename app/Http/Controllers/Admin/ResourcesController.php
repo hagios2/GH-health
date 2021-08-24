@@ -15,36 +15,39 @@ use App\Models\Region;
 
 class ResourcesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('auth:admin');
+//    }
 
-    public function regionsIndex()
+    public function regionsIndex(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
         return RegionsResources::collection(Region::all());
     }
 
-    public function storeRegion(RegionsRequest $request)
+    public function storeRegion(RegionsRequest $request): \Illuminate\Http\JsonResponse
     {
         Region::create($request->validated());
 
         return response()->json(['message' => 'success']);
     }
 
-    public function updateRegion(Region $region, RegionsRequest $request)
+    public function updateRegion(Region $region, RegionsRequest $request): \Illuminate\Http\JsonResponse
     {
         $region->update($request->validated());
 
         return response()->json(['message' => 'success']);
     }
 
-    public function showRegion(Region $region)
+    public function showRegion(Region $region): RegionsResources
     {
         return new RegionsResources($region);
     }
 
-    public function deleteRegion(Region $region)
+    /**
+     * @throws \Exception
+     */
+    public function deleteRegion(Region $region): \Illuminate\Http\JsonResponse
     {
         $region->delete();
 
@@ -52,27 +55,30 @@ class ResourcesController extends Controller
     }
 
 
-    public function districtIndex()
+    public function districtIndex(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
         return DistrictResource::collection(District::all());
     }
 
 
-    public function storeDistrict(DistrictRequest $request)
+    public function storeDistrict(DistrictRequest $request): \Illuminate\Http\JsonResponse
     {
         District::create($request->validated());
 
         return response()->json(['message' => 'success']);
     }
 
-    public function updateDistrict(District $district, DistrictRequest $request)
+    public function updateDistrict(District $district, DistrictRequest $request): \Illuminate\Http\JsonResponse
     {
         $district->update($request->validated());
 
         return response()->json(['message' => 'success']);
     }
 
-    public function deleteDistrict(District $district)
+    /**
+     * @throws \Exception
+     */
+    public function deleteDistrict(District $district): \Illuminate\Http\JsonResponse
     {
         $district->delete();
 
