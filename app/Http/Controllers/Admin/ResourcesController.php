@@ -15,10 +15,10 @@ use App\Models\Region;
 
 class ResourcesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('auth:admin');
+//    }
 
     public function regionsIndex(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
