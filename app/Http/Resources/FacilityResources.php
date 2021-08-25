@@ -19,7 +19,8 @@ class FacilityResources extends ResourceCollection
                 'name' => $facility->name,
                 'lat' => $facility->lat,
                 'long' => $facility->long,
-                'district' => $facility->district
+                'district' => $facility->district,
+                'region' => $facility->district->region ?? []
             ];
         });
     }
