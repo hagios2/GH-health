@@ -20,12 +20,12 @@ class AdminsController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function getUsers()
+    public function getUsers(): AdminViewUsersResource
     {
         return new AdminViewUsersResource(User::query()->paginate(10));
     }
 
-    public function createFacilitator(UserFormRequest $request)
+    public function createFacilitator(UserFormRequest $request): \Illuminate\Http\JsonResponse
     {
         $user_data = $request->validated();
 

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\VictimRequest;
 use App\Models\Victim;
-use Illuminate\Http\Request;
 use App\Http\Requests\ReportsRequest;
 
 class ReportsController extends Controller
@@ -14,7 +13,7 @@ class ReportsController extends Controller
         $this->middleware('auth:api,admin');
     }
 
-    public function reportVictim(VictimRequest $request)
+    public function reportVictim(VictimRequest $request): \Illuminate\Http\JsonResponse
     {
         $victim = Victim::create($request->validated());
 
@@ -23,7 +22,7 @@ class ReportsController extends Controller
     }
 
 
-    public function saveShopReport(ReportsRequest $request)
+    public function saveShopReport(ReportsRequest $request): \Illuminate\Http\JsonResponse
     {
         auth()->guard('api')->user()->addShopReport($request->validated());
 
@@ -31,7 +30,7 @@ class ReportsController extends Controller
     }
 
 
-    public function saveProductReport(ReportsRequest $request)
+    public function saveProductReport(ReportsRequest $request): \Illuminate\Http\JsonResponse
     {
         auth()->guard('api')->user()->addProductReport($request->validated());
 
