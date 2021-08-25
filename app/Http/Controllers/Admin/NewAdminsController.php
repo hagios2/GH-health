@@ -25,15 +25,15 @@ class NewAdminsController extends Controller
         if(auth()->guard('admin')->user()->role == 'super_admin')
         {
 
-            $attibutes = $request->validated();
+            $attributes = $request->validated();
 
             $password = Str::random(8);
 
-            $attibutes['password'] = Hash::make($password);
+            $attributes['password'] = Hash::make($password);
 
             $attributes['must_change_password'] = true;
 
-            $admin = Admin::create($attibutes);
+            $admin = Admin::create($attributes);
 
             NewAdminJob::dispatch($admin, $password);
 
