@@ -19,7 +19,7 @@ class NewAdminsController extends Controller
 
 
 
-    public function newAdmin(NewAdminRequest $request)
+    public function newAdmin(NewAdminRequest $request): \Illuminate\Http\JsonResponse
     {
 
         if(auth()->guard('admin')->user()->role == 'super_admin')
@@ -45,7 +45,7 @@ class NewAdminsController extends Controller
     }
 
 
-    public function changePassword(Request $request)
+    public function changePassword(Request $request): \Illuminate\Http\JsonResponse
     {
         $admin = auth()->guard('admin')->user();
 
@@ -81,7 +81,7 @@ class NewAdminsController extends Controller
     }
 
 
-    public function blockAdmin(Admin $admin)
+    public function blockAdmin(Admin $admin): \Illuminate\Http\JsonResponse
     {
 
         $admin->update(['isActive' => false]);
@@ -91,7 +91,7 @@ class NewAdminsController extends Controller
     }
 
 
-    public function unBlockAdmin(Admin $admin)
+    public function unBlockAdmin(Admin $admin): \Illuminate\Http\JsonResponse
     {
 
         $admin->update(['isActive' => true]);
