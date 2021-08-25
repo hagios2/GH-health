@@ -18,8 +18,6 @@ class DistrictResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'region' => $this->region,
-            'lat' => $this->lat,
-            'long' => $this->long,
             'address_of_district_health_directorate' => $this->address_of_district_health_directorate
         ];
     }

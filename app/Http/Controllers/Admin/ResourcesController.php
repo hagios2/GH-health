@@ -85,26 +85,26 @@ class ResourcesController extends Controller
         return response()->json(['message' => 'deleted']);
     }
 
-    public function facilityIndex()
+    public function facilityIndex(): FacilityResources
     {
         return new FacilityResources(Facility::query()->paginate(15));
     }
 
-    public function storeFacility(FacilityRequest $request)
+    public function storeFacility(FacilityRequest $request): \Illuminate\Http\JsonResponse
     {
         Facility::create($request->validated());
 
         return response()->json(['message' => 'success']);
     }
 
-    public function updateFacility(Facility $facility, FacilityRequest $request)
+    public function updateFacility(Facility $facility, FacilityRequest $request): \Illuminate\Http\JsonResponse
     {
         $facility->update($request->validated());
 
         return response()->json(['message' => 'success']);
     }
 
-    public function deleteFacility(Facility $facility)
+    public function deleteFacility(Facility $facility): \Illuminate\Http\JsonResponse
     {
         $facility->delete();
 
