@@ -16,6 +16,7 @@ class FacilityResources extends ResourceCollection
     {
         return $this->collection->map(function ($facility){
             return [
+                'id' => $facility->id,
                 'name' => $facility->name,
                 'lat' => $facility->lat,
                 'long' => $facility->long,
