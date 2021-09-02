@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\District;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Resources\AdminAuthResource;
-use App\Models\Admin;
+use App\Http\Resources\DistrictAuthResource;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-        /**
+    /**
      * Create a new AuthController instance.
      *
      * @return void
@@ -31,13 +31,13 @@ class AuthController extends Controller
 
         $credentials['isActive'] = true;
 
-        if (! $token = auth()->guard('admin')->attempt($credentials)) {
+        if (! $token = auth()->guard('district_admin')->attempt($credentials)) {
 
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-     /*    Admin::where('email', request()->email) */
-        auth()->guard('admin')->user()->update(['last_login', now()]);
+        /*    Admin::where('email', request()->email) */
+        auth()->guard('district_admin')->user()->update(['last_login', now()]);
 
         return $this->respondWithToken($token);
     }
@@ -45,11 +45,11 @@ class AuthController extends Controller
     /**
      * Get the authenticated User.
      *
-     * @return AdminAuthResource
+     * @return DistrictAuthResource
      */
     public function getAuthUser()
     {
-        return new AdminAuthResource(auth()->guard('admin')->user());
+        return new DistrictAuthResource(auth()->guard('district_admin')->user());
     }
 
     /**
@@ -57,9 +57,9 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout()
+    public function logout(): \Illuminate\Http\JsonResponse
     {
-        auth()->guard('admin')->logout();
+        auth()->guard('district_admin')->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -71,10 +71,10 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->guard('admin')->refresh());
+        return $this->respondWithToken(auth()->guard('district_admin')->refresh());
     }
 
-      /**
+    /**
      * Get the token array structure.
      *
      * @param  string $token
@@ -86,7 +86,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 3600,
+            'expires_in' => auth()->factory()->getTTL(),
             'statusCode' => 200
         ]);
     }
@@ -120,6 +120,5 @@ class AuthController extends Controller
 
         return response()->json(['status' => 'Email not found'], 404);
     }
-
 
 }

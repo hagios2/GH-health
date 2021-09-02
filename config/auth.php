@@ -46,12 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-        'merchandiser' => [
+        'district_admin' => [
             'driver' => 'jwt',
-            'provider' => 'merchandisers',
+            'provider' => 'district_admins',
             'hash' => false,
         ],
-
         'admin' => [
             'driver' => 'jwt',
             'provider' => 'admins',
@@ -87,10 +86,10 @@ return [
             'model' => App\Models\Admin::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+         'district_admins' => [
+             'driver' => 'eloquent',
+             'table' => App\Models\DistrictAdmin::class,
+         ],
     ],
 
     /*

@@ -16,6 +16,7 @@ class CreateIssuedProductsTable extends Migration
         Schema::create('issued_products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('product_id');
+            $table->integer('facility_id');
             $table->integer('victim_id');
             $table->string('town');
             $table->integer('issued_by')->unsigned()->nullable();

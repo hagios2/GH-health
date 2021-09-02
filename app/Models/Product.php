@@ -91,4 +91,10 @@ class Product extends Model implements Searchable
         return $this->issuedProduct()->create($issued_product);
     }
 
+    public function scopeDistrictProducts($query)
+    {
+        return $query->join('facilities', 'facilities.id', '=', 'issued_products.facility_id')
+            ->join('districts', 'districts.id', '=', 'facilities.district_id')
+            ->where('district_id', auth()->guard('district_admin')->user()->district_id);
+    }
 }
