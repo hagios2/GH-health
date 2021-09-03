@@ -60,19 +60,12 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-    public function following()
-    {
-        return $this->hasMany('App\Follower');
-    }
-
-
-
     public function addFollowing($following)
     {
         $this->following()->create($following);
     }
 
-    public function facility()
+    public function facility(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Facility::class);
     }

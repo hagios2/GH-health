@@ -23,19 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Services/Statics.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Services/StatsServices.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/district_admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FacilitatorDashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FacilityDashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/IssuedProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/IssuedProduct.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Victim.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Victim.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_07_17_124140_create_issued_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_07_17_124140_create_issued_products_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/DistrictAuthResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/DistrictAuthResource.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,7 +280,7 @@
       <workItem from="1630176657079" duration="1354000" />
       <workItem from="1630183853765" duration="355000" />
       <workItem from="1630527138349" duration="193000" />
-      <workItem from="1630548444421" duration="9760000" />
+      <workItem from="1630548444421" duration="11351000" />
     </task>
     <servers />
   </component>
