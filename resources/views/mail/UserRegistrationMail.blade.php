@@ -50,24 +50,24 @@
             </tr>
 
             <tr>
-                <td style="padding: 30px;text-align: center;">
-                    <a style="cursor:pointer;"
-                       href="https://www.martekgh.com/api/auth/email/verify?token={{$token->token}}" target="_blank">
-                        <button
-                            style="background-color: white;cursor:pointer;border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
-                        >
-                            Confirm Your Email
-                        </button>
-                    </a>
-                </td>
+{{--                <td style="padding: 30px;text-align: center;">--}}
+{{--                    <a style="cursor:pointer;"--}}
+{{--                       href="https://www.martekgh.com/api/auth/email/verify?token={{$token->token}}" target="_blank">--}}
+{{--                        <button--}}
+{{--                            style="background-color: white;cursor:pointer;border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"--}}
+{{--                        >--}}
+{{--                            Confirm Your Email--}}
+{{--                        </button>--}}
+{{--                    </a>--}}
+{{--                </td>--}}
             </tr>
-            <tr>
-                <td style="padding: 0px 30px;">
-                    <p style="font-size: 14px; color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-                        Or verify using this link: <a href="https://www.martekgh.com/api/auth/email/verify?token={{$token->token}}">https://www.martekgh.com/api/auth/email/verify?token={{$token->token}}</a>
-                    </p>
-                </td>
-            </tr>
+{{--            <tr>--}}
+{{--                <td style="padding: 0px 30px;">--}}
+{{--                    <p style="font-size: 14px; color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">--}}
+{{--                        Or verify using this link: <a href="https://www.martekgh.com/api/auth/email/verify?token={{$token->token}}">https://www.martekgh.com/api/auth/email/verify?token={{$token->token}}</a>--}}
+{{--                    </p>--}}
+{{--                </td>--}}
+{{--            </tr>--}}
             <tr>
                 <td style="padding: 0px 30px;">
                     <p style="font-size: 14px; color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">

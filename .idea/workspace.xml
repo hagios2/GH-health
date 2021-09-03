@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/DistrictAuthResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/DistrictAuthResource.php" afterDir="false" />
-    </list>
+    <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -281,6 +278,7 @@
       <workItem from="1630183853765" duration="355000" />
       <workItem from="1630527138349" duration="193000" />
       <workItem from="1630548444421" duration="11351000" />
+      <workItem from="1630703161420" duration="616000" />
     </task>
     <servers />
   </component>
@@ -304,7 +302,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Models/User.php</url>
-          <line>174</line>
+          <line>167</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
