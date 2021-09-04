@@ -48,13 +48,13 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-    public function getJWTCustomClaims()
+    public function getJWTCustomClaims(): array
     {
         return [];
     }
 
 
-    public function product()
+    public function product(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany('App\Product');
     }
@@ -68,12 +68,6 @@ class User extends Authenticatable implements JWTSubject
     public function facility(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Facility::class);
-    }
-
-
-    public function cart()
-    {
-        return $this->hasMany('App\Cart');
     }
 
 
@@ -94,12 +88,12 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-    public function emailVerified()
+    public function emailVerified(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne('App\VerifyEmail');
     }
 
-    public function addEmailToken($token)
+    public function addEmailToken($token): \Illuminate\Database\Eloquent\Model
     {
         return $this->emailVerified()->create($token);
     }

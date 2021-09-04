@@ -16,81 +16,79 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['namespace' => 'Admin'], function () {
 
-    Route::post('auth/login', 'AuthController@login');
+Route::post('auth/login', 'AuthController@login');
 
-    Route::post('auth/logout', 'AuthController@logout');
+Route::post('auth/logout', 'AuthController@logout');
 
-    Route::post('auth/refresh-token', 'AuthController@refresh');
+Route::post('auth/refresh-token', 'AuthController@refresh');
 
-    Route::get('/', 'AuthController@getAuthUser');
+Route::get('/', 'AuthController@getAuthUser');
 
-    Route::post('add-new-admin', 'NewAdminsController@newAdmin');
+Route::post('add-new-admin', 'NewAdminsController@newAdmin');
 
-    Route::post('change-password', 'NewAdminsController@changePassword');
+Route::post('change-password', 'NewAdminsController@changePassword');
 
-    Route::post('{admin}/block', 'NewAdminsController@blockAdmin');
+Route::post('{admin}/block', 'NewAdminsController@blockAdmin');
 
-    Route::post('{admin}/unblock', 'NewAdminsController@unBlockAdmin');
+Route::post('{admin}/unblock', 'NewAdminsController@unBlockAdmin');
 
-    Route::patch('update/', 'AdminsController@updateAdmin');
+Route::patch('update/', 'AdminsController@updateAdmin');
 
-    Route::get('fetch-users', 'AdminsController@getUsers');
+Route::get('fetch/facilitators', 'AdminsController@getUsers');
 
-    Route::get('fetch-admins', 'AdminsController@fetchAdmins');
+Route::get('fetch-admins', 'AdminsController@fetchAdmins');
 
-    #--------------------------- Region -------------------------------------
+#--------------------------- Region -------------------------------------
 
-   Route::get('fetch/regions', 'ResourcesController@regionsIndex');
+Route::get('fetch/regions', 'ResourcesController@regionsIndex');
 
-   Route::post('store/regions', 'ResourcesController@storeRegion');
+Route::post('store/regions', 'ResourcesController@storeRegion');
 
-   Route::post('update/{region}/regions', 'ResourcesController@updateRegion');
+Route::post('update/{region}/regions', 'ResourcesController@updateRegion');
 
-   Route::post('fetch/{region}/region', 'ResourcesController@showRegion');
+Route::post('fetch/{region}/region', 'ResourcesController@showRegion');
 
-   Route::delete('delete/{region}/regions', 'ResourcesController@deleteRegion');
+Route::delete('delete/{region}/regions', 'ResourcesController@deleteRegion');
 
-   #--------------------------- End Region -----------------------------------------------------
-
-
-    #--------------------------- District -------------------------------------
-
-    Route::get('fetch/district', 'ResourcesController@districtIndex');
-
-    Route::post('store/district', 'ResourcesController@storeDistrict');
-
-    Route::post('update/{district}/district', 'ResourcesController@updateDistrict');
-
-    Route::delete('delete/{district}/district', 'ResourcesController@deleteDistrict');
-
-    #--------------------------- End District -----------------------------------------------------
+#--------------------------- End Region -----------------------------------------------------
 
 
-    #--------------------------- Facility -------------------------------------
+#--------------------------- District -------------------------------------
 
-    Route::get('fetch/facilities', 'ResourcesController@facilityIndex');
+Route::get('fetch/district', 'ResourcesController@districtIndex');
 
-    Route::post('store/facility', 'ResourcesController@storeFacility');
+Route::post('store/district', 'ResourcesController@storeDistrict');
 
-    Route::post('update/{facility}/facility', 'ResourcesController@updateFacility');
+Route::post('update/{district}/district', 'ResourcesController@updateDistrict');
 
-    Route::delete('delete/{facility}/facility', 'ResourcesController@deleteFacility');
+Route::delete('delete/{district}/district', 'ResourcesController@deleteDistrict');
 
-    #--------------------------- End Facility -----------------------------------------------------
+#--------------------------- End District -----------------------------------------------------
 
-    #--------------------------- Facilitator -------------------------------------
 
-    Route::post('create/facilitator', 'AdminsController@createFacilitator');
+#--------------------------- Facility -------------------------------------
 
-    Route::put('update/{user}/facilitator', 'AdminsController@updateFacilitator');
+Route::get('fetch/facilities', 'ResourcesController@facilityIndex');
 
-    Route::delete('delete/{user}/facilitator', 'AdminsController@deleteFacilitator');
+Route::post('store/facility', 'ResourcesController@storeFacility');
 
-    #--------------------------- End Facilitator -----------------------------------------------------
+Route::post('update/{facility}/facility', 'ResourcesController@updateFacility');
 
-});
+Route::delete('delete/{facility}/facility', 'ResourcesController@deleteFacility');
+
+#--------------------------- End Facility -----------------------------------------------------
+
+#--------------------------- Facilitator -------------------------------------
+
+Route::post('create/facilitator', 'AdminsController@createFacilitator');
+
+Route::put('update/{user}/facilitator', 'AdminsController@updateFacilitator');
+
+Route::delete('delete/{user}/facilitator', 'AdminsController@deleteFacilitator');
+
+#--------------------------- End Facilitator -----------------------------------------------------
+
 
 Route::fallback(function(){
 
