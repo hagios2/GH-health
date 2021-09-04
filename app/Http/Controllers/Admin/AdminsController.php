@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UserFormRequest;
+use App\Http\Resources\UserResource;
 use App\Mail\UserRegistrationMail;
 use App\Models\User;
 use App\Http\Resources\AdminViewUsersResource;
@@ -23,6 +24,11 @@ class AdminsController extends Controller
     public function getUsers(): AdminViewUsersResource
     {
         return new AdminViewUsersResource(User::query()->paginate(10));
+    }
+
+    public function getFetchSingle(User $user): UserResource
+    {
+        return new UserResource($user);
     }
 
     public function createFacilitator(UserFormRequest $request): \Illuminate\Http\JsonResponse
@@ -45,7 +51,7 @@ class AdminsController extends Controller
         return response()->json(['message' => 'facilitator created'], 201);
     }
 
-    public function updateFacilitator(User $user, UpdateUserRequest $request)
+    public function updateFacilitator(User $user, UpdateUserRequest $request): \Illuminate\Http\JsonResponse
     {
         $user->update($request->validated());
 
@@ -57,7 +63,7 @@ class AdminsController extends Controller
         return response()->json(['message' => 'facilitator updated']);
     }
 
-    public function blockUser(User $user)
+    public function blockUser(User $user): \Illuminate\Http\JsonResponse
     {
        $user->update(['isActive' => false]);
 
@@ -65,7 +71,7 @@ class AdminsController extends Controller
     }
 
 
-    public function unblockUser(User $user)
+    public function unblockUser(User $user): \Illuminate\Http\JsonResponse
     {
 
        $user->update(['isActive' => true]);

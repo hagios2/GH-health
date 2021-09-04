@@ -37,6 +37,8 @@ Route::patch('update/', 'AdminsController@updateAdmin');
 
 Route::get('fetch/facilitators', 'AdminsController@getUsers');
 
+Route::get('fetch/{user}/facilitator', 'AdminsController@getFetchSingle');
+
 Route::get('fetch-admins', 'AdminsController@fetchAdmins');
 
 #--------------------------- Region -------------------------------------
@@ -47,7 +49,7 @@ Route::post('store/regions', 'ResourcesController@storeRegion');
 
 Route::post('update/{region}/regions', 'ResourcesController@updateRegion');
 
-Route::post('fetch/{region}/region', 'ResourcesController@showRegion');
+Route::get('fetch/{region}/region', 'ResourcesController@showRegion');
 
 Route::delete('delete/{region}/regions', 'ResourcesController@deleteRegion');
 
@@ -59,6 +61,8 @@ Route::delete('delete/{region}/regions', 'ResourcesController@deleteRegion');
 Route::get('fetch/district', 'ResourcesController@districtIndex');
 
 Route::post('store/district', 'ResourcesController@storeDistrict');
+
+Route::get('show/{district}/district', 'ResourcesController@showDistrict');
 
 Route::post('update/{district}/district', 'ResourcesController@updateDistrict');
 
@@ -72,6 +76,8 @@ Route::delete('delete/{district}/district', 'ResourcesController@deleteDistrict'
 Route::get('fetch/facilities', 'ResourcesController@facilityIndex');
 
 Route::post('store/facility', 'ResourcesController@storeFacility');
+
+Route::get('show/{facility}/facility', 'ResourcesController@showFacility');
 
 Route::post('update/{facility}/facility', 'ResourcesController@updateFacility');
 

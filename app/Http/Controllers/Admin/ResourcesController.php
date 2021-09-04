@@ -68,6 +68,11 @@ class ResourcesController extends Controller
         return response()->json(['message' => 'success']);
     }
 
+    public function showDistrict(District $district): DistrictResource
+    {
+        return new DistrictResource($district);
+    }
+
     public function updateDistrict(District $district, DistrictRequest $request): \Illuminate\Http\JsonResponse
     {
         $district->update($request->validated());
@@ -95,6 +100,11 @@ class ResourcesController extends Controller
         Facility::create($request->validated());
 
         return response()->json(['message' => 'success']);
+    }
+
+    public function showFacility(Facility $facility): FacilityResources
+    {
+        return new FacilityResources($facility);
     }
 
     public function updateFacility(Facility $facility, FacilityRequest $request): \Illuminate\Http\JsonResponse

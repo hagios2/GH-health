@@ -24,16 +24,7 @@ class UserResource extends JsonResource
 
             'phone' => $this->phone,
 
-            'campus' => [
-
-                'id' => $this->campus->id,
-
-                'campus' => $this->campus->campus
-            ],
-
-            'valid_id' => $this->valid_id,
-
-            'qualified_for_free_trial' => $this->qualified_for_free_trial
+            'facility' => $this->facility
 
         ];
     }

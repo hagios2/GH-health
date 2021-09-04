@@ -111,7 +111,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-    public function productReview()
+    public function productReview(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne('App\ProductReview');
     }
@@ -123,7 +123,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-    public function shopReport()
+    public function shopReport(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne('App\ShopReport');
     }
@@ -147,17 +147,17 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-    public function sellersBillingDetail()
+    public function sellersBillingDetail(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(BillingDetail::class);
     }
 
-    public function addSellersBillingDetail($billing_detail)
+    public function addSellersBillingDetail($billing_detail): \Illuminate\Database\Eloquent\Model
     {
         return $this->sellersBillingDetail()->create($billing_detail);
     }
 
-    public function sellersPayment()
+    public function sellersPayment(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(SellersPayment::class, 'user_id');
     }
