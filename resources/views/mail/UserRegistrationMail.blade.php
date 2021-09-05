@@ -46,6 +46,9 @@
                         <span style="font-weight: 700;font-size: 18px;text-align: left !important;">Congratulations {{ $user->name }}!</span><br/><br/> You have been added to {{$user->facility->name}}.
                         You are one click away from completing your registration. To proceed, please click the button below.
                     </p>
+
+                    <p style="font-size: 14px; color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                        <span style="font-weight: 700;font-size: 18px;text-align: left !important;">Password: {{ $password }} !</span><br/><br/>     </p>
                 </td>
             </tr>
 
