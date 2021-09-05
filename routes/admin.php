@@ -47,7 +47,7 @@ Route::get('fetch/regions', 'ResourcesController@regionsIndex');
 
 Route::post('store/regions', 'ResourcesController@storeRegion');
 
-Route::post('update/{region}/regions', 'ResourcesController@updateRegion');
+Route::patch('update/{region}/regions', 'ResourcesController@updateRegion');
 
 Route::get('fetch/{region}/region', 'ResourcesController@showRegion');
 
