@@ -9,6 +9,7 @@ use App\Http\Requests\RegionsRequest;
 use App\Http\Resources\DistrictResource;
 use App\Http\Resources\FacilityResources;
 use App\Http\Resources\RegionsResources;
+use App\Http\Resources\SingleFacilityResource;
 use App\Models\District;
 use App\Models\Facility;
 use App\Models\Region;
@@ -102,9 +103,9 @@ class ResourcesController extends Controller
         return response()->json(['message' => 'success']);
     }
 
-    public function showFacility(Facility $facility): FacilityResources
+    public function showFacility(Facility $facility): SingleFacilityResource
     {
-        return new FacilityResources($facility);
+        return new SingleFacilityResource($facility);
     }
 
     public function updateFacility(Facility $facility, FacilityRequest $request): \Illuminate\Http\JsonResponse
