@@ -79,7 +79,7 @@ Route::post('store/facility', 'ResourcesController@storeFacility');
 
 Route::get('show/{facility}/facility', 'ResourcesController@showFacility');
 
-Route::post('update/{facility}/facility', 'ResourcesController@updateFacility');
+Route::put('update/{facility}/facility', 'ResourcesController@updateFacility');
 
 Route::delete('delete/{facility}/facility', 'ResourcesController@deleteFacility');
 
