@@ -64,7 +64,7 @@ Route::post('store/district', 'ResourcesController@storeDistrict');
 
 Route::get('show/{district}/district', 'ResourcesController@showDistrict');
 
-Route::post('update/{district}/district', 'ResourcesController@updateDistrict');
+Route::put('update/{district}/district', 'ResourcesController@updateDistrict');
 
 Route::delete('delete/{district}/district', 'ResourcesController@deleteDistrict');
 
