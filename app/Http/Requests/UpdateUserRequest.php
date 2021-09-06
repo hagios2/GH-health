@@ -11,7 +11,7 @@ class UpdateUserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,7 +21,7 @@ class UpdateUserRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
 
@@ -33,8 +33,6 @@ class UpdateUserRequest extends FormRequest
 
             'avatar' => 'nullable|image|mimes:jpeg,jpg,png',
 
-            'campus_id' => 'required|integer' 
-            //
         ];
     }
 }
