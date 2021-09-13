@@ -28,11 +28,11 @@ class StatsController extends Controller implements Statics
             $end_date = Carbon::parse(now())->endOfYear();
         }
 
-        $this->fetchVictimStats($start_date, $end_date, $request);
+        $this->fetchVictimStats($start_date, $end_date, $request)->groupBy('Year(created_at)');
 
-        $this->fetchDistrictProductStats($start_date, $end_date, $request);
+        $this->fetchDistrictProductStats($start_date, $end_date, $request)->groupBy('Year(created_at)');
 
-        $this->fetchReportedCases($start_date, $end_date, $request);
+        $this->fetchReportedCases($start_date, $end_date, $request)->groupBy('Year(created_at)');
 
     }
 
@@ -51,11 +51,11 @@ class StatsController extends Controller implements Statics
             $end_date = Carbon::parse(now())->startOfMonth();
         }
 
-        $this->fetchVictimStats($start_date, $end_date, $request);
+        $this->fetchVictimStats($start_date, $end_date, $request)->groupBy('Month(created_at)');
 
-        $this->fetchDistrictProductStats($start_date, $end_date, $request);
+        $this->fetchDistrictProductStats($start_date, $end_date, $request)->groupBy('Month(created_at)');
 
-        $this->fetchReportedCases($start_date, $end_date, $request);
+        $this->fetchReportedCases($start_date, $end_date, $request)->groupBy('Month(created_at)');
     }
 
     public function weekly(Request $request): void
