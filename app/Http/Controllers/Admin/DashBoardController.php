@@ -8,9 +8,9 @@ use App\Models\Product;
 use App\Models\Victim;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class DashController extends Controller
+
+class DashBoardController extends Controller
 {
     public function __construct()
     {
