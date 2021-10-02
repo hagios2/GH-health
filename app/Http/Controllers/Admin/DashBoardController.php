@@ -27,7 +27,7 @@ class DashBoardController extends Controller
         }
         else{
 
-            $start_date = Carbon::parse(now())->startOfMonth();
+            $start_date = Carbon::now()->subMonth()->startOfMonth();
 
             $end_date = Carbon::parse(now())->endOfMonth();
         }
@@ -90,20 +90,20 @@ class DashBoardController extends Controller
         $this->fetchReportedCases($start_date, $end_date, $request);
     }
 
-    public function fetchVictimStats(Carbon $start_date, Carbon $end_date, Request $request)
+    public function fetchVictimStats(Carbon $start_date, Carbon $end_date, Request $request): \Illuminate\Database\Eloquent\Builder
     {
         return Victim::query()
             ->select('count(id), created_at')
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
-    public function fetchDistrictProductStats(Carbon $start_date, Carbon $end_date, Request $request)
+    public function fetchDistrictProductStats(Carbon $start_date, Carbon $end_date, Request $request): \Illuminate\Database\Eloquent\Builder
     {
         return Product::query()
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
-    public function fetchReportedCases(Carbon $start_date, Carbon $end_date, Request $request)
+    public function fetchReportedCases(Carbon $start_date, Carbon $end_date, Request $request): \Illuminate\Database\Eloquent\Builder
     {
         return IssuedProduct::query()
             ->whereBetween('created_at', [$start_date, $end_date]);
