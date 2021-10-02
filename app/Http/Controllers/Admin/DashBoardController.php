@@ -106,7 +106,7 @@ class DashBoardController extends Controller
     public function fetchReportedCases(Carbon $start_date, Carbon $end_date, Request $request)
     {
         return IssuedProduct::query()
-            ->whereBetween('created_at', [$start_date, $end_date])
+            ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
 //    public function getStats(Request $request): \Illuminate\Http\JsonResponse
