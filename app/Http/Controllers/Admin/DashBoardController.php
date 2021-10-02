@@ -94,22 +94,19 @@ class DashBoardController extends Controller
     {
         return Victim::query()
             ->select('count(id), created_at')
-            ->whereBetween('created_at', [$start_date, $end_date])
-            ->districtVictims();
+            ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
     public function fetchDistrictProductStats(Carbon $start_date, Carbon $end_date, Request $request)
     {
         return Product::query()
-            ->whereBetween('created_at', [$start_date, $end_date])
-            ->districtProducts();
+            ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
     public function fetchReportedCases(Carbon $start_date, Carbon $end_date, Request $request)
     {
         return IssuedProduct::query()
             ->whereBetween('created_at', [$start_date, $end_date])
-            ->districtQuery();
     }
 
 //    public function getStats(Request $request): \Illuminate\Http\JsonResponse
