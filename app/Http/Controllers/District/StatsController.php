@@ -9,12 +9,12 @@ use App\Models\Product;
 use App\Models\Victim;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StatsController extends Controller implements Statics
 {
     public function yearly(Request $request): void
     {
-
         if($request->filled('start_date') && $request->filled('end_date'))
         {
             $start_date = Carbon::parse($request->start_date)->startOfYear();
@@ -82,7 +82,8 @@ class StatsController extends Controller implements Statics
 
     public function fetchVictimStats(Carbon $start_date, Carbon $end_date, Request $request): Victim
     {
-        return Victim::query()
+        return DB::table('victims')
+            ->select('count(id), created_at')
             ->whereBetween('created_at', [$start_date, $end_date])
             ->districtVictims();
     }

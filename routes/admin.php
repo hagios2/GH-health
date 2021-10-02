@@ -95,6 +95,8 @@ Route::delete('delete/{user}/facilitator', 'AdminsController@deleteFacilitator')
 
 #--------------------------- End Facilitator -----------------------------------------------------
 
+Route::get('fetch/dashboard/stats', 'DashboardController@getStats');
+
 
 Route::fallback(function(){
 
