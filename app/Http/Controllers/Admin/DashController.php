@@ -14,7 +14,7 @@ class DashController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin');
+//        $this->middleware('auth:admin');
     }
 
     public function getStats(Request $request): \Illuminate\Http\JsonResponse
