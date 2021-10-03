@@ -48,6 +48,10 @@ Route::post('product/create', 'ProductsController@createProduct');
 
 Route::get('fetch/products', 'ProductsController@fetchProducts');
 
+Route::put('update/{product}/product', 'ProductsController@updateProducts');
+
+Route::delete('delete/{product}/product', 'ProductsController@deleteProducts');
+
 Route::get('get/{product}/details', 'ProductsController@getProductDetails');
 
 Route::post('product/{product}/issue/out', 'ProductsController@issueOutProduct');

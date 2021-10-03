@@ -39,6 +39,20 @@ class ProductsController extends Controller
         return new DetailedProductResource($product);
     }
 
+    public function updateProduct(Product $product, ProductRequest $request): \Illuminate\Http\JsonResponse
+    {
+        $product->update($request->validated());
+
+        return response()->json(['message' => 'product updated']);
+    }
+
+    public function deleteProduct(Product $product): \Illuminate\Http\JsonResponse
+    {
+        $product->delete();
+
+        return response()->json(['message' => 'product deleted']);
+    }
+
     public function issueOutProduct(Product $product, IssueProductOutRequest $request): \Illuminate\Http\JsonResponse
     {
         $validated_product_data = $request->validated();
