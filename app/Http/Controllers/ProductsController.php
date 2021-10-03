@@ -39,7 +39,7 @@ class ProductsController extends Controller
         return new DetailedProductResource($product);
     }
 
-    public function issueOutProduct(Product $product, IssueProductOutRequest $request)
+    public function issueOutProduct(Product $product, IssueProductOutRequest $request): \Illuminate\Http\JsonResponse
     {
         $validated_product_data = $request->validated();
 
@@ -52,7 +52,7 @@ class ProductsController extends Controller
         return response()->json(['message' => "issued out successfully"], 201);
     }
 
-    public function viewIssuedOutProduct(Product $product)
+    public function viewIssuedOutProduct(Product $product): IssuedOutProductResource
     {
         $issued_out_product = IssuedProduct::query()->where('product_id', $product->id)->latest()->paginate();
 
