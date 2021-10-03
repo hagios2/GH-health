@@ -12,26 +12,23 @@ class ProductResource extends ResourceCollection
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @return \Illuminate\Support\Collection
      */
-    public function toArray($request)
+    public function toArray($request): \Illuminate\Support\Collection
     {
-       return [
-            $this->collection->map(function($product){
-                return  [
+        return $this->collection->map(function($product){
+            return  [
 
-                    'id' => $product->id,
+                'id' => $product->id,
 
-                    'name' => $product->name,
+                'name' => $product->name,
 
-                    'quantity' => $product->quanity,
+                'quantity' => $product->quanity,
 
-                    'description' => $product->description,
+                'description' => $product->description,
 
-                    'product_image' => ProductImage::where('product_id', $product->id)->latest()->take(1)->get('path')
-               ];
-            }),
-
-       ];
+                'product_image' => ProductImage::where('product_id', $product->id)->latest()->take(1)->get('path')
+           ];
+        });
     }
 }

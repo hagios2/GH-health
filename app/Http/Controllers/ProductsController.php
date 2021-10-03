@@ -34,7 +34,7 @@ class ProductsController extends Controller
         return new ProductResource($products);
     }
 
-    public function getProductDetails(Product $product)
+    public function getProductDetails(Product $product): DetailedProductResource
     {
         return new DetailedProductResource($product);
     }
