@@ -23,7 +23,7 @@ class ProductResource extends ResourceCollection
 
                 'name' => $product->name,
 
-                'quantity' => $product->quanity,
+                'quantity' => $product->quantity,
 
                 'description' => $product->description,
 
