@@ -11,17 +11,17 @@ class Facility extends Model
 {
     protected $guarded = ['id'];
 
-    public function district()
+    public function district(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(District::class);
     }
 
-    public function product()
+    public function product(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        $this->hasMany(Product::class);
+        return $this->hasMany(Product::class);
     }
 
-    public function addProduct($product_data)
+    public function addProduct($product_data): Model
     {
         $product_data['user_id'] = auth()->id();
 
