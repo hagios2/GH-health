@@ -27,6 +27,12 @@ class ProductResource extends ResourceCollection
 
                 'description' => $product->description,
 
+                'source' => $product->source,
+
+                'brand' => $product->brand,
+
+                'expiry_date' => $product->expiry_date
+
 //                'product_image' => ProductImage::where('product_id', $product->id)->latest()->take(1)->get('path')
            ];
         });
