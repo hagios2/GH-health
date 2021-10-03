@@ -19,7 +19,7 @@ class ProductsController extends Controller
         $this->middleware('auth:api');
     }
 
-    public function createProduct(ProductRequest $request)
+    public function createProduct(ProductRequest $request): \Illuminate\Http\JsonResponse
     {
         auth()->user()->facility->addProduct($request->validated());
 
@@ -27,7 +27,7 @@ class ProductsController extends Controller
 
     }
 
-    public function fetchProducts()
+    public function fetchProducts(): ProductResource
     {
         $products = Product::query()->facilityProduct()->latest()->paginate(10);
 

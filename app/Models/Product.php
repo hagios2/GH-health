@@ -30,7 +30,7 @@ class Product extends Model implements Searchable
     }
 
 
-    public function image()
+    public function image(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(ProductImage::class);
     }
@@ -41,22 +41,22 @@ class Product extends Model implements Searchable
         $this->image()->create($image);
     }
 
-    public function review()
+    public function review(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany('App\ProductReview');
     }
 
-    public function facility()
+    public function facility(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Facility::class);
     }
 
-    public function productReport()
+    public function productReport(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany('App\ProductReport');
     }
 
-    public function paidProduct()
+    public function paidProduct(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(PaidProduct::class);
     }
@@ -70,21 +70,21 @@ class Product extends Model implements Searchable
 
     public function scopeFacilityProduct($query)
     {
-        $query->where('facility_if', auth()->guard('api')->user()->facility_id);
+        $query->where('facility_id', auth()->guard('api')->user()->facility_id);
     }
 
-    public function receivedBy()
+    public function receivedBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function issuedProduct()
+    public function issuedProduct(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(IssuedProduct::class);
     }
 
 
-    public function issueOutProduct($issued_product)
+    public function issueOutProduct($issued_product): Model
     {
         $issued_product['quantity_before_issued_out'] = $this->quantity;
 
