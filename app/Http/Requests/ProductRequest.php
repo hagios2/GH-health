@@ -28,7 +28,8 @@ class ProductRequest extends FormRequest
             'source' => 'required|string',
             'brand' => 'required|string',
             'expiry_date' => 'required|date',
-            'description' => 'nullable|string'
+            'description' => 'nullable|string',
+            'quantity' => 'required|integer'
         ];
     }
 }
