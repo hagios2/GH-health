@@ -50,7 +50,7 @@ Route::get('fetch/products', 'ProductsController@fetchProducts');
 
 Route::put('update/{product}/product', 'ProductsController@updateProducts');
 
-Route::delete('delete/{product}/product', 'ProductsController@deleteProducts');
+Route::delete('delete/{product}/product', 'ProductsController@deleteProduct');
 
 Route::get('get/{product}/details', 'ProductsController@getProductDetails');
 
@@ -64,6 +64,10 @@ Route::get('view/issued/{product}/product', 'ProductsController@viewIssuedOutPro
 Route::get('fetch/victims', 'VictimsController@fetchVictims');
 
 Route::post('victims/create', 'VictimsController@createVictim');
+
+Route::get('fetch/{victim}/victim', 'VictimsController@fetchVictim');
+
+Route::get('delete/{victim}/victim', 'VictimsController@DeleteVictim');
 
 #------------------------------------------------------------------------------------------------
 

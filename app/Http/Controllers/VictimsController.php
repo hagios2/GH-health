@@ -24,4 +24,15 @@ class VictimsController extends Controller
         return response()->json(['message' => 'victim created'], 201);
     }
 
+    public function fetchVictim(Victim $victim): VictimResource
+    {
+        return new VictimResource($victim);
+    }
+
+    public function deleteVictim(Victim $victim)
+    {
+        $victim->delete();
+
+        return response()->json(['message' => "{$victim->name} has been deleted"]);
+    }
 }
