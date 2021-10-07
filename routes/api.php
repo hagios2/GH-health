@@ -65,6 +65,8 @@ Route::get('fetch/victims', 'VictimsController@fetchVictims');
 
 Route::post('victims/create', 'VictimsController@createVictim');
 
+Route::put('update/{victim}/victim', 'VictimsController@updateVictim');
+
 Route::get('fetch/{victim}/victim', 'VictimsController@fetchVictim');
 
 Route::get('delete/{victim}/victim', 'VictimsController@DeleteVictim');

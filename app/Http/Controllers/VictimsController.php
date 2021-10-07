@@ -29,11 +29,11 @@ class VictimsController extends Controller
         return new VictimResource($victim);
     }
 
-    public function updateVictim(VictimRequest $request): \Illuminate\Http\JsonResponse
+    public function updateVictim(Victim $victim, VictimRequest $request): \Illuminate\Http\JsonResponse
     {
-        $victim = Victim::create($request->validated());
+        $victim->update($request->validated());
 
-        return response()->json(['message' => 'victim created'], 201);
+        return response()->json(['message' => 'victim updated']);
     }
 
     public function deleteVictim(Victim $victim): \Illuminate\Http\JsonResponse
