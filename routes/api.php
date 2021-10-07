@@ -59,7 +59,13 @@ Route::post('product/{product}/issue/out', 'ProductsController@issueOutProduct')
 Route::get('view/issued/{product}/product', 'ProductsController@viewIssuedOutProduct');
 
 
-#--------------------- End Routes ------------------------------------------------
+#--------------------- End Product Routes -------------------------------------------------------
+
+Route::get('fetch/victims', 'VictimsController@fetchVictims');
+
+Route::post('victims/create', 'VictimsController@createVictim');
+
+#------------------------------------------------------------------------------------------------
 
 Route::post('user/{user}/add-cart', 'ProductsController@saveCart');
 

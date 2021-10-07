@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class VictimsController extends Controller
 {
-    public function fetchVictims()
+    public function fetchVictims(): VictimResource
     {
         $victims = Victim::query()->paginate(20);
 
@@ -17,7 +17,7 @@ class VictimsController extends Controller
     }
 
 
-    public function createVictim(VictimRequest $request)
+    public function createVictim(VictimRequest $request): \Illuminate\Http\JsonResponse
     {
         $victim = Victim::create($request->validated());
 
