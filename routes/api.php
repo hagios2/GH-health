@@ -48,7 +48,7 @@ Route::post('product/create', 'ProductsController@createProduct');
 
 Route::get('fetch/products', 'ProductsController@fetchProducts');
 
-Route::put('update/{product}/product', 'ProductsController@updateProducts');
+Route::put('update/{product}/product', 'ProductsController@updateProduct');
 
 Route::delete('delete/{product}/product', 'ProductsController@deleteProduct');
 

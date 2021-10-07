@@ -29,7 +29,14 @@ class VictimsController extends Controller
         return new VictimResource($victim);
     }
 
-    public function deleteVictim(Victim $victim)
+    public function updateVictim(VictimRequest $request): \Illuminate\Http\JsonResponse
+    {
+        $victim = Victim::create($request->validated());
+
+        return response()->json(['message' => 'victim created'], 201);
+    }
+
+    public function deleteVictim(Victim $victim): \Illuminate\Http\JsonResponse
     {
         $victim->delete();
 
