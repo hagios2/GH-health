@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DistrictResource extends JsonResource
+class SingleVictimResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +17,16 @@ class DistrictResource extends JsonResource
     {
         return [
             'id' => $this->id,
+
             'name' => $this->name,
-            'region' => $this->region,
-            'address_of_district_health_directorate' => $this->address_of_district_health_directorate
+
+            'age' => Carbon::parse($this->dob)->age,
+
+            'town' => $this->town,
+
+            'district' => new DistrictResource($this->district),
+
+            'gender' => $this->gender
         ];
     }
 }

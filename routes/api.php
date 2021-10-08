@@ -54,7 +54,7 @@ Route::delete('delete/{product}/product', 'ProductsController@deleteProduct');
 
 Route::get('get/{product}/details', 'ProductsController@getProductDetails');
 
-Route::post('product/{product}/issue/out', 'ProductsController@issueOutProduct');
+Route::post('product/issue/out', 'ProductsController@issueOutProduct');
 
 Route::get('view/issued/{product}/product', 'ProductsController@viewIssuedOutProduct');
 
