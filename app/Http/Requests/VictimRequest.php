@@ -11,7 +11,7 @@ class VictimRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,11 +21,11 @@ class VictimRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => 'required|string',
-            'age' => 'required|integer',
+            'dob' => 'required|date',
             'gender' => 'required|string',
             'district_id' => 'nullable|integer',
             'town' => 'nullable|string'
