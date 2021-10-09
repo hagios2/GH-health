@@ -56,7 +56,7 @@ Route::get('get/{product}/details', 'ProductsController@getProductDetails');
 
 Route::post('product/{product}/issue/out', 'ProductsController@issueOutProduct');
 
-Route::get('view/{facility}/issued-out/product', 'ProductsController@viewIssuedOutProduct');
+Route::get('view/issued-out/products', 'ProductsController@viewIssuedOutProduct');
 
 #--------------------- End Product Routes -------------------------------------------------------
 

@@ -26,4 +26,9 @@ class Victim extends Model
         return $this->hasMany(IssuedProduct::class);
     }
 
+    public function facility(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Facility::class);
+    }
+
 }
