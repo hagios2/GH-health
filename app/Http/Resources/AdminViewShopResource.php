@@ -3,7 +3,6 @@
 namespace App\Http\Resources;
 
 use Carbon\Carbon;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class AdminViewShopResource extends ResourceCollection
@@ -12,9 +11,9 @@ class AdminViewShopResource extends ResourceCollection
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @return \Illuminate\Support\Collection
      */
-    public function toArray($request)
+    public function toArray($request): \Illuminate\Support\Collection
     {
 
         return $this->collection->map(function($shop){
@@ -24,12 +23,6 @@ class AdminViewShopResource extends ResourceCollection
                 'id' => $shop->id,
 
                 'company_name' => $shop->company_name,
-
-                /* 'company_description' => $this->company_description,
-
-                'avatar' => $this->avatar,
-
-                'number_of_followers' => $this->followers->count(), */
 
                 'campus' => $shop->campus,
 

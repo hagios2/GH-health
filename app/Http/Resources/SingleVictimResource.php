@@ -26,7 +26,9 @@ class SingleVictimResource extends JsonResource
 
             'district' => new DistrictResource($this->district),
 
-            'gender' => $this->gender
+            'gender' => $this->gender,
+
+            "created_at" => Carbon::parse($this->created_at_)->format('D, d F Y')
         ];
     }
 }

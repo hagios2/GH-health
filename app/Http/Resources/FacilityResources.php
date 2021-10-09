@@ -12,7 +12,7 @@ class FacilityResources extends ResourceCollection
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Support\Collection
      */
-    public function toArray($request)
+    public function toArray($request): \Illuminate\Support\Collection
     {
         return $this->collection->map(function ($facility){
             return [
