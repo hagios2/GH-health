@@ -21,6 +21,11 @@ class Facility extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function issuedOutProduct(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(IssuedProduct::class);
+    }
+
     public function addProduct($product_data): Model
     {
         $product_data['user_id'] = auth()->id();

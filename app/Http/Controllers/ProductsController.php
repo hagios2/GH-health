@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\IssueProductOutRequest;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\IssuedOutProductResource;
+use App\Models\Facility;
 use App\Models\IssuedProduct;
 use App\Models\Product;
 use App\Http\Resources\DetailedProductResource;
@@ -69,9 +70,9 @@ class ProductsController extends Controller
         return response()->json(['message' => "issued out successfully"], 201);
     }
 
-    public function viewIssuedOutProduct(Product $product): IssuedOutProductResource
+    public function viewIssuedOutProduct(Facility $facility): IssuedOutProductResource
     {
-        $issued_out_product = IssuedProduct::query()->where('product_id', $product->id)->latest()->paginate();
+        $issued_out_product = IssuedProduct::query()->where('facility_id', $facility->id)->latest()->paginate(10);
 
         return new IssuedOutProductResource($issued_out_product);
     }
