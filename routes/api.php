@@ -75,11 +75,11 @@ Route::delete('delete/{victim}/victim', 'VictimsController@DeleteVictim');
 Route::get('fetch/{victim}/victim/reports', 'VictimsController@fetchPreviousReports');
 #------------------------------------------------------------------------------------------------
 
-Route::get('fetch/districts', 'ResourceController@fetchDistricts');
+Route::get('fetch/districts/resource', 'ResourceController@fetchDistricts');
 
-Route::get('fetch/victims', 'ResourceController@fetchVictims');
+Route::get('fetch/victims/resource', 'ResourceController@fetchVictims');
 
-Route::get('fetch/products', 'ResourceController@fetchProducts');
+Route::get('fetch/products/resource', 'ResourceController@fetchProducts');
 
 
 

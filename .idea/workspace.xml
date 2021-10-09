@@ -27,6 +27,7 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResourceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResourceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VictimsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VictimsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/IssueProductOutRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/IssueProductOutRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Victim.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Victim.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -336,7 +337,7 @@
       <workItem from="1633339394508" duration="617000" />
       <workItem from="1633586657073" duration="4542000" />
       <workItem from="1633593555585" duration="17000" />
-      <workItem from="1633727907743" duration="12564000" />
+      <workItem from="1633727907743" duration="12884000" />
     </task>
     <servers />
   </component>
