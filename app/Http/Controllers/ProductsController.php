@@ -55,7 +55,7 @@ class ProductsController extends Controller
 
     public function issueOutProduct(Product $product, IssueProductOutRequest $request): \Illuminate\Http\JsonResponse
     {
-        if($product->quantity < 0)
+        if($product->quantity === 0)
         {
             return response()->json(['message' => "Product is out of Stock"], 401);
         }
