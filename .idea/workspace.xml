@@ -24,10 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="11297969-9d5b-4665-9e4b-986ec40ebf5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/AdminViewShopResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/AdminViewShopResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/FacilityResources.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/FacilityResources.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/SingleFacilityResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/SingleFacilityResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/SingleVictimResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/SingleVictimResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/AllShopsResource.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/CampusShopsResource.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/DetailedProductResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/DetailedProductResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,7 +336,7 @@
       <workItem from="1633339394508" duration="617000" />
       <workItem from="1633586657073" duration="4542000" />
       <workItem from="1633593555585" duration="17000" />
-      <workItem from="1633727907743" duration="7735000" />
+      <workItem from="1633727907743" duration="9337000" />
     </task>
     <servers />
   </component>

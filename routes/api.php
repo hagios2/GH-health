@@ -61,6 +61,8 @@ Route::get('view/issued/{product}/product', 'ProductsController@viewIssuedOutPro
 
 #--------------------- End Product Routes -------------------------------------------------------
 
+#--------------------- Victims Routes -------------------------------------------------------
+
 Route::get('fetch/victims', 'VictimsController@fetchVictims');
 
 Route::post('victims/create', 'VictimsController@createVictim');
@@ -72,6 +74,10 @@ Route::get('fetch/{victim}/victim', 'VictimsController@fetchVictim');
 Route::get('delete/{victim}/victim', 'VictimsController@DeleteVictim');
 
 #------------------------------------------------------------------------------------------------
+
+Route::get('fetch/districts', 'ResourceController@fetchDistricts');
+
+
 
 Route::post('user/{user}/add-cart', 'ProductsController@saveCart');
 

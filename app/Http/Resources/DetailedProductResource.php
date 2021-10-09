@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -33,7 +32,7 @@ class DetailedProductResource extends JsonResource
 
         'received_by' => $this->receivedBy ? $this->receivedBy->name : 'Not found' ,
 
-        'product_images' => ProductImageResource::collection($this->image),
+//        'product_images' => ProductImageResource::collection($this->image),
        ];
     }
 }
