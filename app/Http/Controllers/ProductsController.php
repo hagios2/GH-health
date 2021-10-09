@@ -64,8 +64,6 @@ class ProductsController extends Controller
 
         $validated_product_data['issued_by'] = auth()->guard('api')->id();
 
-        $validated_product_data['quantity_before_issued_out'] = $product->quantity;
-
         $product->issueOutProduct($validated_product_data);
 
         return response()->json(['message' => "issued out successfully"], 201);

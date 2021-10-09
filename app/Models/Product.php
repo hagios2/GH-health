@@ -88,6 +88,8 @@ class Product extends Model implements Searchable
     {
         $issued_product['quantity_before_issued_out'] = $this->quantity;
 
+        $issued_product['facility_id'] = $this->facility_id;
+
         return $this->issuedProduct()->create($issued_product);
     }
 
