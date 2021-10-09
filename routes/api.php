@@ -70,11 +70,16 @@ Route::put('update/{victim}/victim', 'VictimsController@updateVictim');
 
 Route::get('fetch/{victim}/victim', 'VictimsController@fetchVictim');
 
-Route::get('delete/{victim}/victim', 'VictimsController@DeleteVictim');
+Route::delete('delete/{victim}/victim', 'VictimsController@DeleteVictim');
 
+Route::get('fetch/{victim}/victim/reports', 'VictimsController@fetchPreviousReports');
 #------------------------------------------------------------------------------------------------
 
 Route::get('fetch/districts', 'ResourceController@fetchDistricts');
+
+Route::get('fetch/victims', 'ResourceController@fetchVictims');
+
+Route::get('fetch/products', 'ResourceController@fetchProducts');
 
 
 

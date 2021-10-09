@@ -20,4 +20,10 @@ class Victim extends Model
     {
        return $query->where('district_id', auth()->guard('district_admin')->id());
     }
+
+    public function cases(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(IssuedProduct::class);
+    }
+
 }

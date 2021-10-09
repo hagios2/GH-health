@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\VictimRequest;
 use App\Http\Resources\SingleVictimResource;
+use App\Http\Resources\VictimReportResource;
 use App\Http\Resources\VictimResource;
+use App\Models\IssuedProduct;
 use App\Models\Victim;
 use Illuminate\Http\Request;
 
@@ -22,7 +24,7 @@ class VictimsController extends Controller
     {
         $victim = Victim::create($request->validated());
 
-        return response()->json(['message' => 'victim created'], 201);
+        return response()->json(['message' => 'victim created', 'data' => $victim]);
     }
 
     public function fetchVictim(Victim $victim): SingleVictimResource
@@ -42,5 +44,11 @@ class VictimsController extends Controller
         $victim->delete();
 
         return response()->json(['message' => "{$victim->name} has been deleted"]);
+    }
+
+
+    public function fetchPreviousReports(Victim $victim): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    {
+        return VictimReportResource::collection($victim->cases());
     }
 }

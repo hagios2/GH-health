@@ -30,7 +30,7 @@ class IssueProductOutRequest extends FormRequest
             'product_id' => 'required|integer',
             'quantity' => 'required|integer',
             'date_issued' => 'required|date',
-            'issued_by' => 'required|string'
+//            'issued_by' => 'required|string'
         ];
     }
 }
