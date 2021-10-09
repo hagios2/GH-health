@@ -55,6 +55,11 @@ class ProductsController extends Controller
 
     public function issueOutProduct(Product $product, IssueProductOutRequest $request): \Illuminate\Http\JsonResponse
     {
+        if($product->quantity < 0)
+        {
+            return response()->json(['message' => "Product is out of Stock"], 401);
+        }
+
         $validated_product_data = $request->validated();
 
         $validated_product_data['issued_by'] = auth()->guard('api')->id();

@@ -58,7 +58,6 @@ Route::post('product/issue/out', 'ProductsController@issueOutProduct');
 
 Route::get('view/issued/{product}/product', 'ProductsController@viewIssuedOutProduct');
 
-
 #--------------------- End Product Routes -------------------------------------------------------
 
 #--------------------- Victims Routes -------------------------------------------------------
