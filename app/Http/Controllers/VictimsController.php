@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\VictimRequest;
+use App\Http\Resources\DistrictResource;
 use App\Http\Resources\SingleVictimResource;
 use App\Http\Resources\VictimReportResource;
 use App\Http\Resources\VictimResource;
 use App\Models\IssuedProduct;
 use App\Models\Victim;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class VictimsController extends Controller
@@ -24,7 +26,23 @@ class VictimsController extends Controller
     {
         $victim = Victim::create($request->validated());
 
-        return response()->json(['message' => 'victim created', 'data' => $victim]);
+        return response()->json(['message' => 'victim created',
+
+            'data' => [
+
+                'id' => $victim->id,
+
+                'name' => $victim->name,
+
+                'age' => Carbon::parse($victim->dob)->age,
+
+                'town' => $victim->town,
+
+                'district' => new DistrictResource($victim->district),
+
+                'gender' => $victim->gender
+            ]
+        ]);
     }
 
     public function fetchVictim(Victim $victim): SingleVictimResource
