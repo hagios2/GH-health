@@ -19,27 +19,33 @@ class IssuedOutProductResource extends ResourceCollection
 
             return  [
 
+                'victim_id' => $issued_product->victim->id,
+
+                'victim_name' => $issued_product->victim->name,
+
+                'victim_age' => Carbon::parse($issued_product->victim->dob)->age,
+
+                'gender' => $issued_product->gender,
+
                 'product_id' => $issued_product->product_id,
 
                 'product_name' => $issued_product->product->name,
+
+                'current_product_quantity' => $issued_product->product->quantity,
 
                 'date_issued' => Carbon::parse($issued_product->date_issued),
 
                 'issued_by' => $issued_product->issuedBy->name,
 
-                'name_of_patient' => $issued_product->name_of_patient,
-
-                'age_of_patient' => $issued_product->age_of_patient,
-
-                'gender' => $issued_product->gender,
-
-                'quantity' => $issued_product->quantity,
+                'quantity_issued_out' => $issued_product->quantity,
 
                 'quantity_before_issued_out' => $issued_product->quantity_before_issued_out,
 
                 'town' => $issued_product->town,
 
-                'district' => $issued_product->district ? $issued_product->district->name : 'Not found'
+                'district' => $issued_product->district ? $issued_product->district->name : 'Not found',
+
+                'quantity_after_issued_out' => $issued_product->quantity_after_issued_out,
 
             ];
         });
