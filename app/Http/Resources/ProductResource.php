@@ -2,8 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Models\ProductImage;
-
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class ProductResource extends ResourceCollection
@@ -32,8 +30,6 @@ class ProductResource extends ResourceCollection
                 'brand' => $product->brand,
 
                 'expiry_date' => $product->expiry_date
-
-//                'product_image' => ProductImage::where('product_id', $product->id)->latest()->take(1)->get('path')
            ];
         });
     }

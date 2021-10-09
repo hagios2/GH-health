@@ -23,7 +23,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    public function login(): \Illuminate\Http\JsonResponse
     {
         $credentials = request(['email', 'password']);
 
@@ -42,7 +42,7 @@ class AuthController extends Controller
      *
      * @return UserResource
      */
-    public function getAuthUser()
+    public function getAuthUser(): UserResource
     {
 
         return new UserResource(auth()->user());
@@ -54,7 +54,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout()
+    public function logout(): \Illuminate\Http\JsonResponse
     {
 
         auth()->logout();
@@ -67,7 +67,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function refresh()
+    public function refresh(): \Illuminate\Http\JsonResponse
     {
         return $this->respondWithToken(auth()->refresh());
     }
@@ -79,7 +79,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithToken($token): \Illuminate\Http\JsonResponse
     {
         return response()->json([
             'access_token' => $token,
@@ -90,7 +90,7 @@ class AuthController extends Controller
     }
 
 
-    public function saveValidId(Request $request)
+    public function saveValidId(Request $request): \Illuminate\Http\JsonResponse
     {
         $request->validate(['valid_id' => 'nullable|image|mimes:png,jpg,jpeg']);
 
