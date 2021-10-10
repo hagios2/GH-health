@@ -23,6 +23,11 @@ class IssuedProduct extends Model
         return $this->belongsTo(District::class);
     }
 
+    public function victim(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Victim::class);
+    }
+
     public function scopeDistrictQuery($query)
     {
         return $query->join('facilities', 'facilities.id', '=', 'issued_products.facility_id')
