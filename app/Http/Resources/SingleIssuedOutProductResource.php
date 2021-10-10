@@ -31,7 +31,7 @@ class SingleIssuedOutProductResource extends JsonResource
 
             'current_product_quantity' => $this->product->quantity,
 
-            'date_issued' => Carbon::parse($this->date_issued)->parse('D, d F Y'),
+            'date_issued' => Carbon::parse($this->date_issued)->format('D, d F Y'),
 
             'issued_by' => $this->issuedBy->name,
 

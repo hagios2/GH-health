@@ -58,6 +58,8 @@ Route::post('product/{product}/issue/out', 'ProductsController@issueOutProduct')
 
 Route::get('view/issued-out/products', 'ProductsController@viewIssuedOutProduct');
 
+Route::get('view/{issuedProduct}/issued-out/product/report', 'ProductsController@fetchASingleIssuedCase');
+
 #--------------------- End Product Routes -------------------------------------------------------
 
 #--------------------- Victims Routes -------------------------------------------------------

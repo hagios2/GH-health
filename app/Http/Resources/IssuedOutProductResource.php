@@ -33,7 +33,7 @@ class IssuedOutProductResource extends ResourceCollection
 
                 'current_product_quantity' => $issued_product->product->quantity,
 
-                'date_issued' => Carbon::parse($issued_product->date_issued)->parse('D, d F Y'),
+                'date_issued' => Carbon::parse($issued_product->date_issued)->format('D, d F Y'),
 
                 'issued_by' => $issued_product->issuedBy->name,
 
