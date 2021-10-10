@@ -79,11 +79,17 @@ Route::delete('delete/{victim}/victim', 'VictimsController@DeleteVictim');
 Route::get('fetch/{victim}/victim/reports', 'VictimsController@fetchPreviousReports');
 #------------------------------------------------------------------------------------------------
 
+#------------------------------------------ Resource Routes ------------------------------------------
+
 Route::get('fetch/districts/resource', 'ResourceController@fetchDistricts');
 
 Route::get('fetch/victims/resource', 'ResourceController@fetchVictims');
 
 Route::get('fetch/products/resource', 'ResourceController@fetchProducts');
+
+Route::get('fetch/dashboard/stats', 'Facilitator\FacilitatorDashboardController@getStats');
+
+#------------------------------------------ End Resource Routes ------------------------------------------
 
 
 
