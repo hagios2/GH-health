@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Facilitator;
+namespace App\Http\Controllers\Facilitator\Facilitator;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Facilitator\Controller;
 use App\Models\IssuedProduct;
 use App\Models\Product;
 use App\Models\Victim;

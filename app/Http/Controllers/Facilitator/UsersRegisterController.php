@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Facilitator;
 
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
-use App\Notifications\UserRegistrationNotification;
 use App\Http\Requests\UserFormRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Hash;

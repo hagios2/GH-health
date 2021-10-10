@@ -87,7 +87,7 @@ Route::get('fetch/victims/resource', 'ResourceController@fetchVictims');
 
 Route::get('fetch/products/resource', 'ResourceController@fetchProducts');
 
-Route::get('fetch/dashboard/stats', 'Facilitator\FacilitatorDashboardController@getStats');
+Route::get('fetch/dashboard/stats', 'FacilitatorDashboardController@getStats');
 
 #------------------------------------------ End Resource Routes ------------------------------------------
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Facilitator\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Facilitator\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Jobs\NewAdminJob;

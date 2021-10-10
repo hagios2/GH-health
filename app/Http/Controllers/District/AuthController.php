@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\District;
+namespace App\Http\Controllers\Facilitator\District;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Facilitator\Controller;
 use App\Http\Resources\AdminAuthResource;
 use App\Http\Resources\DistrictAuthResource;
 use Illuminate\Http\Request;

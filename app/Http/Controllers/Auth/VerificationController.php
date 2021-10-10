@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Facilitator\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Facilitator\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 
 class VerificationController extends Controller
