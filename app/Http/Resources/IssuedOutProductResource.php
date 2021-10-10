@@ -23,7 +23,7 @@ class IssuedOutProductResource extends ResourceCollection
 
                 'victim_name' => $issued_product->victim->name ?? 'Not found',
 
-                'victim_age' => Carbon::parse($issued_product->victim->dob)->age ?? 'Not found',
+                'victim_age' => $issued_product->victim ? Carbon::parse($issued_product->victim->dob)->age : 'Not found',
 
                 'gender' => $issued_product->victim->gender ?? 'Not found',
 
