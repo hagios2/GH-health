@@ -60,7 +60,7 @@ Route::get('view/issued-out/products', 'ProductsController@viewIssuedOutProduct'
 
 Route::get('view/{issuedProduct}/issued-out/product/report', 'ProductsController@fetchASingleIssuedCase');
 
-Route::get('update/{issuedProduct}/reported/case', 'ProductsController@updateIssueOutProduct');
+Route::put('update/{issuedProduct}/reported/case', 'ProductsController@updateIssueOutProduct');
 
 #--------------------- End Product Routes -------------------------------------------------------
 
