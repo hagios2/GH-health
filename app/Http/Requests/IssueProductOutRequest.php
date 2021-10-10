@@ -27,10 +27,9 @@ class IssueProductOutRequest extends FormRequest
             'victim_id' => 'required|integer',
             'town' => 'required|string',
             'district_id' => 'required|integer',
-//            'product_id' => 'required|integer',
+            'product_id' => 'nullable|integer',
             'quantity' => 'required|integer',
             'date_issued' => 'required|date',
-//            'issued_by' => 'required|string'
         ];
     }
 }

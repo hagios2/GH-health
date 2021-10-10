@@ -6,7 +6,6 @@ use App\Http\Requests\IssueProductOutRequest;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\IssuedOutProductResource;
 use App\Http\Resources\SingleIssuedOutProductResource;
-use App\Models\Facility;
 use App\Models\IssuedProduct;
 use App\Models\Product;
 use App\Http\Resources\DetailedProductResource;
@@ -67,6 +66,35 @@ class ProductsController extends Controller
         $validated_product_data['issued_by'] = auth()->guard('api')->id();
 
         $product->issueOutProduct($validated_product_data);
+
+        return response()->json(['message' => "issued out successfully"], 201);
+    }
+
+    public function updateIssueOutProduct(IssuedProduct $issuedProduct, IssueProductOutRequest $request): \Illuminate\Http\JsonResponse
+    {
+        $product = Product::find($request->id);
+
+        if($product->quantity === 0)
+        {
+            return response()->json(['message' => "The selected product is out of Stock"], 401);
+        }
+
+        if($issuedProduct->product && (int) $request->product_id === $issuedProduct->product_id)
+        {
+            $issuedProduct->product->update(['quantity' => $issuedProduct->quantity_before_issued_out]);
+        }
+
+        $validated_product_data = $request->validated();
+
+        $validated_product_data['issued_by'] = auth()->guard('api')->id();
+
+        $validated_product_data['quantity_before_issued_out'] = $product->quantity;
+
+        $validated_product_data['quantity_after_issued_out'] = $product->quantity - (int) $request->quantity;
+
+        $validated_product_data['facility_id'] = $product->facility_id;
+
+        $issuedProduct->update($validated_product_data);
 
         return response()->json(['message' => "issued out successfully"], 201);
     }

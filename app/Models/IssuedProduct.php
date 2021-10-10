@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed $quantity_before_issued_out
+ * @property mixed $product_id
+ * @property mixed $product
+ */
 class IssuedProduct extends Model
 {
     protected $guarded = ['id'];
