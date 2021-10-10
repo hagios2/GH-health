@@ -30,7 +30,7 @@ class ProductResource extends ResourceCollection
 
                 'brand' => $product->brand,
 
-                'expiry_date' => Carbon::parse($product->expiry_date)->parse('D, d F Y'),
+                'expiry_date' => Carbon::parse($product->expiry_date)->format('D, d F Y'),
            ];
         });
     }
