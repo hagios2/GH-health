@@ -27,15 +27,15 @@ class IssuedOutProductResource extends ResourceCollection
 
                 'gender' => $issued_product->victim->gender ?? 'Not found',
 
-                'product_id' => $issued_product->product_id,
+                'product_id' => $issued_product->product_id ?? 'Not found',
 
-                'product_name' => $issued_product->product->name,
+                'product_name' => $issued_product->product->name ?? 'Not found',
 
-                'current_product_quantity' => $issued_product->product->quantity,
+                'current_product_quantity' => $issued_product->product->quantity ?? 'Not found',
 
                 'date_issued' => Carbon::parse($issued_product->date_issued)->format('D, d F Y'),
 
-                'issued_by' => $issued_product->issuedBy->name,
+                'issued_by' => $issued_product->issuedBy->name ?? 'Not found',
 
                 'quantity_issued_out' => $issued_product->quantity,
 
