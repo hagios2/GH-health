@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class ProductResource extends ResourceCollection
@@ -29,7 +30,7 @@ class ProductResource extends ResourceCollection
 
                 'brand' => $product->brand,
 
-                'expiry_date' => $product->expiry_date
+                'expiry_date' => Carbon::parse($product->expiry_date)->parse('D, d F Y'),
            ];
         });
     }

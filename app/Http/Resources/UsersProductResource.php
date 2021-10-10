@@ -13,7 +13,7 @@ class UsersProductResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
 
@@ -31,7 +31,7 @@ class UsersProductResource extends JsonResource
 
             'payment_status' => $this->payment_status,
 
-            'product_image' => ProductImage::where('product_id', $this->id)->latest()->take(1)->get('path')
+//            'product_image' => ProductImage::where('product_id', $this->id)->latest()->take(1)->get('path')
         ];
     }
 }

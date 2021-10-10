@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\IssueProductOutRequest;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\IssuedOutProductResource;
+use App\Http\Resources\SingleIssuedOutProductResource;
 use App\Models\Facility;
 use App\Models\IssuedProduct;
 use App\Models\Product;
@@ -75,6 +76,11 @@ class ProductsController extends Controller
         $issued_out_product = IssuedProduct::query()->where('facility_id', auth()->user()->facility->id)->latest()->paginate(10);
 
         return new IssuedOutProductResource($issued_out_product);
+    }
+
+    public function fetchASingleIssuedCase(IssuedProduct $issuedProduct): SingleIssuedOutProductResource
+    {
+        return new SingleIssuedOutProductResource($issuedProduct);
     }
 
 }

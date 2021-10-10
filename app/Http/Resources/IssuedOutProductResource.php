@@ -25,7 +25,7 @@ class IssuedOutProductResource extends ResourceCollection
 
                 'victim_age' => Carbon::parse($issued_product->victim->dob)->age,
 
-                'gender' => $issued_product->gender,
+                'gender' => $issued_product->victim->gender,
 
                 'product_id' => $issued_product->product_id,
 
@@ -33,7 +33,7 @@ class IssuedOutProductResource extends ResourceCollection
 
                 'current_product_quantity' => $issued_product->product->quantity,
 
-                'date_issued' => Carbon::parse($issued_product->date_issued),
+                'date_issued' => Carbon::parse($issued_product->date_issued)->parse('D, d F Y'),
 
                 'issued_by' => $issued_product->issuedBy->name,
 
