@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Facilitator;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\VictimRequest;
 use App\Http\Resources\DistrictResource;
 use App\Http\Resources\SingleVictimResource;
 use App\Http\Resources\VictimReportResource;
 use App\Http\Resources\VictimResource;
-use App\Models\IssuedProduct;
 use App\Models\Victim;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class VictimsController extends Controller
 {

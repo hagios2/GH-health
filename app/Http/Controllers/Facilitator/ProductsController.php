@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Facilitator;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\IssueProductOutRequest;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\IssuedOutProductResource;

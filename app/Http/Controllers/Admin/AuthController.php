@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Facilitator\Admin;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Facilitator\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\AdminAuthResource;
-use App\Models\Admin;
+
 
 class AuthController extends Controller
 {
