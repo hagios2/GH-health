@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Facilitator\District;
+namespace App\Http\Controllers\District;
 
-use App\Http\Controllers\Facilitator\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Services\Statics;
 use App\Models\IssuedProduct;
 use App\Models\Product;
