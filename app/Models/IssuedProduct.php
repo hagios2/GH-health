@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class IssuedProduct extends Model
 {
-    protected $guarded = ['id'];
+    protected array $guarded = ['id'];
 
     public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
