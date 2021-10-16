@@ -27,7 +27,7 @@ class DashboardController extends Controller
 
             if ($end_date->diffInWeeks($start_date) === 4)
             {
-                return $this->weeklyOrMonthly($start_date, $end_date, $request);
+                return $this->weeklyOrMonthly($start_date, $end_date);
 
             } elseif ($end_date->diffInWeeks($start_date) > 4 && $end_date->diffInYears($start_date) <= 1) {
 
@@ -45,7 +45,7 @@ class DashboardController extends Controller
             $end_date = Carbon::now()->endOfMonth();
         }
 
-        return $this->weeklyOrMonthly($start_date, $end_date, $request);
+        return $this->weeklyOrMonthly($start_date, $end_date);
     }
 
 
@@ -100,5 +100,5 @@ class DashboardController extends Controller
         ];
     }
 
-//    public function
+
 }
