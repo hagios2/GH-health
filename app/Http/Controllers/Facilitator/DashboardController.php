@@ -18,7 +18,7 @@ class DashboardController extends Controller
 //        $this->middleware('auth:admin');
     }
 
-    public function getStats(Request $request): \Illuminate\Http\JsonResponse
+    public function getStats(Request $request)
     {
         if($request->filled('start_date') && $request->filled('end_date'))
         {
@@ -26,16 +26,16 @@ class DashboardController extends Controller
 
             $end_date = Carbon::parse($request->end_date)->endOfYear();
 
-            if($end_date->diffInWeeks($start_date) === 1)
-            {
-
-            }
-            elseif ($end_date->diffInMonths($start_date) === 1)
-            {
-
-            }else{
-
-            }
+//            if($end_date->diffInWeeks($start_date) === 1)
+//            {
+//
+//            }
+//            elseif ($end_date->diffInMonths($start_date) === 1)
+//            {
+//
+//            }else{
+//
+//            }
         }
         else{
 
@@ -44,17 +44,19 @@ class DashboardController extends Controller
             $end_date = Carbon::parse(now())->endOfMonth();
         }
 
-        $victims_report = $this->fetchVictimStats($start_date, $end_date, $request)->groupBy('created_at')->get();
+//        $victims_report = $this->fetchVictimStats($start_date, $end_date, $request)->groupBy('created_at')->get();
+//
+//        $product_report = $this->fetchDistrictProductStats($start_date, $end_date, $request)->groupBy('created_at')->get();
+//
+//        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $request)->groupBy('created_at')->get();
+//
+//        return response()->json([
+//            'victims_stats' => $victims_report,
+//            'products_stats' => $product_report,
+//            'reported_cases' => $reported_cases
+//        ]);
 
-        $product_report = $this->fetchDistrictProductStats($start_date, $end_date, $request)->groupBy('created_at')->get();
-
-        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $request)->groupBy('created_at')->get();
-
-        return response()->json([
-            'victims_stats' => $victims_report,
-            'products_stats' => $product_report,
-            'reported_cases' => $reported_cases
-        ]);
+        return $this->weekly($start_date, $end_date, $request);
 
     }
 
@@ -80,11 +82,8 @@ class DashboardController extends Controller
         $this->fetchReportedCases($start_date, $end_date, $request)->groupBy('Month(created_at)');
     }
 
-    public function weekly(Request $request)
+    public function weekly($start_date, $end_date, $request): array
     {
-        $start_date = $request->start_date;
-
-        $end_date = $request->end_date;
 
         $victim_stats = $this->fetchVictimStats($start_date, $end_date, $request)->groupBy('created_at')->get();
 
