@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Victim;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -92,7 +93,7 @@ class DashboardController extends Controller
     public function fetchVictimStats(Carbon $start_date, Carbon $end_date, Request $request): \Illuminate\Database\Eloquent\Builder
     {
         return Victim::query()
-            ->select('count(id), created_at')
+            ->select(DB::raw('count(id), created_at'))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
