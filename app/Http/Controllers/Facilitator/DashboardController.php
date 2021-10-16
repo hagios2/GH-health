@@ -32,11 +32,11 @@ class DashboardController extends Controller
             $end_date = Carbon::parse(now())->endOfMonth();
         }
 
-        $victims_report = $this->fetchVictimStats($start_date, $end_date, $request)->groupBy('Year(created_at)')->get();
+        $victims_report = $this->fetchVictimStats($start_date, $end_date, $request)->groupBy('created_at')->get();
 
-        $product_report = $this->fetchDistrictProductStats($start_date, $end_date, $request)->groupBy('Year(created_at)')->get();
+        $product_report = $this->fetchDistrictProductStats($start_date, $end_date, $request)->groupBy('created_at')->get();
 
-        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $request)->groupBy('Year(created_at)')->get();
+        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $request)->groupBy('created_at')->get();
 
         return response()->json([
             'victims_stats' => $victims_report,
