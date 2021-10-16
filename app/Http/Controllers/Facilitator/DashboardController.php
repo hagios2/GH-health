@@ -68,7 +68,7 @@ class DashboardController extends Controller
 
     public function yearly($start_date, $end_date): array
     {
-        $group_by_string = 'extract(year from created_at) as created_at';
+        $group_by_string = 'extract(year from created_at) as year';
 
         $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(year from created_at)'))->get();
 
@@ -85,7 +85,7 @@ class DashboardController extends Controller
 
     public function monthsStats($start_date, $end_date): array
     {
-        $group_by_string = 'extract(month from created_at) as created_at';
+        $group_by_string = 'extract(month from created_at) as month';
 
         $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(month from created_at'))->get();
 
