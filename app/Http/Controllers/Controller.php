@@ -33,7 +33,7 @@ class Controller extends BaseController
     {
         return Victim::query()
             ->select(DB::raw("count(id), {$group_by_string}"))
-            ->whereBetween('created_at', [$start_date, $end_date]);
+            ->whereBetween('created_at', [$start_date->format('Y-m-d'), $end_date->format('Y-m-d')]);
     }
 
     public function fetchDistrictProductStats(Carbon $start_date, Carbon $end_date, $group_by_string): \Illuminate\Database\Eloquent\Builder
