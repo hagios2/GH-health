@@ -91,7 +91,7 @@ Route::get('fetch/dashboard/stats', 'FacilitatorDashboardController@getStats');
 
 #------------------------------------------ End Resource Routes ------------------------------------------
 
-Route::get('fetch/dashboard/stats', 'DashBoardController@getStats');
+Route::get('fetch/dashboard/stats', 'DashboardController@getStats');
 
 
 
