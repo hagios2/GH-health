@@ -85,7 +85,7 @@ class DashboardController extends Controller
     public function weekly($start_date, $end_date, $request): array
     {
 
-        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $request)->groupBy('created_at')->get();
+        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $request)->groupBy(DB::raw('CAST created_at AS DATE'))->get();
 
         $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $request)->groupBy('created_at')->get();
 
