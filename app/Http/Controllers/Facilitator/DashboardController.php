@@ -21,9 +21,9 @@ class DashboardController extends Controller
     {
         if($request->filled('start_date') && $request->filled('end_date'))
         {
-            $start_date = Carbon::parse($request->start_date)->startOfYear();
+            $start_date = Carbon::parse($request->start_date);
 
-            $end_date = Carbon::parse($request->end_date)->endOfYear();
+            $end_date = Carbon::parse($request->end_date);
 
             if ($end_date->diffInWeeks($start_date) === 4)
             {
