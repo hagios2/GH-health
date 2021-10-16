@@ -108,14 +108,14 @@ class DashboardController extends Controller
     public function fetchDistrictProductStats(Carbon $start_date, Carbon $end_date, Request $request): \Illuminate\Database\Eloquent\Builder
     {
         return Product::query()
-            ->select(DB::raw('count(id), created_at'))
+            ->select(DB::raw('count(id), CAST(created_at AS DATE)'))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
     public function fetchReportedCases(Carbon $start_date, Carbon $end_date, Request $request): \Illuminate\Database\Eloquent\Builder
     {
         return IssuedProduct::query()
-            ->select(DB::raw('count(id), created_at'))
+            ->select(DB::raw('count(id), CAST(created_at AS DATE)'))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
