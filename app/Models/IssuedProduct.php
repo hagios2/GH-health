@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class IssuedProduct extends Model
 {
-    protected array $guarded = ['id'];
+    protected $guarded = ['id'];
 
     public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
@@ -34,4 +34,5 @@ class IssuedProduct extends Model
             ->join('districts', 'districts.id', '=', 'facilities.district_id')
             ->where('district_id', auth()->guard('district_admin')->user()->district_id);
     }
+
 }
