@@ -31,7 +31,6 @@ class DashboardController extends Controller
 
             } elseif ($end_date->diffInWeeks($start_date) > 4 && $end_date->diffInYears($start_date) <= 1) {
 
-                return ['here' => ' to here'];
                 return $this->monthsStats($start_date, $end_date);
 
             } else {
