@@ -49,7 +49,7 @@ class DashboardController extends Controller
     }
 
 
-    public function weeklyOrMonthly($start_date, $end_date, $request): array
+    public function weeklyOrMonthly($start_date, $end_date): array
     {
         $group_by_string = 'CAST(created_at AS DATE)';
 
@@ -68,13 +68,13 @@ class DashboardController extends Controller
 
     public function yearly($start_date, $end_date): array
     {
-        $group_by_string = 'extract(year from created_at) as year';
+        $group_by_string = 'extract(year from created_at) as created_at';
 
-        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('1, extract(year from created_at)'))->get();
+        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(year from created_at)'))->get();
 
-        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('1, extract(year from created_at)'))->get();
+        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(year from created_at)'))->get();
 
-        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)->groupBy(DB::raw('1, extract(year from created_at)'))->get();
+        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(year from created_at)'))->get();
 
         return [
             'victims_stats' => YearlyStatsResource::collection($victim_stats),
@@ -85,13 +85,13 @@ class DashboardController extends Controller
 
     public function monthsStats($start_date, $end_date): array
     {
-        $group_by_string = 'extract(month from created_at) as month';
+        $group_by_string = 'extract(month from created_at) as created_at';
 
-        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('1, extract(month from created_at'))->get();
+        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(month from created_at'))->get();
 
-        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('1, extract(month from created_at'))->get();
+        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(month from created_at'))->get();
 
-        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)->groupBy(DB::raw('1, extract(month from created_at'))->get();
+        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(month from created_at'))->get();
 
         return [
             'victims_stats' => MonthsStatsResource::collection($victim_stats),
