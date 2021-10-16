@@ -87,9 +87,9 @@ class DashboardController extends Controller
 
         $victim_stats = $this->fetchVictimStats($start_date, $end_date, $request)->groupBy(DB::raw('CAST(created_at AS DATE)'))->get();
 
-        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $request)->groupBy('created_at')->get();
+        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $request)->groupBy(DB::raw('CAST(created_at AS DATE)'))->get();
 
-        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $request)->groupBy('created_at')->get();
+        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $request)->groupBy(DB::raw('CAST(created_at AS DATE)'))->get();
 
         return [
             'victims_stats' => WeeklyStatsResource::collection($victim_stats),
