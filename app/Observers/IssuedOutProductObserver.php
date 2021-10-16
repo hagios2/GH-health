@@ -18,7 +18,7 @@ class IssuedOutProductObserver
 
         if($product)
         {
-            $remaining_quantity = $product->quanity - $issuedProduct->quantity;
+            $remaining_quantity = $product->quantity - $issuedProduct->quantity;
 
             $product->update(['quantity' => $remaining_quantity]);
         }
