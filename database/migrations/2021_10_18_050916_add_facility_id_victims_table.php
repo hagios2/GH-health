@@ -26,7 +26,7 @@ class AddFacilityIdVictimsTable extends Migration
     public function down()
     {
         Schema::table('victims', function (Blueprint $table) {
-            //
+            $table->dropColumn(['facility_id']);
         });
     }
 }
