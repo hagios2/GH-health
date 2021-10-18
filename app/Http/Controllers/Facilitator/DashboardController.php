@@ -53,7 +53,9 @@ class DashboardController extends Controller
     {
         $group_by_string = 'CAST(created_at AS DATE)';
 
-        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw($group_by_string))->get();
+        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
+            ->where('facility_id', auth()->user()->facility_id)
+            ->groupBy(DB::raw($group_by_string))->get();
 
         $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw($group_by_string))->get();
 
