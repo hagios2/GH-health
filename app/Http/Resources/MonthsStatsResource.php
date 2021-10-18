@@ -19,7 +19,7 @@ class MonthsStatsResource extends JsonResource
 
             'counts' => $this->count,
 
-            'created_at' => Carbon::parse($this->created_at)->format('m-Y')
+            'created_at' => Carbon::parse($this->created_at)->format('F Y')
         ];
     }
 }
