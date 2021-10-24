@@ -18,7 +18,7 @@ class Victim extends Model
 
     public function scopeDistrictVictims($query)
     {
-       return $query->where('district_id', auth()->guard('district_admin')->id());
+       return $query->where('district_id', auth()->guard('district_admin')->user()->district_id);
     }
 
     public function cases(): \Illuminate\Database\Eloquent\Relations\HasMany

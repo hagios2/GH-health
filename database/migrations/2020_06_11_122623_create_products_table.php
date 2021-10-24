@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->integer('user_id')->unsigned(); //received by
             $table->date('expiry_date');
             $table->integer('quantity')->unsigned();
-//            $table->decimal('price', 10, 2);
             $table->text('description')->nullable();
             $table->timestamps();
         });

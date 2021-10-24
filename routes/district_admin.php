@@ -42,8 +42,4 @@ Route::group(['prefix' => 'auth'], function () {
 
 });
 
-Route::get('get/monthly/statics', 'StatsController@monthly');
-
-Route::get('get/weekly/statics', 'StatsController@weekly');
-
-Route::get('get/yearly/statics', 'StatsController@yearly');
+Route::get('fetch/dashboard/stats', 'DashboardController@getStats');

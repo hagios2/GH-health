@@ -48,7 +48,6 @@ class DashboardController extends Controller
         return $this->weeklyOrMonthly($start_date, $end_date);
     }
 
-
     public function weeklyOrMonthly($start_date, $end_date): array
     {
         $group_by_string = 'CAST(created_at AS DATE)';
@@ -57,7 +56,9 @@ class DashboardController extends Controller
             ->where('facility_id', auth()->user()->facility_id)
             ->groupBy(DB::raw($group_by_string))->get();
 
-        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw($group_by_string))->get();
+        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)
+            ->where('facility_id', auth()->user()->facility_id)
+            ->groupBy(DB::raw($group_by_string))->get();
 
         $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)->groupBy(DB::raw($group_by_string))->get();
 

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\District;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MonthsStatsResource;
+use App\Http\Resources\WeeklyStatsResource;
+use App\Http\Resources\YearlyStatsResource;
 use App\Http\Services\Statics;
 use App\Models\IssuedProduct;
 use App\Models\Product;
@@ -11,94 +14,115 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class StatsController extends Controller implements Statics
+class StatsController extends Controller
 {
-    public function yearly(Request $request): void
+    public function getStats(Request $request): array
     {
         if($request->filled('start_date') && $request->filled('end_date'))
         {
-            $start_date = Carbon::parse($request->start_date)->startOfYear();
+            $start_date = Carbon::parse($request->start_date);
 
-            $end_date = Carbon::parse($request->end_date)->endOfYear();
+            $end_date = Carbon::parse($request->end_date);
+
+            if ($end_date->diffInWeeks($start_date) === 4)
+            {
+                return $this->weeklyOrMonthly($start_date, $end_date);
+
+            } elseif ($end_date->diffInWeeks($start_date) > 4 && $end_date->diffInYears($start_date) <= 1) {
+
+                return $this->monthsStats($start_date, $end_date);
+
+            } else {
+
+                return $this->yearly($start_date, $end_date);
+            }
+
+        }else{
+
+            $start_date = Carbon::now()->startOfMonth();
+
+            $end_date = Carbon::now()->endOfMonth();
         }
-        else{
 
-            $start_date = Carbon::parse(now())->startOfYear();
-
-            $end_date = Carbon::parse(now())->endOfYear();
-        }
-
-        $this->fetchVictimStats($start_date, $end_date, $request)->groupBy('Year(created_at)');
-
-        $this->fetchDistrictProductStats($start_date, $end_date, $request)->groupBy('Year(created_at)');
-
-        $this->fetchReportedCases($start_date, $end_date, $request)->groupBy('Year(created_at)');
-
+        return $this->weeklyOrMonthly($start_date, $end_date);
     }
 
-    public function monthly(Request $request): void
+    public function weeklyOrMonthly($start_date, $end_date): array
     {
-        if($request->filled('start_date') && $request->filled('end_date'))
-        {
-            $start_date = Carbon::parse($request->start_date)->startOfMonth();
+        $group_by_string = 'CAST(created_at AS DATE)';
 
-            $end_date = Carbon::parse($request->end_date)->endOfMonth();
-        }
-        else{
+        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
+            ->districtVictims()
+            ->groupBy(DB::raw($group_by_string))->get();
 
-            $start_date = Carbon::parse(now())->startOfMonth();
+        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)
+            ->districtProducts()
+            ->groupBy(DB::raw($group_by_string))->get();
 
-            $end_date = Carbon::parse(now())->startOfMonth();
-        }
+        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)
+            ->districtQuery()
+            ->groupBy(DB::raw($group_by_string))->get();
 
-        $this->fetchVictimStats($start_date, $end_date, $request)->groupBy('Month(created_at)');
-
-        $this->fetchDistrictProductStats($start_date, $end_date, $request)->groupBy('Month(created_at)');
-
-        $this->fetchReportedCases($start_date, $end_date, $request)->groupBy('Month(created_at)');
+        return [
+            'victims_stats' => WeeklyStatsResource::collection($victim_stats),
+            'products_stats' => WeeklyStatsResource::collection($product_stats),
+            'reported_cases' => WeeklyStatsResource::collection($reported_cases),
+        ];
     }
 
-    public function weekly(Request $request): void
+    public function yearly($start_date, $end_date): array
     {
-        if($request->filled('start_date') && $request->filled('end_date'))
-        {
-            $start_date = Carbon::parse($request->start_date)->startOfWeek();
+        $group_by_string = 'extract(year from created_at) as created_at';
 
-            $end_date = Carbon::parse($request->end_date)->endOfWeek();
-        }
-        else{
+        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
+            ->districtVictims()
+            ->groupBy(DB::raw('extract(year from created_at)'))->get();
 
-            $start_date = Carbon::parse(now())->startOfWeek();
+        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)
+            ->districtProducts()
+            ->groupBy(DB::raw('extract(year from created_at)'))->get();
 
-            $end_date = Carbon::parse(now())->endOfWeek();
-        }
+        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)
+            ->districtQuery()
+            ->groupBy(DB::raw('extract(year from created_at)'))->get();
 
-        $this->fetchVictimStats($start_date, $end_date, $request);
-
-        $this->fetchDistrictProductStats($start_date, $end_date, $request);
-
-        $this->fetchReportedCases($start_date, $end_date, $request);
+        return [
+            'victims_stats' => YearlyStatsResource::collection($victim_stats),
+            'products_stats' => YearlyStatsResource::collection($product_stats),
+            'reported_cases' => YearlyStatsResource::collection($reported_cases),
+        ];
     }
 
-    public function fetchVictimStats(Carbon $start_date, Carbon $end_date, Request $request): Victim
+    public function monthsStats($start_date, $end_date): array
     {
-        return DB::table('victims')
-            ->select('count(id), created_at')
-            ->whereBetween('created_at', [$start_date, $end_date])
-            ->districtVictims();
+        $group_by_string = 'extract(month from created_at) as created_at';
+
+        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
+            ->districtVictims()
+            ->groupBy(DB::raw('extract(month from created_at)'))->get();
+
+        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)
+            ->districtProducts()
+            ->groupBy(DB::raw('extract(month from created_at)'))->get();
+
+        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)
+            ->districtQuery()
+            ->groupBy(DB::raw('extract(month from created_at)'))->get();
+
+        return [
+            'victims_stats' => MonthsStatsResource::collection($victim_stats),
+            'products_stats' => MonthsStatsResource::collection($product_stats),
+            'reported_cases' => MonthsStatsResource::collection($reported_cases),
+        ];
     }
 
-    public function fetchDistrictProductStats(Carbon $start_date, Carbon $end_date, Request $request): Product
-    {
-        return Product::query()
-            ->whereBetween('created_at', [$start_date, $end_date])
-            ->districtProducts();
-    }
-
-    public function fetchReportedCases(Carbon $start_date, Carbon $end_date, Request $request): IssuedProduct
-    {
-        return IssuedProduct::query()
-            ->whereBetween('created_at', [$start_date, $end_date])
-            ->districtQuery();
-    }
+//    public function fetchDistrictProductStats(Carbon $start_date, Carbon $end_date, $group_by_string): \Illuminate\Database\Eloquent\Builder
+//    {
+//        return Product::query()
+//            ->join('facilities', 'facilities.id', '=', 'products.facility_id')
+//            ->join('districts', 'districts.id', '=', 'facilities.district_id')
+//            ->select(DB::raw("count(id), {$group_by_string}"))
+//            ->where('districts.id',  '=', auth()->guard('district_admin')->user()->district_id)
+//            ->whereBetween('created_at', [$start_date, $end_date]);
+//    }
 }
