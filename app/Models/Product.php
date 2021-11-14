@@ -71,7 +71,7 @@ class Product extends Model implements Searchable
 
     public function scopeFacilityProduct($query)
     {
-        $query->where('facility_id', auth()->guard('api')->user()->facility_id);
+        return $query->where('facility_id', auth()->guard('api')->user()->facility_id);
     }
 
     public function receivedBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo

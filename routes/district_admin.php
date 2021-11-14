@@ -42,4 +42,5 @@ Route::group(['prefix' => 'auth'], function () {
 
 });
 
-Route::get('fetch/dashboard/stats', 'DashboardController@getStats');
+
+Route::get('fetch/dashboard/stats', 'StatsController@getStats');

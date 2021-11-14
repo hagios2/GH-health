@@ -95,66 +95,6 @@ Route::get('fetch/dashboard/stats', 'DashboardController@getStats');
 
 
 
-Route::post('user/{user}/add-cart', 'ProductsController@saveCart');
-
-Route::get('user-cart', 'ProductsController@getCart');
-
-Route::get('shop-types', 'ResourceController@getShopTypes');
-
-Route::get('all-shops','ProductsController@fetchShops');
-
-Route::get('get-campus/{campus}/shop','ProductsController@campusShop');
-
-Route::get('get-campus/{campus}/product','ProductsController@campusProduct');
-
-Route::post('follow/{shop}/shop','FollowersController@followShop');
-
-Route::post('unfollow/{shop}/shop','FollowersController@unFollowShop');
-
-Route::get('following-shops','FollowersController@fetchfollowingShops');
-
-Route::post('make-enquiries','EnquiryFormController@handler');
-
-Route::get('shop/{shop}/details', 'ProductsController@merchandiserDetails');
-
-Route::get('shop/{merchandiser}/reviews', 'ReviewsController@fetchShopReviews');
-
-Route::post('add-shop/reviews', 'ReviewsController@storeShopReview');
-
-Route::get('product/{product}/reviews', 'ReviewsController@fetchProductReviews');
-
-Route::post('add-product/reviews', 'ReviewsController@storeProductReview');
-
-//Route::post('add-product/reviews', 'ReviewsController@storeProductReview');
-
-Route::post('add-product/report', 'ReportsController@saveProductReport');
-
-Route::post('add-shop/report', 'ReportsController@saveShopReport');
-
-Route::get('fetch/new-this-week', 'ResourceController@newThisWeek');
-
-Route::get('get/campus/{campus}/new-this-week', 'ResourceController@campusnewThisWeek');
-
-
-Route::group(['prefix' => 'e-trader'], function () {
-
-    Route::post('/create-category', 'SellersController@createCategory');
-
-   // Route::get('/categories', 'SellersControllerController@getCategories');
-
-    Route::post('/{category}/add-product', 'SellersController@storeProduct');
-
-    Route::post('/{product}/product-images', 'SellersController@saveProductImages');
-
-    Route::post('/product/{product}/update', 'SellersController@updateProduct');
-
-    Route::delete('/product/{product}/delete', 'SellersController@deleteProduct');
-
-    Route::get('get-user-products', 'SellersController@getUserProduct');
-});
-
-Route::post('user/toggle/{product}/to-free-trial', 'SellersController@toggleProductToFreeTrial');
-
 Route::get('search/item', 'SearchController@search');
 
 
