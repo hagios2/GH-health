@@ -7,7 +7,6 @@ use App\Models\District;
 use App\Models\Product;
 use App\Models\Victim;
 
-
 class ResourceController extends Controller
 {
     public function fetchDistricts()
