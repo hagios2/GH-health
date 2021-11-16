@@ -19,27 +19,19 @@ class DashboardController extends Controller
 
     public function getStats(Request $request): array
     {
-        if($request->filled('start_date') && $request->filled('end_date'))
-        {
+        if ($request->filled('start_date') && $request->filled('end_date')) {
             $start_date = Carbon::parse($request->start_date);
 
             $end_date = Carbon::parse($request->end_date);
 
-            if ($end_date->diffInWeeks($start_date) === 4)
-            {
+            if ($end_date->diffInWeeks($start_date) === 4) {
                 return $this->weeklyOrMonthly($start_date, $end_date);
-
             } elseif ($end_date->diffInWeeks($start_date) > 4 && $end_date->diffInYears($start_date) <= 1) {
-
                 return $this->monthsStats($start_date, $end_date);
-
             } else {
-
                 return $this->yearly($start_date, $end_date);
             }
-
-        }else{
-
+        } else {
             $start_date = Carbon::now()->startOfMonth();
 
             $end_date = Carbon::now()->endOfMonth();
@@ -60,7 +52,8 @@ class DashboardController extends Controller
             ->where('facility_id', auth()->user()->facility_id)
             ->groupBy(DB::raw($group_by_string))->get();
 
-        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)->groupBy(DB::raw($group_by_string))->get();
+        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)
+            ->groupBy(DB::raw($group_by_string))->get();
 
         return [
             'victims_stats' => WeeklyStatsResource::collection($victim_stats),
@@ -73,11 +66,14 @@ class DashboardController extends Controller
     {
         $group_by_string = 'extract(year from created_at) as created_at';
 
-        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(year from created_at)'))->get();
+        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
+            ->groupBy(DB::raw('extract(year from created_at)'))->get();
 
-        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(year from created_at)'))->get();
+        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)
+            ->groupBy(DB::raw('extract(year from created_at)'))->get();
 
-        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(year from created_at)'))->get();
+        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)
+            ->groupBy(DB::raw('extract(year from created_at)'))->get();
 
         return [
             'victims_stats' => YearlyStatsResource::collection($victim_stats),
@@ -90,11 +86,14 @@ class DashboardController extends Controller
     {
         $group_by_string = 'extract(month from created_at) as created_at';
 
-        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(month from created_at)'))->get();
+        $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
+            ->groupBy(DB::raw('extract(month from created_at)'))->get();
 
-        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(month from created_at)'))->get();
+        $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)
+            ->groupBy(DB::raw('extract(month from created_at)'))->get();
 
-        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)->groupBy(DB::raw('extract(month from created_at)'))->get();
+        $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)
+            ->groupBy(DB::raw('extract(month from created_at)'))->get();
 
         return [
             'victims_stats' => MonthsStatsResource::collection($victim_stats),
@@ -102,6 +101,4 @@ class DashboardController extends Controller
             'reported_cases' => MonthsStatsResource::collection($reported_cases),
         ];
     }
-
-
 }
