@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\AdminAuthResource;
 
-
 class AuthController extends Controller
 {
         /**
@@ -24,7 +23,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    public function login(): \Illuminate\Http\JsonResponse
     {
 
         $credentials = request(['email', 'password']);
@@ -32,7 +31,6 @@ class AuthController extends Controller
         $credentials['isActive'] = true;
 
         if (! $token = auth()->guard('admin')->attempt($credentials)) {
-
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
@@ -47,7 +45,7 @@ class AuthController extends Controller
      *
      * @return AdminAuthResource
      */
-    public function getAuthUser()
+    public function getAuthUser(): AdminAuthResource
     {
         return new AdminAuthResource(auth()->guard('admin')->user());
     }
@@ -57,7 +55,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout()
+    public function logout(): \Illuminate\Http\JsonResponse
     {
         auth()->guard('admin')->logout();
 
@@ -69,7 +67,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function refresh()
+    public function refresh(): \Illuminate\Http\JsonResponse
     {
         return $this->respondWithToken(auth()->guard('admin')->refresh());
     }
@@ -81,7 +79,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithToken($token): \Illuminate\Http\JsonResponse
     {
         return response()->json([
             'access_token' => $token,
@@ -92,15 +90,14 @@ class AuthController extends Controller
     }
 
 
-    public function sendShopResetMail(Request $request)
+    public function sendShopResetMail(Request $request): \Illuminate\Http\JsonResponse
     {
 
         $request->validate(['email' => 'required|email']);
 
         $shop = Merchandiser::where('email', $request->email)->first();
 
-        if($shop)
-        {
+        if ($shop) {
             $gen_token = Str::random(70);
 
             $token = ApiPasswordReset::create([
@@ -120,6 +117,4 @@ class AuthController extends Controller
 
         return response()->json(['status' => 'Email not found'], 404);
     }
-
-
 }
