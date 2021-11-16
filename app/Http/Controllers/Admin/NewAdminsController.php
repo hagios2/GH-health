@@ -17,14 +17,10 @@ class NewAdminsController extends Controller
         $this->middleware('isSuperAdmin')->except('changePassword');
     }
 
-
-
     public function newAdmin(NewAdminRequest $request): \Illuminate\Http\JsonResponse
     {
 
-        if(auth()->guard('admin')->user()->role == 'super_admin')
-        {
-
+        if (auth()->guard('admin')->user()->role == 'super_admin') {
             $attributes = $request->validated();
 
             $password = Str::random(8);
@@ -41,7 +37,6 @@ class NewAdminsController extends Controller
         }
 
         return response()->json(['message' => 'Forbidden'], 403);
-
     }
 
 
@@ -57,33 +52,22 @@ class NewAdminsController extends Controller
 
         ]);
 
-        if(Hash::check($request->old_password, $admin->password))
-        {
-            if($request->old_password == $request->new_password)
-            {
-
+        if (Hash::check($request->old_password, $admin->password)) {
+            if ($request->old_password == $request->new_password) {
                 return response()->json(['status' => 'Password is already in use']);
-
-            }else{
-
+            } else {
                 $admin->update(['password' => Hash::make($request->new_password)]);
 
                 return response()->json(['status' => 'password changed']);
             }
-
         }
 
         return response()->json(['status' => 'invalid Password']);
-
-
-
-        // return response()->json(['status' => 'password changed']);
     }
 
 
     public function blockAdmin(Admin $admin): \Illuminate\Http\JsonResponse
     {
-
         $admin->update(['isActive' => false]);
 
 
@@ -97,7 +81,6 @@ class NewAdminsController extends Controller
         $admin->update(['isActive' => true]);
 
         return response()->json(['message' => 'unblocked']);
-
     }
 
 
