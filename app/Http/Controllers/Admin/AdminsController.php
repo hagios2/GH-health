@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
-
 class AdminsController extends Controller
 {
     public function __construct()
@@ -41,8 +40,7 @@ class AdminsController extends Controller
 
         $user = User::create($user_data);
 
-        if($request->hasFile('avatar'))
-        {
+        if ($request->hasFile('avatar')) {
             $this->storeAvatar($user);
         }
 
@@ -55,8 +53,7 @@ class AdminsController extends Controller
     {
         $user->update($request->validated());
 
-        if($request->hasFile('avatar'))
-        {
+        if ($request->hasFile('avatar')) {
             $this->storeAvatar($user);
         }
 
@@ -65,27 +62,24 @@ class AdminsController extends Controller
 
     public function blockUser(User $user): \Illuminate\Http\JsonResponse
     {
-       $user->update(['isActive' => false]);
+        $user->update(['isActive' => false]);
 
-       return response()->json(['message' => 'blocked']);
+        return response()->json(['message' => 'blocked']);
     }
 
 
     public function unblockUser(User $user): \Illuminate\Http\JsonResponse
     {
 
-       $user->update(['isActive' => true]);
+        $user->update(['isActive' => true]);
 
-       return response()->json(['message' => 'unblocked']);
-
+        return response()->json(['message' => 'unblocked']);
     }
 
-    public function deleteFacilitator(User $user)
+    public function deleteFacilitator(User $user): \Illuminate\Http\JsonResponse
     {
         $user->delete();
 
         return response()->json(['message' => 'unblocked']);
-
     }
-
 }
