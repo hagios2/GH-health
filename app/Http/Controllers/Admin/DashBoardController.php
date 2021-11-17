@@ -13,7 +13,7 @@ class DashBoardController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('auth:admin');
+        $this->middleware('auth:admin');
     }
 
     public function getStats(Request $request): \Illuminate\Http\JsonResponse
@@ -84,8 +84,9 @@ class DashBoardController extends Controller
     public function fetchVictimStats(
         Carbon $start_date,
         Carbon $end_date,
-        $group_by_string = null
-    ): \Illuminate\Database\Eloquent\Builder {
+               $group_by_string = null
+    ): \Illuminate\Database\Eloquent\Builder
+    {
         return Victim::query()
             ->select('count(id), created_at')
             ->whereBetween('created_at', [$start_date, $end_date]);
@@ -94,8 +95,9 @@ class DashBoardController extends Controller
     public function fetchDistrictProductStats(
         Carbon $start_date,
         Carbon $end_date,
-        $group_by_string = null
-    ): \Illuminate\Database\Eloquent\Builder {
+               $group_by_string = null
+    ): \Illuminate\Database\Eloquent\Builder
+    {
         return Product::query()
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
@@ -103,11 +105,13 @@ class DashBoardController extends Controller
     public function fetchReportedCases(
         Carbon $start_date,
         Carbon $end_date,
-        $group_by_string = null
-    ): \Illuminate\Database\Eloquent\Builder {
+               $group_by_string = null
+    ): \Illuminate\Database\Eloquent\Builder
+    {
         return IssuedProduct::query()
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
+}
 
 //    public function getStats(Request $request): \Illuminate\Http\JsonResponse
 //    {
@@ -140,4 +144,4 @@ class DashBoardController extends Controller
 //            'report_issues' => $reported_issues
 //        ]);
 //    }
-}
+//}
