@@ -69,7 +69,7 @@ class DashBoardController extends Controller
         $group_by_string = 'extract(month from created_at) as created_at';
 
         $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
-            ->groupBy(DB::raw('extract(month from created_at)'))->get();
+            ->get();
 
         $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)
             ->groupBy(DB::raw('extract(month from created_at)'))->get();
@@ -122,7 +122,7 @@ class DashBoardController extends Controller
         $group_by_string = null
     ): \Illuminate\Database\Eloquent\Builder
     {
-        Log::info($group_by_string.' logging string');
+//        return [ 'message' => $group_by_string];
 
         return Product::query()
             ->select(DB::raw("count(id), {$group_by_string}"))
