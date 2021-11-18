@@ -88,13 +88,13 @@ class DashBoardController extends Controller
         $group_by_string = 'extract(year from created_at) as created_at';
 
         $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
-            ->groupBy(DB::raw('extract(year from created_at)'))->get();
+            ->groupBy(DB::raw($group_by_string))->get();
 
         $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)
-            ->groupBy(DB::raw('extract(year from created_at)'))->get();
+            ->groupBy(DB::raw($group_by_string))->get();
 
         $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)
-            ->groupBy(DB::raw('extract(year from created_at)'))->get();
+            ->groupBy(DB::raw($group_by_string))->get();
 
         return [
             'victims_stats' => YearlyStatsResource::collection($victim_stats),
