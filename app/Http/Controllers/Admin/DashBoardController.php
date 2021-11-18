@@ -12,6 +12,7 @@ use App\Models\Victim;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class DashBoardController extends Controller
 {
@@ -109,6 +110,7 @@ class DashBoardController extends Controller
         $group_by_string = null
     ): \Illuminate\Database\Eloquent\Builder
     {
+        Log::info($group_by_string.' logging string');
         return Victim::query()
             ->select(DB::raw("count(id), {$group_by_string}"))
             ->whereBetween('created_at', [$start_date, $end_date]);
@@ -120,6 +122,8 @@ class DashBoardController extends Controller
         $group_by_string = null
     ): \Illuminate\Database\Eloquent\Builder
     {
+        Log::info($group_by_string.' logging string');
+
         return Product::query()
             ->select(DB::raw("count(id), {$group_by_string}"))
             ->whereBetween('created_at', [$start_date, $end_date]);
@@ -131,6 +135,8 @@ class DashBoardController extends Controller
         $group_by_string = null
     ): \Illuminate\Database\Eloquent\Builder
     {
+        Log::info($group_by_string.' logging string');
+
         return IssuedProduct::query()
             ->select(DB::raw("count(id), {$group_by_string}"))
             ->whereBetween('created_at', [$start_date, $end_date]);
