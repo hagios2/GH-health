@@ -68,7 +68,7 @@ class DashBoardController extends Controller
         $group_by_string = 'extract(month from created_at)';
 
         $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
-            ->groupBy(DB::raw('extract(month from created_at)'))->get();
+            ->groupBy(DB::raw($group_by_string))->get();
 
         $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)
             ->groupBy(DB::raw('extract(month from created_at)'))->get();
@@ -85,7 +85,7 @@ class DashBoardController extends Controller
 
     public function yearly($start_date, $end_date): array
     {
-        $group_by_string = 'extract(year from created_at) as created_at';
+        $group_by_string = 'extract(year from created_at)';
 
         $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
             ->groupBy(DB::raw($group_by_string))->get();
@@ -110,7 +110,7 @@ class DashBoardController extends Controller
     ): \Illuminate\Database\Eloquent\Builder
     {
         return Victim::query()
-            ->select(DB::raw("count(id), {$group_by_string}"))
+            ->select(DB::raw("count(id), created_at"))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
@@ -121,7 +121,7 @@ class DashBoardController extends Controller
     ): \Illuminate\Database\Eloquent\Builder
     {
         return Product::query()
-            ->select(DB::raw("count(id), {$group_by_string}"))
+            ->select(DB::raw("count(id), created_at"))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
@@ -132,7 +132,7 @@ class DashBoardController extends Controller
     ): \Illuminate\Database\Eloquent\Builder
     {
         return IssuedProduct::query()
-            ->select(DB::raw("count(id), {$group_by_string}"))
+            ->select(DB::raw("count(id), created_at"))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 }
