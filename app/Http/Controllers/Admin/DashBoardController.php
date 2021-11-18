@@ -106,31 +106,33 @@ class DashBoardController extends Controller
     public function fetchVictimStats(
         Carbon $start_date,
         Carbon $end_date,
-               $group_by_string = null
+        $group_by_string = null
     ): \Illuminate\Database\Eloquent\Builder
     {
         return Victim::query()
-            ->select('count(id), created_at')
+            ->select(DB::raw('count(id), created_at'))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
     public function fetchDistrictProductStats(
         Carbon $start_date,
         Carbon $end_date,
-               $group_by_string = null
+        $group_by_string = null
     ): \Illuminate\Database\Eloquent\Builder
     {
         return Product::query()
+            ->select(DB::raw('count(id), created_at'))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
     public function fetchReportedCases(
         Carbon $start_date,
         Carbon $end_date,
-               $group_by_string = null
+        $group_by_string = null
     ): \Illuminate\Database\Eloquent\Builder
     {
         return IssuedProduct::query()
+            ->select(DB::raw('count(id), created_at'))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 }
