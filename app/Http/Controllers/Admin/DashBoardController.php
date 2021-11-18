@@ -110,7 +110,7 @@ class DashBoardController extends Controller
     ): \Illuminate\Database\Eloquent\Builder
     {
         return Victim::query()
-            ->select(DB::raw('count(id), created_at'))
+            ->select(DB::raw("count(id), {$group_by_string}"))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
@@ -121,7 +121,7 @@ class DashBoardController extends Controller
     ): \Illuminate\Database\Eloquent\Builder
     {
         return Product::query()
-            ->select(DB::raw('count(id), created_at'))
+            ->select(DB::raw("count(id), {$group_by_string}"))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
@@ -132,7 +132,7 @@ class DashBoardController extends Controller
     ): \Illuminate\Database\Eloquent\Builder
     {
         return IssuedProduct::query()
-            ->select(DB::raw('count(id), created_at'))
+            ->select(DB::raw("count(id), {$group_by_string}"))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 }
