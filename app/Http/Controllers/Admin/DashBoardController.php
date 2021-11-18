@@ -65,7 +65,7 @@ class DashBoardController extends Controller
 
     public function monthsStats($start_date, $end_date): array
     {
-        $group_by_string = 'extract(month from created_at) as created_at';
+        $group_by_string = 'extract(month from created_at)';
 
         $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
             ->groupBy(DB::raw($group_by_string))->get();
@@ -110,7 +110,7 @@ class DashBoardController extends Controller
     ): \Illuminate\Database\Eloquent\Builder
     {
         return Victim::query()
-            ->select(DB::raw("count(id), created_at"))
+            ->select(DB::raw("count(id), $group_by_string"))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
@@ -121,7 +121,7 @@ class DashBoardController extends Controller
     ): \Illuminate\Database\Eloquent\Builder
     {
         return Product::query()
-            ->select(DB::raw("count(id), created_at"))
+            ->select(DB::raw("count(id), {$group_by_string}"))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 
@@ -132,40 +132,7 @@ class DashBoardController extends Controller
     ): \Illuminate\Database\Eloquent\Builder
     {
         return IssuedProduct::query()
-            ->select(DB::raw("count(id), created_at"))
+            ->select(DB::raw("count(id), {$group_by_string}"))
             ->whereBetween('created_at', [$start_date, $end_date]);
     }
 }
-
-//    public function getStats(Request $request): \Illuminate\Http\JsonResponse
-//    {
-//
-//        if ($request->filled('start_date') && $request->filled('end_date')) {
-//            $new_victims = Victim::query()
-//                ->whereBetween('created_at', [$request->start_date, $request->end_date])->count();
-//
-//            $new_products = Product::query()
-//                ->whereBetween('created_at', [$request->start_date, $request->end_date])->count();
-//
-//            $reported_issues = IssuedProduct::query()
-//                ->whereBetween('created_at', [$request->start_date, $request->end_date])->count();
-//        } else {
-//            $start_of_month = Carbon::parse(now());
-//
-//            $end_of_month = Carbon::parse(now())->endOfMonth();
-//
-//            $new_victims = Victim::query()->whereBetween('created_at', [$start_of_month, $end_of_month])->count();
-//
-//            $new_products = Product::query()->whereBetween('created_at', [$start_of_month, $end_of_month])->count();
-//
-//            $reported_issues = IssuedProduct::query()
-//                ->whereBetween('created_at', [$start_of_month, $end_of_month])->count();
-//        }
-//
-//        return response()->json([
-//            'no_of_new_victims' => $new_victims,
-//            'no_of_new_products' => $new_products,
-//            'report_issues' => $reported_issues
-//        ]);
-//    }
-//}
