@@ -12,7 +12,6 @@ use App\Models\Victim;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class DashBoardController extends Controller
 {
@@ -69,13 +68,13 @@ class DashBoardController extends Controller
         $group_by_string = 'extract(month from created_at) as created_at';
 
         $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
-            ->groupBy(DB::raw($group_by_string))->get();
+            ->groupBy(DB::raw('extract(month from created_at)'))->get();
 
         $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)
-            ->groupBy(DB::raw($group_by_string))->get();
+            ->groupBy(DB::raw('extract(month from created_at)'))->get();
 
         $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)
-            ->groupBy(DB::raw($group_by_string))->get();
+            ->groupBy(DB::raw('extract(month from created_at)'))->get();
 
         return [
             'victims_stats' => MonthsStatsResource::collection($victim_stats),
