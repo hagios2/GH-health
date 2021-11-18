@@ -69,13 +69,13 @@ class DashBoardController extends Controller
         $group_by_string = 'extract(month from created_at) as created_at';
 
         $victim_stats = $this->fetchVictimStats($start_date, $end_date, $group_by_string)
-            ->get();
+            ->groupBy(DB::raw($group_by_string))->get();
 
         $product_stats = $this->fetchDistrictProductStats($start_date, $end_date, $group_by_string)
-            ->groupBy(DB::raw('extract(month from created_at)'))->get();
+            ->groupBy(DB::raw($group_by_string))->get();
 
         $reported_cases = $this->fetchReportedCases($start_date, $end_date, $group_by_string)
-            ->groupBy(DB::raw('extract(month from created_at)'))->get();
+            ->groupBy(DB::raw($group_by_string))->get();
 
         return [
             'victims_stats' => MonthsStatsResource::collection($victim_stats),
@@ -107,10 +107,9 @@ class DashBoardController extends Controller
     public function fetchVictimStats(
         Carbon $start_date,
         Carbon $end_date,
-        $group_by_string = null
+        $group_by_string
     ): \Illuminate\Database\Eloquent\Builder
     {
-        Log::info($group_by_string.' logging string');
         return Victim::query()
             ->select(DB::raw("count(id), {$group_by_string}"))
             ->whereBetween('created_at', [$start_date, $end_date]);
@@ -119,11 +118,9 @@ class DashBoardController extends Controller
     public function fetchDistrictProductStats(
         Carbon $start_date,
         Carbon $end_date,
-        $group_by_string = null
+        $group_by_string
     ): \Illuminate\Database\Eloquent\Builder
     {
-//        return [ 'message' => $group_by_string];
-
         return Product::query()
             ->select(DB::raw("count(id), {$group_by_string}"))
             ->whereBetween('created_at', [$start_date, $end_date]);
@@ -132,11 +129,9 @@ class DashBoardController extends Controller
     public function fetchReportedCases(
         Carbon $start_date,
         Carbon $end_date,
-        $group_by_string = null
+        $group_by_string
     ): \Illuminate\Database\Eloquent\Builder
     {
-        Log::info($group_by_string.' logging string');
-
         return IssuedProduct::query()
             ->select(DB::raw("count(id), {$group_by_string}"))
             ->whereBetween('created_at', [$start_date, $end_date]);
