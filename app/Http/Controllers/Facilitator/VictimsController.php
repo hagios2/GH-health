@@ -13,6 +13,12 @@ use Carbon\Carbon;
 
 class VictimsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('api');
+    }
+
     public function fetchVictims(): VictimResource
     {
         $victims = Victim::query()->paginate(20);
@@ -23,7 +29,11 @@ class VictimsController extends Controller
 
     public function createVictim(VictimRequest $request): \Illuminate\Http\JsonResponse
     {
-        $victim = Victim::create($request->validated());
+        $data = $request->validated();
+
+        $data['facility_id'] = auth()->guard('')->user()->facility_id;
+
+        $victim = Victim::create($data);
 
         return response()->json(['message' => 'victim created',
 
