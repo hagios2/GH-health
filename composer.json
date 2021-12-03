@@ -47,6 +47,7 @@
             "pre-push": [
             ],
             "post-merge": "composer update"
+        }
     },
     "autoload": {
         "psr-4": {
