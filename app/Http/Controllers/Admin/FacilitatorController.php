@@ -12,6 +12,6 @@ class FacilitatorController extends Controller
 {
     public function fetchFacilitiesFacilitator(Facility $facility): AdminFacilitatorsResource
     {
-        return new AdminFacilitatorsResource(User::query()->where('facility_id', $facility->id)->paginate(15));
+        return new AdminFacilitatorsResource(User::query()->where('facility_id', $facility->id)->get());
     }
 }
