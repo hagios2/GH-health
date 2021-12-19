@@ -31,7 +31,7 @@ class UpdateUserRequest extends FormRequest
 
             'phone' => 'required|numeric',
 
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png',
+//            'avatar' => 'nullable|image|mimes:jpeg,jpg,png',
 
         ];
     }

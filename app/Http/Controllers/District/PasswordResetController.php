@@ -23,7 +23,7 @@ class PasswordResetController extends Controller implements AuthPasswordReset
 
     public function changeUserPassword(ChangePasswordRequest $request): \Illuminate\Http\JsonResponse
     {
-        $client = auth()->guard('admin')->user();
+        $client = auth()->guard('district_admin')->user();
 
         return $this->authPasswordService->changeToNewPassword($request, $client);
     }

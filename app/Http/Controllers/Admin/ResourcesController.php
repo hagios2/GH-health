@@ -13,27 +13,29 @@ use App\Http\Resources\SingleFacilityResource;
 use App\Models\District;
 use App\Models\Facility;
 use App\Models\Region;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ResourcesController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this->middleware('auth:admin');
-//    }
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
 
-    public function regionsIndex(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    public function regionsIndex(): AnonymousResourceCollection
     {
         return RegionsResources::collection(Region::all());
     }
 
-    public function storeRegion(RegionsRequest $request): \Illuminate\Http\JsonResponse
+    public function storeRegion(RegionsRequest $request): JsonResponse
     {
         Region::create($request->validated());
 
         return response()->json(['message' => 'success']);
     }
 
-    public function updateRegion(Region $region, RegionsRequest $request): \Illuminate\Http\JsonResponse
+    public function updateRegion(Region $region, RegionsRequest $request): JsonResponse
     {
         $region->update($request->validated());
 
@@ -48,7 +50,7 @@ class ResourcesController extends Controller
     /**
      * @throws \Exception
      */
-    public function deleteRegion(Region $region): \Illuminate\Http\JsonResponse
+    public function deleteRegion(Region $region): JsonResponse
     {
         $region->delete();
 
@@ -56,13 +58,13 @@ class ResourcesController extends Controller
     }
 
 
-    public function districtIndex(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    public function districtIndex(): AnonymousResourceCollection
     {
         return DistrictResource::collection(District::all());
     }
 
 
-    public function storeDistrict(DistrictRequest $request): \Illuminate\Http\JsonResponse
+    public function storeDistrict(DistrictRequest $request): JsonResponse
     {
         District::create($request->validated());
 
@@ -74,7 +76,7 @@ class ResourcesController extends Controller
         return new DistrictResource($district);
     }
 
-    public function updateDistrict(District $district, DistrictRequest $request): \Illuminate\Http\JsonResponse
+    public function updateDistrict(District $district, DistrictRequest $request): JsonResponse
     {
         $district->update($request->validated());
 
@@ -84,7 +86,7 @@ class ResourcesController extends Controller
     /**
      * @throws \Exception
      */
-    public function deleteDistrict(District $district): \Illuminate\Http\JsonResponse
+    public function deleteDistrict(District $district): JsonResponse
     {
         $district->delete();
 
@@ -96,7 +98,7 @@ class ResourcesController extends Controller
         return new FacilityResources(Facility::query()->paginate(15));
     }
 
-    public function storeFacility(FacilityRequest $request): \Illuminate\Http\JsonResponse
+    public function storeFacility(FacilityRequest $request): JsonResponse
     {
         Facility::create($request->validated());
 
@@ -108,14 +110,14 @@ class ResourcesController extends Controller
         return new SingleFacilityResource($facility);
     }
 
-    public function updateFacility(Facility $facility, FacilityRequest $request): \Illuminate\Http\JsonResponse
+    public function updateFacility(Facility $facility, FacilityRequest $request): JsonResponse
     {
         $facility->update($request->validated());
 
         return response()->json(['message' => 'success']);
     }
 
-    public function deleteFacility(Facility $facility): \Illuminate\Http\JsonResponse
+    public function deleteFacility(Facility $facility): JsonResponse
     {
         $facility->delete();
 

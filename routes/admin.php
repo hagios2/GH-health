@@ -28,6 +28,9 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('reset/password', 'PasswordResetController@reset');
 
     Route::post('change/password', 'PasswordResetController@changeUserPassword');
+
+    Route::put('update/profile', 'AuthController@updateProfile');
+
 });
 
 Route::get('/', 'AuthController@getAuthUser');
@@ -100,7 +103,7 @@ Route::put('update/{user}/facilitator', 'AdminsController@updateFacilitator');
 
 Route::delete('delete/{user}/facilitator', 'AdminsController@deleteFacilitator');
 
-Route::get('delete/{user}/facilitator', 'AdminsController@deleteFacilitator');
+Route::get('fetch/facility/{facility}/facilitators', 'FacilitatorController@deleteFacilitator');
 
 #--------------------------- End Facilitator -----------------------------------------------------
 

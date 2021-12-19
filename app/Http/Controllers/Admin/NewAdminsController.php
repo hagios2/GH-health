@@ -14,7 +14,7 @@ class NewAdminsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('isSuperAdmin')->except('changePassword');
+        $this->middleware('isSuperAdmin');
     }
 
     public function newAdmin(NewAdminRequest $request): \Illuminate\Http\JsonResponse

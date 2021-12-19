@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateUserRequest;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Resources\AdminAuthResource;
 
@@ -90,31 +92,10 @@ class AuthController extends Controller
     }
 
 
-    public function sendShopResetMail(Request $request): \Illuminate\Http\JsonResponse
+    public function updateProfile(UpdateUserRequest $request): \Illuminate\Http\JsonResponse
     {
+        auth()->guard('admin')->user()->update($request->validated());
 
-        $request->validate(['email' => 'required|email']);
-
-        $shop = Merchandiser::where('email', $request->email)->first();
-
-        if ($shop) {
-            $gen_token = Str::random(70);
-
-            $token = ApiPasswordReset::create([
-
-                'email' => $shop->email,
-
-                'token' => $gen_token,
-
-                'isAdminEmail' => true
-            ]);
-
-            //Mail::to($client)->send(new ClientPasswordResetMail($client, $token));
-            ShopPasswordResetJob::dispatch($shop, $token);
-
-            return response()->json(['status' => 'Email sent']);
-        }
-
-        return response()->json(['status' => 'Email not found'], 404);
+        return response()->json(['message' => 'Profile Updated']);
     }
 }
