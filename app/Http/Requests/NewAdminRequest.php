@@ -27,7 +27,7 @@ class NewAdminRequest extends FormRequest
             
             'name' => 'bail|required|string|',
 
-            'email' => 'bail|required|string|unique',
+            'email' => 'bail|required|string|unique:admins',
 
             'phone' => 'bail|required|numeric'
         ];
