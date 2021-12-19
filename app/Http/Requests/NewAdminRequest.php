@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class NewAdminRequest extends FormRequest
 {
@@ -27,7 +28,7 @@ class NewAdminRequest extends FormRequest
             
             'name' => 'bail|required|string|',
 
-            'email' => 'bail|required|string|unique:admins,email',
+            'email' => ['bail', 'required', 'string', Rule::unique('admins')->ignore($this->user('admin'))],
 
             'phone' => 'bail|required|numeric|unique:admins,phone'
         ];
