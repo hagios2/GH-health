@@ -22,6 +22,8 @@ class SingleVictimResource extends JsonResource
 
             'age' => Carbon::parse($this->dob)->age,
 
+            'dob' => $this->dob,
+
             'town' => $this->town,
 
             'district' => new DistrictResource($this->district),
