@@ -41,6 +41,5 @@ class NewAdminJob implements ShouldQueue
         Mail::to($this->admin)
         
         ->queue(new NewAdminRegistration($this->admin, $this->password));
-
     }
 }

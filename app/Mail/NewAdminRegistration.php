@@ -13,6 +13,7 @@ class NewAdminRegistration extends Mailable
     use Queueable, SerializesModels;
 
     public $admin;
+
     public $password;
 
     /**
