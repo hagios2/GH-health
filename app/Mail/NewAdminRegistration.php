@@ -2,11 +2,10 @@
 
 namespace App\Mail;
 
+use App\Models\Admin;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Admin;
 
 
 class NewAdminRegistration extends Mailable
@@ -33,7 +32,7 @@ class NewAdminRegistration extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): NewAdminRegistration
     {
         return $this->markdown('mail.NewAdminRegistration');
     }

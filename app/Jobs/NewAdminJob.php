@@ -2,13 +2,13 @@
 
 namespace App\Jobs;
 
+use App\Models\Admin;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
-use App\Admin;
 use App\Mail\NewAdminRegistration;
 
 class NewAdminJob implements ShouldQueue
