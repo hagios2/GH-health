@@ -11,7 +11,7 @@ use App\Services\AuthPasswordService;
 use Illuminate\Http\Request;
 use App\Http\Requests\ChangePasswordRequest;
 
-class PasswordController extends Controller implements AuthPasswordReset
+class PasswordResetController extends Controller implements AuthPasswordReset
 {
     private AuthPasswordService $authPasswordService;
 

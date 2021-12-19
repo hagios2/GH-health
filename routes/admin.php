@@ -100,6 +100,8 @@ Route::put('update/{user}/facilitator', 'AdminsController@updateFacilitator');
 
 Route::delete('delete/{user}/facilitator', 'AdminsController@deleteFacilitator');
 
+Route::get('delete/{user}/facilitator', 'AdminsController@deleteFacilitator');
+
 #--------------------------- End Facilitator -----------------------------------------------------
 
 Route::get('fetch/dashboard/stats', 'DashBoardController@getStats');
