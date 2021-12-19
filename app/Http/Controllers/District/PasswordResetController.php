@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\District;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Interfaces\AuthPasswordReset;
 use App\Models\ApiPasswordReset;
-use App\Models\User;
+use App\Models\DistrictAdmin;
 use App\Services\AuthPasswordService;
 use Illuminate\Http\Request;
-use App\Http\Requests\ChangePasswordRequest;
 
 class PasswordResetController extends Controller implements AuthPasswordReset
 {
@@ -15,7 +16,7 @@ class PasswordResetController extends Controller implements AuthPasswordReset
 
     public function __construct(AuthPasswordService $authPasswordService)
     {
-        $this->middleware('auth:api', ['only' => ['changeUserPassword', 'changeMediaPassword']]);
+        $this->middleware('auth:api,district', ['only' => ['changeUserPassword']]);
 
         $this->authPasswordService = $authPasswordService;
     }
@@ -32,16 +33,16 @@ class PasswordResetController extends Controller implements AuthPasswordReset
 
         $request->validate(['email' => 'required|email']);
 
-        $client = User::query()->where('email', $request->email)->first();
+        $client = DistrictAdmin::query()->where('email', $request->email)->first();
 
-        return $this->authPasswordService->sendPasswordResetMail($request, $client, 'isUserEmail');
+        return $this->authPasswordService->sendPasswordResetMail($request, $client, 'isDistrictEmail');
     }
 
     public function reset(Request $request): \Illuminate\Http\JsonResponse
     {
         $token = ApiPasswordReset::where([['token', $request->token], ['isUserEmail', true]])->first();
 
-        $client = User::query()->where('email', $token->email)->first();
+        $client = DistrictAdmin::query()->where('email', $token->email)->first();
 
         return $this->authPasswordService->reset($request, $token, $client);
     }

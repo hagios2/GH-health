@@ -1,21 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Interfaces\AuthPasswordReset;
+use App\Models\Admin;
 use App\Models\ApiPasswordReset;
 use App\Models\User;
 use App\Services\AuthPasswordService;
 use Illuminate\Http\Request;
 use App\Http\Requests\ChangePasswordRequest;
 
-class PasswordResetController extends Controller implements AuthPasswordReset
+class PasswordController extends Controller implements AuthPasswordReset
 {
     private AuthPasswordService $authPasswordService;
 
     public function __construct(AuthPasswordService $authPasswordService)
     {
-        $this->middleware('auth:api', ['only' => ['changeUserPassword', 'changeMediaPassword']]);
+        $this->middleware('auth:api,admin', ['only' => ['changeUserPassword']]);
 
         $this->authPasswordService = $authPasswordService;
     }
@@ -32,7 +34,7 @@ class PasswordResetController extends Controller implements AuthPasswordReset
 
         $request->validate(['email' => 'required|email']);
 
-        $client = User::query()->where('email', $request->email)->first();
+        $client = Admin::query()->where('email', $request->email)->first();
 
         return $this->authPasswordService->sendPasswordResetMail($request, $client, 'isUserEmail');
     }
@@ -41,8 +43,9 @@ class PasswordResetController extends Controller implements AuthPasswordReset
     {
         $token = ApiPasswordReset::where([['token', $request->token], ['isUserEmail', true]])->first();
 
-        $client = User::query()->where('email', $token->email)->first();
+        $client = Admin::query()->where('email', $token->email)->first();
 
         return $this->authPasswordService->reset($request, $token, $client);
     }
+
 }
