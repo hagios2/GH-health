@@ -77,8 +77,6 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ],
-        "post-install-cmd": "cghooks add --ignore-lock",
-        "post-update-cmd": "cghooks update"
+        ]
     }
 }
