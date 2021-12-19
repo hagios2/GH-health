@@ -26,6 +26,8 @@ class MainAdminResource extends JsonResource
 
             'role' => $this->role,
 
+            'isActive' => $this->isActive,
+
             'created_at' => Carbon::parse($this->created_at)->format('D, d F Y')
         ];
     }
