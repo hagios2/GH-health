@@ -27,9 +27,9 @@ class NewAdminRequest extends FormRequest
             
             'name' => 'bail|required|string|',
 
-            'email' => 'bail|required|string|unique:admins',
+            'email' => 'bail|required|string|unique:admins,email',
 
-            'phone' => 'bail|required|numeric'
+            'phone' => 'bail|required|numeric|unique:admins,phone'
         ];
     }
 }
