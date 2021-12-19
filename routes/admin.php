@@ -37,9 +37,9 @@ Route::get('/', 'AuthController@getAuthUser');
 
 Route::post('add-new-admin', 'NewAdminsController@newAdmin');
 
-Route::post('{admin}/block', 'NewAdminsController@blockAdmin');
+Route::patch('{admin}/block', 'NewAdminsController@blockAdmin');
 
-Route::post('{admin}/unblock', 'NewAdminsController@unBlockAdmin');
+Route::patch('{admin}/unblock', 'NewAdminsController@unBlockAdmin');
 
 Route::patch('update', 'AdminsController@updateAdmin');
 
