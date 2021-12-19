@@ -43,7 +43,7 @@
                 <td style="padding:0px 20px;">
                     <p style="font-size: 14px;color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
                         <span style="font-weight: 700;font-size: 18px;">Hello {{$user->name}}!</span><br/><br/>
-                        Thank you for shoping on martekgh.com.<br/>
+                        Thank you for shoping <br/>
                         <b>{{$merchandiser->company_name}}</b> has uploaded a new product {{$product->product_name}} in stock just for you.
                         <br/>
                         <br/>

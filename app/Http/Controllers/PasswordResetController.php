@@ -66,6 +66,11 @@ class PasswordResetController extends Controller
         return response()->json(['status' => 'invalid Password']);
     }
 
+    public function adminSendRequest(Request $request)
+    {
+        $request->validate(['email' => 'required|email']);
+    }
+
 
     public function sendResetMail(Request $request): \Illuminate\Http\JsonResponse
     {
