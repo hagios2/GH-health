@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Mail\MerchandiserPasswordResetMail;
-use App\Mail\ShopPasswordResetMail;
+use App\Models\ApiPasswordReset;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\User;
-use App\Merchandiser;
-use App\ApiPasswordReset;
 use App\Jobs\PasswordResetJob;
-use App\Jobs\ShopPasswordResetJob;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -21,11 +17,11 @@ class PasswordResetController extends Controller
     public function __construct()
     {
 
-        $this->middleware('auth:api,merchandiser', ['only' => ['changeUserPassword', 'changeMediaPassword']]);
+        $this->middleware('auth:api', ['only' => ['changeUserPassword', 'changeMediaPassword']]);
 
     }
 
-    public function changeUserPassword(ChangePasswordRequest $request)
+    public function changeUserPassword(ChangePasswordRequest $request): \Illuminate\Http\JsonResponse
     {
         $client = auth()->guard('api')->user();
 
@@ -48,7 +44,7 @@ class PasswordResetController extends Controller
     }
 
 
-    public function changeShopPassword(ChangePasswordRequest $request)
+    public function changeShopPassword(ChangePasswordRequest $request): \Illuminate\Http\JsonResponse
     {
         $shop = auth()->guard('merchandiser')->user();
 
@@ -71,12 +67,12 @@ class PasswordResetController extends Controller
     }
 
 
-    public function sendResetMail(Request $request)
+    public function sendResetMail(Request $request): \Illuminate\Http\JsonResponse
     {
 
         $request->validate(['email' => 'required|email']);
 
-        $client = User::where('email', $request->email)->first();
+        $client = User::query()->where('email', $request->email)->first();
 
         if($client)
         {
@@ -135,7 +131,7 @@ class PasswordResetController extends Controller
 
 
 
-    public function reset(Request $request)
+    public function reset(Request $request): \Illuminate\Http\JsonResponse
     {
         $token = ApiPasswordReset::where([['token', $request->token], ['isUserEmail', true]])->first();
 

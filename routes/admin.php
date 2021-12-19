@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,12 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::group(['prefix' => 'auth'], function () {
 
-Route::post('auth/login', 'AuthController@login');
+    Route::post('login', 'AuthController@login');
 
-Route::post('auth/logout', 'AuthController@logout');
+    Route::post('logout', 'AuthController@logout');
 
-Route::post('auth/refresh-token', 'AuthController@refresh');
+    Route::post('refresh-token', 'AuthController@refresh');
+
+    Route::post('request/password/reset', 'PasswordResetController@sendResetMail');
+
+    Route::post('reset/password', 'PasswordResetController@reset');
+
+    Route::post('change/password', 'PasswordResetController@changeUserPassword');
+});
 
 Route::get('/', 'AuthController@getAuthUser');
 
