@@ -21,13 +21,13 @@ class NewAdminRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             
             'name' => 'bail|required|string|',
 
-            'email' => 'bail|required|string',
+            'email' => 'bail|required|string|unique',
 
             'phone' => 'bail|required|numeric'
         ];
