@@ -18,10 +18,10 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "spatie/laravel-searchable": "^1.9",
-        "tymon/jwt-auth": "^1.0"
+        "tymon/jwt-auth": "^1.0",
+        "brainmaestro/composer-git-hooks": "^2.8"
     },
     "require-dev": {
-        "brainmaestro/composer-git-hooks": "^2.8",
         "facade/ignition": "^2.3.6",
         "friendsofphp/php-cs-fixer": "^3.3",
         "fzaninotto/faker": "^1.9.1",
