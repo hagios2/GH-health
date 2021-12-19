@@ -1,19 +1,3 @@
-{{--@component('mail::message')--}}
-{{--# Congrats {{ $admin->name }}--}}
-
-{{--<p>--}}
-{{--    You have been registered as a Martek Gh admin. Kindly use <b> {{ $password }} </b>  to login--}}
-{{--</p>--}}
-
-{{--@component('mail::button', ['url' => 'martek-admin.herokuapp.com'])--}}
-{{--login--}}
-{{--@endcomponent--}}
-
-{{--Thanks,<br>--}}
-{{--{{ config('app.name') }}--}}
-{{--@endcomponent--}}
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -52,38 +36,43 @@
                     <!-- <h2
                     style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;float:left;color:black;padding:6px 6px 6px 30px; margin-left:-10px;margin-top:5%;font-size: 15px;text-transform: uppercase;"
                     >Email Confirmation</h2> -->
-                    <a href="https://smp-client.netlify.app/"><img src="https://snake-platform.herokuapp.com/smplogo.png" alt="smp-logo" title="S.M.P" style="height: 50px;width: auto;"></a>
+                    <a href="https://martekgh.com"><img src="https://snake-platform.herokuapp.com/images/smplogo.png" alt="SMP-logo" title="waPatron" style="height: 50px;width: auto;"></a>
                 </td>
             </tr>
 
             <tr>
                 <td style="padding:0px 30px;">
                     <p style="font-size: 14px; color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-                        <span style="font-weight: 700;font-size: 18px;text-align: left !important;">Congratulations!</span><br/><br/> Your martek account is almost ready.
+                        <span style="font-weight: 700;font-size: 18px;text-align: left !important;">Congratulations {{ $admin->name }}!</span><br/><br/> You have been added as an admin on Snake Monitoring Platform. <br>
+                        Kindly find the credentials below to login
                         You are one click away from completing your registration. To proceed, please click the button below.
                     </p>
+
+                    <p style="font-size: 14px; color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                        <span style="font-weight: 700;font-size: 18px;text-align: left !important;">Email: {{ $amdin->email }} !</span><br/><br/>     </p>
+                        <span style="font-weight: 700;font-size: 18px;text-align: left !important;">Password: {{ $password }} !</span><br/><br/>     </p>
                 </td>
             </tr>
 
             <tr>
-                <td style="padding: 30px;text-align: center;">
-                    <a style="cursor:pointer;"
-                       href="martekgh.com/user/" target="_blank">
-                        <button
-                            style="background-color: white;cursor:pointer;border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
-                        >
-                            Confirm Your Email
-                        </button>
-                    </a>
-                </td>
+                {{--                <td style="padding: 30px;text-align: center;">--}}
+                {{--                    <a style="cursor:pointer;"--}}
+                {{--                       href="https://www.martekgh.com/api/auth/email/verify?token={{$token->token}}" target="_blank">--}}
+                {{--                        <button--}}
+                {{--                            style="background-color: white;cursor:pointer;border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"--}}
+                {{--                        >--}}
+                {{--                            Confirm Your Email--}}
+                {{--                        </button>--}}
+                {{--                    </a>--}}
+                {{--                </td>--}}
             </tr>
-            <tr>
-                <td style="padding: 0px 30px;">
-                    <p style="font-size: 14px; color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-                        Or verify using this link: <a href="link to verify">link to verify</a>
-                    </p>
-                </td>
-            </tr>
+            {{--            <tr>--}}
+            {{--                <td style="padding: 0px 30px;">--}}
+            {{--                    <p style="font-size: 14px; color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">--}}
+            {{--                        Or verify using this link: <a href="https://www.martekgh.com/api/auth/email/verify?token={{$token->token}}">https://www.martekgh.com/api/auth/email/verify?token={{$token->token}}</a>--}}
+            {{--                    </p>--}}
+            {{--                </td>--}}
+            {{--            </tr>--}}
             <tr>
                 <td style="padding: 0px 30px;">
                     <p style="font-size: 14px; color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
@@ -105,7 +94,7 @@
 {{--            <tr>--}}
 {{--                <td style="background-color:#6EC7E0;padding:0px 10px;text-align: center;">--}}
 {{--                    <h2--}}
-{{--                        style="color:black;padding: 4px;font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"--}}
+{{--                            style="color:black;padding: 4px;font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"--}}
 {{--                    >Keep in touch</h2>--}}
 {{--                    <h5>--}}
 {{--                        <a style="color: white !important; text-decoration: none !important;" href="https://twitter.com/martekgh?s=11" target="_blank"><img src="https://1.bp.blogspot.com/-W8MfFjEQAiY/YDO_ZIOsF4I/AAAAAAAAAlk/jRaxB1YInloXDAQAFsjy1iBpdoNPYyG0QCLcBGAsYHQ/s320/twitter-social-logotype.png" alt="twitter" style="width: auto; height: 25px; margin-right: 5px;"/></a>--}}

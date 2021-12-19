@@ -36,14 +36,14 @@
                     <!-- <h2
                     style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;float:left;color:black;padding:6px 6px 6px 30px; margin-left:-10px;margin-top:5%;font-size: 15px;text-transform: uppercase;"
                     >Email Confirmation</h2> -->
-                    <a href="https://martekgh.com"><img src="https://1.bp.blogspot.com/-FN5gJQyz8Ns/YDifO6x-HhI/AAAAAAAAEzc/Q8D3s0dnU1MR1ZRgyWtDFCUuUhO4h1BMQCLcBGAsYHQ/s320/martlogo.png" alt="wapatron-logo" title="waPatron" style="height: 50px;width: auto;"></a>
+                    <a href="https://martekgh.com"><img src="https://snake-platform.herokuapp.com/smplogo.png" alt="SMP-logo" title="waPatron" style="height: 50px;width: auto;"></a>
                 </td>
             </tr>
 
             <tr>
                 <td style="padding:0px 30px;">
                     <p style="font-size: 14px; color: #25383C; font-weight: 400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-                        <span style="font-weight: 700;font-size: 18px;text-align: left !important;">Congratulations {{ $user->name }}!</span><br/><br/> You have been added to {{$user->facility->name}}.
+                        <span style="font-weight: 700;font-size: 18px;text-align: left !important;">Congratulations {{ $admin->name }}!</span><br/><br/> You have been added as admin on Snake Monitoring Platform.
                         You are one click away from completing your registration. To proceed, please click the button below.
                     </p>
 
@@ -53,16 +53,16 @@
             </tr>
 
             <tr>
-{{--                <td style="padding: 30px;text-align: center;">--}}
-{{--                    <a style="cursor:pointer;"--}}
-{{--                       href="https://www.martekgh.com/api/auth/email/verify?token={{$token->token}}" target="_blank">--}}
-{{--                        <button--}}
-{{--                            style="background-color: white;cursor:pointer;border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"--}}
-{{--                        >--}}
-{{--                            Confirm Your Email--}}
-{{--                        </button>--}}
-{{--                    </a>--}}
-{{--                </td>--}}
+                <td style="padding: 30px;text-align: center;">
+                    <a style="cursor:pointer;"
+                       href="https://smp-client.netlify.app/api/auth/email/verify?token={{$token->token}}" target="_blank">
+                        <button
+                            style="background-color: white;cursor:pointer;border:3px solid #6EC7E0;text-decoration:none;color: #6EC7E0;font-size: 18px;font-weight: bold;padding: 12px 22px;border-radius: 15px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+                        >
+                            Confirm Your Email
+                        </button>
+                    </a>
+                </td>
             </tr>
 {{--            <tr>--}}
 {{--                <td style="padding: 0px 30px;">--}}
