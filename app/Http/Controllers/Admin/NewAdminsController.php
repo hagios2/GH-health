@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MainAdminResource;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Jobs\NewAdminJob;
@@ -17,9 +18,14 @@ class NewAdminsController extends Controller
         $this->middleware('isSuperAdmin');
     }
 
+    public function fetchAdmins(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    {
+        return MainAdminResource::collection(Admin::query()->where('role', '!=', 'super_admin')->get());
+    }
+
+
     public function newAdmin(NewAdminRequest $request): \Illuminate\Http\JsonResponse
     {
-
         if (auth()->guard('admin')->user()->role == 'super_admin') {
             $attributes = $request->validated();
 

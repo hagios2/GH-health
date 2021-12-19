@@ -49,7 +49,7 @@ Route::get('fetch/facilitators', 'AdminsController@getUsers');
 
 Route::get('fetch/{user}/facilitator', 'AdminsController@getFetchSingle');
 
-Route::get('fetch-admins', 'AdminsController@fetchAdmins');
+Route::get('fetch-admins', 'NewAdminsController@fetchAdmins');
 
 #--------------------------- Region -------------------------------------
 
