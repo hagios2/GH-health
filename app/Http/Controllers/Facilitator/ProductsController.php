@@ -102,7 +102,7 @@ class ProductsController extends Controller
 
     public function viewIssuedOutProduct()
     {
-        return response()->json(['user' => auth()->user()]);
+        return response()->json(['user' => auth()->user()->facility]);
 
         $issued_out_product = IssuedProduct::query()->where('facility_id', auth()->user()->facility->id)->latest()->paginate(10);
 
