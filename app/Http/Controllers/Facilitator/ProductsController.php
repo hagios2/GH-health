@@ -63,6 +63,11 @@ class ProductsController extends Controller
             return response()->json(['message' => "Product is out of Stock"], 422);
         }
 
+        if($product->quantity < $request->quantity)
+        {
+            return response()->json(['message' => "Available quantity wouldn't be enough for this request"], 422);
+        }
+
         if(Carbon::parse($product->expiry_date)->lessThan(Carbon::today()))
         {
             return response()->json(['message' => "Product has expired"], 422);
