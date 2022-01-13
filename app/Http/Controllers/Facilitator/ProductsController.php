@@ -11,6 +11,7 @@ use App\Models\IssuedProduct;
 use App\Models\Product;
 use App\Http\Resources\DetailedProductResource;
 use App\Http\Resources\ProductResource;
+use Carbon\Carbon;
 
 
 class ProductsController extends Controller
@@ -60,6 +61,11 @@ class ProductsController extends Controller
         if($product->quantity === 0)
         {
             return response()->json(['message' => "Product is out of Stock"], 401);
+        }
+
+        if(Carbon::parse($product->expiry_date)->lessThan(Carbon::today()))
+        {
+            return response()->json(['message' => "Product has expired"], 401);
         }
 
         $validated_product_data = $request->validated();
