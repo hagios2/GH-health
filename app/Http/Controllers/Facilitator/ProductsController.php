@@ -100,8 +100,10 @@ class ProductsController extends Controller
         return response()->json(['message' => "issued out successfully"], 201);
     }
 
-    public function viewIssuedOutProduct(): IssuedOutProductResource
+    public function viewIssuedOutProduct()
     {
+        return response()->json(['user' => auth()->user()]);
+
         $issued_out_product = IssuedProduct::query()->where('facility_id', auth()->user()->facility->id)->latest()->paginate(10);
 
         return new IssuedOutProductResource($issued_out_product);

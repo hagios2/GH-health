@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Collection;
 
 class IssuedOutProductResource extends ResourceCollection
 {
@@ -11,9 +12,9 @@ class IssuedOutProductResource extends ResourceCollection
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
-    public function toArray($request)
+    public function toArray($request): Collection
     {
         return $this->collection->map(function($issued_product){
 

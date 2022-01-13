@@ -12,7 +12,7 @@ class NewAdminRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ class NewAdminRequest extends FormRequest
             
             'name' => 'bail|required|string|',
 
-            'email' => ['bail', 'required', 'string', Rule::unique('admins')->ignore($this->user('admin'))],
+            'email' => ['bail', 'required', 'string', Rule::unique('admins')->ignore($this->user('admin')->id)],
 
             'phone' => 'bail|required|numeric|unique:admins,phone'
         ];

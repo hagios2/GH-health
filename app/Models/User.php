@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -65,7 +66,7 @@ class User extends Authenticatable implements JWTSubject
         $this->following()->create($following);
     }
 
-    public function facility(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function facility(): BelongsTo
     {
         return $this->belongsTo(Facility::class);
     }
@@ -157,7 +158,7 @@ class User extends Authenticatable implements JWTSubject
         return $this->sellersBillingDetail()->create($billing_detail);
     }
 
-    public function sellersPayment(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function sellersPayment(): BelongsTo
     {
         return $this->belongsTo(SellersPayment::class, 'user_id');
     }
